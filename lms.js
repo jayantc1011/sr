@@ -19,11 +19,13 @@
   const outcomeCopy = {
     speakathon:['Articulate your thoughts more clearly','Use vocal variety with intention','Communicate with clarity and calm','Handle conversations with greater ease','Leave an authentic, lasting impression'],
     'power-dressing':['Identify flattering color families','Understand outfit proportion and fit','Create intentional looks for different occasions','Plan an adaptable wardrobe','Show up with greater confidence'],
+    'dining-etiquette':['Feel at ease at professional and social meals','Understand place settings and cutlery','Make introductions and join conversations comfortably','Host or attend meals with thoughtful manners'],
     'power-bundle':['Work on confident speaking habits','Develop an authentic personal style','Bring clarity to how you present yourself','Practice verbal and visual communication','Build a repeatable growth routine']
   };
   const bonusCopy = {
     speakathon:[['Personal 1:1 Coaching Session','The reference program describes an additional coaching benefit after all 21 challenges are completed. Confirm availability and conditions with the Academy.'],['25 Power Moves to Influence Anyone','Practical communication ideas to practice in conversations, meetings and presentations.'],['Blueprint for Unshakable Confidence','A framework for noticing and practicing confident communication habits.'],['Introvert2Influencer Digital Handbook','Additional learning and reflection prompts described in the reference material.']],
     'power-dressing':[['Personal style worksheet','A planning template for learning about colors, proportions and outfit choices.'],['Wardrobe audit framework','Questions to help evaluate fit, function and personal style.'],['Daily outfit formula','An approachable method for intentional styling.']],
+    'dining-etiquette':[['Dining occasion checklist','A simple prompt to prepare for a professional or social meal.'],['Conversation cues','Suggestions for comfortable introductions and table conversation.'],['Hosting notes','A practical checklist for welcoming guests and planning a meal.']],
     'power-bundle':[['Two learning themes','Explore communication and image-building principles together.'],['Combined practice prompts','Bring spoken confidence and visual presentation into everyday routines.'],['Reflection framework','Review what you have tried and choose the next practical step.']]
   };
 
@@ -107,13 +109,64 @@
     $('#lms-detail-price').textContent=formatMoney(course.price);
     const total=flatten(course).length;
     $('#lms-detail-count').textContent=(slug==='speakathon'?'21 guided challenges':total+' preview topics');
-    $('#lms-detail-category').textContent=slug==='speakathon'?'21-DAY COMMUNICATION CHALLENGE':slug==='power-dressing'?'PERSONAL IMAGE & STYLE':'COMMUNICATION + STYLE BUNDLE';
+    $('#lms-detail-category').textContent=slug==='speakathon'?'21-DAY COMMUNICATION CHALLENGE':slug==='power-dressing'?'PERSONAL IMAGE & STYLE':slug==='dining-etiquette'?'DINING ETIQUETTE':'COMMUNICATION + STYLE BUNDLE';
     const image=$('#lms-detail-photo');
-    image.src=slug==='power-dressing'?'assets/services/styling-consultation.webp':slug==='power-bundle'?'assets/services/course-bundle.webp':'assets/services/communication-workshop.webp';
+    image.src=slug==='power-dressing'?'assets/services/styling-consultation.webp':(slug==='power-bundle'||slug==='dining-etiquette')?'assets/services/course-bundle.webp':'assets/services/communication-workshop.webp';
     image.alt=course.title+' course preview image';
     $('#lms-enroll-cta').href=updateUrl('lms-auth.html',slug);
     $('#lms-open-demo').href=updateUrl('lms-learn.html',slug);
     $('#lms-syllabus-player').href=updateUrl('lms-learn.html',slug);
+    if (slug === 'dining-etiquette') {
+      const previewSection=$('#lms-previews');
+      const previewHeading=previewSection?.querySelector('.lms-section-heading h2');
+      const previewDescription=previewSection?.querySelector('.lms-section-heading p');
+      const previewGrid=previewSection?.querySelector('.lms-preview-grid');
+      if(previewHeading)previewHeading.textContent='A little more ease at every table.';
+      if(previewDescription)previewDescription.textContent='Explore the Dining Etiquette course outline. Lesson recordings will be added as they become available.';
+      if(previewGrid){
+        previewGrid.replaceChildren(...course.modules[0].lessons.slice(0,2).map((lesson,i)=>{
+          const card=el('article','lms-preview-card');
+          const visual=el('div','lms-preview-portrait lms-topic-preview',String(i+1).padStart(2,'0'));
+          visual.setAttribute('aria-hidden','true');
+          const copy=el('div','lms-preview-copy');
+          copy.append(el('span','lms-eyebrow','DINING ETIQUETTE · COURSE OUTLINE'),el('h3','',lesson.title.replace(' · Lesson awaiting upload','')),el('p','',lesson.summary),el('div','lms-preview-tags'));
+          copy.querySelector('.lms-preview-tags').append(el('span','','Course topic'),el('span','','Self-paced'));
+          card.append(visual,copy);
+          return card;
+        }));
+      }
+      const firstButton=$('.lms-buttons .lms-secondary');
+      if(firstButton)firstButton.textContent='Explore course topics ↓';
+      const curriculumSection=$('#lms-curriculum-section');
+      const curriculumTitle=curriculumSection?.querySelector('.lms-curriculum-grid h2');
+      const curriculumDescription=curriculumSection?.querySelector('.lms-curriculum-grid > div > p');
+      const curriculumNumber=curriculumSection?.querySelector('.lms-curriculum-number');
+      const curriculumLabel=curriculumSection?.querySelector('.lms-curriculum-aside > span');
+      if(curriculumTitle)curriculumTitle.textContent='Your dining etiquette learning path.';
+      if(curriculumDescription)curriculumDescription.textContent='Browse the course topics. Lesson recordings will be added as they become available.';
+      if(curriculumNumber)curriculumNumber.textContent=String(total);
+      if(curriculumLabel)curriculumLabel.textContent='COURSE TOPICS';
+    }
+    if (slug === 'speakathon') {
+      const entries = [course.modules[0].lessons[0],course.modules[0].lessons[3]];
+      [...document.querySelectorAll('.lms-preview-card')].slice(0,2).forEach((card,i)=>{
+        const item=entries[i];
+        const frame=card.querySelector('.lms-preview-portrait');
+        if (frame) {
+          const thumb=el('img','lms-preview-real-thumb');
+          thumb.src=i===0?'assets/hero-seated.webp':'assets/services/communication-workshop.webp';
+          thumb.alt='Portrait preview for '+item.title;
+          frame.replaceChildren(thumb);
+        }
+        const title=card.querySelector('h3');if(title)title.textContent=item.title.replace(/^Day \d+ · /,'');
+        const desc=card.querySelector('p');if(desc)desc.textContent=item.summary+' — video and assignment PDF available in the learning preview.';
+        const tags=card.querySelector('.lms-preview-tags');if(tags)tags.replaceChildren(el('span','','Original lesson video'),el('span','','Daily practice PDF'));
+        const link=el('a','lms-asset-link lms-asset-primary','View lesson '+(i===0?1:4)+' in LMS →');
+        link.href=updateUrl('lms-learn.html',slug)+'&lesson='+(i===0?1:4);
+        card.querySelector('.lms-preview-copy')?.append(link);
+      });
+    }
+
     const ul=$('#lms-inclusions');course.includes.forEach(x=>ul.append(el('li','',x)));
     const benefits=$('#lms-outcomes');(outcomeCopy[slug]||[]).forEach(x=>benefits.append(el('div','',x)));
     const bonuses=$('#lms-bonuses');(bonusCopy[slug]||[]).forEach(([title,desc],i)=>{
@@ -143,7 +196,52 @@
     $('#lms-learn-detail-link').href=updateUrl('lms-course.html',slug);
     const flat=flatten(course);
     const completed=new Set();
-    let active=0;
+    const requestedLesson=Number(params.get('lesson'));
+    let active=Number.isInteger(requestedLesson) && requestedLesson>=1 && requestedLesson<=flat.length?requestedLesson-1:0;
+
+    const isSpeakathon=slug==='speakathon';
+    const video=$('#lms-lesson-video');
+    const driveCover=$('#lms-drive-cover');
+    const driveFrame=$('#lms-drive-iframe');
+    const assets=$('#lms-lesson-assets');
+    const resourcePanel=$('#lms-course-resources-panel');
+    const resourceList=$('#lms-course-resources');
+    if(isSpeakathon){
+      if(video)video.hidden=true;
+      if(assets)assets.hidden=false;
+      if(resourcePanel&&resourceList){
+        resourcePanel.hidden=false;
+        (course.resources||[]).forEach(resource=>{
+          if(!/^https:\/\/drive\.google\.com\/file\/d\/[A-Za-z0-9_-]+\/view$/.test(resource.url))return;
+          const link=el('a','lms-resource-item');link.href=resource.url;link.target='_blank';link.rel='noopener noreferrer';
+          link.setAttribute('aria-label','Open '+resource.title+' in Google Drive');
+          link.append(el('span','lms-resource-icon',resource.type==='video'?'▶':resource.type==='image'?'▧':'▤'));
+          const content=el('span','',resource.title);
+          content.append(el('small','',resource.note||'Opens in Google Drive'));
+          link.append(content,el('span','','→'));
+          resourceList.append(link);
+        });
+      }
+      $('#lms-drive-play')?.addEventListener('click',()=>{
+        const link=flat[active]?.videoUrl;
+        const match=link?.match(/^https:\/\/drive\.google\.com\/file\/d\/([A-Za-z0-9_-]+)\/view$/);
+        if(!match||!driveFrame)return;
+        driveFrame.src='https://drive.google.com/file/d/'+match[1]+'/preview';
+        driveFrame.hidden=false;if(driveCover)driveCover.hidden=true;
+      });
+    }else{
+      if(driveCover)driveCover.hidden=true;
+      if(driveFrame)driveFrame.hidden=true;
+      if(assets)assets.hidden=true;
+      if(resourcePanel)resourcePanel.hidden=true;
+    }
+    const setDriveAnchor=(id,url)=>{
+      const node=$(id);if(!node)return;
+      const valid=typeof url==='string' && /^https:\/\/drive\.google\.com\/file\/d\/[A-Za-z0-9_-]+\/view$/.test(url);
+      node.hidden=!valid;
+      if(valid)node.href=url;
+      else node.removeAttribute('href');
+    };
     const groupContainer=$('#lms-learning-modules');
     const buttons=[];
     let position=0;
@@ -169,9 +267,9 @@
       $('#lms-current-lesson').textContent=l.title;
       const summary=l.summary || 'Review this learning topic and try a short practice activity.';
       $('#lms-lesson-description').textContent=summary;
-      $('#lms-lesson-practice').textContent=slug==='speakathon'?'Take 60 seconds to record yourself practicing this topic. Notice one thing you would improve next time.':`Reflect on the topic “${l.title}” and write down one change you can try today.`;
+      $('#lms-lesson-practice').textContent=l.practice || `Reflect on the topic “${l.title}” and write down one change you can try today.`;
       const items=$('#lms-practice-points');items.replaceChildren();
-      (slug==='speakathon'?['Watch the sample video','Practice the lesson topic aloud','Reflect on one thing you learned']:['Watch the sample video','Explore the topic at your own pace','Write one practical takeaway']).forEach(x=>items.append(el('li','',x)));
+      (isSpeakathon?['Watch the original challenge video','Open the corresponding PDF for instructions','Record, review and reflect on your practice']:['Watch the sample video','Explore the topic at your own pace','Write one practical takeaway']).forEach(x=>items.append(el('li','',x)));
       const action=$('#lms-mark-complete');
       action.textContent=completed.has(active)?'✓ Completed · Undo':'Mark complete ✓';
       action.setAttribute('aria-pressed',String(completed.has(active)));
@@ -191,9 +289,18 @@
       $('#lms-progress-bar').setAttribute('aria-valuenow',String(percent));
       $('#lms-progress-caption').textContent=`${completed.size} of ${flat.length} lessons completed in this preview`;
       $('#lms-lesson-total').textContent=flat.length+' lessons';
-      const video=$('#lms-lesson-video');
-      if(video && !video.paused)video.pause();
-      if(video)video.currentTime=0;
+      if (video && !video.paused)video.pause();
+      if (video)video.currentTime=0;
+      if (isSpeakathon) {
+        if(driveFrame){driveFrame.removeAttribute('src');driveFrame.hidden=true;}
+        if(driveCover)driveCover.hidden=false;
+        const driveTitle=$('#lms-drive-title');if(driveTitle)driveTitle.textContent=l.title;
+        setDriveAnchor('#lms-video-open',l.videoUrl);
+        setDriveAnchor('#lms-pdf-open',l.pdfUrl);
+        setDriveAnchor('#lms-solution-open',l.solutionUrl);
+        const note=$('#lms-lesson-note');if(note)note.textContent='Original Shalini lesson: open the Drive video or daily PDF. Drive access depends on its sharing permissions; this frontend does not verify enrollment.';
+      }
+
     }
     $('#lms-mark-complete')?.addEventListener('click',()=>{completed.has(active)?completed.delete(active):completed.add(active);render();});
     $('#lms-prev-lesson')?.addEventListener('click',()=>{active=Math.max(0,active-1);render();});

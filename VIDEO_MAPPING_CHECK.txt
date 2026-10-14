@@ -1,0 +1,10 @@
+Speakathon lesson media mapping audit
+=====================================
+
+Result: PASS for all 21 lesson video and worksheet paths.
+Lesson i maps to assets/lms/videos/day-i.mp4 and assets/lms/pdfs/day-i.pdf, with two-digit filenames.
+Day 12 video is present: assets/lms/videos/day-12.mp4 (copied from the downloaded Challenge 12.mp4).
+Configured extras present: day-02-solution.mp4, day-03-solution.mp4, introduction.mp4, closing.mp4.
+The welcome and closing slots intentionally reference the same video for now.
+
+Additional catalog resources listed in MEDIA_STATUS.json are absent as local files. These paths do not affect the 21 lesson player/worksheet mappings.

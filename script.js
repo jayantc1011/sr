@@ -7,7 +7,7 @@ function setCtaArrowLabel(target, label) {
   svg.setAttribute('aria-hidden', 'true');
   svg.setAttribute('focusable', 'false');
   const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-  path.setAttribute('d', 'M5 19 19 5M8 5h11v11');
+  path.setAttribute('d', 'M4 12h16m-7-7 7 7-7 7');
   svg.append(path);
   target.replaceChildren(document.createTextNode(label), svg);
 }
@@ -172,6 +172,29 @@ if(inquiryForm) inquiryForm.addEventListener('submit',event=>{
 // Services page catalog: 30/60-minute consultation switching, search, and filters.
 const durationButtons = Array.from(document.querySelectorAll('.calls-duration-toggle [data-duration]'));
 const callCards = Array.from(document.querySelectorAll('.calls-grid .call-card'));
+const homeCallDurationButtons = Array.from(document.querySelectorAll('.home-page .service-toggle [data-duration]'));
+
+homeCallDurationButtons.forEach((button) => {
+  button.addEventListener('click', () => {
+    const card = button.closest('.service-card');
+    const duration = button.dataset.duration;
+    card?.querySelectorAll('.service-toggle [data-duration]').forEach((option) => {
+      const active = option === button;
+      option.classList.toggle('active', active);
+      option.setAttribute('aria-pressed', String(active));
+    });
+    const price = card?.querySelector('.service-price');
+    const subtitle = card?.querySelector('.service-subtitle');
+    const ctaLabel = card?.querySelector('[data-home-booking-label]');
+    if (price) price.innerHTML = duration === '30'
+      ? (card.dataset.offer30 || price.dataset.price30 || price.innerHTML)
+      : (card.dataset.offer60 || price.dataset.price60 || price.innerHTML);
+    if (subtitle) subtitle.textContent = duration === '30'
+      ? (card.dataset.subtitle30 || 'Laser Diagnostic Call')
+      : (card.dataset.subtitle60 || (button.closest('.service-toggle')?.children[1]?.textContent.includes('Makeover') ? 'Signature Image Makeover' : 'Comprehensive Deep Dive'));
+    if (ctaLabel) ctaLabel.textContent = `Book ${duration} Mins Call`;
+  });
+});
 
 if (durationButtons.length && callCards.length) {
   const setDuration = (duration) => {
@@ -332,6 +355,7 @@ if (bookingModal) {
   const scheduleDateLabel = bookingModal.querySelector('#booking-date-label');
   const bookingDate = bookingModal.querySelector('#booking-date');
   const bookingTime = bookingModal.querySelector('#booking-time');
+  const timeSlotStarts = Array.from(bookingTime?.options || []).map((option) => option.value);
   const bookingTotal = bookingModal.querySelector('#booking-total');
   const bookingContinue = bookingModal.querySelector('#booking-continue');
   const bookingBack = bookingModal.querySelector('#booking-back');
@@ -404,6 +428,14 @@ if (bookingModal) {
       duration: 'Lifetime Access',
       needsSchedule: false
     },
+    'dining-etiquette': {
+      label: 'Dining Etiquette',
+      fullLabel: 'Dining Etiquette Self-Paced Course',
+      type: 'course',
+      price: 3499,
+      duration: 'Lifetime Access',
+      needsSchedule: false
+    },
     'communication-training': {label: 'Professional Communication Training', fullLabel: '5-Session Professional Communication Training', type: 'package', price: 49999, duration: '5 Sessions', needsSchedule: true},
     'complete-makeover': {label: 'Complete Image Transformation', fullLabel: '5-Session Complete Image Transformation', type: 'package', price: 70000, duration: '5 Sessions', needsSchedule: true},
     'power-bundle': {
@@ -446,7 +478,42 @@ if (bookingModal) {
       button.classList.toggle('active', active);
       button.setAttribute('aria-pressed', String(active));
     });
+    updateTimeSlots();
     updateBookingUI();
+  };
+
+  const toMinutes = (time) => {
+    const match = time.match(/^(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+    if (!match) return null;
+    let hours = Number(match[1]) % 12;
+    if (match[3].toUpperCase() === 'PM') hours += 12;
+    return hours * 60 + Number(match[2]);
+  };
+  const formatClock = (minutes) => {
+    const hours24 = Math.floor(minutes / 60) % 24;
+    const hours12 = hours24 % 12 || 12;
+    const suffix = hours24 >= 12 ? 'PM' : 'AM';
+    return `${String(hours12).padStart(2, '0')}:${String(minutes % 60).padStart(2, '0')} ${suffix}`;
+  };
+  const updateTimeSlots = () => {
+    if (!bookingTime || !timeSlotStarts.length) return;
+    const currentStart = bookingTime.value.split(' - ')[0];
+    const duration = getOffering().type === 'call' ? Number(selectedDuration) : 60;
+    const fragment = document.createDocumentFragment();
+    timeSlotStarts.forEach((slot) => {
+      const [start, rest = ''] = slot.split(' - ');
+      const startMinutes = toMinutes(start);
+      const originalEnd = rest.match(/^(\d{1,2}:\d{2}\s*(?:AM|PM))/i)?.[1];
+      const end = startMinutes === null ? originalEnd : formatClock(startMinutes + duration);
+      const suffix = rest.slice(originalEnd?.length || 0);
+      const option = document.createElement('option');
+      option.value = `${start} - ${end}${suffix}`;
+      option.textContent = option.value;
+      fragment.append(option);
+    });
+    bookingTime.replaceChildren(fragment);
+    const matchingOption = Array.from(bookingTime.options).find((option) => option.value.startsWith(`${currentStart} - `));
+    if (matchingOption) matchingOption.selected = true;
   };
 
   const updateBookingUI = () => {
@@ -504,8 +571,9 @@ if (bookingModal) {
     if (offeringSelect) offeringSelect.value = safeOffer;
 
     if (safeOffer === 'comm-call' || safeOffer === 'style-call') {
-      if (lastBookingTrigger?.classList.contains('call-book-btn')) {
-        const activeCallDuration = document.querySelector('.calls-duration-toggle [data-duration].active');
+      if (lastBookingTrigger?.classList.contains('call-book-btn') || lastBookingTrigger?.closest('.service-card')) {
+        const homeDuration = lastBookingTrigger.closest('.service-card')?.querySelector('.service-toggle [data-duration].active');
+        const activeCallDuration = homeDuration || lastBookingTrigger.closest('.call-card')?.querySelector('.calls-duration-toggle [data-duration].active') || document.querySelector('.calls-duration-toggle [data-duration].active');
         selectedDuration = activeCallDuration?.dataset.duration || '60';
       } else {
         // Generic "Book a Session" buttons follow the reference and start on the 60-minute deep dive.
@@ -522,6 +590,7 @@ if (bookingModal) {
     });
 
     setDefaultDate();
+    updateTimeSlots();
     updateBookingUI();
     setBookingStep(1);
     bookingModal.hidden = false;
@@ -560,7 +629,10 @@ if (bookingModal) {
     button.addEventListener('click', () => setDuration(button.dataset.bookingDuration || '60'));
   });
 
-  offeringSelect?.addEventListener('change', updateBookingUI);
+  offeringSelect?.addEventListener('change', () => {
+    updateTimeSlots();
+    updateBookingUI();
+  });
 
   bookingContinue?.addEventListener('click', () => {
     const offering = getOffering();
@@ -571,8 +643,8 @@ if (bookingModal) {
     }
     updateBookingUI();
     if (offering.type === 'course') {
-      const courseSlug = {speakathon:'speakathon', 'styling-course':'power-dressing', 'power-bundle':'power-bundle'}[offeringSelect.value];
-      if (courseSlug) { window.location.href = `course.html?course=${encodeURIComponent(courseSlug)}`; return; }
+      const courseSlug = {speakathon:'speakathon', 'styling-course':'power-dressing', 'dining-etiquette':'dining-etiquette', 'power-bundle':'power-bundle'}[offeringSelect.value];
+      if (courseSlug) { window.location.href = `lms-course.html?course=${encodeURIComponent(courseSlug)}`; return; }
     }
     if (summaryDate) summaryDate.textContent = getReadableDateTime();
     setBookingStep(2);
@@ -775,7 +847,7 @@ if (bookingModal) {
       event.preventDefault();if(!authForm.reportValidity())return;
       const name=authForm.querySelector('[name="name"]')?.value?.trim();
       // Only the optional first name is carried into the preview URL. No emails or passwords are stored.
-      const next=new URLSearchParams();if(params.get('course'))next.set('course',params.get('course'));if(name)next.set('name',name.split(/\s+/)[0]);location.href='dashboard.html'+(next.size?'?'+next.toString():'');
+      const next=new URLSearchParams();if(params.get('course'))next.set('course',params.get('course'));if(name)next.set('name',name.split(/\s+/)[0]);location.href='lms-learn.html'+(next.size?'?'+next.toString():'');
     });
   }
 
@@ -784,7 +856,7 @@ if (bookingModal) {
   if(courseRoot){
     const slug=params.get('course')||'speakathon';
     // Preserve older links but open the dedicated Hostinger-inspired Speakathon page.
-    if(slug==='speakathon'){location.replace('communication-course.html');return;}
+    if(slug==='speakathon'){location.replace('lms-course.html');return;}
     const record=catalog[slug];
     const button=document.getElementById('academy-course-enroll');
     const status=document.getElementById('academy-course-status');
@@ -809,7 +881,7 @@ if (bookingModal) {
       }));
       if(button){setCtaArrowLabel(button, 'Ask About Enrollment');button.addEventListener('click',()=>location.href='contact.html?type=courses&course='+encodeURIComponent(slug));}
       if(status){status.replaceChildren();const msg=document.createElement('span');msg.textContent='Frontend preview only — online payments and course enrollment are not active. ';
-        const link=document.createElement('a');link.href='dashboard.html?course='+encodeURIComponent(slug);setCtaArrowLabel(link, 'Preview lesson dashboard');status.append(msg,link);}
+        const link=document.createElement('a');link.href='lms-learn.html?course='+encodeURIComponent(slug);setCtaArrowLabel(link, 'Preview lesson dashboard');status.append(msg,link);}
       const note=document.getElementById('academy-course-payment-note');if(note)note.textContent='Prices are indicative. Contact the Academy for enrollment; no payment is collected on this demo website.';
     }
   }
@@ -854,7 +926,7 @@ if (bookingModal) {
         row.append(left,btn);card.append(row);
       }return card;
     }));
-    const logout=document.getElementById('academy-logout');if(logout){setCtaArrowLabel(logout, 'Back to Courses');logout.onclick=()=>location.href='courses.html';}
+    const logout=document.getElementById('academy-logout');if(logout){setCtaArrowLabel(logout, 'Back to Courses');logout.onclick=()=>location.href='lms.html';}
     const pwd=document.getElementById('academy-password-form');if(pwd){pwd.replaceWith(Object.assign(document.createElement('p'),{className:'academy-small',textContent:'Account registration and password management are not available in this frontend-only preview. No personal credentials are stored.'}));}
   }
 })();

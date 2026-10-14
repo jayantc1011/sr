@@ -1,0 +1,14 @@
+{
+  "included": {
+    "videos": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21],
+    "daily_worksheets": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21],
+    "extra_recordings": ["day-02-solution", "day-03-solution", "introduction", "closing"]
+  },
+  "requires_media_upload": {
+    "videos": [],
+    "daily_worksheets": [],
+    "extra_recordings": [],
+    "extra_resources": ["course-guide.jpg", "progress-tracker.pdf", "templates.pdf", "mastering-posture.pdf", "introvert-to-influencer.pdf", "25-gems.pdf"]
+  },
+  "notes": "All 21 lesson videos and worksheets, both example recordings, and the configured introduction and closing videos are present. Day 12 uses the downloaded Challenge 12.mp4 recording. The other named course resources are catalog entries whose media files are not present in this package."
+}
