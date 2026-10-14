@@ -5,6 +5,11 @@
   const slug=data[params.get('course')]?params.get('course'):'speakathon';
   const course=data[slug];if(!course)return;
   const $=id=>document.getElementById(id);
+  const mediaUrl=path=>{
+    if(location.hostname!=='jayantc1011.github.io')return path;
+    const filename=String(path).split('/').pop();
+    return 'https://github.com/jayantc1011/sr/releases/download/lms-media-2026-10-14/'+encodeURIComponent(filename);
+  };
   const lessons=(course.modules||[]).flatMap((module,week)=>module.lessons.map((lesson)=>({...lesson,week,weekTitle:module.title})));
   const video=$('lesson-media'),stage=$('video-stage');
   const status=$('completion-note'),completeBtn=$('complete-and-next'),skipBtn=$('skip-video-next');
@@ -85,7 +90,7 @@
     video.hidden=false;$('video-missing').hidden=true;
     $('video-stage').classList.remove('is-missing-video');
     $('toggle-play').disabled=false;
-    video.src=path;video.defaultPlaybackRate=1;video.playbackRate=1;
+    video.src=mediaUrl(path);video.defaultPlaybackRate=1;video.playbackRate=1;
     video.load();setWatchProgress();updatePlayLabel();
   };
   const select=(n,allowSkipped=false)=>{
@@ -295,7 +300,7 @@
     $('worksheet-tag').textContent='WORKSHEET · DAY '+String(current+1).padStart(2,'0');
     $('worksheet-title').textContent=lesson.title.replace(/^Day \d+\s*[·:–-]\s*/i,'');
     pdf.hidden=false;$('worksheet-error').hidden=true;
-    pdf.src=lesson.pdfUrl+'#toolbar=1';
+    pdf.src=mediaUrl(lesson.pdfUrl)+'#toolbar=1';
     dialog.showModal();
   });
   const closePdf=()=>{dialog.close();pdf.removeAttribute('src');};
