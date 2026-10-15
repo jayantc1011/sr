@@ -200,25 +200,18 @@
         const item=entries[i];
         const frame=card.querySelector('.lms-preview-portrait');
         if (frame) {
-          if(i===0){
-            const video=el('video','lms-preview-real-video');
-            video.controls=true;video.playsInline=true;video.preload='metadata';
-            video.poster='assets/lms/previews/day-01-excerpt-poster.jpg';
-            video.setAttribute('aria-label','Day 1 excerpt from 00:26 to 01:05');
-            const source=el('source');source.src='assets/lms/previews/day-01-excerpt.mp4';source.type='video/mp4';
-            video.append(source,document.createTextNode('Your browser does not support HTML video.'));
-            frame.replaceChildren(video);
-          }else{
-            const thumb=el('img','lms-preview-real-thumb');
-            thumb.src='assets/services/communication-workshop.webp';
-            thumb.alt='Portrait preview for '+item.title;
-            frame.replaceChildren(thumb);
-          }
+          const video=el('video','lms-preview-real-video');
+          video.controls=true;video.playsInline=true;video.preload='metadata';
+          video.poster='assets/lms/previews/day-0'+(i===0?'1':'4')+'-excerpt-poster.jpg';
+          video.setAttribute('aria-label',i===0?'Day 1 excerpt from 00:26 to 01:05':'Day 4 excerpt from 00:05 to 00:19');
+          const source=el('source');source.src='assets/lms/previews/day-0'+(i===0?'1':'4')+'-excerpt.mp4';source.type='video/mp4';
+          video.append(source,document.createTextNode('Your browser does not support HTML video.'));
+          frame.replaceChildren(video);
         }
-        const title=card.querySelector('h3');if(title)title.textContent=i===0?'Speak Confidently in front of the Camera':item.title.replace(/^Day \d+ · /,'');
-        const desc=card.querySelector('p');if(desc)desc.textContent=i===0?'Learn a simple exercise that helps you stop overthinking before speaking.':item.summary+' — video and assignment PDF available in the learning preview.';
-        const eyebrow=card.querySelector('.lms-eyebrow');if(eyebrow&&i===0)eyebrow.textContent='PREVIEW LESSON 1 · CHALLENGE 1';
-        const tags=card.querySelector('.lms-preview-tags');if(tags)tags.replaceChildren(...(i===0?[el('span','','3-minute lesson'),el('span','','Actionable Plan included')]:[el('span','','Original lesson video'),el('span','','Daily practice PDF')]));
+        const title=card.querySelector('h3');if(title)title.textContent=i===0?'Speak Confidently in front of the Camera':'The Easiest Way to Look More Confident Without Saying a Word ⭐';
+        const desc=card.querySelector('p');if(desc)desc.textContent=i===0?'Learn a simple exercise that helps you stop overthinking before speaking.':'See how a genuine smile can help you build trust, create stronger first impressions, and connect effortlessly.';
+        const eyebrow=card.querySelector('.lms-eyebrow');if(eyebrow)eyebrow.textContent=i===0?'PREVIEW LESSON 1 · CHALLENGE 1':'PREVIEW LESSON 2 · CHALLENGE 4';
+        const tags=card.querySelector('.lms-preview-tags');if(tags)tags.replaceChildren(...(i===0?[el('span','','3-minute lesson'),el('span','','Actionable Plan included')]:[el('span','','😊 Body language tip'),el('span','','⚡ Easy to apply')]));
         const link=el('a','lms-asset-link lms-asset-primary','View lesson '+(i===0?1:4)+' in LMS →');
         link.href=updateUrl('lms-learn.html',slug)+'&lesson='+(i===0?1:4);
         card.querySelector('.lms-preview-copy')?.append(link);
