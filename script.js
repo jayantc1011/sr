@@ -725,6 +725,7 @@ if (bookingModal) {
 (() => {
   const root = document.querySelector('[data-curated-canva-carousel]');
   if (!root) return;
+  const fallback = root.parentElement.querySelector('[data-curated-canva-fallback]');
   const base = root.dataset.assets;
   const pages = root.dataset.slidePages.split(',').map(Number);
   const slides = pages.map((page) => ({
@@ -743,27 +744,36 @@ if (bookingModal) {
     9: 'Package terms and conditions',
     10: 'Thank-you slide and contact details',
   };
-  // Check the local slide images individually so one unavailable export does not
-  // hide the whole card or replace its image area with a different layout.
-  Promise.all(slides.map((slide) => new Promise((resolve) => {
+  // Do not expose empty placeholders or broken image icons when files are missing.
+  Promise.all(slides.map((slide) => new Promise((resolve, reject) => {
     const preloader = new Image();
-    preloader.onload = () => resolve({ ...slide, available: true });
-    preloader.onerror = () => resolve({ ...slide, available: false });
+    preloader.onload = () => resolve(slide);
+    preloader.onerror = () => reject(new Error('Missing image: ' + slide.src));
     preloader.src = slide.src;
-  }))).then((loadedSlides) => {
-    const availableSlides = loadedSlides.filter((slide) => slide.available);
-    if (!availableSlides.length) return;
+  }))).then(() => {
     const display = root.querySelector('.curated-canva-carousel__image');
     const counter = root.querySelector('.curated-canva-carousel__counter');
+    const dots = root.querySelector('.curated-canva-carousel__dots');
     const prev = root.querySelector('.curated-canva-carousel__arrow--prev');
     const next = root.querySelector('.curated-canva-carousel__arrow--next');
     let active = 0;
     let touchStartX = null;
+    slides.forEach((slide, index) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'curated-canva-carousel__dot';
+      dot.setAttribute('aria-label', `Show slide ${index + 1} of ${slides.length}`);
+      dot.addEventListener('click', () => select(index));
+      dots.appendChild(dot);
+    });
     function select(index) {
-      active = (index + availableSlides.length) % availableSlides.length;
-      display.src = availableSlides[active].src;
-      display.alt = descriptions[availableSlides[active].page] || `Presentation slide ${active+1}`;
-      counter.textContent = `${active + 1} / ${availableSlides.length}`;
+      active = (index + slides.length) % slides.length;
+      display.src = slides[active].src;
+      display.alt = descriptions[slides[active].page] || `Presentation slide ${active+1}`;
+      counter.textContent = `${active + 1} / ${slides.length}`;
+      Array.from(dots.children).forEach((dot, i) => {
+        dot.setAttribute('aria-current', String(i === active));
+      });
     }
     prev.addEventListener('click', () => select(active - 1));
     next.addEventListener('click', () => select(active + 1));
@@ -783,9 +793,11 @@ if (bookingModal) {
     }, { passive: true });
     select(0);
     root.hidden = false;
+    if (fallback) fallback.hidden = true;
   }).catch(() => {
     // Never fall back to the full Canva deck, which contains unwanted later pages.
     root.hidden = true;
+    if (fallback) fallback.hidden = false;
   });
 })();
 
