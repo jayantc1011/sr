@@ -204,6 +204,10 @@
     const benefits=$('#lms-outcomes');(outcomeCopy[slug]||[]).forEach(x=>benefits.append(el('div','',x)));
     const bonuses=$('#lms-bonuses');(bonusCopy[slug]||[]).forEach(([title,desc],i)=>{
       const item=el('details');if(i===0)item.open=true;
+      item.addEventListener('toggle',()=>{
+        if(!item.open)return;
+        bonuses.querySelectorAll('details[open]').forEach(other=>{if(other!==item)other.open=false;});
+      });
       item.append(el('summary','',title),el('p','',desc));bonuses.append(item);
     });
     const curr=$('#lms-curriculum');
