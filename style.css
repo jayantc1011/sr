@@ -7709,9 +7709,22 @@ body.services-page .package-card-media-canva .package-session-badge {
 }
 
 
-/* Card 1's local slides use card 2's shared Canva player frame. */
-body.services-page .communication-presentation[hidden] { display: none; }
-body.services-page .communication-presentation__slide {
+/* Read-only local slide selection for the communication package only. */
+body.services-page .curated-canva-carousel[hidden] { display: none; }
+body.services-page .curated-canva-carousel {
+  position: relative;
+  width: 100%;
+  color: #214e3e;
+  background: #f8faf6;
+}
+body.services-page .curated-canva-carousel__picture {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  cursor: pointer;
+}
+body.services-page .curated-canva-carousel__image {
   display: block;
   width: 100%;
   height: 100%;
@@ -7720,7 +7733,7 @@ body.services-page .communication-presentation__slide {
   user-select: none;
   -webkit-user-drag: none;
 }
-body.services-page .communication-player-controls {
+body.services-page .curated-canva-carousel__controls {
   position: absolute;
   inset: auto 0 0;
   z-index: 2;
@@ -7732,7 +7745,7 @@ body.services-page .communication-player-controls {
   color: #fff;
   background: linear-gradient(180deg, transparent, rgba(0,0,0,.68));
 }
-body.services-page .communication-player-control {
+body.services-page .curated-canva-carousel__control {
   width: 22px;
   height: 26px;
   padding: 3px;
@@ -7744,7 +7757,7 @@ body.services-page .communication-player-control {
   color: #fff;
   cursor: pointer;
 }
-body.services-page .communication-player-control svg {
+body.services-page .curated-canva-carousel__control svg {
   display: block;
   width: 16px;
   height: 16px;
@@ -7754,19 +7767,19 @@ body.services-page .communication-player-control svg {
   stroke-linecap: round;
   stroke-linejoin: round;
 }
-body.services-page .communication-player-control:focus-visible,
-body.services-page .communication-player-dot:focus-visible {
+body.services-page .curated-canva-carousel__control:focus-visible,
+body.services-page .curated-canva-carousel__dot:focus-visible {
   outline: 2px solid #fff;
   outline-offset: 2px;
 }
-body.services-page .communication-player-dots {
+body.services-page .curated-canva-carousel__dots {
   margin-left: auto;
   display: flex;
   align-items: center;
   justify-content: flex-end;
   gap: 4px;
 }
-body.services-page .communication-player-dot {
+body.services-page .curated-canva-carousel__dot {
   width: 5px;
   height: 5px;
   padding: 0;
@@ -7775,28 +7788,28 @@ body.services-page .communication-player-dot {
   background: rgba(255,255,255,.65);
   cursor: pointer;
 }
-body.services-page .communication-player-dot[aria-current="true"] {
+body.services-page .curated-canva-carousel__dot[aria-current="true"] {
   width: 7px;
   height: 7px;
   background: #fff;
 }
-body.services-page .communication-player-fullscreen { margin-left: 2px; }
-body.services-page .communication-presentation:fullscreen {
+body.services-page .curated-canva-carousel__fullscreen { margin-left: 2px; }
+body.services-page .curated-canva-carousel:fullscreen {
   width: 100vw;
   height: 100vh;
   display: grid;
   place-items: center;
   background: #101411;
 }
-body.services-page .communication-presentation:fullscreen .communication-presentation__slide {
+body.services-page .curated-canva-carousel:fullscreen .curated-canva-carousel__picture {
   width: min(100vw, 177.78vh);
   height: min(100vh, 56.25vw);
   aspect-ratio: 16 / 9;
 }
 @media (max-width: 560px) {
-  body.services-page .communication-player-controls { min-height: 38px; padding: 5px 10px; gap: 10px; }
-  body.services-page .communication-player-dot { width: 4px; height: 4px; }
-  body.services-page .communication-player-dot[aria-current="true"] { width: 6px; height: 6px; }
+  body.services-page .curated-canva-carousel__controls { min-height: 38px; padding: 5px 10px; gap: 10px; }
+  body.services-page .curated-canva-carousel__dot { width: 4px; height: 4px; }
+  body.services-page .curated-canva-carousel__dot[aria-current="true"] { width: 6px; height: 6px; }
 }
 /* ===== Shalini Confidence & Image Academy: shared public pages ===== */
 .academy-page{--forest:#214e3e;--forest-deep:#153a2d;--spring:#dff4cf;--paper:#f9fbf6;--muted:#67736b;--line:#d9e5d7;background:#fff;color:#23312a;font-family:'DM Sans','Arial',sans-serif;font-size:16px;line-height:1.7}

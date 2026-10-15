@@ -719,11 +719,11 @@ if (bookingModal) {
 }
 
 
-// Communication package player: use the card-2 player frame for local pages 1–10.
+// Communication flagship: show the website copy of Canva pages 1–10 only.
 // Page 10 is the thank-you slide; later pages remain excluded from the website.
 // The source Canva design is never modified.
 (() => {
-  const root = document.querySelector('[data-communication-presentation]');
+  const root = document.querySelector('[data-curated-canva-carousel]');
   if (!root) return;
   const base = root.dataset.assets;
   const pages = root.dataset.slidePages.split(',').map(Number);
@@ -753,7 +753,7 @@ if (bookingModal) {
   }))).then((loadedSlides) => {
     const availableSlides = loadedSlides.filter((slide) => slide.available);
     if (!availableSlides.length) return;
-    const display = root.querySelector('.communication-presentation__slide');
+    const display = root.querySelector('.curated-canva-carousel__image');
     const dots = root.querySelector('[data-slide-dots]');
     const previous = root.querySelector('[data-slide-prev]');
     const next = root.querySelector('[data-slide-next]');
@@ -763,7 +763,7 @@ if (bookingModal) {
     availableSlides.forEach((slide, index) => {
       const dot = document.createElement('button');
       dot.type = 'button';
-      dot.className = 'communication-player-dot';
+      dot.className = 'curated-canva-carousel__dot';
       dot.setAttribute('aria-label', `Show slide ${index + 1}`);
       dot.addEventListener('click', () => select(index));
       dots.appendChild(dot);
