@@ -719,13 +719,11 @@ if (bookingModal) {
 }
 
 
-// Communication flagship: curated Canva pages 1, 2, 4, 6, 8 and 9.
-// Source Canva design is never modified. The six full-resolution exports must
-// exist locally before this reader replaces the original 21-page embed.
+// Communication package player: use the card-2 player frame for local slide images.
+// Website playback skips Canva page 11; the source design is never modified.
 (() => {
-  const root = document.querySelector('[data-curated-canva-carousel]');
+  const root = document.querySelector('[data-communication-presentation]');
   if (!root) return;
-  const fallback = root.parentElement.querySelector('[data-curated-canva-fallback]');
   const base = root.dataset.assets;
   const pages = root.dataset.slidePages.split(',').map(Number);
   const slides = pages.map((page) => ({
@@ -735,44 +733,71 @@ if (bookingModal) {
   const descriptions = {
     1: 'Speak with Confidence — presentation cover',
     2: 'Communication coaching packages overview',
-    4: 'Confidence and voice training skills',
-    6: 'Body language and presence skills',
-    8: 'Storytelling, high-stakes presentations and benefits',
-    9: 'Contact details and thank-you slide',
+    3: 'Impactful communication package',
+    4: 'Communication skills and learning outcomes',
+    5: 'Powerful presence package',
+    6: 'Presence skills and learning outcomes',
+    7: 'Commanding presence and high-stakes presentations',
+    8: 'Influence mastery and program benefits',
+    9: 'Package terms and conditions',
+    10: 'Thank-you slide and contact details',
+    12: 'Influence mastery program benefits',
+    13: 'Voice mastery course overview',
+    14: 'Influence mastery program details',
+    15: 'Presence mastery program details',
+    16: 'Style and program benefits overview',
+    17: 'Speak with Confidence presentation cover',
+    18: 'Speak with Confidence package title slide',
+    19: 'Voice Mastery program brochure',
+    20: 'Presence Mastery program brochure',
+    21: 'Influence Mastery program brochure',
   };
-  // Do not expose empty placeholders or broken image icons when files are missing.
-  Promise.all(slides.map((slide) => new Promise((resolve, reject) => {
+  // Check the local slide images individually so one unavailable export does not
+  // hide the whole card or replace its image area with a different layout.
+  Promise.all(slides.map((slide) => new Promise((resolve) => {
     const preloader = new Image();
-    preloader.onload = () => resolve(slide);
-    preloader.onerror = () => reject(new Error('Missing image: ' + slide.src));
+    preloader.onload = () => resolve({ ...slide, available: true });
+    preloader.onerror = () => resolve({ ...slide, available: false });
     preloader.src = slide.src;
-  }))).then(() => {
-    const display = root.querySelector('.curated-canva-carousel__image');
-    const counter = root.querySelector('.curated-canva-carousel__counter');
-    const dots = root.querySelector('.curated-canva-carousel__dots');
-    const prev = root.querySelector('.curated-canva-carousel__arrow--prev');
-    const next = root.querySelector('.curated-canva-carousel__arrow--next');
+  }))).then((loadedSlides) => {
+    const availableSlides = loadedSlides.filter((slide) => slide.available);
+    if (!availableSlides.length) return;
+    const display = root.querySelector('.communication-presentation__slide');
+    const dots = root.querySelector('[data-slide-dots]');
+    const previous = root.querySelector('[data-slide-prev]');
+    const next = root.querySelector('[data-slide-next]');
+    const fullscreen = root.querySelector('[data-slide-fullscreen]');
     let active = 0;
     let touchStartX = null;
-    slides.forEach((slide, index) => {
+    availableSlides.forEach((slide, index) => {
       const dot = document.createElement('button');
       dot.type = 'button';
-      dot.className = 'curated-canva-carousel__dot';
-      dot.setAttribute('aria-label', `Show slide ${index + 1} of ${slides.length}`);
+      dot.className = 'communication-player-dot';
+      dot.setAttribute('aria-label', `Show slide ${index + 1}`);
       dot.addEventListener('click', () => select(index));
       dots.appendChild(dot);
     });
     function select(index) {
-      active = (index + slides.length) % slides.length;
-      display.src = slides[active].src;
-      display.alt = descriptions[slides[active].page] || `Presentation slide ${active+1}`;
-      counter.textContent = `${active + 1} / ${slides.length}`;
-      Array.from(dots.children).forEach((dot, i) => {
-        dot.setAttribute('aria-current', String(i === active));
+      active = (index + availableSlides.length) % availableSlides.length;
+      display.src = availableSlides[active].src;
+      display.alt = descriptions[availableSlides[active].page] || `Presentation slide ${availableSlides[active].page}`;
+      Array.from(dots.children).forEach((dot, dotIndex) => {
+        dot.setAttribute('aria-current', String(dotIndex === active));
       });
     }
-    prev.addEventListener('click', () => select(active - 1));
+    previous.addEventListener('click', () => select(active - 1));
     next.addEventListener('click', () => select(active + 1));
+    fullscreen.addEventListener('click', async () => {
+      try {
+        if (document.fullscreenElement === root) await document.exitFullscreen();
+        else await root.requestFullscreen();
+      } catch (_) { /* Fullscreen may be unavailable in embedded previews. */ }
+    });
+    document.addEventListener('fullscreenchange', () => {
+      fullscreen.setAttribute('aria-label', document.fullscreenElement === root
+        ? 'Exit full screen'
+        : 'View presentation full screen');
+    });
     root.tabIndex = 0;
     root.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowLeft') { e.preventDefault(); select(active - 1); }
@@ -789,11 +814,9 @@ if (bookingModal) {
     }, { passive: true });
     select(0);
     root.hidden = false;
-    if (fallback) fallback.hidden = true;
   }).catch(() => {
-    // Keep existing working Canva embed (all 21 pages) until exports are ready.
+    // Never fall back to the full Canva deck, which contains unwanted later pages.
     root.hidden = true;
-    if (fallback) fallback.hidden = false;
   });
 })();
 
