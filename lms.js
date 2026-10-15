@@ -104,7 +104,7 @@
     if(!course)return;
     document.title=course.title+' | Shalini Rathod Academy';
     $('#lms-detail-title').textContent=course.title;
-    $('#lms-breadcrumb-name').textContent=course.title;
+    $('#lms-breadcrumb-name').textContent=slug==='speakathon'?'Communication Course':course.title;
     $('#lms-detail-summary').textContent=course.description;
     $('#lms-detail-price').textContent=formatMoney(course.price);
     const total=flatten(course).length;
