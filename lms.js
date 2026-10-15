@@ -115,7 +115,7 @@
     image.alt=course.title+' course preview image';
     $('#lms-enroll-cta').href=updateUrl('lms-auth.html',slug);
     $('#lms-open-demo').href=updateUrl('lms-learn.html',slug);
-    $('#lms-syllabus-player').href=updateUrl('lms-learn.html',slug);
+    $('#lms-syllabus-player')?.setAttribute('href',updateUrl('lms-learn.html',slug));
     const checkoutDialog=$('#lms-checkout-dialog');
     const checkoutTrigger=$('#lms-curriculum-enroll');
     const checkoutPayment=checkoutDialog?.querySelector('[data-checkout-screen="payment"]');
