@@ -7690,12 +7690,6 @@ body.services-page .canva-slide-viewport {
   background: #edf4e9;
   overflow: hidden;
 }
-body.services-page .canva-slide-viewport iframe {
-  display: block;
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
 body.services-page .package-card-media-canva .package-session-badge {
   z-index: 3;
   pointer-events: none;
@@ -7709,28 +7703,68 @@ body.services-page .package-card-media-canva .package-session-badge {
 }
 
 
-/* First ten Canva slides for the communication package. Keep the viewer
-   within the same 16:9 card and place its controls over the image. */
+/* Shared Canva-style slide viewer for both package cards. */
 body.services-page .curated-canva-carousel[hidden] { display: none; }
 body.services-page .curated-canva-carousel {
-  position: relative;
+  position: absolute;
+  inset: 0;
   width: 100%;
+  height: 100%;
   color: #214e3e;
   background: #f8faf6;
 }
 body.services-page .curated-canva-carousel__picture {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 9;
+  height: 100%;
   overflow: hidden;
 }
 body.services-page .curated-canva-carousel__picture::after {
   content: "";
   position: absolute;
   inset: auto 0 0;
-  height: 72px;
+  height: 48px;
   background: linear-gradient(transparent, rgba(0,0,0,.7));
   pointer-events: none;
+}
+body.services-page .curated-canva-carousel__picture::after,
+body.services-page .curated-canva-carousel__arrow,
+body.services-page .curated-canva-carousel__more,
+body.services-page .curated-canva-carousel__fullscreen,
+body.services-page .curated-canva-carousel__dots {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .18s ease, visibility .18s ease;
+}
+body.services-page .curated-canva-carousel:hover .curated-canva-carousel__picture::after,
+body.services-page .curated-canva-carousel:focus-within .curated-canva-carousel__picture::after,
+body.services-page .curated-canva-carousel.is-controls-visible .curated-canva-carousel__picture::after,
+body.services-page .curated-canva-carousel:hover .curated-canva-carousel__arrow,
+body.services-page .curated-canva-carousel:focus-within .curated-canva-carousel__arrow,
+body.services-page .curated-canva-carousel.is-controls-visible .curated-canva-carousel__arrow,
+body.services-page .curated-canva-carousel:hover .curated-canva-carousel__more,
+body.services-page .curated-canva-carousel:focus-within .curated-canva-carousel__more,
+body.services-page .curated-canva-carousel.is-controls-visible .curated-canva-carousel__more,
+body.services-page .curated-canva-carousel:hover .curated-canva-carousel__fullscreen,
+body.services-page .curated-canva-carousel:focus-within .curated-canva-carousel__fullscreen,
+body.services-page .curated-canva-carousel.is-controls-visible .curated-canva-carousel__fullscreen,
+body.services-page .curated-canva-carousel:hover .curated-canva-carousel__dots:not([hidden]),
+body.services-page .curated-canva-carousel:focus-within .curated-canva-carousel__dots:not([hidden]),
+body.services-page .curated-canva-carousel.is-controls-visible .curated-canva-carousel__dots:not([hidden]) {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+/* Keep the shared controls available while either card is in fullscreen. */
+body.services-page .curated-canva-carousel.is-fullscreen .curated-canva-carousel__picture::after,
+body.services-page .curated-canva-carousel.is-fullscreen .curated-canva-carousel__arrow,
+body.services-page .curated-canva-carousel.is-fullscreen .curated-canva-carousel__more,
+body.services-page .curated-canva-carousel.is-fullscreen .curated-canva-carousel__fullscreen,
+body.services-page .curated-canva-carousel.is-fullscreen .curated-canva-carousel__dots:not([hidden]) {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
 }
 body.services-page .curated-canva-carousel__image {
   display: block;
@@ -7743,9 +7777,9 @@ body.services-page .curated-canva-carousel__image {
 }
 body.services-page .curated-canva-carousel__arrow {
   position: absolute;
-  bottom: 7px;
-  width: 32px;
-  height: 30px;
+  bottom: 8px;
+  width: 22px;
+  height: 22px;
   display: grid;
   place-items: center;
   border: 0;
@@ -7759,8 +7793,8 @@ body.services-page .curated-canva-carousel__arrow:hover,
 body.services-page .curated-canva-carousel__arrow:focus-visible {
   opacity: .7;
 }
-body.services-page .curated-canva-carousel__arrow--prev { left: 10px; }
-body.services-page .curated-canva-carousel__arrow--next { left: 88px; }
+body.services-page .curated-canva-carousel__arrow--prev { left: 16px; }
+body.services-page .curated-canva-carousel__arrow--next { left: 64px; }
 body.services-page .curated-canva-carousel__arrow svg {
   width: 19px;
   height: 19px;
@@ -7770,39 +7804,89 @@ body.services-page .curated-canva-carousel__arrow svg {
   stroke-linecap: round;
   stroke-linejoin: round;
 }
-body.services-page .curated-canva-carousel__counter {
+body.services-page .curated-canva-carousel__fullscreen {
   position: absolute;
-  left: 44px;
-  bottom: 12px;
+  right: 10px;
+  bottom: 8px;
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  padding: 2px;
+  border: 0;
+  background: transparent;
   color: white;
-  font-size: 12px;
-  line-height: 1.4;
+  cursor: pointer;
   z-index: 2;
-  pointer-events: none;
+}
+body.services-page .curated-canva-carousel__more {
+  position: absolute;
+  right: 39px;
+  bottom: 8px;
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  padding: 2px;
+  border: 0;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  z-index: 2;
+}
+body.services-page .curated-canva-carousel__more svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+body.services-page .curated-canva-carousel__fullscreen svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+body.services-page .curated-canva-carousel__picture:fullscreen {
+  width: 100vw;
+  height: 100vh;
+  aspect-ratio: auto;
+  background: #111;
+}
+body.services-page .curated-canva-carousel__picture:fullscreen .curated-canva-carousel__image {
+  object-fit: contain;
 }
 body.services-page .curated-canva-carousel__dots {
   position: absolute;
-  left: 14px;
-  right: 14px;
-  bottom: 43px;
+  right: 38px;
+  bottom: 38px;
   display: flex;
-  gap: 3px;
+  gap: 5px;
+  padding: 8px;
+  border: 1px solid rgba(255,255,255,.25);
+  border-radius: 4px;
+  background: rgba(20,20,20,.78);
   z-index: 2;
 }
+body.services-page .curated-canva-carousel__dots[hidden] { display: none; }
 body.services-page .curated-canva-carousel__dot {
-  flex: 1;
-  height: 3px;
+  width: 7px;
+  height: 7px;
+  flex: 0 0 7px;
   border: 0;
-  background: rgba(255,255,255,.42);
+  border-radius: 50%;
+  background: rgba(255,255,255,.58);
   cursor: pointer;
   padding: 0;
   transition: background .2s ease;
 }
 body.services-page .curated-canva-carousel__dot[aria-current="true"] {
   background: white;
+  transform: scale(1.25);
 }
 @media (max-width: 560px) {
-  body.services-page .curated-canva-carousel__dots { left: 8px; right: 8px; }
+  body.services-page .curated-canva-carousel__dots { right: 37px; }
 }
 @media (prefers-reduced-motion: reduce) {
   body.services-page .curated-canva-carousel__arrow,

@@ -719,49 +719,78 @@ if (bookingModal) {
 }
 
 
-// Communication flagship: show only the first ten slides of the Canva design.
+// Shared presentation slider for both package cards.
 (() => {
-  const root = document.querySelector('[data-curated-canva-carousel]');
-  if (!root) return;
-  const base = root.dataset.assets;
-  const pages = root.dataset.slidePages.split(',').map(Number);
-  const slides = pages.map((page) => ({
-    page,
-    src: `${base}slide-${String(page).padStart(2, '0')}.jpg`,
-  }));
-  // Load the ten local slides before enabling navigation.
-  Promise.all(slides.map((slide) => new Promise((resolve, reject) => {
-    const preloader = new Image();
-    preloader.onload = () => resolve(slide);
-    preloader.onerror = () => reject(new Error('Missing image: ' + slide.src));
-    preloader.src = slide.src;
-  }))).then(() => {
+  document.querySelectorAll('[data-curated-canva-carousel]').forEach((root) => {
+    const base = root.dataset.assets;
+    const title = root.dataset.slideTitle || 'Presentation';
+    const pages = root.dataset.slidePages.split(',').map(Number);
+    const slides = pages.map((page) => ({
+      page,
+      src: `${base}slide-${String(page).padStart(2, '0')}.jpg`,
+    }));
+    Promise.all(slides.map((slide) => new Promise((resolve, reject) => {
+      const preloader = new Image();
+      preloader.onload = () => resolve(slide);
+      preloader.onerror = () => reject(new Error('Missing image: ' + slide.src));
+      preloader.src = slide.src;
+    }))).then(() => {
     const display = root.querySelector('.curated-canva-carousel__image');
-    const counter = root.querySelector('.curated-canva-carousel__counter');
     const dots = root.querySelector('.curated-canva-carousel__dots');
     const prev = root.querySelector('.curated-canva-carousel__arrow--prev');
     const next = root.querySelector('.curated-canva-carousel__arrow--next');
+    const more = root.querySelector('.curated-canva-carousel__more');
+    const fullscreen = root.querySelector('.curated-canva-carousel__fullscreen');
     let active = 0;
     let touchStartX = null;
+    let controlsTimer;
+    function revealTouchControls() {
+      root.classList.add('is-controls-visible');
+      clearTimeout(controlsTimer);
+      controlsTimer = setTimeout(() => root.classList.remove('is-controls-visible'), 2500);
+    }
     slides.forEach((slide, index) => {
       const dot = document.createElement('button');
       dot.type = 'button';
       dot.className = 'curated-canva-carousel__dot';
       dot.setAttribute('aria-label', `Show slide ${index + 1} of ${slides.length}`);
-      dot.addEventListener('click', () => select(index));
+      dot.addEventListener('click', () => {
+        select(index);
+        dots.hidden = true;
+        more.setAttribute('aria-expanded', 'false');
+      });
       dots.appendChild(dot);
     });
     function select(index) {
       active = (index + slides.length) % slides.length;
       display.src = slides[active].src;
-      display.alt = `Speak with Confidence — slide ${slides[active].page} of ${slides.length}`;
-      counter.textContent = `${active + 1} / ${slides.length}`;
+      display.alt = `${title} — slide ${slides[active].page} of ${slides.length}`;
       Array.from(dots.children).forEach((dot, i) => {
         dot.setAttribute('aria-current', String(i === active));
       });
     }
     prev.addEventListener('click', () => select(active - 1));
     next.addEventListener('click', () => select(active + 1));
+    more.addEventListener('click', () => {
+      dots.hidden = !dots.hidden;
+      more.setAttribute('aria-expanded', String(!dots.hidden));
+    });
+    fullscreen.addEventListener('click', async () => {
+      const picture = root.querySelector('.curated-canva-carousel__picture');
+      try {
+        if (document.fullscreenElement) await document.exitFullscreen();
+        else await picture.requestFullscreen();
+      } catch (_) {
+        // Fullscreen is optional when the browser does not allow it.
+      }
+    });
+    document.addEventListener('fullscreenchange', () => {
+      const isFullscreen = root.contains(document.fullscreenElement);
+      root.classList.toggle('is-fullscreen', isFullscreen);
+      const label = isFullscreen ? 'Exit fullscreen' : 'Enter fullscreen';
+      fullscreen.setAttribute('aria-label', label);
+      fullscreen.title = label;
+    });
     root.tabIndex = 0;
     root.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowLeft') { e.preventDefault(); select(active - 1); }
@@ -769,6 +798,7 @@ if (bookingModal) {
     });
     root.addEventListener('touchstart', (e) => {
       touchStartX = e.changedTouches[0]?.screenX ?? null;
+      revealTouchControls();
     }, { passive: true });
     root.addEventListener('touchend', (e) => {
       if (touchStartX == null) return;
@@ -777,8 +807,9 @@ if (bookingModal) {
       if (Math.abs(delta) >= 35) select(active + (delta < 0 ? 1 : -1));
     }, { passive: true });
     select(0);
-  }).catch(() => {
-    // The cover remains visible if a slide asset cannot be loaded.
+    }).catch(() => {
+      // Keep each card's cover visible if a slide asset cannot be loaded.
+    });
   });
 })();
 
