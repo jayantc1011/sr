@@ -128,7 +128,6 @@
     image.src=slug==='power-dressing'?'assets/services/styling-consultation.webp':(slug==='power-bundle'||slug==='dining-etiquette')?'assets/services/course-bundle.webp':'assets/services/communication-workshop.webp';
     image.alt=course.title+' course preview image';
     $('#lms-enroll-cta').href=updateUrl('lms-auth.html',slug);
-    $('#lms-open-demo').href=updateUrl('lms-learn.html',slug);
     $('#lms-syllabus-player')?.setAttribute('href',updateUrl('lms-learn.html',slug));
     const checkoutDialog=$('#lms-checkout-dialog');
     const checkoutTriggers=[$('#lms-curriculum-enroll'),$('#lms-enroll-cta')].filter(Boolean);
