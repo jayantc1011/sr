@@ -8352,11 +8352,15 @@ body.services-page .curated-canva-carousel__dot[aria-current="true"] {
 .lms-shell .lms-speakathon-inclusions li::before{content:"✓";position:absolute;left:0;color:#2f8c62;font-weight:800}
 .lms-shell .lms-speakathon-tile .lms-card-chips{margin-top:0;padding-top:2px}
 .lms-shell .lms-speakathon-tile .lms-card-body h3{font-size:22px;min-height:0}
-.lms-shell .lms-speakathon-price{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;margin-top:16px}
-.lms-shell .lms-speakathon-price>span:first-child{display:grid;gap:2px}
-.lms-shell .lms-speakathon-price small{color:#8d998e;font-size:11px}
-.lms-shell .lms-speakathon-price strong{color:#224b36;font-size:23px;letter-spacing:-.03em}
-.lms-shell .lms-speakathon-note{color:#8d998e;font-size:10px;line-height:1.35;text-align:right}
+.lms-shell .lms-speakathon-price{display:flex;flex-direction:column;align-items:flex-start;gap:7px;margin-top:16px}
+.lms-shell .lms-speakathon-amount{color:#224b36;font-size:25px;line-height:1.1;letter-spacing:-.035em}
+.lms-shell .lms-speakathon-disclosure{color:#6b786c;font-size:11px;line-height:1.4}
+.lms-shell .lms-speakathon-disclosure summary{display:inline-flex;align-items:center;gap:7px;min-height:24px;color:#78857a;cursor:pointer;list-style:none}
+.lms-shell .lms-speakathon-disclosure summary::-webkit-details-marker{display:none}
+.lms-shell .lms-speakathon-disclosure summary svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;transition:transform .18s ease}
+.lms-shell .lms-speakathon-disclosure[open] summary svg{transform:rotate(180deg)}
+.lms-shell .lms-speakathon-disclosure summary:focus-visible{outline:2px solid #78a96c;outline-offset:3px;border-radius:3px}
+.lms-shell .lms-speakathon-note{display:block;margin-top:3px;color:#617166;font-size:11px;line-height:1.45}
 .lms-shell .lms-speakathon-action{display:flex;align-items:center;justify-content:center;gap:12px;min-height:44px;margin-top:13px;padding:10px 16px;border-radius:8px;background:#1e523d;color:white;font-size:13px;font-weight:700;text-align:center;text-decoration:none;transition:background-color .18s ease}
 .lms-shell .lms-speakathon-action:hover,.lms-shell .lms-speakathon-action:focus-visible{background:#387650;color:white}
 .lms-shell .lms-speakathon-action:focus-visible{outline:3px solid #93c988;outline-offset:3px}
