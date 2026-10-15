@@ -2167,6 +2167,10 @@ a {
     margin-top: 28px;
     min-height: 44px;
   }
+
+  .speakathon-course-card .service-cta {
+    margin-top: 16px;
+  }
 }
 
 /* Corporate & speaking inquiries */
