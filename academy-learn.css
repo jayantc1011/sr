@@ -17,9 +17,9 @@
 .fresh-learn .learn-video-column{display:flex;flex-direction:column;align-items:center;width:100%;min-width:0}
 .fresh-learn .learn-video{width:min(100%,306px);aspect-ratio:9/16;position:relative;background:#050605;overflow:hidden;border-radius:13px;isolation:isolate;display:grid;place-items:center;box-shadow:0 15px 36px #17271917}
 .fresh-learn .learn-video video{display:block;position:absolute;inset:0;width:100%;height:100%;aspect-ratio:9/16;object-fit:contain;object-position:center;background:#050605}
-.fresh-learn .learn-big-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:grid;place-items:center;width:66px;height:66px;border:1px solid #ffffff73;border-radius:50%;background:#1319139e;color:#fff;cursor:pointer;backdrop-filter:blur(10px);transition:background .18s}
+.fresh-learn .learn-big-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:grid;place-items:center;width:66px;height:66px;padding:0;border:1px solid #ffffff73;border-radius:50%;background:#1319139e;color:#fff;cursor:pointer;backdrop-filter:blur(10px);transition:background .18s}
 .fresh-learn .learn-big-play:hover{background:#2a3a2ace}
-.fresh-learn .learn-big-play svg{width:23px;height:23px;margin-left:4px}
+.fresh-learn .learn-big-play svg{width:23px;height:23px;margin:0}
 .fresh-learn .learn-media-missing{position:absolute;inset:0;padding:20px;background:#101810;color:#e6eee0;display:flex;gap:11px;flex-direction:column;align-items:center;justify-content:center;text-align:center}
 .fresh-learn .learn-media-missing>span{width:47px;height:47px;display:grid;place-items:center;border:1px solid #ffffff2c;border-radius:50%;margin-bottom:5px;font-size:17px}
 .fresh-learn .learn-media-missing strong{font-size:15px}
