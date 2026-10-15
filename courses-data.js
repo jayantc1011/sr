@@ -11,10 +11,9 @@ window.SHALINI_COURSES = {
     ],
     "includes": [
       "21 challenge videos and their corresponding PDFs",
-      "Separate example/solution recordings for Days 2 and 3",
-      "Introduction and closing videos",
-      "Printable progress tracker, templates and other resources",
-      "Practice completion and feedback arrangements subject to Academy confirmation"
+      "Personal feedback from Shalini",
+      "Printable Study Materials",
+      "Certificate on Completion"
     ],
     "modules": [
       {

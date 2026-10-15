@@ -131,18 +131,19 @@
     $('#lms-open-demo').href=updateUrl('lms-learn.html',slug);
     $('#lms-syllabus-player')?.setAttribute('href',updateUrl('lms-learn.html',slug));
     const checkoutDialog=$('#lms-checkout-dialog');
-    const checkoutTrigger=$('#lms-curriculum-enroll');
+    const checkoutTriggers=[$('#lms-curriculum-enroll'),$('#lms-enroll-cta')].filter(Boolean);
     const checkoutPayment=checkoutDialog?.querySelector('[data-checkout-screen="payment"]');
     const checkoutSuccess=checkoutDialog?.querySelector('[data-checkout-screen="success"]');
     const checkoutPay=$('#lms-checkout-pay');
     const checkoutPreview=$('#lms-checkout-preview');
-    if(checkoutDialog&&checkoutTrigger&&checkoutPayment&&checkoutSuccess&&checkoutPay){
+    if(checkoutDialog&&checkoutTriggers.length&&checkoutPayment&&checkoutSuccess&&checkoutPay){
       const resetCheckout=()=>{
         checkoutPayment.hidden=false;
         checkoutSuccess.hidden=true;
         checkoutDialog.setAttribute('aria-labelledby','lms-checkout-title');
       };
-      checkoutTrigger.addEventListener('click',()=>{
+      checkoutTriggers.forEach(trigger=>trigger.addEventListener('click',event=>{
+        event.preventDefault();
         const title=$('#lms-detail-title')?.textContent||course.title;
         const price=$('#lms-detail-price')?.textContent||formatMoney(course.price);
         $('#lms-checkout-course').textContent=title;
@@ -152,7 +153,7 @@
         checkoutPay.textContent='Pay '+price+' · Demo';
         if(checkoutPreview)checkoutPreview.href=updateUrl('lms-learn.html',slug);
         checkoutDialog.showModal();
-      });
+      }));
       checkoutDialog.querySelectorAll('[data-checkout-close]').forEach(button=>button.addEventListener('click',()=>checkoutDialog.close()));
       checkoutDialog.addEventListener('click',event=>{if(event.target===checkoutDialog)checkoutDialog.close();});
       checkoutDialog.addEventListener('close',resetCheckout);
