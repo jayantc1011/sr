@@ -719,9 +719,9 @@ if (bookingModal) {
 }
 
 
-// Communication flagship: curated Canva pages 1, 2, 4, 6, 8 and 9.
-// Source Canva design is never modified. The six full-resolution exports must
-// exist locally before this reader replaces the original 21-page embed.
+// Communication flagship: show the website copy of Canva pages 1–10 only.
+// Page 10 is the thank-you slide; later pages remain excluded from the website.
+// The source Canva design is never modified.
 (() => {
   const root = document.querySelector('[data-curated-canva-carousel]');
   if (!root) return;
@@ -735,10 +735,14 @@ if (bookingModal) {
   const descriptions = {
     1: 'Speak with Confidence — presentation cover',
     2: 'Communication coaching packages overview',
-    4: 'Confidence and voice training skills',
-    6: 'Body language and presence skills',
-    8: 'Storytelling, high-stakes presentations and benefits',
-    9: 'Contact details and thank-you slide',
+    3: 'Impactful communication package',
+    4: 'Communication skills and learning outcomes',
+    5: 'Powerful presence package',
+    6: 'Presence skills and learning outcomes',
+    7: 'Commanding presence and high-stakes presentations',
+    8: 'Influence mastery and program benefits',
+    9: 'Package terms and conditions',
+    10: 'Thank-you slide and contact details',
   };
   // Do not expose empty placeholders or broken image icons when files are missing.
   Promise.all(slides.map((slide) => new Promise((resolve, reject) => {
@@ -791,7 +795,7 @@ if (bookingModal) {
     root.hidden = false;
     if (fallback) fallback.hidden = true;
   }).catch(() => {
-    // Keep existing working Canva embed (all 21 pages) until exports are ready.
+    // Never fall back to the full Canva deck, which contains unwanted later pages.
     root.hidden = true;
     if (fallback) fallback.hidden = false;
   });
