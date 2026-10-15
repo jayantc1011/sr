@@ -754,26 +754,23 @@ if (bookingModal) {
     const availableSlides = loadedSlides.filter((slide) => slide.available);
     if (!availableSlides.length) return;
     const display = root.querySelector('.curated-canva-carousel__image');
+    const counter = root.querySelector('.curated-canva-carousel__counter');
+    const prev = root.querySelector('.curated-canva-carousel__arrow--prev');
+    const next = root.querySelector('.curated-canva-carousel__arrow--next');
     let active = 0;
     let touchStartX = null;
-    let suppressNextClick = false;
     function select(index) {
       active = (index + availableSlides.length) % availableSlides.length;
       display.src = availableSlides[active].src;
       display.alt = descriptions[availableSlides[active].page] || `Presentation slide ${active+1}`;
+      counter.textContent = `${active + 1} / ${availableSlides.length}`;
     }
-    root.addEventListener('click', () => {
-      if (suppressNextClick) {
-        suppressNextClick = false;
-        return;
-      }
-      select(active + 1);
-    });
+    prev.addEventListener('click', () => select(active - 1));
+    next.addEventListener('click', () => select(active + 1));
     root.tabIndex = 0;
     root.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowLeft') { e.preventDefault(); select(active - 1); }
       if (e.key === 'ArrowRight') { e.preventDefault(); select(active + 1); }
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); select(active + 1); }
     });
     root.addEventListener('touchstart', (e) => {
       touchStartX = e.changedTouches[0]?.screenX ?? null;
@@ -782,11 +779,7 @@ if (bookingModal) {
       if (touchStartX == null) return;
       const delta = (e.changedTouches[0]?.screenX ?? touchStartX) - touchStartX;
       touchStartX = null;
-      if (Math.abs(delta) >= 35) {
-        suppressNextClick = true;
-        select(active + (delta < 0 ? 1 : -1));
-        setTimeout(() => { suppressNextClick = false; }, 400);
-      }
+      if (Math.abs(delta) >= 35) select(active + (delta < 0 ? 1 : -1));
     }, { passive: true });
     select(0);
     root.hidden = false;
