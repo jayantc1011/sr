@@ -719,8 +719,9 @@ if (bookingModal) {
 }
 
 
-// Communication package player: use the card-2 player frame for local slide images.
-// Website playback skips Canva page 11; the source design is never modified.
+// Communication package player: use the card-2 player frame for local pages 1–10.
+// Page 10 is the thank-you slide; later pages are omitted from the website only.
+// The source Canva design is never modified.
 (() => {
   const root = document.querySelector('[data-communication-presentation]');
   if (!root) return;
@@ -741,16 +742,6 @@ if (bookingModal) {
     8: 'Influence mastery and program benefits',
     9: 'Package terms and conditions',
     10: 'Thank-you slide and contact details',
-    12: 'Influence mastery program benefits',
-    13: 'Voice mastery course overview',
-    14: 'Influence mastery program details',
-    15: 'Presence mastery program details',
-    16: 'Style and program benefits overview',
-    17: 'Speak with Confidence presentation cover',
-    18: 'Speak with Confidence package title slide',
-    19: 'Voice Mastery program brochure',
-    20: 'Presence Mastery program brochure',
-    21: 'Influence Mastery program brochure',
   };
   // Check the local slide images individually so one unavailable export does not
   // hide the whole card or replace its image area with a different layout.
