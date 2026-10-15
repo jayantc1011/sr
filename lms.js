@@ -109,6 +109,20 @@
     $('#lms-detail-price').textContent=formatMoney(course.price);
     const total=flatten(course).length;
     $('#lms-detail-count').textContent=(slug==='speakathon'?'21 guided challenges':total+' preview topics');
+    const detailRating=$('#lms-detail-rating');
+    const detailLearners=$('#lms-detail-learners');
+    const detailSession=$('#lms-detail-session');
+    const detailMode=$('#lms-detail-mode');
+    const detailNote=$('#lms-detail-note');
+    if(slug==='speakathon'){
+      detailRating.replaceChildren(el('span','lms-rating-star','★'),document.createTextNode(' 4.9 Rating'));
+      detailLearners.textContent='100+ learners';
+      detailLearners.hidden=false;
+      detailSession.textContent='Free 1:1 session included';
+      detailSession.hidden=false;
+      detailMode.hidden=true;
+      detailNote.textContent='Course price is illustrative until confirmed.';
+    }
     $('#lms-detail-category').textContent=slug==='speakathon'?'21-DAY COMMUNICATION CHALLENGE':slug==='power-dressing'?'PERSONAL IMAGE & STYLE':slug==='dining-etiquette'?'DINING ETIQUETTE':'COMMUNICATION + STYLE BUNDLE';
     const image=$('#lms-detail-photo');
     image.src=slug==='power-dressing'?'assets/services/styling-consultation.webp':(slug==='power-bundle'||slug==='dining-etiquette')?'assets/services/course-bundle.webp':'assets/services/communication-workshop.webp';
