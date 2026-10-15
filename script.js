@@ -754,45 +754,26 @@ if (bookingModal) {
     const availableSlides = loadedSlides.filter((slide) => slide.available);
     if (!availableSlides.length) return;
     const display = root.querySelector('.curated-canva-carousel__image');
-    const dots = root.querySelector('[data-slide-dots]');
-    const previous = root.querySelector('[data-slide-prev]');
-    const next = root.querySelector('[data-slide-next]');
-    const fullscreen = root.querySelector('[data-slide-fullscreen]');
     let active = 0;
     let touchStartX = null;
-    availableSlides.forEach((slide, index) => {
-      const dot = document.createElement('button');
-      dot.type = 'button';
-      dot.className = 'curated-canva-carousel__dot';
-      dot.setAttribute('aria-label', `Show slide ${index + 1}`);
-      dot.addEventListener('click', () => select(index));
-      dots.appendChild(dot);
-    });
+    let suppressNextClick = false;
     function select(index) {
       active = (index + availableSlides.length) % availableSlides.length;
       display.src = availableSlides[active].src;
       display.alt = descriptions[availableSlides[active].page] || `Presentation slide ${active+1}`;
-      Array.from(dots.children).forEach((dot, dotIndex) => {
-        dot.setAttribute('aria-current', String(dotIndex === active));
-      });
     }
-    previous.addEventListener('click', () => select(active - 1));
-    next.addEventListener('click', () => select(active + 1));
-    fullscreen.addEventListener('click', async () => {
-      try {
-        if (document.fullscreenElement === root) await document.exitFullscreen();
-        else await root.requestFullscreen();
-      } catch (_) { /* Fullscreen may be unavailable in embedded previews. */ }
-    });
-    document.addEventListener('fullscreenchange', () => {
-      fullscreen.setAttribute('aria-label', document.fullscreenElement === root
-        ? 'Exit full screen'
-        : 'View presentation full screen');
+    root.addEventListener('click', () => {
+      if (suppressNextClick) {
+        suppressNextClick = false;
+        return;
+      }
+      select(active + 1);
     });
     root.tabIndex = 0;
     root.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowLeft') { e.preventDefault(); select(active - 1); }
       if (e.key === 'ArrowRight') { e.preventDefault(); select(active + 1); }
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); select(active + 1); }
     });
     root.addEventListener('touchstart', (e) => {
       touchStartX = e.changedTouches[0]?.screenX ?? null;
@@ -801,7 +782,11 @@ if (bookingModal) {
       if (touchStartX == null) return;
       const delta = (e.changedTouches[0]?.screenX ?? touchStartX) - touchStartX;
       touchStartX = null;
-      if (Math.abs(delta) >= 35) select(active + (delta < 0 ? 1 : -1));
+      if (Math.abs(delta) >= 35) {
+        suppressNextClick = true;
+        select(active + (delta < 0 ? 1 : -1));
+        setTimeout(() => { suppressNextClick = false; }, 400);
+      }
     }, { passive: true });
     select(0);
     root.hidden = false;
