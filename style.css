@@ -8410,7 +8410,7 @@ body.services-page .curated-canva-carousel__dot[aria-current="true"] {
 .lms-shell .lms-curriculum .lms-lesson-item{padding:12px 21px 12px 44px;border-top:1px solid #edf3eb;display:flex;justify-content:space-between;gap:15px;font-size:13px;color:#496651}
 .lms-shell .lms-curriculum .lms-lesson-item span{font-size:10px;color:#8a998b;flex-shrink:0}
 .lms-shell .lms-curriculum-aside{background:linear-gradient(150deg,#193f30,#276347);color:white;min-height:485px;border-radius:22px;padding:35px;position:sticky;top:30px;overflow:hidden}
-.lms-shell .lms-curriculum-number{font-size:175px;line-height:1;font-weight:800;letter-spacing:-.15em;color:#d3f2c4;margin-left:-12px}
+.lms-shell .lms-curriculum-number{font-size:175px;line-height:1;font-weight:800;letter-spacing:.02em;color:#d3f2c4;margin-left:0}
 .lms-shell .lms-curriculum-aside>span{font-size:11px;color:#afd4ae;font-weight:750;letter-spacing:.12em}
 .lms-shell .lms-curriculum-aside h3{color:white;font-size:32px;margin:18px 0}
 .lms-shell .lms-curriculum-aside p{color:#bdd4c4;font-size:13px;line-height:1.7}
