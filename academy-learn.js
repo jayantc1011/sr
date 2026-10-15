@@ -300,10 +300,11 @@
     $('worksheet-tag').textContent='WORKSHEET · DAY '+String(current+1).padStart(2,'0');
     $('worksheet-title').textContent=lesson.title.replace(/^Day \d+\s*[·:–-]\s*/i,'');
     pdf.hidden=false;$('worksheet-error').hidden=true;
-    pdf.src=mediaUrl(lesson.pdfUrl)+'#toolbar=1';
+    pdf.src=lesson.pdfUrl+'#toolbar=1';
+    $('open-worksheet-tab').href=lesson.pdfUrl;
     dialog.showModal();
   });
-  const closePdf=()=>{dialog.close();pdf.removeAttribute('src');};
+  const closePdf=()=>{dialog.close();pdf.removeAttribute('src');$('open-worksheet-tab').removeAttribute('href');};
   $('close-worksheet').addEventListener('click',closePdf);
   dialog.addEventListener('click',event=>{if(event.target===dialog)closePdf();});
   $('watch-example').addEventListener('click',()=>{
