@@ -7696,15 +7696,6 @@ body.services-page .canva-slide-viewport iframe {
   height: 100%;
   border: 0;
 }
-body.services-page .curated-canva-unavailable {
-  display: grid;
-  place-items: center;
-  padding: 24px;
-  color: #617366;
-  text-align: center;
-  font-size: 14px;
-}
-body.services-page .curated-canva-unavailable p { margin: 0; }
 body.services-page .package-card-media-canva .package-session-badge {
   z-index: 3;
   pointer-events: none;
