@@ -7722,6 +7722,7 @@ body.services-page .curated-canva-carousel__picture {
   width: 100%;
   aspect-ratio: 16 / 9;
   overflow: hidden;
+  cursor: pointer;
 }
 body.services-page .curated-canva-carousel__image {
   display: block;
@@ -7732,69 +7733,6 @@ body.services-page .curated-canva-carousel__image {
   user-select: none;
   -webkit-user-drag: none;
 }
-body.services-page .curated-canva-carousel__arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 38px;
-  height: 38px;
-  display: grid;
-  place-items: center;
-  border: 1px solid #dbe5d6;
-  border-radius: 50%;
-  background: rgba(255,255,255,.92);
-  color: #214e3e;
-  cursor: pointer;
-  box-shadow: 0 2px 9px rgba(0,0,0,.08);
-  z-index: 2;
-  transition: background .2s ease, box-shadow .2s ease;
-}
-body.services-page .curated-canva-carousel__arrow:hover,
-body.services-page .curated-canva-carousel__arrow:focus-visible {
-  background: white;
-  box-shadow: 0 3px 14px rgba(0,0,0,.16);
-}
-body.services-page .curated-canva-carousel__arrow--prev { left: 12px; }
-body.services-page .curated-canva-carousel__arrow--next { right: 12px; }
-body.services-page .curated-canva-carousel__arrow svg {
-  width: 19px;
-  height: 19px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-body.services-page .curated-canva-carousel__counter {
-  position: absolute;
-  right: 14px;
-  bottom: 12px;
-  padding: 4px 9px;
-  border-radius: 99px;
-  background: rgba(20,41,34,.85);
-  color: white;
-  font-size: 12px;
-  line-height: 1.4;
-  z-index: 2;
-  pointer-events: none;
-}
-@media (max-width: 560px) {
-  body.services-page .curated-canva-carousel__arrow {
-    width: 30px;
-    height: 30px;
-  }
-  body.services-page .curated-canva-carousel__arrow--prev { left: 6px; }
-  body.services-page .curated-canva-carousel__arrow--next { right: 6px; }
-  body.services-page .curated-canva-carousel__counter {
-    right: 8px;
-    bottom: 6px;
-    font-size: 11px;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  body.services-page .curated-canva-carousel__arrow { transition: none; }
-}
-
 /* ===== Shalini Confidence & Image Academy: shared public pages ===== */
 .academy-page{--forest:#214e3e;--forest-deep:#153a2d;--spring:#dff4cf;--paper:#f9fbf6;--muted:#67736b;--line:#d9e5d7;background:#fff;color:#23312a;font-family:'DM Sans','Arial',sans-serif;font-size:16px;line-height:1.7}
 .academy-page *, .academy-page *::before,.academy-page *::after{box-sizing:border-box}
