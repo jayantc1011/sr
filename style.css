@@ -8507,4 +8507,31 @@ body.services-page .curated-canva-carousel__dot[aria-current="true"] {
 
 .sp-preview-card .sp-source-link{font-size:12px;font-weight:750;color:#2d6040;text-decoration:underline;text-underline-offset:3px;display:inline-block;margin-top:12px}
 
+/* Clearly labeled, local-only checkout preview on course detail pages. */
+.lms-checkout-dialog{width:min(520px,calc(100vw - 30px));max-width:none;max-height:min(90dvh,760px);padding:0;border:1px solid #dce8d8;border-radius:20px;background:#fff;color:#26392e;box-shadow:0 24px 90px #0d211a55;overflow:auto}
+.lms-checkout-dialog::backdrop{background:#091b13aa;backdrop-filter:blur(3px)}
+.lms-checkout-panel[hidden]{display:none!important}
+.lms-checkout-header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:17px 22px;border-bottom:1px solid #e8eee5;background:#fbfcfa}
+.lms-checkout-brand{font-size:20px;font-weight:800;letter-spacing:-.04em;color:#26392e}
+.lms-checkout-demo-tag{display:inline-flex;margin-left:10px;padding:5px 7px;border-radius:5px;background:#fff2d7;color:#79591c;font-size:9px;font-weight:850;letter-spacing:.09em;vertical-align:middle}
+.lms-checkout-close{display:grid;place-items:center;width:36px;height:36px;border:1px solid #dce6d9;border-radius:50%;background:#fff;color:#48604e;font-size:25px;line-height:1;cursor:pointer}
+.lms-checkout-content{padding:26px}
+.lms-checkout-content h2{margin:8px 0 9px;color:#203d2e;font-family:"Bricolage Grotesque","Avenir Next",Arial,sans-serif;font-size:clamp(25px,6vw,32px);line-height:1.12}
+.lms-checkout-caption{margin:0 0 20px;color:#718074;font-size:14px;line-height:1.6}
+.lms-checkout-order{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 0;border-top:1px solid #e5ece2;border-bottom:1px solid #e5ece2;color:#405c49;font-size:14px}
+.lms-checkout-order strong{flex:none;color:#203d2e;font-size:20px}
+.lms-checkout-methods{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:22px 0 0;padding:0;border:0}
+.lms-checkout-methods legend{margin-bottom:11px;color:#405c49;font-size:12px;font-weight:750}
+.lms-checkout-methods label{display:flex;align-items:center;gap:7px;min-width:0;padding:11px 9px;border:1px solid #dce8d8;border-radius:9px;background:#fff;color:#405c49;font-size:12px;font-weight:700;cursor:pointer}
+.lms-checkout-methods label:has(input:checked){border-color:#4b9360;background:#f2f8ed;box-shadow:0 0 0 1px #4b9360}
+.lms-checkout-methods input{margin:0;accent-color:#286044}
+.lms-checkout-methods small{display:block;margin-top:3px;color:#8a998c;font-size:9px;font-weight:600}
+.lms-checkout-safety{margin:17px 0 0;padding:11px 12px;border-radius:8px;background:#fff8e9;color:#725c31;font-size:11px;line-height:1.55}
+.lms-checkout-dialog .lms-checkout-pay{display:flex;width:100%;min-height:52px;margin-top:17px;gap:10px}
+.lms-checkout-success .lms-checkout-content{text-align:center;padding-top:32px}
+.lms-checkout-check{display:grid;place-items:center;width:58px;height:58px;margin:0 auto 17px;border-radius:50%;background:#e8f5e2;color:#2e7549;font-size:30px;font-weight:800}
+.lms-checkout-success .lms-checkout-order{text-align:left;margin-top:21px}
+.lms-checkout-dialog :is(button,a,input):focus-visible{outline:3px solid #75ad7c;outline-offset:3px}
+@media(max-width:480px){.lms-checkout-content{padding:22px 18px}.lms-checkout-header{padding:14px 18px}.lms-checkout-methods{gap:6px}.lms-checkout-methods label{padding:10px 6px;font-size:11px}}
+
 .lms-shell .lms-topic-preview{justify-content:center;background:radial-gradient(circle at 72% 24%,rgba(184,213,142,.55),transparent 32%),linear-gradient(145deg,#234b39,#102c22);color:#f4f7ee;font-family:var(--lms-serif,Georgia,serif);font-size:76px;font-weight:600;letter-spacing:-.04em}

@@ -1,5 +1,5 @@
 /** Introvert to Influencer — static LMS experience.
- * Data is bundled locally; no network, account, payment, or enrollment is performed.
+ * Data is bundled locally; the checkout is a visual-only demo with no real payment or enrollment.
  * Practice completion is IN MEMORY ONLY and resets on page reload.
  */
 (() => {
@@ -116,6 +116,39 @@
     $('#lms-enroll-cta').href=updateUrl('lms-auth.html',slug);
     $('#lms-open-demo').href=updateUrl('lms-learn.html',slug);
     $('#lms-syllabus-player').href=updateUrl('lms-learn.html',slug);
+    const checkoutDialog=$('#lms-checkout-dialog');
+    const checkoutTrigger=$('#lms-curriculum-enroll');
+    const checkoutPayment=checkoutDialog?.querySelector('[data-checkout-screen="payment"]');
+    const checkoutSuccess=checkoutDialog?.querySelector('[data-checkout-screen="success"]');
+    const checkoutPay=$('#lms-checkout-pay');
+    const checkoutPreview=$('#lms-checkout-preview');
+    if(checkoutDialog&&checkoutTrigger&&checkoutPayment&&checkoutSuccess&&checkoutPay){
+      const resetCheckout=()=>{
+        checkoutPayment.hidden=false;
+        checkoutSuccess.hidden=true;
+        checkoutDialog.setAttribute('aria-labelledby','lms-checkout-title');
+      };
+      checkoutTrigger.addEventListener('click',()=>{
+        const title=$('#lms-detail-title')?.textContent||course.title;
+        const price=$('#lms-detail-price')?.textContent||formatMoney(course.price);
+        $('#lms-checkout-course').textContent=title;
+        $('#lms-checkout-amount').textContent=price;
+        $('#lms-checkout-success-course').textContent=title;
+        $('#lms-checkout-success-amount').textContent=price;
+        checkoutPay.textContent='Pay '+price+' · Demo';
+        if(checkoutPreview)checkoutPreview.href=updateUrl('lms-learn.html',slug);
+        checkoutDialog.showModal();
+      });
+      checkoutDialog.querySelectorAll('[data-checkout-close]').forEach(button=>button.addEventListener('click',()=>checkoutDialog.close()));
+      checkoutDialog.addEventListener('click',event=>{if(event.target===checkoutDialog)checkoutDialog.close();});
+      checkoutDialog.addEventListener('close',resetCheckout);
+      checkoutPay.addEventListener('click',()=>{
+        checkoutPayment.hidden=true;
+        checkoutSuccess.hidden=false;
+        checkoutDialog.setAttribute('aria-labelledby','lms-checkout-success-title');
+        $('#lms-checkout-success-title')?.focus();
+      });
+    }
     if (slug === 'dining-etiquette') {
       const previewSection=$('#lms-previews');
       const previewHeading=previewSection?.querySelector('.lms-section-heading h2');
