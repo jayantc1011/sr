@@ -7696,15 +7696,6 @@ body.services-page .canva-slide-viewport iframe {
   height: 100%;
   border: 0;
 }
-body.services-page .curated-canva-unavailable {
-  display: grid;
-  place-items: center;
-  padding: 24px;
-  color: #617366;
-  text-align: center;
-  font-size: 14px;
-}
-body.services-page .curated-canva-unavailable p { margin: 0; }
 body.services-page .package-card-media-canva .package-session-badge {
   z-index: 3;
   pointer-events: none;
@@ -7718,8 +7709,7 @@ body.services-page .package-card-media-canva .package-session-badge {
 }
 
 
-/* Read-only Canva slide selection for the communication package only.
-   Loads only when all six permanent local PNG exports are present. */
+/* Read-only local slide selection for the communication package only. */
 body.services-page .curated-canva-carousel[hidden] { display: none; }
 body.services-page .curated-canva-carousel {
   position: relative;
@@ -7788,29 +7778,6 @@ body.services-page .curated-canva-carousel__counter {
   z-index: 2;
   pointer-events: none;
 }
-body.services-page .curated-canva-carousel__dots {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 7px;
-  padding: 11px 15px;
-  border-bottom: 1px solid #e1e9dd;
-}
-body.services-page .curated-canva-carousel__dot {
-  width: 8px;
-  height: 8px;
-  border: 0;
-  border-radius: 50%;
-  background: #c6d4c4;
-  cursor: pointer;
-  padding: 0;
-  transition: background .2s ease, transform .2s ease;
-}
-body.services-page .curated-canva-carousel__dot[aria-current="true"] {
-  background: #214e3e;
-  transform: scale(1.3);
-}
 @media (max-width: 560px) {
   body.services-page .curated-canva-carousel__arrow {
     width: 30px;
@@ -7825,8 +7792,7 @@ body.services-page .curated-canva-carousel__dot[aria-current="true"] {
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  body.services-page .curated-canva-carousel__arrow,
-  body.services-page .curated-canva-carousel__dot { transition: none; }
+  body.services-page .curated-canva-carousel__arrow { transition: none; }
 }
 
 /* ===== Shalini Confidence & Image Academy: shared public pages ===== */
