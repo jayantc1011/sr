@@ -1896,7 +1896,7 @@ a {
 }
 
 .service-toggle {
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
   padding: 4px;
   gap: 2px;
 }
@@ -1913,10 +1913,14 @@ a {
 }
 
 .service-toggle button {
+  min-width: 0;
   padding: 0 4px;
   border: 0;
   background: transparent;
-  font: inherit;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
   cursor: pointer;
 }
 
