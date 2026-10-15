@@ -1834,8 +1834,14 @@ a {
   font-size: 10px;
   font-weight: 650;
 }
-.speakathon-course-card .service-price { font-size: 26px; }
-.speakathon-course-card .service-old-price { text-decoration: none; }
+.speakathon-course-card .service-price { margin-top: 1px; font-size: 28px; line-height: 1.08; letter-spacing: -.02em; }
+.speakathon-course-card .speakathon-price-disclosure { margin-top: 5px; }
+.speakathon-course-card .speakathon-price-disclosure summary { width: fit-content; max-width: 100%; display: inline-flex; align-items: center; gap: 6px; margin: 0; color: #78857a; font-size: 11px; line-height: 1.4; text-decoration: none; cursor: pointer; list-style: none; }
+.speakathon-course-card .speakathon-price-disclosure summary::-webkit-details-marker { display: none; }
+.speakathon-course-card .speakathon-price-disclosure summary svg { width: 14px; height: 14px; flex: 0 0 14px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; transition: transform .18s ease; }
+.speakathon-course-card .speakathon-price-disclosure[open] summary svg { transform: rotate(180deg); }
+.speakathon-course-card .speakathon-price-disclosure summary:focus-visible { outline: 2px solid #78a96c; outline-offset: 3px; border-radius: 3px; }
+.speakathon-course-card .speakathon-price-note { display: block; margin-top: 5px; color: #617166; font-size: 11px; line-height: 1.45; }
 .speakathon-course-card .service-divider { margin: 13px 0; }
 .speakathon-course-card .service-features { gap: 8px; }
 .speakathon-course-card .service-features li { font-size: 12px; }
