@@ -719,28 +719,17 @@ if (bookingModal) {
 }
 
 
-// Communication flagship: curated Canva pages 1, 2, 4, 6, 8 and 9.
-// Source Canva design is never modified. The six full-resolution exports must
-// exist locally before this reader replaces the original 21-page embed.
+// Communication flagship: show only the first ten slides of the Canva design.
 (() => {
   const root = document.querySelector('[data-curated-canva-carousel]');
   if (!root) return;
-  const fallback = root.parentElement.querySelector('[data-curated-canva-fallback]');
   const base = root.dataset.assets;
   const pages = root.dataset.slidePages.split(',').map(Number);
   const slides = pages.map((page) => ({
     page,
-    src: `${base}slide-${String(page).padStart(2, '0')}.png`,
+    src: `${base}slide-${String(page).padStart(2, '0')}.jpg`,
   }));
-  const descriptions = {
-    1: 'Speak with Confidence — presentation cover',
-    2: 'Communication coaching packages overview',
-    4: 'Confidence and voice training skills',
-    6: 'Body language and presence skills',
-    8: 'Storytelling, high-stakes presentations and benefits',
-    9: 'Contact details and thank-you slide',
-  };
-  // Do not expose empty placeholders or broken image icons when files are missing.
+  // Load the ten local slides before enabling navigation.
   Promise.all(slides.map((slide) => new Promise((resolve, reject) => {
     const preloader = new Image();
     preloader.onload = () => resolve(slide);
@@ -765,7 +754,7 @@ if (bookingModal) {
     function select(index) {
       active = (index + slides.length) % slides.length;
       display.src = slides[active].src;
-      display.alt = descriptions[slides[active].page] || `Presentation slide ${active+1}`;
+      display.alt = `Speak with Confidence — slide ${slides[active].page} of ${slides.length}`;
       counter.textContent = `${active + 1} / ${slides.length}`;
       Array.from(dots.children).forEach((dot, i) => {
         dot.setAttribute('aria-current', String(i === active));
@@ -788,12 +777,8 @@ if (bookingModal) {
       if (Math.abs(delta) >= 35) select(active + (delta < 0 ? 1 : -1));
     }, { passive: true });
     select(0);
-    root.hidden = false;
-    if (fallback) fallback.hidden = true;
   }).catch(() => {
-    // Keep existing working Canva embed (all 21 pages) until exports are ready.
-    root.hidden = true;
-    if (fallback) fallback.hidden = false;
+    // The cover remains visible if a slide asset cannot be loaded.
   });
 })();
 
