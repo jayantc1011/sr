@@ -105,6 +105,8 @@
   // Dedicated course pages share one template; the content is unique per selected course.
   if ($('#lms-detail-title')) {
     if(!course)return;
+    const certificateSection=$('#lms-certificate');
+    if(certificateSection)certificateSection.hidden=slug!=='speakathon';
     document.title=course.title+' | Shalini Rathod Academy';
     $('#lms-detail-title').textContent=course.title;
     $('#lms-breadcrumb-name').textContent=slug==='speakathon'?'Communication Course':course.title;
@@ -133,7 +135,7 @@
     $('#lms-enroll-cta').href=updateUrl('lms-auth.html',slug);
     $('#lms-syllabus-player')?.setAttribute('href',updateUrl('lms-learn.html',slug));
     const checkoutDialog=$('#lms-checkout-dialog');
-    const checkoutTriggers=[$('#lms-curriculum-enroll'),$('#lms-enroll-cta')].filter(Boolean);
+    const checkoutTriggers=[$('#lms-curriculum-enroll'),$('#lms-enroll-cta'),$('#lms-certificate-cta')].filter(Boolean);
     const checkoutPayment=checkoutDialog?.querySelector('[data-checkout-screen="payment"]');
     const checkoutSuccess=checkoutDialog?.querySelector('[data-checkout-screen="success"]');
     const checkoutPay=$('#lms-checkout-pay');
