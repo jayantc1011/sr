@@ -2,7 +2,7 @@
 window.SHALINI_COURSES = {
   "speakathon": {
     "title": "21-Day Speakathon Challenge",
-    "description": "Complete one short lesson and one speaking challenge every day for 21 days. Record yourself, submit it privately, and receive personalised feedback from Shalini within 24 hours.",
+    "description": "Submit your recordings every day for 21 days and receive personalised feedback from Shalini within 24 hours.",
     "price": 5999,
     "tags": [
       "21 challenge videos bundled",
