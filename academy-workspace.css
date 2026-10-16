@@ -457,10 +457,14 @@
 }
 @media(min-width:1001px){
   .fresh-learn .learn-layout {
-    grid-template-columns:clamp(330px,29vw,410px) minmax(290px,1fr) minmax(270px,350px);
+    grid-template-columns:minmax(270px,350px) minmax(290px,1fr) clamp(330px,29vw,410px);
+    grid-template-areas:"outline content player";
     gap:clamp(15px,1.8vw,28px);
   }
+  .fresh-learn .learn-outline { grid-area:outline; }
+  .fresh-learn .learn-lesson { grid-area:content; }
   .fresh-learn .learn-video-column {
+    grid-area:player;
     min-height:0;
     justify-content:flex-start;
   }

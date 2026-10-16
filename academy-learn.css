@@ -2,7 +2,7 @@
    Fresh, page-scoped layout. Shared header, footer, global pages remain untouched. */
 .fresh-learn{--learn-ink:#233b30;--learn-muted:#7a8479;--learn-accent:#bfeb69;--learn-border:#e6ebe3;background:#f8f9f5;color:var(--learn-ink)}
 .fresh-learn .learn,.fresh-learn .learn *{box-sizing:border-box}
-.fresh-learn .learn{font-family:"DM Sans",system-ui,-apple-system,sans-serif;min-height:75vh;padding:0 0 65px;background:#f8f9f5}
+.fresh-learn .learn{font-family:var(--academy-font-family,"Bricolage Grotesque"),system-ui,sans-serif;min-height:75vh;padding:0 0 65px;background:#f8f9f5}
 .fresh-learn .learn [hidden],.fresh-learn .learn-pdf-dialog [hidden]{display:none!important}
 .fresh-learn .learn-container{width:min(1460px,calc(100% - 80px));margin:auto}
 .fresh-learn .learn-top{min-height:76px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:22px;border-bottom:1px solid var(--learn-border)}
@@ -54,9 +54,9 @@
 .fresh-learn .learn-complete-btn:disabled{background:#e2e9de;color:#92a28e;cursor:not-allowed}
 .fresh-learn .learn-skip-row{display:flex;align-items:center;gap:12px;width:100%;margin-top:10px;padding:10px 13px;border:1px dashed #d9c79a;border-radius:10px;background:#fffaf0}
 .fresh-learn .learn-test-badge{flex:0 0 auto;padding:5px 8px;border-radius:5px;background:#f2e5bf;color:#8a7138;font-size:9px;font-weight:850;letter-spacing:.06em}
-.fresh-learn .learn-skip-btn{display:flex;align-items:center;justify-content:space-between;gap:12px;flex:1;min-width:0;border:0;background:transparent;padding:3px 0;color:#806d43;font:700 12px/1.4 "DM Sans",system-ui,sans-serif;text-align:left;cursor:pointer}
+.fresh-learn .learn-skip-btn{display:flex;align-items:center;justify-content:space-between;gap:12px;flex:1;min-width:0;border:0;background:transparent;padding:3px 0;color:var(--academy-forest,#194c3b);font:700 12px/1.4 var(--academy-font-family,"Bricolage Grotesque"),system-ui,sans-serif;text-align:left;cursor:pointer}
 .fresh-learn .learn-skip-btn>span:last-child{font-size:17px;font-weight:500}
-.fresh-learn .learn-skip-btn:focus-visible{outline:2px solid #9a8350;outline-offset:4px;border-radius:3px}
+.fresh-learn .learn-skip-btn:focus-visible{outline:2px solid var(--academy-forest,#194c3b);outline-offset:4px;border-radius:3px}
 .fresh-learn .learn-next-link{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:19px 0;font-size:11px;color:#9aa59a}
 .fresh-learn .learn-next-link button{border:0;background:transparent;padding:3px 0;color:#668368;cursor:pointer;font-size:11px;font-weight:800}
 .fresh-learn .learn-next-link button:disabled{opacity:.35;cursor:not-allowed}
@@ -75,16 +75,16 @@
 .fresh-learn .learn-day-btn.is-completed .learn-day-bullet{background:#d6eabd;color:#346d3a;border-color:#d6eabd}
 .fresh-learn .learn-day-title{flex:1}
 .fresh-learn .learn-day-lock{color:#b4bbb1;font-size:12px}
-.fresh-learn .learn-extra-btn{width:100%;border:1px solid #e3eadc;border-radius:8px;background:#fff;color:#36583d;text-align:left;font:700 12px/1.45 "DM Sans",system-ui,sans-serif;padding:11px 12px;margin:5px 0;cursor:pointer}
+.fresh-learn .learn-extra-btn{width:100%;border:1px solid #e3eadc;border-radius:8px;background:#fff;color:#36583d;text-align:left;font:700 12px/1.45 var(--academy-font-family,"Bricolage Grotesque"),system-ui,sans-serif;padding:11px 12px;margin:5px 0;cursor:pointer}
 .fresh-learn .learn-extra-btn:hover,.fresh-learn .learn-extra-btn[aria-current="true"]{background:#e9f2dc;border-color:#cddfbd;color:#2d5535}
 .fresh-learn .learn.is-extra-video .learn-practice,.fresh-learn .learn.is-extra-video #open-worksheet,.fresh-learn .learn.is-extra-video #watch-example,.fresh-learn .learn.is-extra-video .learn-complete,.fresh-learn .learn.is-extra-video .learn-next-link{display:none}
-.fresh-learn .learn-pdf-dialog{padding:0;border:0;border-radius:16px;box-shadow:0 24px 80px #0c1b164f;width:min(980px,95vw);max-width:980px;max-height:94vh;background:#fff;overflow:hidden;font-family:"DM Sans",sans-serif}
+.fresh-learn .learn-pdf-dialog{padding:0;border:0;border-radius:16px;box-shadow:0 24px 80px #0c1b164f;width:min(980px,95vw);max-width:980px;max-height:94vh;background:#fff;overflow:hidden;font-family:var(--academy-font-family,"Bricolage Grotesque"),sans-serif}
 .fresh-learn .learn-pdf-dialog::backdrop{background:#132319b8}
 .fresh-learn .learn-dialog-head{display:flex;justify-content:space-between;align-items:center;padding:16px 22px;gap:10px;border-bottom:1px solid #e6e9e1}
 .fresh-learn .learn-dialog-head h2{margin:4px 0 0;font-size:17px;letter-spacing:-.025em;color:#284235}
 .fresh-learn #close-worksheet{width:35px;height:35px;border:0;border-radius:10px;background:#f2f5ed;color:#415b44;font-size:23px;cursor:pointer}
 .fresh-learn #worksheet-frame{display:block;width:100%;height:min(76vh,820px);border:0;background:#f2f4ef}
-.fresh-learn .learn-pdf-open-tab{display:block;padding:10px 18px 13px;text-align:right;color:#315b43;font:600 12px/1.4 "DM Sans",sans-serif;text-decoration:none}
+.fresh-learn .learn-pdf-open-tab{display:block;padding:10px 18px 13px;text-align:right;color:#315b43;font:600 12px/1.4 var(--academy-font-family,"Bricolage Grotesque"),sans-serif;text-decoration:none}
 .fresh-learn .learn-pdf-open-tab:hover{text-decoration:underline}
 .fresh-learn .learn-pdf-error{padding:38px 20px;text-align:center;color:#758678;font-size:13px}
 .fresh-learn #video-stage:fullscreen{width:100vw;height:100vh;aspect-ratio:auto;border-radius:0;background:#000;display:grid;place-items:center}

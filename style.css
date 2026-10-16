@@ -3082,8 +3082,7 @@ a {
   }
 }
 
-/* =========================================================
-   Services page — shares this same stylesheet / script / assets
+/* ==================================================   Services page — shares this same stylesheet / script / assets
    ========================================================= */
 .services-page {
   background: #fbfaf7;
@@ -3652,8 +3651,7 @@ a {
   }
 }
 
-/* =========================================================
-   Services catalog / 1:1 Calls section
+/* ==================================================   Services catalog / 1:1 Calls section
    ========================================================= */
 .sr-only {
   position: absolute !important;
@@ -6097,8 +6095,7 @@ a {
   }
 }
 
-/* =========================================================
-   Services page theme refresh — inspired by the LMS course
+/* ==================================================   Services page theme refresh — inspired by the LMS course
    light-green / white / deep-green visual system
    ========================================================= */
 .services-page {
@@ -6418,8 +6415,7 @@ a {
   border-color: var(--lms-border);
 }
 
-/* =========================================================
-   Home page theme refresh — match LMS / Services green system
+/* ==================================================   Home page theme refresh — match LMS / Services green system
    ========================================================= */
 .home-page {
   --lms-green-deep: #214c3a;
@@ -6798,8 +6794,7 @@ a {
   border-color: var(--lms-border);
 }
 
-/* =========================================================
-   Services booking modal
+/* ==================================================   Services booking modal
    ========================================================= */
 body.booking-open {
   overflow: hidden;
@@ -7947,8 +7942,7 @@ body.services-page .curated-canva-carousel__dot[aria-current="true"] {
 @media(max-width:600px){#academy-dashboard-courses .academy-lesson-row{align-items:flex-start;flex-direction:column;gap:9px}#academy-dashboard-courses .academy-lesson-row button{align-self:flex-start}}
 
 
-/* =====================================================================
-   SHALINI RATHOD — ONE SHARED REFERENCE NAVBAR
+/* ==============================================================   SHALINI RATHOD — ONE SHARED REFERENCE NAVBAR
    Matches approved reference: serif name, six links, outlined LMS,
    dark Book Call button. All pages use the same component.
    ===================================================================== */
@@ -8144,8 +8138,7 @@ body.services-page .curated-canva-carousel__dot[aria-current="true"] {
 .frontend-email-action .cta-arrow-icon,
 #academy-course-status .cta-arrow-icon { width: 15px; height: 15px; margin-left: 5px; }
 
-/* ========================================================================
-   21-DAY SPEAKATHON — HOSTINGER-INSPIRED COURSE DETAIL (FRONTEND ONLY)
+/* =================================================================   21-DAY SPEAKATHON — HOSTINGER-INSPIRED COURSE DETAIL (FRONTEND ONLY)
    Scope everything to .speakathon-page; all other pages remain unchanged.
    ======================================================================== */
 .speakathon-page{--sp-ink:#1e2f24;--sp-forest:#214e3e;--sp-cream:#fbfaf5;--sp-line:#dce6d8;--sp-muted:#667468;background:#fff;color:var(--sp-ink);}
@@ -8282,8 +8275,7 @@ body.services-page .curated-canva-carousel__dot[aria-current="true"] {
 @media(max-width:950px){.journey-layout{grid-template-columns:1fr}.journey-offer{position:static}.journey-hero{padding:48px 0}.journey-breadcrumb{margin-bottom:28px}}
 @media(max-width:520px){.journey-route{gap:6px}.journey-route>*{padding:9px 11px;font-size:.68rem}.journey-steps>li{padding:15px;gap:12px}.journey-step-num{min-width:37px;height:37px}.journey-offer{padding:22px}.journey-hero h1{font-size:clamp(2.2rem,11vw,3.2rem)}}
 
-/* =====================================================
-   INTROVERT TO INFLUENCER — LMS FRONTEND, OCT 2026
+/* ==============================================   INTROVERT TO INFLUENCER — LMS FRONTEND, OCT 2026
    All selectors scoped to .lms-shell; no backend required.
    ===================================================== */
 .lms-shell{--lms-forest:#194c3b;--lms-deep:#123c2d;--lms-leaf:#c7eeae;--lms-paper:#f9faf5;--lms-muted:#657467;--lms-border:#dce9d9;--lms-shadow:0 18px 52px rgba(28,67,46,.07);background:#fff;color:#1e3429;font-family:"Bricolage Grotesque","Avenir Next",Arial,sans-serif;font-size:15px;line-height:1.55}
@@ -8710,3 +8702,29 @@ body.services-page .curated-canva-carousel__dot[aria-current="true"] {
     grid-column: auto;
   }
 }
+/* LMS typography system across all public pages */
+:root {--ink:#1e3429;--ink-deep:#123c2d;--warm-brown:#194c3b;--warm-brown-2:#245b42;--muted:#657467;--surface:#f9faf5;--surface-2:#f4f8f1;--border:#dce9d9;--line:#e5ece2;--shadow:0 18px 52px rgba(28,67,46,.07);--academy-font-family:"Bricolage Grotesque","Avenir Next",Arial,sans-serif;--serif:var(--academy-font-family);--sans:var(--academy-font-family)}
+:where(body.home-page,body.services-page,body.about-page,body.academy-page:not(.lms-shell)){color:#1e3429;font-family:var(--academy-font-family)!important}
+:where(body.home-page,body.services-page,body.about-page,body.academy-page:not(.lms-shell)) :is(h1,h2,h3,h4,h5,h6,p,a,button,input,select,textarea,label,li,small,strong,em,span,blockquote,summary,dt,dd,th,td,legend,option){font-family:var(--academy-font-family)!important}
+:where(body.home-page,body.services-page,body.about-page,body.academy-page:not(.lms-shell)) :is(h1,h2,h3,h4,h5,h6){color:#1c3328!important;font-weight:650!important;letter-spacing:-.052em!important;line-height:1.09!important;overflow-wrap:break-word}
+:where(body.home-page,body.services-page,body.about-page,body.academy-page:not(.lms-shell)) h1{font-size:clamp(42px,5.1vw,64px)!important}
+:where(body.home-page,body.services-page,body.about-page,body.academy-page:not(.lms-shell)) :is(h1,h2,h3,h4,h5,h6) em{color:#5d8e53;font-style:normal}
+.home-page .page-main{background:#f9faf5}
+.home-page :is(.impact-card,.service-card,.contact-form,.inquiry-form){border-color:#dce9d9;box-shadow:var(--shadow)}
+.home-page :is(.eyebrow,.services-kicker,.section-kicker){color:#286145}
+.home-page :is(.btn-primary,.btn-dark,.service-cta-dark,.inquiry-submit){background:#194c3b;border-color:#194c3b}
+.home-page :is(.btn-secondary,.btn-outline){border-color:#c6ddc8;color:#24543c}
+:where(body.home-page,body.services-page,body.about-page,body.academy-page:not(.lms-shell)) .sr-header{background:#f9faf5!important;color:#1e3429!important;border-color:#dce9d9!important;font-family:var(--academy-font-family)!important}
+:where(body.home-page,body.services-page,body.about-page,body.academy-page:not(.lms-shell)) .sr-header .sr-logo{color:#1c3328!important;font-family:var(--academy-font-family)!important;font-weight:700!important;letter-spacing:-.045em!important}
+:where(body.home-page,body.services-page,body.about-page,body.academy-page:not(.lms-shell)) .sr-header .sr-nav-link{color:#526657!important;font-family:var(--academy-font-family)!important}
+:where(body.home-page,body.services-page,body.about-page,body.academy-page:not(.lms-shell)) .sr-header .sr-nav-link.is-active{color:#194c3b!important}
+:where(body.home-page,body.services-page,body.about-page,body.academy-page:not(.lms-shell)) .sr-header .sr-nav-link::after{background:#5d8e53!important}
+:where(body.home-page,body.services-page,body.about-page,body.academy-page:not(.lms-shell)) .sr-header .sr-book-button{background:#194c3b!important;border-color:#194c3b!important;color:white!important}
+.about-page{--about-forest:#194c3b!important;--about-forest-2:#245b42!important;--about-paper:#f9faf5!important;--about-coral:#5d8e53!important;--about-orange:#a8cf84!important;--about-lime:#e6f4dc!important;--about-lilac:#e8f1e8!important;--about-ink:#1e3429!important;--about-muted:#657467!important;--about-line:#dce9d9!important}
+.about-page .about-hero{background-color:#f9faf5!important;background-image:linear-gradient(rgba(28,67,46,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(28,67,46,.035) 1px,transparent 1px)!important;background-size:42px 42px!important}
+.about-page .about-hero h1{font-size:clamp(42px,5.1vw,64px)!important}
+.about-page :is(.about-hero h1 em,.about-section-heading h2 em,.about-method h2 em){color:#5d8e53!important;font-family:var(--academy-font-family)!important;font-style:normal!important}
+.about-page .about-kicker i{background:#5d8e53!important;box-shadow:0 0 0 5px rgba(93,142,83,.12)!important}
+.about-page :is(.about-focus-card-coral,.about-focus-card-lime,.about-focus-card-lilac){background:#fff!important;border-color:#dce9d9!important}
+.about-page .about-method-steps article>span,.about-page .about-method-steps article:nth-child(2)>span,.about-page .about-method-steps article:nth-child(3)>span{background:#e6f4dc!important;color:#286145!important}
+.about-page .about-cta :is(h1,h2,h3,h4,h5,h6),.home-page .site-footer :is(h1,h2,h3,h4,h5,h6){color:white!important}

@@ -6,7 +6,9 @@
   const course=data[slug];if(!course)return;
   const $=id=>document.getElementById(id);
   const mediaUrl=path=>{
-    if(location.hostname!=='jayantc1011.github.io')return path;
+    const hostname=location.hostname;
+    const usesHostedMedia=hostname==='jayantc1011.github.io'||hostname==='localhost'||hostname==='127.0.0.1';
+    if(!usesHostedMedia)return path;
     const filename=String(path).split('/').pop();
     return 'https://github.com/jayantc1011/sr/releases/download/lms-media-2026-10-14/'+encodeURIComponent(filename);
   };
