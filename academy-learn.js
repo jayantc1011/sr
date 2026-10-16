@@ -42,6 +42,7 @@
     $('overall-fill').style.width=percent+'%';
     $('roadmap-done').textContent=completed.size+' / '+lessons.length;
     $('roadmap-fill').style.width=percent+'%';
+    window.dispatchEvent(new CustomEvent('academy:courseprogress',{detail:{completed:completed.size,total:lessons.length,slug}}));
   };
   const setWatchProgress=()=>{
     const duration=Number.isFinite(video.duration)?video.duration:0;
@@ -218,7 +219,10 @@
     if(isMissing||(!watched.has(current)&&!completed.has(current)))return;
     completed.add(current);save();setProgress();updateOutline();
     if(current<lessons.length-1)select(current+1);
-    else updateCompletion();
+    else{
+      updateCompletion();
+      document.getElementById('learn-certificate')?.scrollIntoView({behavior:'smooth',block:'center'});
+    }
   });
   $('previous-day').addEventListener('click',()=>select(current-1));
   skipBtn.addEventListener('click',()=>{
