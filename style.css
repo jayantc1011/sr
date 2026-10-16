@@ -8845,13 +8845,15 @@ body.services-page .curated-canva-carousel__dot[aria-current="true"] {
 }
 
 .home-page .recognition-card[data-logo="josh-talks"] .recognition-logo img {
-  max-width: 250px;
-  max-height: 56px;
+  width: 120px;
+  max-width: none;
+  height: 75px;
+  max-height: none;
 }
 
 @media(max-width:560px) {
   .home-page .recognition-card[data-logo="josh-talks"] .recognition-logo img {
-    max-width: 210px;
-    max-height: 48px;
+    width: 105px;
+    height: 66px;
   }
 }
