@@ -205,7 +205,7 @@
         if (frame) {
           const video=el('video','lms-preview-real-video');
           video.controls=true;video.playsInline=true;video.preload='metadata';
-          video.poster='assets/lms/previews/day-0'+(i===0?'1':'4')+'-thumbnail.svg';
+          video.poster='assets/lms/previews/day-0'+(i===0?'1':'4')+'-excerpt-poster.jpg';
           video.setAttribute('aria-label',i===0?'Day 1 excerpt from 00:26 to 01:05':'Day 4 excerpt from 00:05 to 00:19');
           const source=el('source');source.src='assets/lms/previews/day-0'+(i===0?'1':'4')+'-excerpt.mp4';source.type='video/mp4';
           video.append(source,document.createTextNode('Your browser does not support HTML video.'));
