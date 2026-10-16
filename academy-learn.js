@@ -221,7 +221,6 @@
     if(current<lessons.length-1)select(current+1);
     else{
       updateCompletion();
-      document.getElementById('learn-certificate')?.scrollIntoView({behavior:'smooth',block:'center'});
     }
   });
   $('previous-day').addEventListener('click',()=>select(current-1));
