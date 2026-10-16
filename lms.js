@@ -215,9 +215,7 @@
           const cover=el('button','lms-preview-cover');cover.type='button';
           cover.setAttribute('aria-label',i===0?'Play Speak Confidently on Camera preview':'Play Look More Confident preview');
           const image=el('img');image.src=imagePath;image.alt='';image.loading='lazy';
-          const brand=el('span','lms-preview-cover-brand','SHALINI RATHOD · DAY 0'+(i===0?'1':'4'));
-          const title=el('span','lms-preview-cover-title',i===0?'Speak confidently\\non camera':'Look more confident\\nwith a natural smile');
-          cover.append(image,brand,title);
+          cover.append(image);
           cover.addEventListener('click',()=>{cover.remove();video.hidden=false;video.play().catch(()=>{});});
           frame.replaceChildren(video,cover);
         }
