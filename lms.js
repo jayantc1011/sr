@@ -204,12 +204,21 @@
         const frame=card.querySelector('.lms-preview-portrait');
         if (frame) {
           const video=el('video','lms-preview-real-video');
-          video.controls=true;video.playsInline=true;video.preload='metadata';
-          video.poster='assets/lms/previews/day-0'+(i===0?'1':'4')+'-excerpt-poster.jpg';
+          video.controls=true;video.playsInline=true;video.preload='none';video.hidden=true;
+          const imagePath='assets/lms/previews/day-0'+(i===0?'1':'4')+'-excerpt-poster.jpg';
+          video.poster=imagePath;
           video.setAttribute('aria-label',i===0?'Day 1 excerpt from 00:26 to 01:05':'Day 4 excerpt from 00:05 to 00:19');
           const source=el('source');source.src='assets/lms/previews/day-0'+(i===0?'1':'4')+'-excerpt.mp4';source.type='video/mp4';
           video.append(source,document.createTextNode('Your browser does not support HTML video.'));
-          frame.replaceChildren(video);
+          const cover=el('button','lms-preview-cover');cover.type='button';
+          cover.setAttribute('aria-label',i===0?'Play Speak Confidently on Camera preview':'Play Look More Confident preview');
+          const image=el('img');image.src=imagePath;image.alt='';image.loading='lazy';
+          const brand=el('span','lms-preview-cover-brand','SHALINI RATHOD · DAY 0'+(i===0?'1':'4'));
+          const title=el('span','lms-preview-cover-title',i===0?'Speak confidently\\non camera':'Look more confident\\nwith a natural smile');
+          const play=el('span','lms-preview-cover-play','▶');play.setAttribute('aria-hidden','true');
+          cover.append(image,brand,title,play);
+          cover.addEventListener('click',()=>{cover.remove();video.hidden=false;video.play().catch(()=>{});});
+          frame.replaceChildren(video,cover);
         }
         const title=card.querySelector('h3');if(title)title.textContent=i===0?'Speak Confidently in front of the Camera':'The Easiest Way to Look More Confident';
         const desc=card.querySelector('p');if(desc)desc.textContent=i===0?'Learn a simple exercise that helps you stop overthinking before speaking.':'See how a genuine smile can help you build trust, create stronger first impressions, and connect effortlessly.';
