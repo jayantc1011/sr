@@ -8864,3 +8864,9 @@ body.services-page .curated-canva-carousel__dot[aria-current="true"] {
   color: #ffffff !important;
   text-shadow: 0 2px 8px rgba(0, 0, 0, .45);
 }
+
+
+.services-page .learning-card-media h3 {
+  color: #ffffff !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, .5);
+}
