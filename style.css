@@ -8467,6 +8467,7 @@ body.services-page .curated-canva-carousel__dot[aria-current="true"] {
 .lms-shell .lms-outcomes{display:grid;gap:10px;margin-top:30px}
 .lms-shell .lms-outcomes div{background:#fff;padding:15px 17px;border:1px solid #e2eddf;border-radius:10px;font-size:15px;color:#3a5844;font-weight:650}
 .lms-shell .lms-outcomes div::before{content:'✓';color:#3d965d;margin-right:13px}
+.lms-shell .lms-benefits-grid h2 em,.lms-shell .lms-outcomes em{font-style:italic}
 .lms-shell .lms-bonus-panel{background:#fff;border:1px solid #dcebd8;padding:32px;border-radius:21px;box-shadow:var(--lms-shadow)}
 .lms-shell .lms-bonus-panel h3{font-size:28px;margin:9px 0 22px}
 .lms-shell .lms-bonus-panel details{border:1px solid #e3ebdf;border-radius:13px;margin:9px 0;padding:17px;background:#fff}

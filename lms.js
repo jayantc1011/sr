@@ -22,6 +22,9 @@
     'dining-etiquette':['Feel at ease at professional and social meals','Understand place settings and cutlery','Make introductions and join conversations comfortably','Host or attend meals with thoughtful manners'],
     'power-bundle':['Work on confident speaking habits','Develop an authentic personal style','Bring clarity to how you present yourself','Practice verbal and visual communication','Build a repeatable growth routine']
   };
+  const outcomeEmphasis = {
+    speakathon:['Articulate','vocal variety','clarity and calm','Handle conversations','lasting impression']
+  };
   const bonusCopy = {
     speakathon:[['Personal 1:1 Coaching Session','The reference program describes an additional coaching benefit after all 21 challenges are completed. Confirm availability and conditions with the Academy.'],['25 Power Moves to Influence Anyone','Practical communication ideas to practice in conversations, meetings and presentations.'],['Blueprint for Unshakable Confidence','A framework for noticing and practicing confident communication habits.'],['Introvert2Influencer Digital Handbook','Additional learning and reflection prompts described in the reference material.']],
     'power-dressing':[['Personal style worksheet','A planning template for learning about colors, proportions and outfit choices.'],['Wardrobe audit framework','Questions to help evaluate fit, function and personal style.'],['Daily outfit formula','An approachable method for intentional styling.']],
@@ -219,7 +222,12 @@
     }
 
     const ul=$('#lms-inclusions');course.includes.forEach(x=>ul.append(el('li','',x)));
-    const benefits=$('#lms-outcomes');(outcomeCopy[slug]||[]).forEach(x=>benefits.append(el('div','',x)));
+    const benefits=$('#lms-outcomes');(outcomeCopy[slug]||[]).forEach((x,i)=>{
+      const item=el('div');const phrase=(outcomeEmphasis[slug]||[])[i];const start=phrase?x.indexOf(phrase):-1;
+      if(start<0)item.textContent=x;
+      else item.append(document.createTextNode(x.slice(0,start)),el('em','',phrase),document.createTextNode(x.slice(start+phrase.length)));
+      benefits.append(item);
+    });
     const bonuses=$('#lms-bonuses');(bonusCopy[slug]||[]).forEach(([title,desc],i)=>{
       const item=el('details');if(i===0)item.open=true;
       item.addEventListener('toggle',()=>{
