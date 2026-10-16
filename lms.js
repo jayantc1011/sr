@@ -208,7 +208,7 @@
           video.append(source,document.createTextNode('Your browser does not support HTML video.'));
           frame.replaceChildren(video);
         }
-        const title=card.querySelector('h3');if(title)title.textContent=i===0?'Speak Confidently in front of the Camera':'The Easiest Way to Look More Confident Without Saying a Word ⭐';
+        const title=card.querySelector('h3');if(title)title.textContent=i===0?'Speak Confidently in front of the Camera':'The Easiest Way to Look More Confident';
         const desc=card.querySelector('p');if(desc)desc.textContent=i===0?'Learn a simple exercise that helps you stop overthinking before speaking.':'See how a genuine smile can help you build trust, create stronger first impressions, and connect effortlessly.';
         const eyebrow=card.querySelector('.lms-eyebrow');if(eyebrow)eyebrow.textContent=i===0?'PREVIEW LESSON 1 · CHALLENGE 1':'PREVIEW LESSON 2 · CHALLENGE 4';
         const tags=card.querySelector('.lms-preview-tags');if(tags)tags.replaceChildren(...(i===0?[el('span','','3-minute lesson'),el('span','','Actionable Plan included')]:[el('span','','😊 Body language tip'),el('span','','⚡ Easy to apply')]));
