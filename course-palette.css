@@ -1,5 +1,12 @@
 /* Reference green palette for the course hero badges and actions. */
-.home-page .service-badge-warm {
+ .home-page .service-badge-warm {
+  background: linear-gradient(115deg, #4b8128, #1c261f);
+  color: #fff;
+}
+
+.services-page .learning-badge,
+.lms-shell .lms-media-label,
+.services-page .learning-badge-bundle {
   background: linear-gradient(115deg, #4b8128, #1c261f);
   color: #fff;
 }
@@ -29,4 +36,8 @@
   background: linear-gradient(115deg, #568f31, #26352b);
   color: #fff;
   transform: translateY(-2px);
+}
+
+.lms-shell .lms-buttons + .lms-field-note {
+  margin-top: 12px;
 }
