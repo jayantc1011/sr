@@ -8675,32 +8675,72 @@ body.services-page .curated-canva-carousel__dot[aria-current="true"] {
   background: #387650;
 }
 
+/* Horizontal service-card carousel, matching the appearances carousel controls. */
+.home-page .services-carousel-controls {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  margin: -24px 0 14px;
+}
+.home-page .services-grid {
+  display: flex;
+  gap: 24px;
+  align-items: stretch;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-inline: contain;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-bottom: 3px;
+}
+.home-page .services-grid::-webkit-scrollbar { display: none; }
+.home-page .services-grid > .service-card {
+  flex: 0 0 calc((100% - 48px) / 3);
+  scroll-snap-align: start;
+}
+.home-page .services-carousel-dots {
+  min-height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+  padding-top: 18px;
+}
+.home-page .services-carousel-dots[hidden],
+.home-page .services-carousel-controls[hidden] { display: none; }
+.home-page .services-carousel-dot {
+  width: 7px;
+  height: 7px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #c7d7c1;
+  cursor: pointer;
+  transition: width 160ms ease, border-radius 160ms ease, background-color 160ms ease;
+}
+.home-page .services-carousel-dot[aria-current="true"] {
+  width: 23px;
+  border-radius: 999px;
+  background: var(--lms-green-deep, #194c3b);
+}
+.home-page .services-carousel-dot:focus-visible {
+  outline: 2px solid var(--lms-green-deep, #194c3b);
+  outline-offset: 4px;
+}
 
-/* Match desktop home service card width to the three-column LMS catalog. */
 @media (min-width: 1101px) {
-  .home-page .services-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .home-page .services-grid > .service-card:last-child {
-    grid-column: 2;
-  }
+  .home-page .services-grid > .service-card { flex-basis: calc((100% - 48px) / 3); }
 }
 
 @media (max-width: 1100px) {
-  .home-page .services-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
+  .home-page .services-grid > .service-card { flex-basis: calc((100% - 24px) / 2); }
 }
 
 @media (max-width: 680px) {
-  .home-page .services-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .home-page .services-grid > .service-card:last-child {
-    grid-column: auto;
-  }
+  .home-page .services-grid > .service-card { flex-basis: 100%; }
 }
 /* LMS typography system across all public pages */
 :root {--ink:#1e3429;--ink-deep:#123c2d;--warm-brown:#194c3b;--warm-brown-2:#245b42;--muted:#657467;--surface:#f9faf5;--surface-2:#f4f8f1;--border:#dce9d9;--line:#e5ece2;--shadow:0 18px 52px rgba(28,67,46,.07);--academy-font-family:"Bricolage Grotesque","Avenir Next",Arial,sans-serif;--serif:var(--academy-font-family);--sans:var(--academy-font-family)}

@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&display=swap" rel="stylesheet">
-<link href="style.css?v=20261016-lms-sitewide-style" rel="stylesheet"/>
+<link href="style.css?v=20261016-services-carousel" rel="stylesheet"/>
 </head>
 <body class="home-page">
 <header class="sr-header" id="site-top">
@@ -300,7 +300,11 @@
 <h2 id="services-title">Curated Services &amp; Recorded<br/>Masterclasses</h2>
 <p>Choose between private high-touch 1-on-1 consultations or comprehensive self-paced LMS video<br class="services-desktop-break"/> curricula.</p>
 </div>
-<div class="services-grid">
+<div aria-label="Flagship services carousel controls" class="services-carousel-controls">
+<button aria-controls="flagship-services" aria-label="Previous service cards" class="carousel-arrow services-carousel-prev" type="button"><svg aria-hidden="true" class="icon icon-chevron" viewbox="0 0 20 20"><path d="M11.75 5.5 7.25 10l4.5 4.5"></path></svg></button>
+<button aria-controls="flagship-services" aria-label="Next service cards" class="carousel-arrow services-carousel-next" type="button"><svg aria-hidden="true" class="icon icon-chevron" viewbox="0 0 20 20"><path d="M8.25 5.5 12.75 10l-4.5 4.5"></path></svg></button>
+</div>
+<div aria-label="Flagship services" class="services-grid" id="flagship-services" tabindex="0">
 <article class="service-card">
 <div class="service-topline">
 <span aria-hidden="true" class="service-icon-box">
@@ -408,6 +412,7 @@
             </a>
 </article>
 </div>
+<div aria-label="Choose service card group" class="services-carousel-dots" role="group"></div>
 </div>
 </section>
 <section aria-labelledby="contact-title" class="contact-section" id="contact">
@@ -690,6 +695,6 @@
   </div>
 
 <script src="courses-data.js"></script>
-<script src="script.js"></script>
+<script src="script.js?edition=services-carousel-20261016c"></script>
 </body>
 </html>

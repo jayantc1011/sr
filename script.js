@@ -129,6 +129,75 @@ if (appearanceCarousel && appearancePrev && appearanceNext && appearanceDots.len
   updateCarouselState();
 }
 
+// Flagship service cards carousel: keep the desktop three-card layout while
+// making the fourth card reachable with the same arrows and position dots.
+const servicesCarousel = document.querySelector('#flagship-services');
+const servicesControls = document.querySelector('.services-carousel-controls');
+const servicesPrev = document.querySelector('.services-carousel-prev');
+const servicesNext = document.querySelector('.services-carousel-next');
+const servicesDotsRoot = document.querySelector('.services-carousel-dots');
+
+if (servicesCarousel && servicesControls && servicesPrev && servicesNext && servicesDotsRoot) {
+  const cards = () => Array.from(servicesCarousel.querySelectorAll('.service-card'));
+  const maxScroll = () => Math.max(0, servicesCarousel.scrollWidth - servicesCarousel.clientWidth);
+  const scrollStep = () => {
+    const card = cards()[0];
+    if (!card) return servicesCarousel.clientWidth;
+    const gap = parseFloat(getComputedStyle(servicesCarousel).gap) || 0;
+    return card.getBoundingClientRect().width + gap;
+  };
+  const stopCount = () => Math.round(maxScroll() / Math.max(1, scrollStep())) + 1;
+  const setActiveDot = (index) => {
+    Array.from(servicesDotsRoot.children).forEach((dot, i) => {
+      dot.setAttribute('aria-current', String(i === index));
+    });
+  };
+  const updateServicesCarousel = () => {
+    const maximum = maxScroll();
+    const dots = Array.from(servicesDotsRoot.children);
+    const active = maximum > 0 && dots.length > 1
+      ? Math.round((servicesCarousel.scrollLeft / maximum) * (dots.length - 1))
+      : 0;
+    setActiveDot(active);
+    servicesPrev.disabled = servicesCarousel.scrollLeft <= 10;
+    servicesNext.disabled = servicesCarousel.scrollLeft >= maximum - 10;
+  };
+  const buildServicesDots = () => {
+    const count = stopCount();
+    servicesDotsRoot.replaceChildren();
+    for (let index = 0; index < count; index += 1) {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'services-carousel-dot';
+      dot.setAttribute('aria-label', `Show service card group ${index + 1} of ${count}`);
+      dot.setAttribute('aria-current', String(index === 0));
+      dot.addEventListener('click', () => {
+        const maximum = maxScroll();
+        servicesCarousel.scrollTo({
+          left: count > 1 ? maximum * (index / (count - 1)) : 0,
+          behavior: 'smooth'
+        });
+        setActiveDot(index);
+      });
+      servicesDotsRoot.appendChild(dot);
+    }
+    servicesControls.hidden = count <= 1;
+    servicesDotsRoot.hidden = count <= 1;
+    updateServicesCarousel();
+  };
+  const scrollServices = (direction) => {
+    servicesCarousel.scrollBy({ left: direction * scrollStep(), behavior: 'smooth' });
+  };
+
+  servicesPrev.addEventListener('click', () => scrollServices(-1));
+  servicesNext.addEventListener('click', () => scrollServices(1));
+  servicesCarousel.addEventListener('scroll', () => {
+    window.requestAnimationFrame(updateServicesCarousel);
+  }, { passive: true });
+  window.addEventListener('resize', buildServicesDots);
+  buildServicesDots();
+}
+
 
 // Recognition marquee: pause at the exact current position while any card is hovered.
 // Resume from the same point when the pointer leaves. Keyboard focus pauses it too.
