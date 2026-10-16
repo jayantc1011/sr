@@ -6315,6 +6315,14 @@ a {
   background: #dfeeda;
 }
 
+.services-page .learning-card-bundle .learning-syllabus {
+  color: #d6e7ce;
+}
+
+.services-page .learning-card-bundle .learning-syllabus:hover {
+  color: #ffffff;
+}
+
 .services-page .compare-cell.compare-featured {
   background: #f1f7ed;
   border-left-color: #c9dcc3;
