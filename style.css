@@ -8815,3 +8815,7 @@ body.services-page .curated-canva-carousel__dot[aria-current="true"] {
 /* Let homepage hero CTAs follow their label widths. */
 .home-page .hero-actions > .btn{flex:0 0 auto;width:max-content;min-width:0;justify-content:center}
 @media(max-width:560px){.home-page .hero-actions > .btn{width:100%}}
+
+/* Size appearances CTAs to their labels. */
+.home-page .appearances-cta-row > .btn{flex:0 0 auto;width:max-content;min-width:0;justify-content:center}
+@media(max-width:560px){.home-page .appearances-cta-row > .btn{width:100%}}
