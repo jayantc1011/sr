@@ -12,7 +12,6 @@ window.SHALINI_COURSES = {
     "includes": [
       "21 challenge videos and their corresponding PDFs",
       "Personal feedback from Shalini",
-      "Repeat 1:1 call with Shalini",
       "Printable Study Materials",
       "Certificate on Completion"
     ],
