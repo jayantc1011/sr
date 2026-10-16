@@ -8857,3 +8857,10 @@ body.services-page .curated-canva-carousel__dot[aria-current="true"] {
     height: 66px;
   }
 }
+
+
+/* Keep service-card titles readable over the dark image gradient. */
+.services-page .call-card-media h3 {
+  color: #ffffff !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, .45);
+}
