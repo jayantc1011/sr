@@ -8811,3 +8811,7 @@ body.services-page .curated-canva-carousel__dot[aria-current="true"] {
 .lms-shell .lms-certificate-preview-inner>small{margin-top:2px;color:#7f8d80;font-size:10px}
 .lms-shell #lms-certificate[hidden]{display:none!important}
 @media(max-width:767px){.lms-shell .lms-certificate-grid{grid-template-columns:1fr}.lms-shell .lms-certificate-preview{max-width:600px;width:100%;margin:auto}.lms-shell .lms-certificate-preview-inner{min-height:270px;padding:30px 23px}}
+
+/* Let homepage hero CTAs follow their label widths. */
+.home-page .hero-actions > .btn{flex:0 0 auto;width:max-content;min-width:0;justify-content:center}
+@media(max-width:560px){.home-page .hero-actions > .btn{width:100%}}
