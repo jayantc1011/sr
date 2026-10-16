@@ -261,6 +261,12 @@ homeCallDurationButtons.forEach((button) => {
     if (subtitle) subtitle.textContent = duration === '30'
       ? (card.dataset.subtitle30 || 'Laser Diagnostic Call')
       : (card.dataset.subtitle60 || (button.closest('.service-toggle')?.children[1]?.textContent.includes('Makeover') ? 'Signature Image Makeover' : 'Comprehensive Deep Dive'));
+    card?.querySelectorAll('[data-duration-copy]').forEach((copy) => {
+      copy.hidden = copy.dataset.durationCopy !== duration;
+    });
+    card?.querySelectorAll('[data-duration-list]').forEach((list) => {
+      list.hidden = list.dataset.durationList !== duration;
+    });
     if (ctaLabel) ctaLabel.textContent = `Book ${duration} Mins Call`;
   });
 });
