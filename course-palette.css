@@ -1,0 +1,32 @@
+/* Reference green palette for the course hero badges and actions. */
+.home-page .service-badge-warm {
+  background: linear-gradient(115deg, #4b8128, #1c261f);
+  color: #fff;
+}
+
+.lms-shell .lms-detail-badges > span:not(.lms-rating-star) {
+  border-color: transparent;
+  background: linear-gradient(115deg, #4b8128, #1c261f);
+  color: #fff;
+}
+
+.lms-shell .lms-detail-badges small {
+  color: rgba(255, 255, 255, .82);
+}
+
+.lms-shell .lms-detail-badges .lms-rating-star {
+  color: #fff;
+}
+
+.lms-shell .lms-buttons .lms-secondary {
+  border-color: transparent;
+  background: linear-gradient(115deg, #4b8128, #1c261f);
+  color: #fff;
+  box-shadow: 0 8px 16px rgba(28, 70, 42, .12);
+}
+
+.lms-shell .lms-buttons .lms-secondary:hover {
+  background: linear-gradient(115deg, #568f31, #26352b);
+  color: #fff;
+  transform: translateY(-2px);
+}
