@@ -8876,3 +8876,8 @@ body.services-page .curated-canva-carousel__dot[aria-current="true"] {
 .home-page .service-card [data-duration-list][hidden] {
   display: none !important;
 }
+
+
+.services-page .services-footer-brand-block h2 {
+  color: #ffffff !important;
+}
