@@ -8502,14 +8502,14 @@ body.services-page .curated-canva-carousel__dot[aria-current="true"] {
 .lms-shell .lms-curriculum-aside p{color:#bdd4c4;font-size:13px;line-height:1.7}
 .lms-shell .lms-curriculum-aside .lms-primary{background:#e7f9d9;color:#194632;margin-top:15px}
 .lms-shell .lms-review-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
-.lms-shell .lms-review{background:white;border:1px solid #e0ecdd;border-radius:17px;padding:25px;min-height:175px}
-.lms-shell .lms-review-person{display:flex;align-items:center;gap:12px;margin-bottom:16px;color:#526957;font-size:12px;font-weight:700}
-.lms-shell .lms-review-person img{width:48px;height:48px;flex:none;border-radius:50%;object-fit:cover}
+.lms-shell .lms-review{background:white;border:1px solid #e0ecdd;border-radius:17px;padding:29px;min-height:220px}
+.lms-shell .lms-review-person{display:flex;align-items:center;gap:16px;margin-bottom:20px;color:#526957;font-size:18px;font-weight:700}
+.lms-shell .lms-review-person img{width:80px;height:80px;flex:none;border-radius:50%;object-fit:cover}
 .lms-shell .lms-review-person a{display:block;margin-top:3px;color:#7b8c7d;font-size:10px;font-weight:500;text-decoration:underline}
 .lms-shell .lms-review>small{display:block;margin-top:14px;color:#859382;font-size:11px;line-height:1.5}
 
-.lms-shell .lms-review-quote{font-size:46px;color:#619f68;line-height:1}
-.lms-shell .lms-review p{font-size:15px;font-weight:650;line-height:1.5;margin-bottom:14px}
+.lms-shell .lms-review-quote{font-size:52px;color:#619f68;line-height:1}
+.lms-shell .lms-review p{font-size:18px;font-weight:600;line-height:1.55;margin-bottom:14px}
 .lms-shell .lms-review small{color:#8d9a8d;display:block;font-size:11px}
 /* The lesson player: contain is intentional for both normal and fullscreen modes */
 .lms-shell .lms-learn-heading{padding:38px 0 35px;border-bottom:1px solid #e1e9de}
@@ -8783,3 +8783,8 @@ body.services-page .curated-canva-carousel__dot[aria-current="true"] {
 .about-page :is(.about-focus-card-coral,.about-focus-card-lime,.about-focus-card-lilac){background:#fff!important;border-color:#dce9d9!important}
 .about-page .about-method-steps article>span,.about-page .about-method-steps article:nth-child(2)>span,.about-page .about-method-steps article:nth-child(3)>span{background:#e6f4dc!important;color:#286145!important}
 .about-page .about-cta :is(h1,h2,h3,h4,h5,h6),.home-page .site-footer :is(h1,h2,h3,h4,h5,h6){color:white!important}
+
+/* Larger portraits and readable labels for course testimonials. */
+.lms-shell .lms-review-person strong{display:block;color:#243c2f;font-size:19px;line-height:1.2}
+.lms-shell .lms-review-person small{display:block;margin-top:5px;color:#718074;font-size:15px;font-weight:500;line-height:1.35}
+@media(max-width:550px){.lms-shell .lms-review{padding:23px;min-height:0}.lms-shell .lms-review-person img{width:68px;height:68px}.lms-shell .lms-review-person{gap:13px}.lms-shell .lms-review-person strong{font-size:18px}.lms-shell .lms-review-person small{font-size:14px}.lms-shell .lms-review p{font-size:17px}}
