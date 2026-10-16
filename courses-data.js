@@ -13,7 +13,8 @@ window.SHALINI_COURSES = {
       "21 challenge videos and their corresponding PDFs",
       "Personal feedback from Shalini",
       "Printable Study Materials",
-      "Certificate on Completion"
+      "Certificate on Completion",
+      "30-min Free 1:1 Call (worth ₹3,750)"
     ],
     "modules": [
       {
