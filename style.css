@@ -8788,3 +8788,26 @@ body.services-page .curated-canva-carousel__dot[aria-current="true"] {
 .lms-shell .lms-review-person strong{display:block;color:#243c2f;font-size:19px;line-height:1.2}
 .lms-shell .lms-review-person small{display:block;margin-top:5px;color:#718074;font-size:15px;font-weight:500;line-height:1.35}
 @media(max-width:550px){.lms-shell .lms-review{padding:23px;min-height:0}.lms-shell .lms-review-person img{width:68px;height:68px}.lms-shell .lms-review-person{gap:13px}.lms-shell .lms-review-person strong{font-size:18px}.lms-shell .lms-review-person small{font-size:14px}.lms-shell .lms-review p{font-size:17px}}
+
+/* Speakathon certificate preview */
+.lms-shell .lms-certificate-section{background:#f8faf4;border-block:1px solid #e5eee1}
+.lms-shell .lms-certificate-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(430px,1.05fr);align-items:center;gap:clamp(35px,7vw,100px)}
+.lms-shell .lms-certificate-copy h2{margin:10px 0 16px;font-size:clamp(34px,3.7vw,53px);line-height:1.08;letter-spacing:-.055em;color:#20372b}
+.lms-shell .lms-certificate-copy h2 em{color:#668f55;font-style:normal}
+.lms-shell .lms-certificate-copy>p{max-width:510px;color:#6d7b70;font-size:16px;line-height:1.7}
+.lms-shell .lms-certificate-points{list-style:none;margin:22px 0 27px;padding:0;display:grid;gap:10px;color:#47614d;font-size:14px}
+.lms-shell .lms-certificate-points li:before{content:"✓";color:#52946a;font-weight:800;margin-right:10px}
+.lms-shell .lms-certificate-preview{position:relative;padding:16px;background:#fff;border:1px solid #d5e4cf;border-radius:4px;box-shadow:0 22px 55px #183a2412;transform:rotate(1deg)}
+.lms-shell .lms-certificate-preview:before{content:"";position:absolute;inset:9px;border:1px solid #b8cfad;pointer-events:none}
+.lms-shell .lms-certificate-preview-inner{min-height:310px;padding:35px 35px 26px;border:1px solid #e2ebdd;background:radial-gradient(ellipse at center,#fff 40%,#f8faf4 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#254334}
+.lms-shell .lms-certificate-brand{font-size:10px;letter-spacing:.22em;font-weight:850;color:#547b51}
+.lms-shell .lms-certificate-rosette{margin:14px 0 7px;width:38px;height:38px;display:grid;place-items:center;border-radius:50%;background:#e8f2dd;color:#6e9852;font-size:22px}
+.lms-shell .lms-certificate-overline{font-size:clamp(20px,2.4vw,30px);font-weight:800;letter-spacing:.09em;color:#214b39}
+.lms-shell .lms-certificate-preview-label{margin-top:12px;color:#748276;font-size:12px}
+.lms-shell .lms-certificate-preview-inner>strong{margin:5px 0 0;font:italic 31px Georgia,serif;color:#274c38}
+.lms-shell .lms-certificate-preview-inner>b{margin-top:5px;font-size:18px;color:#254334}
+.lms-shell .lms-certificate-preview-rule{height:1px;width:56%;background:#c9d9c0;margin:18px auto 8px}
+.lms-shell .lms-certificate-signature{font:italic 21px Georgia,serif;color:#547b51}
+.lms-shell .lms-certificate-preview-inner>small{margin-top:2px;color:#7f8d80;font-size:10px}
+.lms-shell #lms-certificate[hidden]{display:none!important}
+@media(max-width:767px){.lms-shell .lms-certificate-grid{grid-template-columns:1fr}.lms-shell .lms-certificate-preview{max-width:600px;width:100%;margin:auto}.lms-shell .lms-certificate-preview-inner{min-height:270px;padding:30px 23px}}
