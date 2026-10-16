@@ -8870,3 +8870,9 @@ body.services-page .curated-canva-carousel__dot[aria-current="true"] {
   color: #ffffff !important;
   text-shadow: 0 2px 8px rgba(0, 0, 0, .5);
 }
+
+
+.home-page .service-card [data-duration-copy][hidden],
+.home-page .service-card [data-duration-list][hidden] {
+  display: none !important;
+}
