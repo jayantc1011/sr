@@ -17,13 +17,13 @@
   const updateUrl = (filename, id) => filename + '?course=' + encodeURIComponent(id);
   // A few course-specific, honest demo learning outcomes and bonus notes.
   const outcomeCopy = {
-    speakathon:['Articulate your thoughts more clearly','Use vocal variety with intention','Communicate with clarity and calm','Handle conversations with greater ease','Leave an authentic, lasting impression'],
+    speakathon:['Articulate your thoughts more clearly','Use vocal variety with intention','Communicate with clarity & calm','Handle conversations with greater ease','Leave an authentic, lasting impression'],
     'power-dressing':['Identify flattering color families','Understand outfit proportion and fit','Create intentional looks for different occasions','Plan an adaptable wardrobe','Show up with greater confidence'],
     'dining-etiquette':['Feel at ease at professional and social meals','Understand place settings and cutlery','Make introductions and join conversations comfortably','Host or attend meals with thoughtful manners'],
     'power-bundle':['Work on confident speaking habits','Develop an authentic personal style','Bring clarity to how you present yourself','Practice verbal and visual communication','Build a repeatable growth routine']
   };
   const outcomeEmphasis = {
-    speakathon:['Articulate','vocal variety','clarity and calm','Handle conversations','lasting impression']
+    speakathon:['Articulate','vocal variety','clarity & calm','Handle conversations','lasting impression']
   };
   const bonusCopy = {
     speakathon:[['Personal 1:1 Coaching Session','The reference program describes an additional coaching benefit after all 21 challenges are completed. Confirm availability and conditions with the Academy.'],['25 Power Moves to Influence Anyone','Practical communication ideas to practice in conversations, meetings and presentations.'],['Blueprint for Unshakable Confidence','A framework for noticing and practicing confident communication habits.'],['Introvert2Influencer Digital Handbook','Additional learning and reflection prompts described in the reference material.']],
