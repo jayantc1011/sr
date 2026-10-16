@@ -7,8 +7,8 @@
   <title>Speakathon Learning | Shalini Rathod</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="style.css?v=20261016-lms-sitewide-style">
-  <link rel="stylesheet" href="academy-learn.css?v=20261016-lms-sitewide-style">
+  <link rel="stylesheet" href="style.css?v=20261016-completion-certificate">
+  <link rel="stylesheet" href="academy-learn.css?v=20261016-completion-certificate">
   <link rel="stylesheet" href="academy-workspace.css?v=20261016-lesson-column-order">
 </head>
 <body class="academy-page lms-shell fresh-learn" data-lms-page="academy-player">
@@ -112,6 +112,20 @@
         <div class="learn-roadmap-progress"><span>YOUR PROGRESS</span><strong id="roadmap-done">0 / 21</strong><div class="learn-roadmap-track"><span id="roadmap-fill"></span></div></div>
         <nav class="learn-outline-list" id="outline-list" aria-label="Course lessons"></nav>
       </aside>
+      </div>
+      <section class="learn-certificate" id="learn-certificate" aria-labelledby="learn-certificate-title">
+        <div class="learn-certificate-intro"><span class="learn-eyebrow">YOUR ACHIEVEMENT</span><h2 id="learn-certificate-title">Your course certificate</h2><p id="learn-certificate-message">Complete all 21 daily challenges to unlock your personalised certificate.</p></div>
+        <div class="learn-certificate-locked" id="learn-certificate-locked"><span aria-hidden="true">✦</span><strong>Certificate locked</strong><small><span id="certificate-progress-count">0 of 21</span> daily challenges completed</small></div>
+        <form class="learn-certificate-form" id="learn-certificate-form" hidden>
+          <label for="certificate-name">Name to print on your certificate</label>
+          <div><input id="certificate-name" name="name" autocomplete="name" maxlength="80" required placeholder="Enter your full name"><button type="submit" class="learn-certificate-button">Prepare certificate</button></div>
+          <small>Use the name you’d like shown on the certificate.</small>
+        </form>
+        <article class="learn-certificate-art" id="completion-certificate" hidden aria-label="Certificate of completion">
+          <div class="learn-certificate-art-inner"><span class="learn-certificate-brand">SHALINI RATHOD ACADEMY</span><span class="learn-certificate-star" aria-hidden="true">✦</span><span class="learn-certificate-kicker">CERTIFICATE OF COMPLETION</span><p>This certificate is proudly presented to</p><h3 id="certificate-recipient">Learner Name</h3><p>for successfully completing the</p><h4>21-Day Speakathon Challenge</h4><p class="learn-certificate-description">and demonstrating commitment to clearer, more confident communication.</p><div class="learn-certificate-footer"><div><strong id="certificate-date">16 October 2026</strong><small>DATE OF COMPLETION</small></div><div class="learn-certificate-sign"><strong>Shalini Rathod</strong><span></span><small>COURSE EDUCATOR</small></div></div><span class="learn-certificate-seal" aria-hidden="true">21<br><small>DAYS</small></span></div>
+        </article>
+        <button type="button" class="learn-certificate-print" id="print-certificate" hidden>Print or save as PDF <span aria-hidden="true">↗</span></button>
+      </section>
     </div>
   </div>
 </main>
@@ -122,7 +136,8 @@
   <div id="worksheet-error" class="learn-pdf-error" hidden>This PDF isn't available on the website yet.</div>
 </dialog>
 <script src="courses-data.js?edition=20261013-mobile-redesign"></script>
-<script src="academy-learn.js?edition=local-release-media-20261016"></script>
+<script src="academy-learn.js?edition=completion-certificate-20261016"></script>
 <script src="script.js"></script>
+<script src="certificate.js?edition=completion-certificate-v1"></script>
 </body>
 </html>
