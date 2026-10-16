@@ -8819,3 +8819,9 @@ body.services-page .curated-canva-carousel__dot[aria-current="true"] {
 /* Size appearances CTAs to their labels. */
 .home-page .appearances-cta-row > .btn{flex:0 0 auto;width:max-content;min-width:0;justify-content:center}
 @media(max-width:560px){.home-page .appearances-cta-row > .btn{width:100%}}
+
+/* Show the publishers’ original logo colors in the recognition carousel. */
+.home-page .recognition-card{display:flex;justify-content:center;padding:0 22px}
+.home-page .recognition-logo{width:100%;height:46px;justify-content:center;padding:0;border:0}
+.home-page .recognition-logo img{width:auto;max-width:200px;max-height:44px;object-position:center;filter:none;opacity:1}
+@media(max-width:560px){.home-page .recognition-card{padding:0 18px}.home-page .recognition-logo img{max-width:175px;max-height:40px}}
