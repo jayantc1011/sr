@@ -8484,7 +8484,7 @@ body.services-page .curated-canva-carousel__dot[aria-current="true"] {
 .lms-shell .lms-preview-portrait video[hidden]{display:none}
 .lms-shell .lms-preview-cover{position:absolute;inset:0;z-index:2;display:block;width:100%;height:100%;overflow:hidden;border:0;border-radius:inherit;padding:0;background:#103c2b;color:#fff;text-align:left;cursor:pointer;font:inherit}
 .lms-shell .lms-preview-cover img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover}
-.lms-shell .lms-preview-cover-play{position:absolute;z-index:2;top:50%;left:50%;display:grid;width:52px;height:52px;place-items:center;padding-left:2px;transform:translate(-50%,-50%);border:1px solid rgba(255,255,255,.9);border-radius:50%;background:transparent;color:#fff;font-size:18px;line-height:1;text-shadow:0 1px 4px rgba(0,0,0,.55);transition:transform .18s ease}
+.lms-shell .lms-preview-cover-play{position:absolute;z-index:2;top:50%;left:50%;display:grid;width:52px;height:52px;place-items:center;padding-left:2px;transform:translate(-50%,-50%);border:1px solid rgba(255,255,255,.9);border-radius:50%;background:rgba(96,96,96,.28);color:#fff;font-size:18px;line-height:1;text-shadow:0 1px 4px rgba(0,0,0,.55);transition:transform .18s ease}
 .lms-shell .lms-preview-cover:hover .lms-preview-cover-play{transform:translate(-50%,-50%) scale(1.06)}
 .lms-shell .lms-preview-cover::after{position:absolute;inset:0;content:"";background:linear-gradient(180deg,rgba(7,28,20,.24),transparent 31%,transparent 48%,rgba(7,28,20,.82))}
 .lms-shell .lms-preview-cover:focus-visible{outline:3px solid #b9e78c;outline-offset:-6px}
