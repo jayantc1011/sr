@@ -215,7 +215,8 @@
           const cover=el('button','lms-preview-cover');cover.type='button';
           cover.setAttribute('aria-label',i===0?'Play Speak Confidently on Camera preview':'Play Look More Confident preview');
           const image=el('img');image.src=imagePath;image.alt='';image.loading='lazy';
-          cover.append(image);
+          const play=el('span','lms-preview-cover-play','▶');play.setAttribute('aria-hidden','true');
+          cover.append(image,play);
           cover.addEventListener('click',()=>{cover.remove();video.hidden=false;video.play().catch(()=>{});});
           frame.replaceChildren(video,cover);
         }
