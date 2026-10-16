@@ -8802,7 +8802,7 @@ body.services-page .curated-canva-carousel__dot[aria-current="true"] {
 .lms-shell .lms-certificate-preview-inner{min-height:310px;padding:35px 35px 26px;border:1px solid #e2ebdd;background:radial-gradient(ellipse at center,#fff 40%,#f8faf4 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#254334}
 .lms-shell .lms-certificate-brand{font-size:10px;letter-spacing:.22em;font-weight:850;color:#547b51}
 .lms-shell .lms-certificate-rosette{margin:14px 0 7px;width:38px;height:38px;display:grid;place-items:center;border-radius:50%;background:#e8f2dd;color:#6e9852;font-size:22px}
-.lms-shell .lms-certificate-overline{font-size:clamp(20px,2.4vw,30px);font-weight:800;letter-spacing:.09em;color:#214b39}
+.lms-shell .lms-certificate-overline{max-width:100%;white-space:nowrap;font-size:clamp(15px,2.4vw,30px);font-weight:800;letter-spacing:.04em;color:#214b39}
 .lms-shell .lms-certificate-preview-label{margin-top:12px;color:#748276;font-size:12px}
 .lms-shell .lms-certificate-preview-inner>strong{margin:5px 0 0;font:italic 31px Georgia,serif;color:#274c38}
 .lms-shell .lms-certificate-preview-inner>b{margin-top:5px;font-size:18px;color:#254334}
