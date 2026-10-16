@@ -8682,3 +8682,31 @@ body.services-page .curated-canva-carousel__dot[aria-current="true"] {
 .home-page .speakathon-course-card .service-cta:hover {
   background: #387650;
 }
+
+
+/* Match desktop home service card width to the three-column LMS catalog. */
+@media (min-width: 1101px) {
+  .home-page .services-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .home-page .services-grid > .service-card:last-child {
+    grid-column: 2;
+  }
+}
+
+@media (max-width: 1100px) {
+  .home-page .services-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 680px) {
+  .home-page .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-page .services-grid > .service-card:last-child {
+    grid-column: auto;
+  }
+}
