@@ -119,7 +119,7 @@
 .fresh-learn .learn-certificate-art-inner:after{right:-120px;bottom:-168px;box-shadow:0 0 0 13px #f8faf4,0 0 0 14px #e5eddf}
 .fresh-learn .learn-certificate-brand{font-size:11px;letter-spacing:.24em;font-weight:850;color:#597d54}
 .fresh-learn .learn-certificate-star{width:52px;height:52px;margin:20px 0 14px;display:grid;place-items:center;border-radius:50%;background:#edf4e5;color:#78a35f;font-size:29px}
-.fresh-learn .learn-certificate-kicker{width:100%;max-width:100%;white-space:nowrap;font-size:clamp(14px,4.6vw,42px);font-weight:800;letter-spacing:.07em;color:#224b39}
+.fresh-learn .learn-certificate-kicker{width:100%;max-width:100%;white-space:nowrap;font-size:clamp(13px,3.4vw,42px);font-weight:800;letter-spacing:clamp(.01em,.07vw,.07em);color:#224b39}
 .fresh-learn .learn-certificate-art-inner>p{margin:20px 0 0;color:#758477;font-size:14px}
 .fresh-learn .learn-certificate-art-inner h3{max-width:90%;margin:8px 0;color:#1d382b;font:italic 42px Georgia,serif;overflow-wrap:anywhere}
 .fresh-learn .learn-certificate-art-inner h4{margin:7px 0 0;color:#294b38;font-size:23px;letter-spacing:-.02em}
