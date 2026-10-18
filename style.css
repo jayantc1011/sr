@@ -8903,7 +8903,7 @@ body.services-page .curated-canva-carousel__dot[aria-current="true"] {
 
 /* Homepage bio card: roomier layout and clear Read More action. */
 .home-page .about-inner {
-  width: min(86vw, 1360px);
+  width: min(76vw, 1120px);
 }
 
 .home-page .about-card {
