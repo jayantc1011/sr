@@ -158,32 +158,34 @@
   }
 }
 
-/* Home biography card: separate the action from the bio and style it as a button. */
+/* Home biography action: keep it as a simple text link with breathing room. */
 .home-page .about-link {
   display: flex;
   width: max-content;
   max-width: 100%;
-  min-height: 48px;
+  min-height: 0;
   align-items: center;
   justify-content: center;
-  margin: 28px auto 0;
-  padding: 0 24px;
-  border: 1px solid var(--lms-green-deep, #194c3b);
-  border-radius: 8px;
-  background: var(--lms-green-deep, #194c3b);
-  color: #fff !important;
+  margin: 22px auto 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--lms-green-deep, #194c3b) !important;
+  font-size: 18px;
   font-weight: 600;
   text-decoration: none;
 }
 
 .home-page .about-link:hover {
-  background: var(--lms-green-deep-hover, #123b2d);
-  color: #fff !important;
-  transform: translateY(-1px);
+  background: transparent;
+  color: var(--lms-green-deep-hover, #123b2d) !important;
+  text-decoration: underline;
+  transform: none;
 }
 
 @media (max-width: 820px) {
   .home-page .about-link {
-    margin-top: 24px;
+    margin-top: 20px;
   }
 }
