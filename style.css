@@ -6276,7 +6276,7 @@ a {
 }
 
 .services-page .package-session-badge,
-.services-page .learning-badge:not(.learning-badge-bundle) {
+.services-page .learning-badge:not(.learning-badge-bundle),\n.lms-shell .learning-badge:not(.learning-badge-bundle) {
   background: #e5f0df;
   color: var(--lms-green-deep);
   border: 1px solid #d1e3ca;
@@ -6295,12 +6295,12 @@ a {
   color: var(--lms-green-deep);
 }
 
-.services-page .learning-card-bundle {
+.services-page .learning-card-bundle,\n.lms-shell .learning-card-bundle {
   background: #183e2f;
   border-color: #183e2f;
 }
 
-.services-page .learning-card-bundle .learning-card-body {
+.services-page .learning-card-bundle .learning-card-body,\n.lms-shell .learning-card-bundle .learning-card-body {
   background: #183e2f;
 }
 
@@ -6311,15 +6311,15 @@ a {
   border-color: #d7e5d1;
 }
 
-.services-page .learning-bundle-btn:hover {
+.services-page .learning-bundle-btn:hover,\n.lms-shell .learning-bundle-btn:hover {
   background: #dfeeda;
 }
 
-.services-page .learning-card-bundle .learning-syllabus {
+.services-page .learning-card-bundle .learning-syllabus,\n.lms-shell .learning-card-bundle .learning-syllabus {
   color: #d6e7ce;
 }
 
-.services-page .learning-card-bundle .learning-syllabus:hover {
+.services-page .learning-card-bundle .learning-syllabus:hover,\n.lms-shell .learning-card-bundle .learning-syllabus:hover {
   color: #ffffff;
 }
 
@@ -8877,7 +8877,7 @@ body.services-page .curated-canva-carousel__dot[aria-current="true"] {
 }
 
 
-.services-page .learning-card-media h3 {
+.services-page .learning-card-media h3,\n.lms-shell .learning-card-media h3 {
   color: #ffffff !important;
   text-shadow: 0 2px 8px rgba(0, 0, 0, .5);
 }
