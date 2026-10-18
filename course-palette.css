@@ -192,3 +192,95 @@
     grid-template-columns: 1fr;
   }
 }
+
+
+/* Featured Power Bundle layout and colors. */
+.lms-shell #lms-catalog-grid .learning-card-bundle,
+.lms-shell #lms-catalog-grid .learning-card-bundle .learning-card-body {
+  border-color: #183e2f;
+  background: #183e2f;
+}
+
+.lms-shell #lms-catalog-grid .learning-card-bundle-horizontal {
+  grid-template-columns: minmax(0, .56fr) minmax(0, 1fr);
+  min-height: 490px;
+}
+
+.lms-shell #lms-catalog-grid .learning-card-bundle-horizontal .learning-card-media {
+  height: 100%;
+  min-height: 490px;
+}
+
+.lms-shell #lms-catalog-grid .learning-card-bundle-horizontal .learning-card-body {
+  min-height: 490px;
+  padding: 40px 44px;
+}
+
+.lms-shell #lms-catalog-grid .learning-card-bundle .learning-card-media h3 {
+  color: #fff !important;
+  font-size: 30px;
+  font-weight: 750;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, .55);
+}
+
+.lms-shell #lms-catalog-grid .learning-card-bundle .learning-description,
+.lms-shell #lms-catalog-grid .learning-card-bundle .learning-features li {
+  color: #d0dfd5;
+}
+
+.lms-shell #lms-catalog-grid .learning-card-bundle .learning-check {
+  color: #39a779;
+}
+
+.lms-shell #lms-catalog-grid .learning-card-bundle .learning-divider {
+  background: rgba(255, 255, 255, .14);
+}
+
+.lms-shell #lms-catalog-grid .learning-card-bundle .learning-price {
+  color: #f6f0e8;
+}
+
+.lms-shell #lms-catalog-grid .learning-card-bundle .learning-price-with-old del {
+  color: #91a69a;
+}
+
+.lms-shell #lms-catalog-grid .learning-card-bundle .learning-syllabus {
+  color: #d6e7ce;
+}
+
+.lms-shell #lms-catalog-grid .learning-card-bundle .learning-bundle-btn {
+  max-width: 460px;
+  min-height: 56px;
+  border-color: #eff6e9;
+  background: #eff6e9;
+  color: #194c3b;
+  font-size: 16px;
+}
+
+.lms-shell #lms-catalog-grid .learning-card-bundle .learning-bundle-btn:hover {
+  border-color: #dfeeda;
+  background: #dfeeda;
+  color: #194c3b;
+}
+
+@media (max-width: 767px) {
+  .lms-shell #lms-catalog-grid .learning-card-bundle-horizontal {
+    display: flex;
+    grid-column: auto;
+    min-height: 0;
+  }
+
+  .lms-shell #lms-catalog-grid .learning-card-bundle-horizontal .learning-card-media {
+    height: 240px;
+    min-height: 240px;
+  }
+
+  .lms-shell #lms-catalog-grid .learning-card-bundle-horizontal .learning-card-body {
+    min-height: 0;
+    padding: 26px 22px;
+  }
+
+  .lms-shell #lms-catalog-grid .learning-card-bundle-horizontal .learning-features {
+    grid-template-columns: 1fr;
+  }
+}
