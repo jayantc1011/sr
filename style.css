@@ -8892,3 +8892,11 @@ body.services-page .curated-canva-carousel__dot[aria-current="true"] {
 .services-page .services-footer-brand-block h2 {
   color: #ffffff !important;
 }
+
+/* Improve readability of action labels inside service and course cards. */
+.services-page :is(.call-book-btn,.package-enroll-btn,.learning-enroll-btn,.discovery-call-button),
+.academy-course-card .academy-btn,
+.academy-program-card .academy-btn,
+.lms-shell .lms-speakathon-action {
+  font-size: 16px;
+}
