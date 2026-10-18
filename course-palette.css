@@ -41,3 +41,107 @@
 .lms-shell .lms-buttons + .lms-field-note {
   margin-top: 12px;
 }
+
+
+/* LMS catalog cards use the Courses palette, not legacy Services card colors. */
+.lms-shell #lms-catalog-grid .learning-card {
+  border-color: #dce7d8;
+  border-radius: 21px;
+  background: #fff;
+  box-shadow: var(--lms-shadow, 0 12px 32px rgba(26, 87, 48, .08));
+}
+
+.lms-shell #lms-catalog-grid .learning-card-media h3 {
+  color: #fff !important;
+  font-family: "Bricolage Grotesque", "Avenir Next", Arial, sans-serif;
+  font-size: 23px;
+  font-weight: 750;
+  line-height: 1.15;
+  letter-spacing: -.035em;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, .55);
+}
+
+.lms-shell #lms-catalog-grid .learning-badge {
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: linear-gradient(115deg, #4b8128, #1c3328);
+  color: #fff;
+  box-shadow: 0 2px 7px rgba(21, 57, 37, .18);
+}
+
+.lms-shell #lms-catalog-grid .learning-card-body {
+  background: #fff;
+}
+
+.lms-shell #lms-catalog-grid .learning-description,
+.lms-shell #lms-catalog-grid .learning-features li {
+  color: #6b786c;
+}
+
+.lms-shell #lms-catalog-grid .learning-check {
+  color: #2f8c62;
+}
+
+.lms-shell #lms-catalog-grid .learning-divider {
+  background: #e8f0e7;
+}
+
+.lms-shell #lms-catalog-grid .learning-price {
+  color: #224b36;
+  font-family: "Bricolage Grotesque", "Avenir Next", Arial, sans-serif;
+  font-weight: 750;
+}
+
+.lms-shell #lms-catalog-grid .learning-syllabus {
+  color: #24543c;
+}
+
+.lms-shell #lms-catalog-grid .learning-enroll-btn {
+  min-height: 52px;
+  height: auto;
+  border: 1px solid #1c523d;
+  border-radius: 10px;
+  background: linear-gradient(115deg, #1e573d, #164130);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 750;
+}
+
+.lms-shell #lms-catalog-grid .learning-enroll-btn:hover {
+  background: linear-gradient(115deg, #285f43, #163f2f);
+  color: #fff;
+}
+
+.lms-shell #lms-catalog-grid .learning-card-bundle,
+.lms-shell #lms-catalog-grid .learning-card-bundle .learning-card-body {
+  border-color: #dce7d8;
+  background: #fff;
+}
+
+.lms-shell #lms-catalog-grid .learning-card-bundle .learning-description,
+.lms-shell #lms-catalog-grid .learning-card-bundle .learning-features li {
+  color: #6b786c;
+}
+
+.lms-shell #lms-catalog-grid .learning-card-bundle .learning-check,
+.lms-shell #lms-catalog-grid .learning-card-bundle .learning-syllabus {
+  color: #2f8c62;
+}
+
+.lms-shell #lms-catalog-grid .learning-card-bundle .learning-divider {
+  background: #e8f0e7;
+}
+
+.lms-shell #lms-catalog-grid .learning-card-bundle .learning-price {
+  color: #224b36;
+}
+
+.lms-shell #lms-catalog-grid .learning-bundle-btn {
+  background: linear-gradient(115deg, #1e573d, #164130);
+  color: #fff;
+}
+
+.lms-shell #lms-catalog-grid .learning-bundle-btn:hover {
+  background: linear-gradient(115deg, #285f43, #163f2f);
+  color: #fff;
+}
