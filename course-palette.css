@@ -158,12 +158,6 @@
   }
 }
 
-/* Homepage biography: restore the larger, more readable paragraph scale. */
-.home-page .about-copy p {
-  font-size: clamp(20px, 1.55vw, 26px);
-  line-height: 1.58;
-}
-
 /* Home biography action: keep it as a simple text link with breathing room. */
 .home-page .about-link {
   display: flex;
@@ -172,7 +166,7 @@
   min-height: 0;
   align-items: center;
   justify-content: center;
-  margin: 22px auto 0;
+  margin: 0 auto;
   padding: 0;
   border: 0;
   border-radius: 0;
@@ -191,18 +185,7 @@
 }
 
 @media (max-width: 820px) {
-  .home-page .about-copy p {
-    font-size: 18px;
-  }
-
   .home-page .about-link {
     margin-top: 20px;
-  }
-}
-
-@media (max-width: 560px) {
-  .home-page .about-copy p {
-    font-size: 16px;
-    line-height: 1.58;
   }
 }
