@@ -158,6 +158,12 @@
   }
 }
 
+/* Homepage biography: restore the larger, more readable paragraph scale. */
+.home-page .about-copy p {
+  font-size: clamp(20px, 1.55vw, 26px);
+  line-height: 1.58;
+}
+
 /* Home biography action: keep it as a simple text link with breathing room. */
 .home-page .about-link {
   display: flex;
@@ -185,7 +191,18 @@
 }
 
 @media (max-width: 820px) {
+  .home-page .about-copy p {
+    font-size: 18px;
+  }
+
   .home-page .about-link {
     margin-top: 20px;
+  }
+}
+
+@media (max-width: 560px) {
+  .home-page .about-copy p {
+    font-size: 16px;
+    line-height: 1.58;
   }
 }
