@@ -298,7 +298,7 @@ if (durationButtons.length && callCards.length) {
 
       const price = card.querySelector('.call-price');
       if (price) {
-        price.textContent = duration === '60' ? price.dataset.price60 : price.dataset.price30;
+        price.textContent = price.getAttribute(`data-price-${duration}`) || '';
       }
     });
   };
