@@ -9243,3 +9243,9 @@ body.services-page .curated-canva-carousel__dot[aria-current="true"] {
     font-size: 10px;
   }
 }
+
+/* The announcement remains sticky; the navbar below it scrolls normally. */
+.sr-announcement + .sr-header {
+  position: relative;
+  top: auto;
+}
