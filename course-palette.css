@@ -62,6 +62,24 @@
   box-shadow: none;
 }
 
+.lms-shell #lms-catalog-grid .learning-badge-coming-soon {
+  background: #fff4dc;
+  color: #75551b;
+  border-color: #f0dfb8;
+}
+
+.lms-shell #lms-catalog-grid .learning-coming-soon-btn:disabled,
+.lms-shell #lms-catalog-grid .learning-coming-soon-btn:disabled:hover {
+  margin-top: auto;
+  background: #e7eee4 !important;
+  border-color: #d6e1d2 !important;
+  color: #52725c !important;
+  box-shadow: none;
+  cursor: not-allowed;
+  opacity: .82;
+  transform: none;
+}
+
 .lms-shell #lms-catalog-grid .learning-enroll-btn {
   background: var(--lms-green-deep, #194c3b) !important;
   border: 1px solid var(--lms-green-deep, #194c3b) !important;
@@ -71,6 +89,19 @@
 .lms-shell #lms-catalog-grid .learning-enroll-btn:hover {
   background: var(--lms-green-deep-hover, #245b42) !important;
   border-color: var(--lms-green-deep-hover, #245b42) !important;
+}
+
+/* Keep the two-up course cards aligned even while one is hovered. */
+.lms-shell #lms-catalog-grid .learning-card:not(.learning-card-bundle) {
+  height: 100%;
+}
+
+.lms-shell #lms-catalog-grid .learning-card:not(.learning-card-bundle):hover {
+  transform: none;
+}
+
+.lms-shell #lms-catalog-grid .learning-card:not(.learning-card-bundle) .learning-card-body {
+  flex: 1 1 auto;
 }
 
 .lms-shell #lms-catalog-grid .learning-card-bundle,
