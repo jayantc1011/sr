@@ -220,3 +220,106 @@
     margin-top: 20px;
   }
 }
+
+/* Courses results card: keep metrics, supporting copy, and callouts distinct. */
+.lms-shell .lms-results-card {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  min-height: 560px;
+  flex-direction: column;
+  overflow: hidden;
+  padding: clamp(26px, 3.2vw, 44px);
+  border: 1px solid #3d7457;
+  border-radius: 28px;
+  background: linear-gradient(145deg, #245a40 0%, #173a30 100%);
+  box-shadow: 0 22px 60px rgba(22, 66, 44, 0.16);
+  color: #f4f8ee;
+}
+
+.lms-shell .lms-results-card > .lms-eyebrow {
+  display: block;
+  color: #cce7b6;
+  line-height: 1.4;
+}
+
+.lms-shell .lms-results-number {
+  display: block;
+  margin: 20px 0 10px;
+  color: #efffe5;
+  font-size: clamp(72px, 8vw, 128px);
+  font-weight: 800;
+  letter-spacing: -0.075em;
+  line-height: 0.95;
+  white-space: nowrap;
+}
+
+.lms-shell .lms-results-card h3 {
+  margin: 0;
+  color: #f4f8ee;
+  font-size: clamp(21px, 2.2vw, 29px);
+  line-height: 1.25;
+}
+
+.lms-shell .lms-results-card h3 em {
+  color: #b9df9f;
+  font-style: normal;
+}
+
+.lms-shell .lms-results-card > p {
+  margin: 14px 0 0;
+  color: #d2dfd4;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.lms-shell .lms-results-stack {
+  display: grid;
+  gap: 9px;
+  margin-top: auto;
+  padding-top: 24px;
+}
+
+.lms-shell .lms-results-step {
+  display: grid;
+  min-width: 0;
+  gap: 4px;
+  padding: 12px 16px;
+  border: 1px solid rgba(239, 255, 229, 0.45);
+  border-radius: 14px;
+  background: #f7fbf1;
+  color: #20382c;
+}
+
+.lms-shell .lms-results-step.second {
+  background: #eff8e5;
+}
+
+.lms-shell .lms-results-step.third {
+  background: #d4eec5;
+}
+
+.lms-shell .lms-results-step > span {
+  color: #527b5e;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  line-height: 1.4;
+}
+
+.lms-shell .lms-results-step > strong {
+  color: #20382c;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+@media (max-width: 820px) {
+  .lms-shell .lms-results-card {
+    min-height: 0;
+    padding: 26px;
+  }
+
+  .lms-shell .lms-results-number {
+    font-size: clamp(72px, 18vw, 112px);
+  }
+}
