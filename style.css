@@ -9136,3 +9136,109 @@ body.services-page .curated-canva-carousel__dot[aria-current="true"] {
     font-size: 13px;
   }
 }
+
+/* Site-wide announcement strip */
+.sr-announcement {
+  position: relative;
+  z-index: 30;
+  display: flex;
+  min-height: 64px;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 10px 20px;
+  border-bottom: 1px solid #cfe1c9;
+  background: linear-gradient(100deg, #d8edcd 0%, #eff7e9 52%, #d8edcd 100%);
+  color: #1d4836;
+  font-family: inherit;
+  text-align: center;
+}
+
+.sr-announcement-label {
+  display: inline-flex;
+  min-height: 34px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 15px;
+  border: 1px solid #1d5a41;
+  border-radius: 999px;
+  background: #1d5a41;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1;
+}
+
+.sr-announcement-message {
+  color: #193d2e;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+}
+
+.sr-announcement-link {
+  display: inline-flex;
+  min-height: 42px;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 0 22px;
+  border: 1px solid #194c3b;
+  border-radius: 999px;
+  background: #194c3b;
+  box-shadow: 0 5px 14px rgba(25, 76, 59, 0.17);
+  color: #fff !important;
+  font-size: 13px;
+  font-weight: 750;
+  letter-spacing: 0.035em;
+  line-height: 1.2;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+.sr-announcement-link:hover {
+  background: #123b2d;
+  box-shadow: 0 7px 18px rgba(25, 76, 59, 0.23);
+  color: #fff !important;
+  transform: translateY(-1px);
+}
+
+.sr-announcement-link svg {
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+@media (max-width: 640px) {
+  .sr-announcement {
+    min-height: 0;
+    gap: 7px 10px;
+    padding: 10px 12px;
+    flex-wrap: wrap;
+  }
+
+  .sr-announcement-label {
+    min-height: 28px;
+    padding: 0 12px;
+    font-size: 10px;
+  }
+
+  .sr-announcement-message {
+    font-size: 11px;
+    letter-spacing: 0.015em;
+  }
+
+  .sr-announcement-link {
+    min-height: 36px;
+    gap: 8px;
+    padding: 0 14px;
+    font-size: 10px;
+  }
+}
