@@ -284,6 +284,10 @@ if (durationButtons.length && callCards.length) {
         label.textContent = `${duration}min`;
       });
 
+      card.querySelectorAll('[data-duration-copy]').forEach((copy) => {
+        copy.hidden = copy.dataset.durationCopy !== duration;
+      });
+
       card.querySelectorAll('[data-duration-list]').forEach((list) => {
         list.hidden = list.dataset.durationList !== duration;
       });
