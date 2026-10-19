@@ -9139,6 +9139,8 @@ body.services-page .curated-canva-carousel__dot[aria-current="true"] {
 
 /* Site-wide announcement strip */
 .sr-announcement {
+  --sr-announcement-height: 64px;
+  height: var(--sr-announcement-height);
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -9219,10 +9221,13 @@ body.services-page .curated-canva-carousel__dot[aria-current="true"] {
 
 @media (max-width: 640px) {
   .sr-announcement {
-    min-height: 0;
+    --sr-announcement-height: 96px;
+    min-height: var(--sr-announcement-height);
+    height: var(--sr-announcement-height);
     gap: 7px 10px;
     padding: 10px 12px;
     flex-wrap: wrap;
+    align-content: center;
   }
 
   .sr-announcement-label {
@@ -9246,6 +9251,6 @@ body.services-page .curated-canva-carousel__dot[aria-current="true"] {
 
 /* The announcement remains sticky; the navbar below it scrolls normally. */
 .sr-announcement + .sr-header {
-  position: relative;
-  top: auto;
+  position: sticky;
+  top: var(--sr-announcement-height, 64px);
 }
