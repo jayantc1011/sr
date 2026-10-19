@@ -8446,7 +8446,7 @@ body.services-page .curated-canva-carousel__dot[aria-current="true"] {
 .lms-shell .lms-auth-signature small{font-size:11px;color:#748473}
 .lms-shell .lms-auth-orbit{position:absolute;right:0;bottom:-53px;font-size:220px;line-height:1;color:#e4efdf;z-index:0;pointer-events:none}
 .lms-shell .lms-auth-card{position:relative;background:#fff;padding:35px 36px;border:1px solid #dce9d6;border-radius:24px;box-shadow:0 23px 75px #123f2d16}
-.lms-shell .lms-demo-chip{padding:10px 12px;font-size:10px;letter-spacing:.055em;color:#315e42;font-weight:750;background:#eff9e9;border-radius:10px;margin-bottom:21px}
+.lms-shell .lms-demo-chip{padding:10px 12px;font-size:14px;letter-spacing:.055em;color:#315e42;font-weight:750;background:#eff9e9;border-radius:10px;margin-bottom:21px}
 .lms-shell .lms-demo-chip span{display:inline-block;width:7px;height:7px;border-radius:50%;background:#67b35a;margin-right:7px}
 .lms-shell .lms-tabbar{display:grid;grid-template-columns:1fr 1fr;background:#edf3e9;padding:5px;border-radius:13px;margin-bottom:29px;gap:4px}
 .lms-shell .lms-tabbar button{background:transparent;border:0;padding:13px;font-size:14px;font-weight:700;color:#627463;cursor:pointer;border-radius:9px}
