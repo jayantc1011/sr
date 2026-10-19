@@ -9139,8 +9139,9 @@ body.services-page .curated-canva-carousel__dot[aria-current="true"] {
 
 /* Site-wide announcement strip */
 .sr-announcement {
-  position: relative;
-  z-index: 30;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   display: flex;
   min-height: 64px;
   align-items: center;
