@@ -234,14 +234,19 @@
 .package-demo-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; padding-bottom: clamp(17px, 2vw, 25px); border-bottom: 1px solid #eee8e0; }
 .package-demo-heading p { margin: 0 0 5px; color: #b88d55; font-size: clamp(10px, .8vw, 12px); font-weight: 650; letter-spacing: .07em; }
 .package-enrollment-page .package-gallery .package-demo-heading h3 { margin: 0; color: #302a24; font-family: Didot, "Bodoni 72", "Times New Roman", serif !important; font-size: clamp(22px, 2.05vw, 30px); font-weight: 400; line-height: 1.2; letter-spacing: -.012em; }
-.package-gallery-main { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(10px, 1.3vw, 18px); width: 100%; margin: clamp(18px, 2.2vw, 28px) 0; }
-.package-gallery-main > img { display: block; width: 100%; aspect-ratio: 4 / 3; border-radius: 12px; background: #f6efe5; object-fit: cover; object-position: center 12%; }
+.package-gallery-main { width: 100%; margin: clamp(18px, 2.2vw, 28px) 0; overflow: hidden; }
+.package-gallery-track { display: flex; align-items: stretch; gap: clamp(12px, 1.5vw, 22px); transition: transform .42s cubic-bezier(.2,.7,.2,1); will-change: transform; }
+.package-gallery-track > img { display: block; flex: 0 0 auto; width: 100%; aspect-ratio: 4 / 5; border-radius: 12px; background: #f6efe5; object-fit: cover; object-position: center 12%; }
 .package-gallery-footer { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: clamp(14px, 1.6vw, 20px) 0 0; border-top: 1px solid #eee8e0; }
 .package-gallery-dots { display: flex; flex-wrap: wrap; gap: 8px; }
+.package-gallery-controls { display: flex; align-items: center; gap: 10px; }
+.package-gallery-controls .package-gallery-arrow { width: 40px; height: 40px; background: #fff; border-color: #dce9d9; color: #194c3b; }
+.package-gallery-controls .package-gallery-arrow:hover { background: #f6faf3; border-color: #bcd4b9; color: #194c3b; }
+.package-gallery-controls .package-gallery-arrow:disabled { opacity: .38; cursor: default; transform: none; }
 .package-gallery-dot { width: auto; height: auto; min-height: 34px; padding: 0 16px; border: 0; border-radius: 8px; background: #f3eee8; color: #786f66; cursor: pointer; font: 500 13px/1 "DM Sans", "Avenir Next", Arial, sans-serif; transition: background-color .16s ease, color .16s ease; }
 .package-gallery-dot[aria-selected="true"] { background: #292521; color: #fff; transform:none; }
 @media(max-width:900px) {
-  .package-gallery-main { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .package-gallery-track { gap: clamp(10px, 1.8vw, 16px); }
 }
 @media(max-width:650px) {
   .package-enrollment-page .package-booklet-section { padding: 48px 0; }
@@ -249,10 +254,13 @@
   .package-gallery { padding: 15px; border-radius: 17px; }
   .package-demo-heading { padding-bottom: 15px; }
   .package-enrollment-page .package-demo-heading h3 { font-size: 21px; }
-  .package-gallery-main { grid-template-columns: 1fr; gap: 9px; margin: 15px 0; }
-  .package-gallery-main > img { border-radius: 8px; }
-  .package-gallery-footer { align-items: flex-start; flex-direction: column; }
+  .package-gallery-main { margin: 15px 0; }
+  .package-gallery-track { gap: 9px; }
+  .package-gallery-track > img { border-radius: 8px; }
+  .package-gallery-footer { align-items: center; }
   .package-gallery-dots { gap: 7px; }
+  .package-gallery-controls { gap: 7px; }
+  .package-gallery-controls .package-gallery-arrow { width: 36px; height: 36px; }
   .package-gallery-dot { min-height: 32px; padding: 0 12px; font-size: 12px; }
 }
 
@@ -660,7 +668,7 @@
 .package-enrollment-page .package-booking-fields label,
 .package-enrollment-page .package-booking-choice-group legend,
 .package-enrollment-page .package-faq-item summary { color: #1e3429; font-family: inherit; }
-.package-enrollment-page .package-gallery-main > img { background: #edf5e9; }
+.package-enrollment-page .package-gallery-track > img { background: #edf5e9; }
 .package-enrollment-page .package-gallery-dot { font-family: inherit; }
 .package-enrollment-page .package-gallery-dot[aria-selected="true"] { background: #194c3b; }
 .package-enrollment-page .package-booking-tabs { border-color: #dce9d9; background: #edf5e9; }
@@ -701,12 +709,12 @@
 .package-enrollment-page .package-booklet-description { max-width: 860px; }
 .package-enrollment-page .package-booklet-actions { align-self: end; justify-self: end; }
 .package-enrollment-page .package-gallery { width: min(100%, 1280px); }
-.package-enrollment-page .package-gallery-main { gap: clamp(12px, 1.5vw, 22px); }
-.package-enrollment-page .package-gallery-main > img { aspect-ratio: 4 / 5; object-position: center 10%; }
+.package-enrollment-page .package-gallery-track { gap: clamp(12px, 1.5vw, 22px); }
+.package-enrollment-page .package-gallery-track > img { aspect-ratio: 4 / 5; object-position: center 10%; }
 @media(max-width:900px) {
   .package-enrollment-page .package-booklet-intro { grid-template-columns: 1fr; row-gap: 18px; }
   .package-enrollment-page .package-booklet-actions { justify-self: start; }
 }
-.package-enrollment-page .package-gallery.is-editorial-focused .package-gallery-main { grid-template-columns: minmax(0, 1fr); justify-items: center; }
-.package-enrollment-page .package-gallery.is-editorial-focused .package-gallery-main > img { width: min(100%, 980px); aspect-ratio: 16 / 9; object-position: center 22%; }
+.package-enrollment-page .package-gallery.is-editorial-focused .package-gallery-track { justify-content: center; }
+.package-enrollment-page .package-gallery.is-editorial-focused .package-gallery-track > img { width: min(100%, 980px); flex-basis: min(100%, 980px); aspect-ratio: 16 / 9; object-position: center 22%; }
 .package-enrollment-page .package-gallery.is-editorial-focused .package-gallery-footer { display: none; }
