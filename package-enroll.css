@@ -579,6 +579,10 @@
 .package-enrollment-page .package-testimonials-rating,
 .package-enrollment-page .package-testimonials-rating > span:first-child { color: #4f7a5b; }
 .package-enrollment-page .package-page-footer { border-top-color: #dce9d9; }
+.package-enrollment-page .package-booklet-actions .package-booklet-download,
+.package-enrollment-page .package-booklet-actions .package-booklet-download:visited { color: #fff !important; }
+.package-enrollment-page .package-booklet-actions .package-booklet-download span { color: #c49a62 !important; }
+.package-enrollment-page .package-booklet-actions .package-booklet-download:hover { color: #fff !important; background: #194c3b; }
 @media (max-width: 700px) {
   .package-enrollment-page .package-hero h1 { font-size: clamp(38px, 10vw, 54px); }
   .package-enrollment-page .package-section-heading h2,
