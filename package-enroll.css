@@ -11,6 +11,53 @@
   color: var(--pkg-ink);
 }
 
+/* Currency selector shown in the package navigation. */
+.package-enrollment-page .package-currency-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 4px;
+  border: 1px solid #e6dfd5;
+  border-radius: 999px;
+  background: #f3f0eb;
+  white-space: nowrap;
+}
+.package-enrollment-page .package-currency-toggle button {
+  min-width: 86px;
+  min-height: 46px;
+  padding: 0 15px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: #81796f;
+  font-family: inherit;
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color .18s ease, color .18s ease, box-shadow .18s ease;
+}
+.package-enrollment-page .package-currency-toggle button[aria-pressed="true"] {
+  background: #fff;
+  color: #272523;
+  box-shadow: 0 1px 4px rgba(40, 33, 26, .09);
+}
+.package-enrollment-page .package-currency-toggle button:focus-visible {
+  outline: 2px solid #a98764;
+  outline-offset: 2px;
+}
+.package-enrollment-page .package-mobile-currency { padding: 8px 0 14px; }
+.package-enrollment-page .package-mobile-currency .package-currency-toggle { width: max-content; }
+@media (max-width: 1380px) {
+  .package-enrollment-page .package-mobile-currency { display: flex; justify-content: flex-start; }
+}
+@media (min-width: 1381px) {
+  .package-enrollment-page .package-mobile-currency { display: none; }
+}
+@media (max-width: 500px) {
+  .package-enrollment-page .package-currency-toggle button { min-width: 78px; min-height: 41px; font-size: 15px; }
+}
+
 .package-enrollment-page .sr-header { position: sticky; }
 .package-enrollment-page .package-page-main {
   overflow: hidden;
