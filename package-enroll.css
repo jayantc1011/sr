@@ -51,7 +51,7 @@
   border-radius: 999px;
   background: #16543e;
   box-shadow: 0 5px 14px rgba(21, 64, 47, .18);
-  color: #fff;
+  color: #fff !important;
   font-size: 14px;
   font-weight: 800;
   letter-spacing: .035em;
