@@ -200,6 +200,7 @@
   const demoTitle = document.querySelector('[data-demo-title]');
   const dotsRoot = document.querySelector('[data-gallery-dots]');
   const editorialPhotoLink = document.querySelector('[data-view-editorial-photo]');
+  const packageGallery = document.querySelector('[data-package-gallery]');
   const demos = [
     {
       kicker: 'DEMO SLIDE 01 · IDENTITY MATRIX', title: 'Style Archetype & Lifestyle Blueprint',
@@ -248,11 +249,12 @@
   const renderGallery = () => {
     const demo = demos[currentSlide];
     const galleryImages = editorialPhotoFocused
-      ? [['assets/about/shalini-reading.webp', 'Shalini Rathod reviewing a style booklet']]
+      ? [['assets/hero-seated.webp', 'Shalini Rathod in a landscape editorial portrait']]
       : demo.images;
     const count = Math.min(visibleImageCount(), galleryImages.length);
     if (galleryTrack) {
       galleryTrack.classList.toggle('is-editorial-focused', editorialPhotoFocused);
+      packageGallery?.classList.toggle('is-editorial-focused', editorialPhotoFocused);
       galleryTrack.replaceChildren(...Array.from({ length: count }, (_, slot) => {
         const image = document.createElement('img');
         const [src, alt] = galleryImages[slot];
