@@ -3,6 +3,7 @@
     'comm-package': {
       name: 'Speak with Confidence',
       shortName: 'Speak with Confidence',
+      bookletTitle: 'Personalised Communication Progress Report',
       kicker: 'SHALINI RATHOD · IMAGE CONSULTING & STYLING',
       headline: 'A More Refined Way to Communicate',
       description: 'Private coaching tailored to your needs, whether you want to strengthen your delivery, refine your tone, overcome speaking habits, or feel more at ease in professional settings.',
@@ -31,6 +32,7 @@
     'style-package': {
       name: 'Shalini’s Style Transformation',
       shortName: 'Style Transformation',
+      bookletTitle: '📝 Detailed Tailored Style recommendation Booklet',
       kicker: 'PRIVATE IMAGE CONSULTING & STYLING',
       headline: 'Curate your authentic visual identity.',
       description: 'A bespoke 1:1 styling partnership featuring six private video sessions across face shape, body shape, makeup, formal styling, lifestyle analysis, and an open session—alongside your personal Style Booklet.',
@@ -68,6 +70,7 @@
   document.querySelector('meta[name="description"]')?.setAttribute('content', offer.description);
   document.documentElement.dataset.packageOffer = offerKey;
   setText('[data-package-name]', offer.shortName);
+  setText('#package-booklet-title', offer.bookletTitle);
   setText('[data-package-kicker]', offer.kicker);
   document.querySelector('[data-package-headline]').innerHTML = offer.headline;
   setText('[data-package-description]', offer.description);
