@@ -44,8 +44,7 @@
   .package-hero { grid-template-columns: 1fr; gap: 35px; padding: 45px 0 64px; }
   .package-enrollment-page .package-hero h1 { font-size: clamp(43px, 12vw, 66px); }
   .package-hero-description { font-size: 16px; }
-  .package-investment-card { align-items: stretch; }
-  .package-investment-card > div { flex: 1 1 100%; }
+  .package-investment-card { align-items: center; }
   .package-page-button { width: 100%; }
   .package-hero-visual { justify-self: stretch; max-width: none; }
   .package-visual-frame { aspect-ratio: 1.05 / 1; border-width: 7px; border-radius: 27px 27px 65px 27px; }
@@ -64,14 +63,14 @@
 .package-enrollment-page .package-hero h1 { max-width:none; margin:0 0 22px; color:#292623; font:400 clamp(42px,3.4vw,58px)/1.12 Didot,"Bodoni 72","Times New Roman",serif; letter-spacing:-.025em; }
 .package-enrollment-page .package-hero h1 em { color:inherit; font-style:normal; }
 .package-enrollment-page .package-hero-description { max-width:720px; color:#817a72; font:400 clamp(16px,1.15vw,19px)/1.65 "DM Sans","Avenir Next",Arial,sans-serif; }
-.package-enrollment-page .package-investment-card { min-height:96px; margin-top:27px; padding:15px 20px; flex-wrap:nowrap; gap:22px; border:1px solid #e9e3da; border-radius:20px; background:#f3efe9; box-shadow:none; }
-.package-investment-price { min-width:0; display:grid; gap:5px; }
+.package-enrollment-page .package-investment-card { min-height:96px; margin-top:27px; padding:15px 20px; display:flex; flex-wrap:nowrap; align-items:center; justify-content:space-between; gap:22px; border:1px solid #e9e3da; border-radius:20px; background:#f3efe9; box-shadow:none; }
+.package-investment-price { min-width:0; display:grid; align-content:center; gap:5px; }
 .package-enrollment-page .package-investment-label { color:#898278; font-size:9px; font-weight:500; letter-spacing:.09em; }
 .package-enrollment-page .package-price-line { display:flex; align-items:baseline; gap:12px; }
 .package-enrollment-page .package-investment-card strong { color:#292623; font:500 22px/1.1 Didot,"Bodoni 72","Times New Roman",serif; letter-spacing:0; }
 .package-enrollment-page .package-price-line del { color:#aaa197; font-size:12px; }
 .package-enrollment-page .package-installments { color:#928a80; font-size:10px; }
-.package-hero-deliverables { margin-left:auto; display:grid; gap:2px; color:#736c63; font-size:11px; line-height:1.45; text-align:right; white-space:nowrap; }
+.package-hero-deliverables { flex:0 0 auto; margin-left:auto; display:grid; align-content:center; gap:2px; color:#736c63; font-size:11px; line-height:1.45; text-align:right; white-space:nowrap; }
 .package-hero-actions { display:flex; flex-wrap:wrap; gap:11px; margin-top:26px; }
 .package-enrollment-page .package-hero-actions .package-page-button,.package-discovery-button { min-height:48px; padding:0 22px; display:inline-flex; align-items:center; justify-content:center; gap:9px; border:1px solid #25221f; border-radius:999px; background:#25221f; box-shadow:none; color:#fff!important; font:600 11px/1.2 "DM Sans","Avenir Next",Arial,sans-serif; letter-spacing:.07em; }
 .package-enrollment-page .package-hero-actions .package-page-button:hover { background:#3b3732; transform:translateY(-1px); }
@@ -89,7 +88,7 @@
 .package-enrollment-page .package-visual-caption span { font-size:9px; font-weight:500; letter-spacing:.12em; }
 .package-enrollment-page .package-visual-session,.package-enrollment-page .package-visual-note { display:none; }
 @media(max-width:900px){.package-enrollment-page .package-hero.package-page-grid{grid-template-columns:minmax(0,1fr) minmax(300px,.78fr);gap:42px}.package-enrollment-page .package-hero .package-page-kicker{margin-bottom:46px}.package-hero-deliverables{font-size:9px}.package-enrollment-page .package-hero-visual{max-width:400px}}
-@media(max-width:680px){.package-enrollment-page .package-hero.package-page-grid{width:calc(100% - 38px);grid-template-columns:1fr;gap:35px;padding:35px 0 64px}.package-enrollment-page .package-hero .package-page-kicker{margin-bottom:42px;font-size:10px}.package-enrollment-page .package-hero h1{font-size:clamp(39px,10vw,54px)}.package-enrollment-page .package-hero-description{font-size:15px}.package-enrollment-page .package-investment-card{min-height:0;align-items:center;padding:14px;gap:10px;border-radius:16px}.package-enrollment-page .package-investment-card strong{font-size:20px}.package-hero-deliverables{white-space:normal;font-size:8px}.package-enrollment-page .package-hero-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}.package-enrollment-page .package-hero-actions .package-page-button,.package-discovery-button{min-height:46px;padding:0 9px;font-size:8px}.package-hero-proof{gap:7px;margin-top:18px;font-size:8px}.package-enrollment-page .package-hero-visual{width:min(100%,430px);max-width:none;justify-self:center}.package-enrollment-page .package-visual-frame{aspect-ratio:.82/1;border-radius:18px}}
+@media(max-width:680px){.package-enrollment-page .package-hero.package-page-grid{width:calc(100% - 38px);grid-template-columns:1fr;gap:35px;padding:35px 0 64px}.package-enrollment-page .package-hero .package-page-kicker{margin-bottom:42px;font-size:10px}.package-enrollment-page .package-hero h1{font-size:clamp(39px,10vw,54px)}.package-enrollment-page .package-hero-description{font-size:15px}.package-enrollment-page .package-investment-card{min-height:0;align-items:center;padding:12px;gap:8px;border-radius:16px}.package-enrollment-page .package-investment-label{font-size:7px;letter-spacing:.055em}.package-enrollment-page .package-investment-card strong{font-size:18px}.package-enrollment-page .package-installments{font-size:8px}.package-hero-deliverables{white-space:normal;font-size:7px;line-height:1.35}.package-enrollment-page .package-hero-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}.package-enrollment-page .package-hero-actions .package-page-button,.package-discovery-button{min-height:46px;padding:0 9px;font-size:8px}.package-hero-proof{gap:7px;margin-top:18px;font-size:8px}.package-enrollment-page .package-hero-visual{width:min(100%,430px);max-width:none;justify-self:center}.package-enrollment-page .package-visual-frame{aspect-ratio:.82/1;border-radius:18px}}
 
 /* Six-session styling breakdown matching the supplied package reference. */
 .package-enrollment-page .package-sessions-section { padding: clamp(52px, 6vw, 88px) 0 clamp(58px, 6vw, 90px); }
@@ -519,6 +518,16 @@
 .package-enrollment-page .package-hero-proof { color: #758478; }
 .package-enrollment-page .package-investment-card strong,
 .package-enrollment-page .package-hero-deliverables { color: #1e3429; }
+.package-enrollment-page .package-investment-card { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,auto); align-items:center; justify-content:stretch; flex-wrap:nowrap; }
+.package-enrollment-page .package-investment-card > .package-investment-price { min-width:0; width:auto; flex:initial; grid-column:1; align-self:center; }
+.package-enrollment-page .package-investment-card > .package-hero-deliverables { min-width:0; width:auto; flex:initial; grid-column:2; align-self:center; margin-left:0; white-space:normal; }
+@media (max-width:700px) {
+  .package-enrollment-page .package-investment-card { grid-template-columns:minmax(0,1fr) minmax(0,.9fr); gap:12px; padding:14px; }
+  .package-enrollment-page .package-investment-label { font-size:clamp(7px,1.7vw,9px); letter-spacing:.04em; }
+  .package-enrollment-page .package-investment-card strong { font-size:clamp(17px,4vw,21px); }
+  .package-enrollment-page .package-installments { font-size:clamp(8px,1.8vw,10px); }
+  .package-enrollment-page .package-hero-deliverables { font-size:clamp(8px,1.9vw,10px); line-height:1.35; }
+}
 .package-enrollment-page .package-hero-actions .package-page-button,
 .package-enrollment-page .package-booking-submit { border-color: #194c3b; background: #194c3b; }
 .package-enrollment-page .package-hero-actions .package-page-button:hover,
