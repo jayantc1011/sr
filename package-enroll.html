@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css?v=20261019-package-local" />
-  <link rel="stylesheet" href="package-enroll.css?v=20261020-mobile-hero-photo" />
+  <link rel="stylesheet" href="package-enroll.css?v=20261020-demo-image-carousel" />
 </head>
 <body class="academy-page package-enrollment-page">
   <aside class="package-announcement" aria-label="New for 2026">
@@ -168,13 +168,15 @@
         <div class="package-demo-heading">
           <div><p data-demo-kicker>DEMO SLIDE 01 · IDENTITY MATRIX</p><h3 data-demo-title>Style Archetype &amp; Lifestyle Blueprint</h3></div>
         </div>
-        <div class="package-gallery-main" role="tabpanel" id="booklet-demo-panel" aria-label="Selected booklet demo images" data-gallery-track>
-          <img src="assets/about/shalini-close.webp" alt="Shalini Rathod in a personal styling portrait" loading="lazy" />
-          <img src="assets/about/shalini-seated.webp" alt="Shalini Rathod seated in a black outfit" loading="lazy" />
-          <img src="assets/about/shalini-reading.webp" alt="Shalini Rathod reviewing a style booklet" loading="lazy" />
+        <div class="package-gallery-main" role="tabpanel" id="booklet-demo-panel" aria-label="Selected booklet demo images" data-gallery-viewport>
+          <div class="package-gallery-track" data-gallery-track></div>
         </div>
         <div class="package-gallery-footer">
           <div class="package-gallery-dots" data-gallery-dots role="tablist" aria-label="Choose a booklet demo"></div>
+          <div class="package-gallery-controls" role="group" aria-label="Browse demo images">
+            <button class="carousel-arrow package-gallery-arrow" type="button" data-gallery-prev aria-label="Previous image" aria-controls="booklet-demo-panel"><svg aria-hidden="true" class="icon icon-chevron" viewBox="0 0 20 20"><path d="M11.75 5.5 7.25 10l4.5 4.5"></path></svg></button>
+            <button class="carousel-arrow package-gallery-arrow" type="button" data-gallery-next aria-label="Next image" aria-controls="booklet-demo-panel"><svg aria-hidden="true" class="icon icon-chevron" viewBox="0 0 20 20"><path d="M8.25 5.5 12.75 10l-4.5 4.5"></path></svg></button>
+          </div>
         </div>
       </div>
     </section>
@@ -286,6 +288,6 @@
     <div class="academy-footer-bottom academy-container"><span>© 2026 Shalini Rathod. All rights reserved.</span><a href="#site-top">Back to Top ↑</a></div>
   </footer>
   <script src="script.js?v=20261019-package-local"></script>
-  <script src="package-enroll.js?v=20261020-mobile-hero-photo"></script>
+  <script src="package-enroll.js?v=20261020-demo-image-carousel"></script>
 </body>
 </html>
