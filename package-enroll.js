@@ -19,6 +19,14 @@
       sessionBadge: '7 private sessions',
       sessions: '7 private sessions',
       length: '7 weeks',
+      sessionDetails: [
+        { title: 'Non-Verbal Communication & Physical Presence', solves: 'Refines the non-verbal cues that shape your presence and credibility.', bullets: ['3-point body language audit', 'Eye contact & facial congruence', 'Video-based presence analysis'], duration: '60 mins · 1:1 Video' },
+        { title: 'Vocal Dynamics & Tonal Control', solves: 'Helps you sound composed, expressive, and assured.', bullets: ['5 vocal delivery variables', 'Strategic pauses & emphasis', '3-tone vocal practice'], duration: '60 mins · 1:1 Video' },
+        { title: 'Verbal Precision & Articulation', solves: 'Helps you express ideas with clarity and precision.', bullets: ['3-part message structuring', 'Filler words & verbal clutter', 'Articulation, diction & sentence economy'], duration: '60 mins · 1:1 Video' },
+        { title: 'Conversational Intelligence & Social Fluency', solves: 'Makes conversations more natural, engaging, and considered.', bullets: ['3-step active listening', 'Conversational turn-taking techniques', 'Rapport building & social calibration'], duration: '60 mins · 1:1 Video' },
+        { title: 'Assertiveness & Verbal Authority', solves: 'Helps you express boundaries and opinions with conviction.', bullets: ['DESC framework for difficult conversations', 'Hedging & unnecessary apologies', 'Assertive response scenario practice'], duration: '60 mins · 1:1 Video' },
+        { title: 'Executive Communication & Speaking Impact', solves: 'Strengthens your impact in high-stakes professional conversations.', bullets: ['PREP framework for concise answers', 'Rule of Three messaging', 'Impromptu speaking & response drills'], duration: '60 mins · 1:1 Video' },
+      ],
     },
     'style-package': {
       name: 'Shalini’s Style Transformation',
@@ -39,6 +47,14 @@
       sessionBadge: '5 private sessions',
       sessions: '5 private sessions',
       length: '5 hours total',
+      sessionDetails: [
+        { title: 'Face Shape Assessment 1:1 Session', solves: 'Decodes your facial geometry to find necklines, eyewear, and earring proportions that flatter your jawline.', bullets: ['Facial geometry & bone structure mapping', 'Flattering necklines, collars & eyewear frames', 'Earring scale & hairstyle proportion guide'], duration: '45 mins · 1:1 Video' },
+        { title: 'Open session for Styling (Anything of your choice)', solves: 'Tackles your most pressing wardrobe problem — vetting dilemma pieces, trip packing, or live closet troubleshooting.', bullets: ['100% custom agenda tailored to your immediate need', 'Live outfit remixing with clothes you already own', 'Quick verdicts on fit, alterations & pairing'], duration: '60 mins · 1:1 Video' },
+        { title: 'Makeup & Accessories Styling', solves: 'Stops undertone mismatch in lip and blush shades, and teaches effortless jewelry and accessory pairing.', bullets: ['Undertone & skin contrast identification', 'Signature everyday & evening makeup shades', 'Jewelry metal selection & focal point balance'], duration: '60 mins · 1:1 Video' },
+        { title: 'Curated styling for formal occasions', solves: 'Eliminates last-minute wardrobe stress before keynotes, galas, weddings, and high-profile presentations.', bullets: ['2–3 complete head-to-toe formal looks', 'Fabric drape & camera-ready lighting checks', 'Footwear, bag & outerwear pairing'], duration: '60 mins · 1:1 Video' },
+        { title: 'Lifestyle & Image Analysis 1:1 session', solves: 'Aligns how you present yourself with your leadership goals, tailored to your real daily schedule.', bullets: ['3-Word Signature Style Archetype definition', 'Wardrobe-to-lifestyle allocation audit', 'Repeatable daily outfit formulas'], duration: '60 mins · 1:1 Video' },
+        { title: 'Body Shape Analysis 1:1 Session', solves: 'Ends the frustration of ill-fitting cuts by decoding vertical and horizontal proportions for effortless tailoring.', bullets: ['Torso-to-leg ratio & bone structure analysis', 'Optimal jacket lengths, waist rises & hemlines', 'Fabric weight & silhouette balancing formulas'], duration: '60 mins · 1:1 Video' },
+      ],
     }
   };
 
@@ -69,6 +85,26 @@
   setText('[data-package-visual-label]', offer.visualLabel);
   setText('[data-package-visual-subtitle]', offer.visualSubtitle);
   setText('[data-package-session-badge]', offer.sessionBadge);
+  document.querySelectorAll('.package-session-card').forEach((card, index) => {
+    const session = offer.sessionDetails[index];
+    if (!session) return;
+    const heading = card.querySelector('h3');
+    const time = card.querySelector('.package-session-time');
+    const solves = card.querySelector('p');
+    const list = card.querySelector('ul');
+    if (heading) heading.textContent = session.title;
+    if (time) time.textContent = '◷  ' + session.duration;
+    if (solves) {
+      const label = document.createElement('strong');
+      label.textContent = 'Solves:';
+      solves.replaceChildren(label, document.createTextNode(' ' + session.solves));
+    }
+    if (list) list.replaceChildren(...session.bullets.map((bullet) => {
+      const item = document.createElement('li');
+      item.textContent = bullet;
+      return item;
+    }));
+  });
   setText('[data-booking-price]', offer.price);
   setText('[data-booking-confirm-price]', offer.price);
   document.querySelectorAll('[data-package-contact]').forEach((link) => { link.href = contactHref; });
