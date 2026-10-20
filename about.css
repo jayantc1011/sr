@@ -167,6 +167,7 @@
   .about-page .about-cta h2{font-size:clamp(32px,9vw,43px);line-height:1.06}
   .about-page .about-cta-actions{flex-direction:column;align-items:stretch;width:100%;gap:18px}
   .about-page .about-cta-actions .about-button{width:100%}
+  .about-page .about-cta .about-button-light{min-height:64px;padding:0 18px;font-size:15px;gap:12px}
   .about-page .about-cta-secondary{align-self:flex-start}
 }
 @media(prefers-reduced-motion:reduce){.about-page *{scroll-behavior:auto!important;transition:none!important}}
