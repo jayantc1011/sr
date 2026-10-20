@@ -596,7 +596,7 @@
 }
 /* Give the booklet intro a stable text/actions grid and roomier portrait previews. */
 .package-enrollment-page .package-booklet-intro { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; column-gap: clamp(24px, 3vw, 44px); width: 100%; }
-.package-enrollment-page .package-booklet-heading { width: 100%; max-width: 860px; }
+.package-enrollment-page .package-booklet-heading { width: 100%; max-width: 860px; margin: 0; }
 .package-enrollment-page .package-booklet-heading h2 { max-width: 860px; }
 .package-enrollment-page .package-booklet-description { max-width: 860px; }
 .package-enrollment-page .package-booklet-actions { align-self: end; justify-self: end; }
