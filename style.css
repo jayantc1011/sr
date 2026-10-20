@@ -6800,9 +6800,3 @@ a {
   }
 }
 
-/* Keep the flagship package cards visually aligned when their include lists wrap differently. */
-@media (min-width: 821px) {
-  .services-page .packages-grid { align-items: stretch; }
-  .services-page .package-card-body { flex: 1; }
-  .services-page .package-includes { flex: 1; }
-}
