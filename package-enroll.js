@@ -101,6 +101,12 @@
   setText('#package-booklet-title', offer.bookletTitle);
   setText('[data-package-kicker]', offer.kicker);
   document.querySelector('[data-package-headline]').innerHTML = offer.headline;
+  const mobileCover = document.querySelector('[data-package-cover-mobile]');
+  const desktopCover = document.querySelector('[data-package-cover]');
+  if (mobileCover && desktopCover) {
+    mobileCover.src = desktopCover.currentSrc || desktopCover.src;
+    mobileCover.alt = '';
+  }
   setText('[data-package-description]', offer.description);
   setText('[data-package-duration]', offer.duration);
   setText('[data-package-format]', offer.format);
