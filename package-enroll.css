@@ -594,3 +594,16 @@
   .package-enrollment-page .package-booking-heading h2,
   .package-enrollment-page .package-faq-heading h2 { font-size: clamp(32px, 8vw, 42px); }
 }
+/* Give the booklet intro a stable text/actions grid and roomier portrait previews. */
+.package-enrollment-page .package-booklet-intro { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; column-gap: clamp(24px, 3vw, 44px); width: 100%; }
+.package-enrollment-page .package-booklet-heading { width: 100%; max-width: 860px; }
+.package-enrollment-page .package-booklet-heading h2 { max-width: 860px; }
+.package-enrollment-page .package-booklet-description { max-width: 860px; }
+.package-enrollment-page .package-booklet-actions { align-self: end; justify-self: end; }
+.package-enrollment-page .package-gallery { width: min(100%, 1280px); }
+.package-enrollment-page .package-gallery-main { gap: clamp(12px, 1.5vw, 22px); }
+.package-enrollment-page .package-gallery-main > img { aspect-ratio: 4 / 5; object-position: center 10%; }
+@media(max-width:900px) {
+  .package-enrollment-page .package-booklet-intro { grid-template-columns: 1fr; row-gap: 18px; }
+  .package-enrollment-page .package-booklet-actions { justify-self: start; }
+}
