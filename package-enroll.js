@@ -280,10 +280,11 @@
   };
   editorialPhotoLink?.addEventListener('click', (event) => {
     event.preventDefault();
-    currentSlide = 0;
-    editorialPhotoFocused = true;
+    editorialPhotoFocused = !editorialPhotoFocused;
+    if (editorialPhotoFocused) currentSlide = 0;
+    editorialPhotoLink.textContent = editorialPhotoFocused ? 'Back to Demo Slides' : 'View Editorial Photo';
     renderGallery();
-    galleryTrack?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    if (editorialPhotoFocused) galleryTrack?.scrollIntoView({ behavior: 'smooth', block: 'center' });
   });
   if (dotsRoot) {
     dotsRoot.replaceChildren(...Array.from({ length: demos.length }, (_, index) => {
