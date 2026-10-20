@@ -583,6 +583,10 @@
 .package-enrollment-page .package-booklet-actions .package-booklet-download:visited { color: #fff !important; }
 .package-enrollment-page .package-booklet-actions .package-booklet-download span { color: #c49a62 !important; }
 .package-enrollment-page .package-booklet-actions .package-booklet-download:hover { color: #fff !important; background: #194c3b; }
+.package-enrollment-page .package-booklet-intro { width: 100%; }
+.package-enrollment-page .package-booklet-heading { max-width: 820px; }
+.package-enrollment-page .package-booklet-heading h2 { max-width: 760px; font-size: clamp(34px, 2.7vw, 42px) !important; line-height: 1.12; }
+.package-enrollment-page .package-booklet-description { max-width: 760px; font-size: clamp(14px, 1.05vw, 16px); line-height: 1.5; }
 @media (max-width: 700px) {
   .package-enrollment-page .package-hero h1 { font-size: clamp(38px, 10vw, 54px); }
   .package-enrollment-page .package-section-heading h2,
