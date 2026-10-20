@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css?v=20261019-package-local" />
-  <link rel="stylesheet" href="package-enroll.css?v=20261020-clean-hero-photo" />
+  <link rel="stylesheet" href="package-enroll.css?v=20261020-currency-toggle" />
 </head>
 <body class="academy-page package-enrollment-page">
   <header class="sr-header" id="site-top">
@@ -24,6 +24,10 @@
         <a class="sr-nav-link" href="contact.html">Contact</a>
       </nav>
       <div class="sr-header-actions">
+        <div class="package-currency-toggle" role="group" aria-label="Choose display currency">
+          <button type="button" data-currency="INR" aria-pressed="true">₹ INR</button>
+          <button type="button" data-currency="USD" aria-pressed="false">$ USD</button>
+        </div>
         <a class="sr-student-button" href="lms-auth.html" aria-label="Student Portal">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m2.5 9 9.5-5 9.5 5-9.5 5-9.5-5Z"/><path d="M6 11.8V16c0 1.6 2.9 3 6 3s6-1.4 6-3v-4.2M21.5 9v7"/></svg>
           <span>Student Portal</span>
@@ -36,6 +40,12 @@
     </div>
     <div class="sr-mobile-menu" id="sr-mobile-menu" hidden>
       <nav class="sr-mobile-links" aria-label="Mobile navigation">
+        <div class="package-mobile-currency">
+          <div class="package-currency-toggle" role="group" aria-label="Choose display currency">
+            <button type="button" data-currency="INR" aria-pressed="true">₹ INR</button>
+            <button type="button" data-currency="USD" aria-pressed="false">$ USD</button>
+          </div>
+        </div>
         <a class="sr-mobile-link" href="index.html">Home<svg class="cta-arrow-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12h16m-7-7 7 7-7 7"/></svg></a>
         <a class="sr-mobile-link is-active" href="services.html#consultations" aria-current="page">1-on-1 Consultations<svg class="cta-arrow-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12h16m-7-7 7 7-7 7"/></svg></a>
         <a class="sr-mobile-link" href="lms.html">Courses<svg class="cta-arrow-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12h16m-7-7 7 7-7 7"/></svg></a>
@@ -266,6 +276,6 @@
     <div class="academy-footer-bottom academy-container"><span>© 2026 Shalini Rathod. All rights reserved.</span><a href="#site-top">Back to Top ↑</a></div>
   </footer>
   <script src="script.js?v=20261019-package-local"></script>
-  <script src="package-enroll.js?v=20261020-style-sessions-v2"></script>
+  <script src="package-enroll.js?v=20261020-currency-toggle"></script>
 </body>
 </html>
