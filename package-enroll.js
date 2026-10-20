@@ -65,6 +65,34 @@
   const offer = offers[offerKey];
   const contactHref = 'contact.html?type=consultation&offer=' + encodeURIComponent(offerKey) + '#academy-contact-form';
   const setText = (selector, value) => document.querySelectorAll(selector).forEach((element) => { element.textContent = value; });
+  const priceInINR = Number(offer.price.replace(/[^0-9.]/g, ''));
+  const formatPrice = (currency) => {
+    if (currency === 'USD') {
+      const usdPrice = Math.round(priceInINR / 83);
+      return '$' + usdPrice.toLocaleString('en-US');
+    }
+    return '₹' + priceInINR.toLocaleString('en-IN');
+  };
+  let selectedCurrency = 'INR';
+  const updateCurrency = (currency) => {
+    selectedCurrency = currency;
+    document.querySelectorAll('[data-currency]').forEach((button) => {
+      const active = button.dataset.currency === currency;
+      button.setAttribute('aria-pressed', String(active));
+    });
+    const displayPrice = formatPrice(currency);
+    setText('[data-package-price]', displayPrice);
+    setText('[data-booking-price]', displayPrice);
+    setText('[data-booking-confirm-price]', displayPrice);
+    setText('[data-package-installments]', currency === 'INR' ? offer.installments : '');
+    const installmentLabel = document.querySelector('[data-package-installments]');
+    if (installmentLabel) installmentLabel.hidden = currency === 'USD' || !offer.installments;
+  };
+  updateCurrency(selectedCurrency);
+
+  document.querySelectorAll('[data-currency]').forEach((button) => {
+    button.addEventListener('click', () => updateCurrency(button.dataset.currency));
+  });
 
   document.title = offer.name + ' | Shalini Rathod';
   document.querySelector('meta[name="description"]')?.setAttribute('content', offer.description);
@@ -76,7 +104,7 @@
   setText('[data-package-description]', offer.description);
   setText('[data-package-duration]', offer.duration);
   setText('[data-package-format]', offer.format);
-  setText('[data-package-price]', offer.price);
+  setText('[data-package-price]', formatPrice(selectedCurrency));
   setText('[data-package-investment-label]', offer.investmentLabel);
   setText('[data-package-deliverable-one]', offer.deliverableOne);
   setText('[data-package-deliverable-two]', offer.deliverableTwo);
@@ -108,8 +136,8 @@
       return item;
     }));
   });
-  setText('[data-booking-price]', offer.price);
-  setText('[data-booking-confirm-price]', offer.price);
+  setText('[data-booking-price]', formatPrice(selectedCurrency));
+  setText('[data-booking-confirm-price]', formatPrice(selectedCurrency));
   document.querySelectorAll('[data-package-contact]').forEach((link) => { link.href = contactHref; });
 
   const bookingForm = document.querySelector('[data-booking-form]');
@@ -128,8 +156,9 @@
       button.classList.toggle('is-selected', active);
       button.setAttribute('aria-selected', String(active));
     });
-    setText('[data-booking-confirm-price]', mode === 'package' ? offer.price : 'FREE');
-    const submitText = mode === 'package' ? 'CONFIRM PACKAGE (' + offer.price + ')' : 'CONFIRM FREE DISCOVERY';
+    const bookingPrice = formatPrice(selectedCurrency);
+    setText('[data-booking-confirm-price]', mode === 'package' ? bookingPrice : 'FREE');
+    const submitText = mode === 'package' ? 'CONFIRM PACKAGE (' + bookingPrice + ')' : 'CONFIRM FREE DISCOVERY';
     const submitButton = document.querySelector('.package-booking-submit');
     if (submitButton) submitButton.innerHTML = submitText + ' <span aria-hidden="true">→</span>';
     if (bookingStatus) bookingStatus.textContent = '';
