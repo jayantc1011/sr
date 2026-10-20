@@ -199,6 +199,7 @@
   const demoKicker = document.querySelector('[data-demo-kicker]');
   const demoTitle = document.querySelector('[data-demo-title]');
   const dotsRoot = document.querySelector('[data-gallery-dots]');
+  const editorialPhotoLink = document.querySelector('[data-view-editorial-photo]');
   const demos = [
     {
       kicker: 'DEMO SLIDE 01 · IDENTITY MATRIX', title: 'Style Archetype & Lifestyle Blueprint',
@@ -242,14 +243,19 @@
     }
   ];
   let currentSlide = 0;
+  let editorialPhotoFocused = false;
   const visibleImageCount = () => window.matchMedia('(max-width: 650px)').matches ? 1 : window.matchMedia('(max-width: 900px)').matches ? 2 : 3;
   const renderGallery = () => {
     const demo = demos[currentSlide];
-    const count = Math.min(visibleImageCount(), demo.images.length);
+    const galleryImages = editorialPhotoFocused
+      ? [['assets/about/shalini-reading.webp', 'Shalini Rathod reviewing a style booklet']]
+      : demo.images;
+    const count = Math.min(visibleImageCount(), galleryImages.length);
     if (galleryTrack) {
+      galleryTrack.classList.toggle('is-editorial-focused', editorialPhotoFocused);
       galleryTrack.replaceChildren(...Array.from({ length: count }, (_, slot) => {
         const image = document.createElement('img');
-        const [src, alt] = demo.images[slot];
+        const [src, alt] = galleryImages[slot];
         image.src = src;
         image.alt = alt;
         image.loading = 'lazy';
@@ -266,9 +272,17 @@
     });
   };
   const showDemo = (index) => {
+    editorialPhotoFocused = false;
     currentSlide = (index + demos.length) % demos.length;
     renderGallery();
   };
+  editorialPhotoLink?.addEventListener('click', (event) => {
+    event.preventDefault();
+    currentSlide = 0;
+    editorialPhotoFocused = true;
+    renderGallery();
+    galleryTrack?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
   if (dotsRoot) {
     dotsRoot.replaceChildren(...Array.from({ length: demos.length }, (_, index) => {
       const button = document.createElement('button');
