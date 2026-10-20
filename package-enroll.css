@@ -1,0 +1,561 @@
+/* Package landing page: editorial layout, aligned with the academy's forest and sage palette. */
+.package-enrollment-page {
+  --pkg-ink: #1c3328;
+  --pkg-forest: #194c3b;
+  --pkg-leaf: #5d8e53;
+  --pkg-sage: #eef5e9;
+  --pkg-paper: #f9faf5;
+  --pkg-muted: #647367;
+  --pkg-line: #dce9d9;
+  background: var(--pkg-paper);
+  color: var(--pkg-ink);
+}
+
+.package-enrollment-page .sr-header { position: sticky; }
+.package-enrollment-page .package-page-main {
+  overflow: hidden;
+  background-color: var(--pkg-paper);
+  background-image: linear-gradient(rgba(39, 91, 57, .035) 1px, transparent 1px), linear-gradient(90deg, rgba(39, 91, 57, .035) 1px, transparent 1px);
+  background-size: 42px 42px;
+}
+.package-breadcrumb {
+  width: min(100% - 56px, 1280px);
+  margin: 0 auto;
+  padding: 25px 0 0;
+  display: flex;
+  gap: 11px;
+  align-items: center;
+  color: #788779;
+  font: 600 13px/1.4 "Bricolage Grotesque", Arial, sans-serif;
+}
+.package-breadcrumb a { color: var(--pkg-forest); text-decoration: underline; text-underline-offset: 3px; }
+.package-page-grid,
+.package-overview-section,
+.package-booklet-section,
+.package-testimonials-section,
+.package-page-footer { border-top: 1px solid var(--pkg-line); }
+
+@media (max-width: 900px) {
+  .package-hero { grid-template-columns: minmax(0, 1fr) minmax(290px, .8fr); gap: 34px; }
+}
+@media (max-width: 700px) {
+  .package-breadcrumb,.package-page-grid,.package-overview-section,.package-booklet-section,.package-testimonials-section,.package-booking-section { width: min(100% - 34px, 560px); }
+  .package-breadcrumb { padding-top: 19px; font-size: 12px; }
+  .package-hero { grid-template-columns: 1fr; gap: 35px; padding: 45px 0 64px; }
+  .package-enrollment-page .package-hero h1 { font-size: clamp(43px, 12vw, 66px); }
+  .package-hero-description { font-size: 16px; }
+  .package-investment-card { align-items: stretch; }
+  .package-investment-card > div { flex: 1 1 100%; }
+  .package-page-button { width: 100%; }
+  .package-hero-visual { justify-self: stretch; max-width: none; }
+  .package-visual-frame { aspect-ratio: 1.05 / 1; border-width: 7px; border-radius: 27px 27px 65px 27px; }
+  .package-overview-section,.package-booklet-section,.package-testimonials-section { padding: 61px 0; }
+  .package-enrollment-page .package-section-heading h2 { font-size: clamp(34px, 9vw, 46px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .package-page-button,.package-gallery-dot { transition: none; }
+}
+
+/* Reference-matched package hero; shared site navigation remains untouched. */
+.package-enrollment-page .package-hero.package-page-grid { width:min(calc(100% - 64px),1430px); grid-template-columns:minmax(0,1.82fr) minmax(360px,1fr); gap:clamp(70px,6vw,120px); align-items:center; padding:48px 0 84px; }
+.package-enrollment-page .package-hero-copy { max-width:850px; }
+.package-enrollment-page .package-hero .package-page-kicker { margin:0 0 clamp(52px,5.2vw,82px); color:#888078; font:500 12px/1.5 "DM Sans","Avenir Next",Arial,sans-serif; letter-spacing:.2em; }
+.package-enrollment-page .package-kicker-dot { display:none; }
+.package-enrollment-page .package-hero h1 { max-width:none; margin:0 0 22px; color:#292623; font:400 clamp(42px,3.4vw,58px)/1.12 Didot,"Bodoni 72","Times New Roman",serif; letter-spacing:-.025em; }
+.package-enrollment-page .package-hero h1 em { color:inherit; font-style:normal; }
+.package-enrollment-page .package-hero-description { max-width:720px; color:#817a72; font:400 clamp(16px,1.15vw,19px)/1.65 "DM Sans","Avenir Next",Arial,sans-serif; }
+.package-enrollment-page .package-investment-card { min-height:96px; margin-top:27px; padding:15px 20px; flex-wrap:nowrap; gap:22px; border:1px solid #e9e3da; border-radius:20px; background:#f3efe9; box-shadow:none; }
+.package-investment-price { min-width:0; display:grid; gap:5px; }
+.package-enrollment-page .package-investment-label { color:#898278; font-size:9px; font-weight:500; letter-spacing:.09em; }
+.package-enrollment-page .package-price-line { display:flex; align-items:baseline; gap:12px; }
+.package-enrollment-page .package-investment-card strong { color:#292623; font:500 22px/1.1 Didot,"Bodoni 72","Times New Roman",serif; letter-spacing:0; }
+.package-enrollment-page .package-price-line del { color:#aaa197; font-size:12px; }
+.package-enrollment-page .package-installments { color:#928a80; font-size:10px; }
+.package-hero-deliverables { margin-left:auto; display:grid; gap:2px; color:#736c63; font-size:11px; line-height:1.45; text-align:right; white-space:nowrap; }
+.package-hero-actions { display:flex; flex-wrap:wrap; gap:11px; margin-top:26px; }
+.package-enrollment-page .package-hero-actions .package-page-button,.package-discovery-button { min-height:48px; padding:0 22px; display:inline-flex; align-items:center; justify-content:center; gap:9px; border:1px solid #25221f; border-radius:999px; background:#25221f; box-shadow:none; color:#fff!important; font:600 11px/1.2 "DM Sans","Avenir Next",Arial,sans-serif; letter-spacing:.07em; }
+.package-enrollment-page .package-hero-actions .package-page-button:hover { background:#3b3732; transform:translateY(-1px); }
+.package-hero-actions .package-page-button svg,.package-discovery-button svg { width:16px; height:16px; fill:none; stroke:currentColor; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; }
+.package-discovery-button { border-color:#d8d3cd; background:#fff!important; color:#4b4640!important; }
+.package-discovery-button:hover { border-color:#bdb4a9; transform:translateY(-1px); }
+.package-hero-proof { display:flex; flex-wrap:wrap; align-items:center; gap:12px; margin-top:27px; color:#928a81; font-size:10px; }
+.package-hero-proof i { width:3px; height:3px; border-radius:50%; background:#b4aca2; }
+.package-enrollment-page .package-hero-visual { max-width:460px; }
+.package-enrollment-page .package-visual-frame { aspect-ratio: .8 / 1; border:0; border-radius:21px; background:#ede6dd; box-shadow:none; }
+.package-enrollment-page .package-visual-frame::after { inset:68% 0 0; background:linear-gradient(transparent,rgba(29,27,24,.72)); }
+.package-enrollment-page .package-visual-frame>img { object-fit:cover; object-position:center 28%; }
+.package-enrollment-page .package-visual-caption { left:20px; right:20px; bottom:18px; gap:1px; }
+.package-enrollment-page .package-visual-caption strong { font:500 20px/1.25 Didot,"Bodoni 72","Times New Roman",serif; letter-spacing:0; }
+.package-enrollment-page .package-visual-caption span { font-size:9px; font-weight:500; letter-spacing:.12em; }
+.package-enrollment-page .package-visual-session,.package-enrollment-page .package-visual-note { display:none; }
+@media(max-width:900px){.package-enrollment-page .package-hero.package-page-grid{grid-template-columns:minmax(0,1fr) minmax(300px,.78fr);gap:42px}.package-enrollment-page .package-hero .package-page-kicker{margin-bottom:46px}.package-hero-deliverables{font-size:9px}.package-enrollment-page .package-hero-visual{max-width:400px}}
+@media(max-width:680px){.package-enrollment-page .package-hero.package-page-grid{width:calc(100% - 38px);grid-template-columns:1fr;gap:35px;padding:35px 0 64px}.package-enrollment-page .package-hero .package-page-kicker{margin-bottom:42px;font-size:10px}.package-enrollment-page .package-hero h1{font-size:clamp(39px,10vw,54px)}.package-enrollment-page .package-hero-description{font-size:15px}.package-enrollment-page .package-investment-card{min-height:0;align-items:center;padding:14px;gap:10px;border-radius:16px}.package-enrollment-page .package-investment-card strong{font-size:20px}.package-hero-deliverables{white-space:normal;font-size:8px}.package-enrollment-page .package-hero-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}.package-enrollment-page .package-hero-actions .package-page-button,.package-discovery-button{min-height:46px;padding:0 9px;font-size:8px}.package-hero-proof{gap:7px;margin-top:18px;font-size:8px}.package-enrollment-page .package-hero-visual{width:min(100%,430px);max-width:none;justify-self:center}.package-enrollment-page .package-visual-frame{aspect-ratio:.82/1;border-radius:18px}}
+
+/* Six-session styling breakdown matching the supplied package reference. */
+.package-enrollment-page .package-sessions-section { padding: clamp(52px, 6vw, 88px) 0 clamp(58px, 6vw, 90px); }
+.package-sessions-section .package-section-heading { max-width: 900px; margin-bottom: clamp(28px, 3vw, 42px); }
+.package-sessions-section .package-page-kicker { margin-bottom: 9px; color: #b88d55; font-size: clamp(10px, .78vw, 12px); letter-spacing: .18em; }
+.package-enrollment-page .package-sessions-section h2 { margin: 0 0 10px; color: #292623; font: 400 clamp(34px, 3vw, 46px)/1.12 Didot, "Bodoni 72", "Times New Roman", serif; letter-spacing: -.02em; }
+.package-sessions-section .package-section-heading > p:last-child { color: #8b8379; font-size: clamp(14px, 1vw, 16px); line-height: 1.6; }
+.package-session-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(14px, 1.35vw, 20px); }
+.package-session-card { min-height: clamp(300px, 27vw, 370px); display: flex; flex-direction: column; padding: clamp(19px, 1.65vw, 25px); border: 1px solid #eee8e0; border-radius: 16px; background: rgba(255,255,255,.9); box-shadow: 0 6px 18px rgba(50,40,28,.045); }
+.package-session-meta { display: flex; align-items: center; justify-content: space-between; gap: 9px; margin-bottom: clamp(18px, 1.6vw, 24px); color: #514c46; font: 700 clamp(10px, .82vw, 12px)/1.35 "DM Sans", "Avenir Next", Arial, sans-serif; }
+.package-session-time { padding: 5px 9px; border: 1px solid #eee5d9; border-radius: 999px; color: #817568; background: #fbf9f6; font-size: clamp(9px, .72vw, 11px); font-weight: 500; white-space: nowrap; }
+.package-enrollment-page .package-session-card h3 { margin: 0 0 15px; color: #302b26; font: 400 clamp(18px, 1.38vw, 21px)/1.28 Didot, "Bodoni 72", "Times New Roman", serif; letter-spacing: -.01em; }
+.package-session-card > p { margin: 0 0 17px; color: #776f66; font-size: clamp(12px, .94vw, 14px); line-height: 1.58; }
+.package-session-card > p strong { color: #4a443d; font-weight: 750; }
+.package-session-card ul { display: grid; gap: 9px; margin: 0; padding: 0; list-style: none; }
+.package-session-card li { position: relative; padding-left: 17px; color: #81786f; font-size: clamp(11px, .86vw, 13px); line-height: 1.48; }
+.package-session-card li::before { content: "✓"; position: absolute; left: 0; color: #c49a62; font-size: 12px; }
+.package-session-footer { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: auto; padding-top: 14px; border-top: 1px solid #f0ece7; color: #a0988e; font-size: clamp(10px, .78vw, 12px); }
+.package-session-footer a { display: inline-flex; align-items: center; gap: 5px; color: #39342f; font-weight: 700; text-decoration: none; }
+.package-session-footer a:hover { color: #ac7b3d; }
+@media(max-width:900px) { .package-session-grid { grid-template-columns: repeat(2, minmax(0,1fr)); } .package-session-card { min-height: 320px; } }
+@media(max-width:600px) { .package-enrollment-page .package-sessions-section { padding: 44px 0; } .package-session-grid { grid-template-columns: 1fr; gap: 13px; } .package-session-card { min-height: 0; padding: 21px; } .package-enrollment-page .package-session-card h3 { font-size: 21px; } .package-session-card > p { font-size: 14px; } .package-session-card li,.package-session-footer { font-size: 13px; } .package-session-time { font-size: 10px; } }
+
+/* Visual-only booklet demos: the selected sample is rendered as an image. */
+.package-enrollment-page .package-booklet-section { padding: clamp(58px, 7vw, 96px) 0; }
+.package-enrollment-page .package-booklet-heading { max-width: 1120px; margin: 0 auto clamp(24px, 3vw, 38px); text-align: left; }
+.package-booklet-heading .package-page-kicker { margin-bottom: 8px; color: #b88d55; font-size: clamp(10px, .78vw, 12px); letter-spacing: .16em; }
+.package-enrollment-page .package-booklet-heading h2 { margin: 0; color: #302a24; font: 400 clamp(30px, 3vw, 44px)/1.15 Didot, "Bodoni 72", "Times New Roman", serif; letter-spacing: -.018em; }
+.package-gallery { width: min(100%, 1120px); margin: 0 auto; padding: clamp(20px, 2.5vw, 34px); border: 1px solid #eee8e0; border-radius: 22px; background: #fff; box-shadow: 0 8px 25px rgba(48,38,27,.06); text-align: left; }
+.package-demo-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; padding-bottom: clamp(17px, 2vw, 25px); border-bottom: 1px solid #eee8e0; }
+.package-demo-heading p { margin: 0 0 5px; color: #b88d55; font-size: clamp(10px, .8vw, 12px); font-weight: 650; letter-spacing: .07em; }
+.package-enrollment-page .package-gallery .package-demo-heading h3 { margin: 0; color: #302a24; font-family: Didot, "Bodoni 72", "Times New Roman", serif !important; font-size: clamp(22px, 2.05vw, 30px); font-weight: 400; line-height: 1.2; letter-spacing: -.012em; }
+.package-gallery-main { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(10px, 1.3vw, 18px); width: 100%; margin: clamp(18px, 2.2vw, 28px) 0; }
+.package-gallery-main > img { display: block; width: 100%; aspect-ratio: 4 / 3; border-radius: 12px; background: #f6efe5; object-fit: cover; object-position: center 12%; }
+.package-gallery-footer { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: clamp(14px, 1.6vw, 20px) 0 0; border-top: 1px solid #eee8e0; }
+.package-gallery-dots { display: flex; flex-wrap: wrap; gap: 8px; }
+.package-gallery-dot { width: auto; height: auto; min-height: 34px; padding: 0 16px; border: 0; border-radius: 8px; background: #f3eee8; color: #786f66; cursor: pointer; font: 500 13px/1 "DM Sans", "Avenir Next", Arial, sans-serif; transition: background-color .16s ease, color .16s ease; }
+.package-gallery-dot[aria-selected="true"] { background: #292521; color: #fff; transform:none; }
+@media(max-width:900px) {
+  .package-gallery-main { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media(max-width:650px) {
+  .package-enrollment-page .package-booklet-section { padding: 48px 0; }
+  .package-enrollment-page .package-booklet-heading h2 { font-size: clamp(26px, 7vw, 34px); }
+  .package-gallery { padding: 15px; border-radius: 17px; }
+  .package-demo-heading { padding-bottom: 15px; }
+  .package-enrollment-page .package-demo-heading h3 { font-size: 21px; }
+  .package-gallery-main { grid-template-columns: 1fr; gap: 9px; margin: 15px 0; }
+  .package-gallery-main > img { border-radius: 8px; }
+  .package-gallery-footer { align-items: flex-start; flex-direction: column; }
+  .package-gallery-dots { gap: 7px; }
+  .package-gallery-dot { min-height: 32px; padding: 0 12px; font-size: 12px; }
+}
+
+/* Page content widths and section rhythm */
+.package-page-grid,
+.package-overview-section,
+.package-booklet-section {
+  width: min(calc(100% - 56px), 1280px);
+  margin-inline: auto;
+}
+.package-page-grid,
+.package-overview-section,
+.package-booklet-section,
+.package-page-footer { border-top: 1px solid var(--pkg-line); }
+.package-enrollment-page .package-hero.package-page-grid { display: grid; }
+.package-overview-section,
+.package-booklet-section { padding-block: clamp(58px, 7vw, 96px); }
+.package-section-heading { margin-inline: 0; }
+
+/* Client feedback section */
+.package-testimonials-section {
+  width: 100%;
+  margin: 0;
+  padding: clamp(58px, 7vw, 96px) 0;
+  border-top: 1px solid var(--pkg-line);
+  background: #fff;
+}
+.package-testimonials-heading {
+  width: min(calc(100% - 56px), 1280px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin: 0 auto 36px;
+}
+.package-testimonials-heading .package-page-kicker { margin: 0 0 5px; color: #b88d55; }
+.package-enrollment-page .package-testimonials-heading h2 {
+  margin: 0;
+  color: #302a24;
+  font: 400 clamp(30px, 3vw, 42px)/1.15 Didot, "Bodoni 72", "Times New Roman", serif;
+  letter-spacing: -.018em;
+}
+.package-testimonials-rating {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding-top: 1px;
+  color: #3e3934;
+  font-size: 12px;
+  white-space: nowrap;
+}
+.package-testimonials-rating > span:first-child { color: #b88d55; font-size: 17px; letter-spacing: -.08em; }
+.package-testimonials-rating strong { margin-left: 4px; font-weight: 600; }
+.package-testimonials-grid {
+  width: min(calc(100% - 56px), 1280px);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-inline: auto;
+}
+.package-testimonial-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 228px;
+  padding: 24px 25px 20px;
+  border: 1px solid #eee7df;
+  border-radius: 17px;
+  background: #fbf9f6;
+}
+.package-testimonial-card blockquote {
+  margin: 0;
+  color: #716b64;
+  font: italic 400 14px/1.65 "DM Sans", "Avenir Next", Arial, sans-serif;
+}
+.package-testimonial-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 22px;
+  padding-top: 16px;
+  border-top: 1px solid #eee7df;
+}
+.package-testimonial-meta > div { display: grid; gap: 2px; }
+.package-testimonial-meta strong { color: #302a24; font-size: 13px; font-weight: 650; }
+.package-testimonial-meta > div span { color: #938b82; font-size: 12px; }
+.package-testimonial-tag {
+  max-width: 190px;
+  padding: 5px 10px;
+  border: 1px solid #eee4d8;
+  border-radius: 999px;
+  color: #bd955f;
+  background: #fff;
+  font-size: 10px;
+  line-height: 1.25;
+  letter-spacing: .04em;
+}
+
+/* Reservation form replacing the previous FAQ block */
+.package-booking-section {
+  width: min(calc(100% - 48px), 856px);
+  margin: 0 auto;
+  padding: clamp(58px, 6vw, 78px) 0 clamp(92px, 9vw, 120px);
+  scroll-margin-top: 100px;
+}
+.package-booking-heading { margin-bottom: 28px; text-align: center; }
+.package-booking-heading .package-page-kicker {
+  margin: 0 0 9px;
+  color: #b88d55;
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: .18em;
+}
+.package-enrollment-page .package-booking-heading h2 {
+  margin: 0 0 20px;
+  color: #302a24;
+  font: 400 clamp(30px, 3vw, 42px)/1.15 Didot, "Bodoni 72", "Times New Roman", serif;
+}
+.package-booking-tabs {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  max-width: 100%;
+  padding: 5px;
+  border: 1px solid #eee5db;
+  border-radius: 999px;
+  background: #f3efe9;
+}
+.package-booking-tabs button {
+  min-height: 38px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 999px;
+  color: #746c63;
+  background: transparent;
+  cursor: pointer;
+  font: 600 11px/1.2 "DM Sans", "Avenir Next", Arial, sans-serif;
+  letter-spacing: .025em;
+  white-space: nowrap;
+}
+.package-booking-tabs button.is-selected { color: #fff; background: #25221f; }
+.package-booking-form {
+  padding: clamp(25px, 3vw, 40px);
+  border: 1px solid #eee7df;
+  border-radius: 22px;
+  background: #fff;
+  box-shadow: 0 3px 8px rgba(48, 38, 27, .055);
+}
+.package-booking-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px 16px;
+  margin-bottom: 25px;
+}
+.package-booking-fields label {
+  display: grid;
+  gap: 7px;
+  color: #49433d;
+  font: 500 13px/1.35 "DM Sans", "Avenir Next", Arial, sans-serif;
+}
+.package-booking-fields input {
+  width: 100%;
+  min-height: 45px;
+  padding: 0 14px;
+  border: 1px solid #ebe4dc;
+  border-radius: 13px;
+  outline: none;
+  color: #302a24;
+  background: #fbf9f6;
+  font: 400 13px/1.4 "DM Sans", "Avenir Next", Arial, sans-serif;
+}
+.package-booking-fields input::placeholder { color: #aaa39a; }
+.package-booking-fields input:focus { border-color: #b88d55; box-shadow: 0 0 0 3px rgba(184,141,85,.12); }
+.package-booking-phone { grid-column: 1 / -1; }
+.package-booking-choice-group { min-width: 0; margin: 0 0 23px; padding: 0; border: 0; }
+.package-booking-choice-group legend {
+  margin-bottom: 10px;
+  color: #49433d;
+  font: 500 13px/1.4 "DM Sans", "Avenir Next", Arial, sans-serif;
+}
+.package-booking-options { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.package-booking-option {
+  min-height: 40px;
+  padding: 7px 9px;
+  border: 1px solid #ebe4dc;
+  border-radius: 10px;
+  color: #665e56;
+  background: #fbf9f6;
+  cursor: pointer;
+  font: 500 12px/1.25 "DM Sans", "Avenir Next", Arial, sans-serif;
+  transition: color .15s ease, background-color .15s ease, border-color .15s ease;
+}
+.package-booking-option:hover { border-color: #c8b8a4; }
+.package-booking-option.is-selected { border-color: #25221f; color: #fff; background: #25221f; }
+.package-booking-submit-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding-top: 14px;
+  border-top: 1px solid #eee7df;
+}
+.package-booking-submit-row > p {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  color: #9a9187;
+  font-size: 12px;
+}
+.package-booking-submit-row svg { width: 16px; height: 16px; fill: none; stroke: #b88d55; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.package-booking-submit {
+  min-height: 46px;
+  padding: 0 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 1px solid #25221f;
+  border-radius: 999px;
+  color: #fff;
+  background: #25221f;
+  text-decoration: none;
+  cursor: pointer;
+  font: 600 11px/1.2 "DM Sans", "Avenir Next", Arial, sans-serif;
+  letter-spacing: .045em;
+}
+.package-booking-submit:hover { background: #3b3732; }
+.package-booking-status { min-height: 0; margin: 0; color: #456e4b; font-size: 13px; }
+.package-booking-status:not(:empty) { margin-top: 16px; }
+
+
+
+@media (max-width: 1000px) {
+  .package-testimonials-grid { grid-template-columns: 1fr; max-width: 720px; }
+  .package-testimonial-card { min-height: 0; }
+}
+@media (max-width: 700px) {
+  .package-page-grid,
+  .package-overview-section,
+  .package-booklet-section { width: min(calc(100% - 34px), 560px); }
+  .package-testimonials-section { width: 100%; padding: 48px 0; }
+  .package-testimonials-heading,
+  .package-testimonials-grid { width: min(calc(100% - 34px), 560px); }
+  .package-testimonials-heading { flex-direction: column; gap: 13px; margin-bottom: 23px; }
+  .package-testimonials-rating { font-size: 11px; }
+  .package-testimonial-card { padding: 20px; }
+  .package-testimonial-meta { align-items: flex-start; flex-direction: column; }
+  .package-booking-section { width: min(calc(100% - 34px), 560px); padding: 48px 0 78px; }
+  .package-booking-heading { margin-bottom: 22px; }
+  .package-enrollment-page .package-booking-heading h2 { font-size: clamp(29px, 8vw, 38px); }
+  .package-booking-tabs { width: 100%; }
+  .package-booking-tabs button { flex: 1; min-width: 0; padding: 0 8px; font-size: 9px; }
+  .package-booking-form { padding: 21px 17px; border-radius: 17px; }
+  .package-booking-fields { grid-template-columns: 1fr; gap: 15px; }
+  .package-booking-phone { grid-column: auto; }
+  .package-booking-options { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .package-booking-option { min-height: 42px; }
+  .package-booking-submit-row { align-items: stretch; flex-direction: column; }
+  .package-booking-submit { width: 100%; }
+  .package-booking-discovery { min-height: 36px; padding: 0 8px; font-size: 8px; }
+  .package-page-footer { padding-bottom: 70px; }
+}
+@media (max-width: 390px) {
+}
+
+/* Section 5: FAQ accordion */
+.package-faq-section {
+  width: 100%;
+  padding: clamp(58px, 7vw, 92px) 24px clamp(88px, 10vw, 126px);
+  border-top: 1px solid #f0eae2;
+  background: #fff;
+}
+.package-faq-inner { width: min(100%, 888px); margin-inline: auto; }
+.package-faq-heading { margin-bottom: 38px; }
+.package-faq-heading .package-page-kicker {
+  margin: 0 0 9px;
+  color: #b88d55;
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: .17em;
+}
+.package-enrollment-page .package-faq-heading h2 {
+  margin: 0;
+  color: #302a24;
+  font: 400 clamp(30px, 3vw, 42px)/1.18 Didot, "Bodoni 72", "Times New Roman", serif;
+  letter-spacing: -.015em;
+}
+.package-faq-list { display: grid; gap: 12px; }
+.package-faq-item {
+  overflow: hidden;
+  border: 1px solid #eee7df;
+  border-radius: 15px;
+  background: #fff;
+}
+.package-faq-item summary {
+  position: relative;
+  padding: 20px 52px 20px 24px;
+  color: #3a342e;
+  cursor: pointer;
+  list-style: none;
+  font: 400 17px/1.4 Didot, "Bodoni 72", "Times New Roman", serif;
+}
+.package-faq-item summary::-webkit-details-marker { display: none; }
+.package-faq-item summary::after {
+  content: "⌄";
+  position: absolute;
+  top: 50%;
+  right: 23px;
+  color: #8f877e;
+  font: 500 19px/1 Arial, sans-serif;
+  transform: translateY(-58%);
+}
+.package-faq-item[open] summary::after { content: "⌃"; }
+.package-faq-item[open] summary { border-bottom: 1px solid #f0eae2; }
+.package-faq-item > p {
+  margin: 0;
+  padding: 15px 24px 20px;
+  color: #817970;
+  font: 400 14px/1.65 "DM Sans", "Avenir Next", Arial, sans-serif;
+}
+@media (max-width: 700px) {
+  .package-faq-section { padding: 52px 17px 90px; }
+  .package-faq-heading { margin-bottom: 25px; }
+  .package-enrollment-page .package-faq-heading h2 { font-size: clamp(29px, 8vw, 38px); }
+  .package-faq-list { gap: 9px; }
+  .package-faq-item { border-radius: 12px; }
+  .package-faq-item summary { padding: 17px 43px 17px 17px; font-size: 16px; }
+  .package-faq-item summary::after { right: 17px; }
+  .package-faq-item > p { padding: 13px 17px 17px; font-size: 13px; }
+}
+
+/* Align the package page with the Courses page visual system. */
+.package-enrollment-page {
+  --pkg-ink: #1c3328;
+  --pkg-forest: #194c3b;
+  --pkg-leaf: #5d8e53;
+  --pkg-sage: #edf5e9;
+  --pkg-paper: #f9faf5;
+  --pkg-muted: #657467;
+  --pkg-line: #dce9d9;
+  color: #1e3429;
+  font-family: "Bricolage Grotesque", "Avenir Next", Arial, sans-serif;
+}
+.package-enrollment-page .package-page-main {
+  background-color: #f9faf5;
+  background-image: linear-gradient(rgba(39, 91, 57, .035) 1px, transparent 1px), linear-gradient(90deg, rgba(39, 91, 57, .035) 1px, transparent 1px);
+}
+.package-enrollment-page :is(.package-hero h1, .package-section-heading h2, .package-booklet-heading h2, .package-demo-heading h3, .package-testimonials-heading h2, .package-booking-heading h2, .package-faq-heading h2) {
+  color: #1c3328;
+  font-family: "Bricolage Grotesque", "Avenir Next", Arial, sans-serif !important;
+  font-weight: 700;
+  letter-spacing: -.052em;
+  line-height: 1.09;
+}
+.package-enrollment-page .package-hero h1 { font-size: clamp(38px, 4.3vw, 62px); }
+.package-enrollment-page .package-section-heading h2,
+.package-enrollment-page .package-booking-heading h2,
+.package-enrollment-page .package-faq-heading h2 { font-size: clamp(34px, 3.3vw, 49px); }
+.package-enrollment-page .package-booklet-heading h2 { font-size: clamp(34px, 3.3vw, 49px); }
+.package-enrollment-page .package-demo-heading h3,
+.package-enrollment-page .package-session-card h3 { color: #203d2e; font-family: inherit !important; font-size: clamp(19px, 1.5vw, 22px); font-weight: 650; line-height: 1.2; letter-spacing: -.035em; }
+.package-enrollment-page :is(.package-hero-description, .package-section-heading > p:last-child, .package-session-card > p, .package-session-card li, .package-testimonial-card blockquote, .package-testimonial-meta > div span, .package-booking-choice-group legend, .package-faq-item > p) {
+  color: #657467;
+  font-family: inherit;
+}
+.package-enrollment-page .package-hero .package-page-kicker,
+.package-enrollment-page .package-page-kicker,
+.package-enrollment-page .package-session-meta,
+.package-enrollment-page .package-session-time { font-family: inherit; }
+.package-enrollment-page .package-hero .package-page-kicker { color: #657467; }
+.package-enrollment-page .package-investment-card { border-color: #dce9d9; background: #edf5e9; }
+.package-enrollment-page .package-investment-label,
+.package-enrollment-page .package-installments,
+.package-enrollment-page .package-hero-proof { color: #758478; }
+.package-enrollment-page .package-investment-card strong,
+.package-enrollment-page .package-hero-deliverables { color: #1e3429; }
+.package-enrollment-page .package-hero-actions .package-page-button,
+.package-enrollment-page .package-booking-submit { border-color: #194c3b; background: #194c3b; }
+.package-enrollment-page .package-hero-actions .package-page-button:hover,
+.package-enrollment-page .package-booking-submit:hover { border-color: #245b42; background: #245b42; }
+.package-enrollment-page .package-discovery-button { border-color: #dce9d9; color: #194c3b !important; background: #fff !important; }
+.package-enrollment-page .package-session-card,
+.package-enrollment-page .package-gallery,
+.package-enrollment-page .package-booking-form,
+.package-enrollment-page .package-faq-item { border-color: #dce9d9; background: #fff; }
+.package-enrollment-page .package-session-footer a,
+.package-enrollment-page .package-testimonial-meta strong,
+.package-enrollment-page .package-booking-fields label,
+.package-enrollment-page .package-booking-choice-group legend,
+.package-enrollment-page .package-faq-item summary { color: #1e3429; font-family: inherit; }
+.package-enrollment-page .package-gallery-main > img { background: #edf5e9; }
+.package-enrollment-page .package-gallery-dot { font-family: inherit; }
+.package-enrollment-page .package-gallery-dot[aria-selected="true"] { background: #194c3b; }
+.package-enrollment-page .package-booking-tabs { border-color: #dce9d9; background: #edf5e9; }
+.package-enrollment-page .package-booking-tabs button { font-family: inherit; }
+.package-enrollment-page .package-booking-tabs button.is-selected,
+.package-enrollment-page .package-booking-option.is-selected { border-color: #194c3b; background: #194c3b; }
+.package-enrollment-page .package-booking-fields input,
+.package-enrollment-page .package-booking-option { border-color: #dce9d9; background-color: #f9faf5; font-family: inherit; }
+.package-enrollment-page .package-booking-fields input:focus { border-color: #5d8e53; box-shadow: 0 0 0 3px rgba(93,142,83,.14); }
+.package-enrollment-page .package-booking-status { color: #3f7649; }
+.package-enrollment-page .package-faq-item summary { font-size: 17px; font-weight: 600; }
+.package-enrollment-page .package-faq-item > p { font-size: 14px; line-height: 1.62; }
+.package-enrollment-page .package-testimonial-card { border-color: #dce9d9; background: #f7faf5; }
+.package-enrollment-page .package-testimonial-card blockquote { color: #526557; }
+.package-enrollment-page .package-testimonial-tag { border-color: #dce9d9; color: #52725c; background: #fff; }
+.package-enrollment-page .package-testimonials-rating,
+.package-enrollment-page .package-testimonials-rating > span:first-child { color: #4f7a5b; }
+.package-enrollment-page .package-page-footer { border-top-color: #dce9d9; }
+@media (max-width: 700px) {
+  .package-enrollment-page .package-hero h1 { font-size: clamp(38px, 10vw, 54px); }
+  .package-enrollment-page .package-section-heading h2,
+  .package-enrollment-page .package-booklet-heading h2,
+  .package-enrollment-page .package-booking-heading h2,
+  .package-enrollment-page .package-faq-heading h2 { font-size: clamp(32px, 8vw, 42px); }
+}
