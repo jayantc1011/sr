@@ -607,5 +607,6 @@
   .package-enrollment-page .package-booklet-intro { grid-template-columns: 1fr; row-gap: 18px; }
   .package-enrollment-page .package-booklet-actions { justify-self: start; }
 }
-.package-enrollment-page .package-gallery-main.is-editorial-focused { grid-template-columns: minmax(0, 1fr); justify-items: center; }
-.package-enrollment-page .package-gallery-main.is-editorial-focused > img { width: min(100%, 620px); aspect-ratio: 4 / 5; }
+.package-enrollment-page .package-gallery.is-editorial-focused .package-gallery-main { grid-template-columns: minmax(0, 1fr); justify-items: center; }
+.package-enrollment-page .package-gallery.is-editorial-focused .package-gallery-main > img { width: min(100%, 980px); aspect-ratio: 16 / 9; object-position: center 22%; }
+.package-enrollment-page .package-gallery.is-editorial-focused .package-gallery-footer { display: none; }
