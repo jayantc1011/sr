@@ -10,6 +10,7 @@
       duration: '7 sessions · 7 weeks',
       format: 'Private 1:1 Zoom sessions',
       price: '₹70,000',
+      priceUSD: 2200,
       originalPrice: '',
       installments: '',
       investmentLabel: '7-SESSION COMMUNICATION PACKAGE',
@@ -39,6 +40,7 @@
       duration: '6 sessions · 6+ hours',
       format: 'Private 1:1 video consultations',
       price: '₹70,000',
+      priceUSD: 2200,
       originalPrice: '',
       installments: '',
       investmentLabel: 'COMPLETE 1:1 PACKAGE (6 SESSIONS + BOOKLET)',
@@ -65,13 +67,11 @@
   const offer = offers[offerKey];
   const contactHref = 'contact.html?type=consultation&offer=' + encodeURIComponent(offerKey) + '#academy-contact-form';
   const setText = (selector, value) => document.querySelectorAll(selector).forEach((element) => { element.textContent = value; });
-  const priceInINR = Number(offer.price.replace(/[^0-9.]/g, ''));
   const formatPrice = (currency) => {
     if (currency === 'USD') {
-      const usdPrice = Math.round(priceInINR / 83);
-      return '$' + usdPrice.toLocaleString('en-US');
+      return '$' + offer.priceUSD.toLocaleString('en-US');
     }
-    return '₹' + priceInINR.toLocaleString('en-IN');
+    return offer.price;
   };
   let selectedCurrency = 'INR';
   const updateCurrency = (currency) => {
