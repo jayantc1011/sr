@@ -76,13 +76,14 @@
 .about-page .about-method-steps h3{margin:2px 0 7px;color:var(--about-forest);font-family:"Bricolage Grotesque","Avenir Next",Arial,sans-serif;font-size:22px;font-weight:800;letter-spacing:-.03em}
 .about-page .about-method-steps p{margin:0;color:#758077;font-size:14px;line-height:1.65}
 .about-page .about-method-steps article>b{padding-top:9px;color:#d57866;font-size:18px}
-.about-page .about-cta{position:relative;isolation:isolate;overflow:hidden;padding:78px 0;background:var(--about-forest);color:white}
-.about-page .about-cta-inner{display:flex;align-items:center;justify-content:space-between;gap:42px;position:relative;z-index:2}
+.about-page .about-cta{position:relative;isolation:isolate;overflow:hidden;padding:92px 0 96px;background:var(--about-forest);color:white}
+.about-page .about-cta-inner{display:flex;flex-direction:column;align-items:flex-start;gap:34px;position:relative;z-index:2}
 .about-page .about-cta .about-kicker{color:#d5e9c0}
-.about-page .about-cta h2{max-width:690px;margin:16px 0 12px;color:white;font-family:"Bricolage Grotesque","Avenir Next",Arial,sans-serif;font-size:clamp(37px,4.3vw,57px);font-weight:800;line-height:1.04;letter-spacing:-.055em}
+.about-page .about-cta h2{max-width:none;margin:16px 0 0;color:white;font-family:"Bricolage Grotesque","Avenir Next",Arial,sans-serif;font-size:clamp(36px,4.4vw,68px);font-weight:800;line-height:1.04;letter-spacing:-.055em}
 .about-page .about-cta p{max-width:590px;margin:0;color:#d2ddd4;font-size:15px;line-height:1.7}
-.about-page .about-cta-actions{display:flex;flex-direction:column;align-items:flex-start;gap:14px;flex:0 0 auto}
+.about-page .about-cta-actions{display:flex;flex-wrap:wrap;align-items:center;gap:24px;flex:0 0 auto}
 .about-page .about-button-light{background:#e6f3c8;color:var(--about-forest)}
+.about-page .about-cta .about-button-light{min-height:76px;padding:0 42px;font-size:20px;gap:24px}
 .about-page .about-cta-secondary{padding:5px 0;color:#fff;font-size:13px;font-weight:750;border-bottom:1px solid #ffffff75}
 .about-page .about-cta-orb{position:absolute;z-index:-1;right:-95px;top:-195px;width:450px;height:450px;border:1px solid #ffffff20;border-radius:50%;box-shadow:0 0 0 45px #ffffff09,0 0 0 90px #ffffff07}
 .about-page .academy-footer{border-top:0}
@@ -130,11 +131,11 @@
   .about-page .about-method-grid{grid-template-columns:1fr;gap:35px}
   .about-page .about-method h2{font-size:clamp(47px,9vw,64px)}
   .about-page .about-cta{padding:61px 0}
-  .about-page .about-cta-inner{display:block}
+  .about-page .about-cta-inner{display:flex;gap:30px}
   .about-page .about-cta h2{font-size:clamp(38px,8vw,52px)}
-  .about-page .about-cta-actions{align-items:stretch;margin-top:25px}
-  .about-page .about-cta-actions .about-button{width:100%}
-  .about-page .about-cta-secondary{align-self:center}
+  .about-page .about-cta-actions{align-items:flex-start;margin-top:0}
+  .about-page .about-cta-actions .about-button{width:auto}
+  .about-page .about-cta-secondary{align-self:auto}
 }
 @media(max-width:460px){
   .about-page .academy-container{width:calc(100% - 30px)}
@@ -163,5 +164,9 @@
   .about-page .about-method-steps article{grid-template-columns:39px 1fr 18px;gap:11px;padding:19px 0}
   .about-page .about-method-steps h3{font-size:20px}
   .about-page .about-cta{padding:52px 0}
+  .about-page .about-cta h2{font-size:clamp(32px,9vw,43px);line-height:1.06}
+  .about-page .about-cta-actions{flex-direction:column;align-items:stretch;width:100%;gap:18px}
+  .about-page .about-cta-actions .about-button{width:100%}
+  .about-page .about-cta-secondary{align-self:flex-start}
 }
 @media(prefers-reduced-motion:reduce){.about-page *{scroll-behavior:auto!important;transition:none!important}}
