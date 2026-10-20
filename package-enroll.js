@@ -132,6 +132,7 @@
     if (bookingStatus) bookingStatus.textContent = '';
   };
   bookingModeButtons.forEach((button) => button.addEventListener('click', () => updateBookingMode(button.dataset.bookingMode)));
+  document.querySelectorAll('[data-discovery-booking]').forEach((link) => link.addEventListener('click', () => updateBookingMode('discovery')));
 
   const dateFormat = new Intl.DateTimeFormat('en-IN', { weekday: 'long', month: 'short', day: 'numeric' });
   const shortDateFormat = new Intl.DateTimeFormat('en-IN', { month: 'short', day: 'numeric' });
