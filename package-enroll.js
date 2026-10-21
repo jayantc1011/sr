@@ -74,6 +74,16 @@
     return offer.price;
   };
   let selectedCurrency = 'INR';
+  const checkoutDialog = document.querySelector('#package-checkout-dialog');
+  const checkoutPayment = checkoutDialog?.querySelector('[data-package-checkout-screen="payment"]');
+  const checkoutSuccess = checkoutDialog?.querySelector('[data-package-checkout-screen="success"]');
+  const checkoutPay = checkoutDialog?.querySelector('[data-package-checkout-pay]');
+  const updateCheckoutOrder = () => {
+    const displayPrice = formatPrice(selectedCurrency);
+    document.querySelectorAll('[data-package-checkout-name], [data-package-checkout-success-name]').forEach((element) => { element.textContent = offer.shortName; });
+    document.querySelectorAll('[data-package-checkout-amount], [data-package-checkout-success-amount]').forEach((element) => { element.textContent = displayPrice; });
+    if (checkoutPay) checkoutPay.textContent = 'Pay ' + displayPrice + ' · Demo';
+  };
   const updateCurrency = (currency) => {
     selectedCurrency = currency;
     document.querySelectorAll('[data-currency]').forEach((button) => {
@@ -87,6 +97,7 @@
     setText('[data-package-installments]', currency === 'INR' ? offer.installments : '');
     const installmentLabel = document.querySelector('[data-package-installments]');
     if (installmentLabel) installmentLabel.hidden = currency === 'USD' || !offer.installments;
+    updateCheckoutOrder();
   };
   updateCurrency(selectedCurrency);
 
@@ -221,8 +232,30 @@
   bookingForm?.addEventListener('submit', (event) => {
     event.preventDefault();
     if (!bookingForm.reportValidity()) return;
+    if (bookingMode === 'package' && checkoutDialog && checkoutPayment && checkoutSuccess) {
+      updateCheckoutOrder();
+      checkoutPayment.hidden = false;
+      checkoutSuccess.hidden = true;
+      checkoutDialog.setAttribute('aria-labelledby', 'package-checkout-title');
+      checkoutDialog.showModal();
+      return;
+    }
     const bookingType = bookingMode === 'package' ? 'package' : 'free discovery call';
     if (bookingStatus) bookingStatus.textContent = 'Your ' + bookingType + ' request is ready. The team will follow up to confirm availability.';
+  });
+  checkoutDialog?.querySelectorAll('[data-package-checkout-close]').forEach((button) => button.addEventListener('click', () => checkoutDialog.close()));
+  checkoutDialog?.addEventListener('click', (event) => { if (event.target === checkoutDialog) checkoutDialog.close(); });
+  checkoutDialog?.addEventListener('close', () => {
+    if (checkoutPayment) checkoutPayment.hidden = false;
+    if (checkoutSuccess) checkoutSuccess.hidden = true;
+    checkoutDialog.setAttribute('aria-labelledby', 'package-checkout-title');
+  });
+  checkoutPay?.addEventListener('click', () => {
+    if (!checkoutPayment || !checkoutSuccess) return;
+    checkoutPayment.hidden = true;
+    checkoutSuccess.hidden = false;
+    checkoutDialog.setAttribute('aria-labelledby', 'package-checkout-success-title');
+    checkoutDialog.querySelector('#package-checkout-success-title')?.focus();
   });
   const heroImage = document.querySelector('[data-package-cover]');
   if (heroImage) {
