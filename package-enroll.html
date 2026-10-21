@@ -287,7 +287,43 @@
     </div>
     <div class="academy-footer-bottom academy-container"><span>© 2026 Shalini Rathod. All rights reserved.</span><a href="#site-top">Back to Top ↑</a></div>
   </footer>
+  <dialog class="lms-checkout-dialog" id="package-checkout-dialog" aria-labelledby="package-checkout-title">
+    <section class="lms-checkout-panel" data-package-checkout-screen="payment">
+      <header class="lms-checkout-header">
+        <div><strong class="lms-checkout-brand">Razorpay</strong><span class="lms-checkout-demo-tag">DEMO</span></div>
+        <button type="button" class="lms-checkout-close" data-package-checkout-close aria-label="Close demo checkout">×</button>
+      </header>
+      <div class="lms-checkout-content">
+        <span class="lms-eyebrow">SIMULATED CHECKOUT</span>
+        <h2 id="package-checkout-title">Complete your demo checkout</h2>
+        <p class="lms-checkout-caption">Review your package and choose a payment method for this preview.</p>
+        <div class="lms-checkout-order"><span data-package-checkout-name>Package</span><strong data-package-checkout-amount>₹70,000</strong></div>
+        <fieldset class="lms-checkout-methods">
+          <legend>Choose a demo payment method</legend>
+          <label><input type="radio" name="package-demo-payment-method" value="upi" checked><span>UPI <small>Demo</small></span></label>
+          <label><input type="radio" name="package-demo-payment-method" value="card"><span>Card <small>Demo</small></span></label>
+          <label><input type="radio" name="package-demo-payment-method" value="netbanking"><span>Netbanking <small>Demo</small></span></label>
+        </fieldset>
+        <p class="lms-checkout-safety">Demo only. No real payment is processed, no payment details are collected, and no booking is created.</p>
+        <button type="button" class="lms-primary lms-checkout-pay" data-package-checkout-pay>Pay ₹70,000 · Demo</button>
+      </div>
+    </section>
+    <section class="lms-checkout-panel lms-checkout-success" data-package-checkout-screen="success" hidden>
+      <header class="lms-checkout-header">
+        <div><strong class="lms-checkout-brand">Razorpay</strong><span class="lms-checkout-demo-tag">DEMO</span></div>
+        <button type="button" class="lms-checkout-close" data-package-checkout-close aria-label="Close payment confirmation">×</button>
+      </header>
+      <div class="lms-checkout-content">
+        <div class="lms-checkout-check" aria-hidden="true">✓</div>
+        <span class="lms-eyebrow">SIMULATED PAYMENT</span>
+        <h2 id="package-checkout-success-title" tabindex="-1">Demo payment complete</h2>
+        <p class="lms-checkout-caption">Your sample payment is confirmed. No money was charged, and your package booking has not been submitted.</p>
+        <div class="lms-checkout-order"><span data-package-checkout-success-name>Package</span><strong data-package-checkout-success-amount>₹70,000</strong></div>
+        <p class="lms-checkout-safety">This is a demonstration only, not a real Razorpay transaction or receipt.</p>
+      </div>
+    </section>
+  </dialog>
   <script src="script.js?v=20261019-package-local"></script>
-  <script src="package-enroll.js?v=20261020-demo-image-carousel"></script>
+  <script src="package-enroll.js?v=20261021-razorpay-demo"></script>
 </body>
 </html>
