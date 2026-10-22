@@ -270,10 +270,21 @@
   const demos = [
     {
       kicker: 'DEMO SLIDE 01 · RADAR DIAGNOSTIC', title: 'Radar Diagnostic & Capability Asymmetry',
-      slide: true,
-      images: [
-        ['assets/canva/communication/communication-slide-01.svg?v=20261022-inline-chart', 'Radar diagnostic and capability asymmetry report for Upendra Bhowmik']
-      ]
+      reportSlide: {
+        sequence: '01 / 05',
+        title: 'Radar Diagnostic & Capability Asymmetry',
+        author: 'Upendra Bhowmik · Senior Software Engineer',
+        name: 'Upendra Bhowmik',
+        score: 'Score: 2.55 / 5.0 (B− · Developing)',
+        metrics: [
+          ['Top Capability:', 'Conversational Trust (3.8)'],
+          ['Primary Vulnerability:', 'Assertiveness & Boundaries (1.8)'],
+          ['Verbal Clarity:', 'Bottom-up rambling (2.2)']
+        ],
+        summary: 'Upendra’s executive influence is throttled not by lack of engineering depth, but by boundary anxiety and bottom-up over-explanation under questioning.',
+        chart: 'assets/canva/communication/radar-diagnostic-slide-01.svg?v=20261022-chart-only',
+        chartAlt: 'Radar chart comparing Upendra’s communication skills with the staff benchmark.'
+      }
     },    {
       kicker: 'DEMO SLIDE 02 · SILHOUETTE MATRIX', title: 'Body & Face Proportion Architecture',
       images: [
@@ -317,7 +328,7 @@
   const visibleImageCount = () => editorialPhotoFocused ? 1 : window.matchMedia('(max-width: 650px)').matches ? 1 : window.matchMedia('(max-width: 900px)').matches ? 2 : 3;
   const updateGalleryLayout = () => {
     if (!galleryTrack || !galleryViewport) return;
-    const images = [...galleryTrack.querySelectorAll('img')];
+    const images = [...galleryTrack.children];
     const visibleCount = Math.min(visibleImageCount(), images.length || 1);
     const gap = parseFloat(getComputedStyle(galleryTrack).columnGap) || 0;
     const imageWidth = Math.max(0, (galleryViewport.clientWidth - gap * (visibleCount - 1)) / visibleCount);
@@ -332,23 +343,79 @@
     if (previousImageButton) previousImageButton.disabled = editorialPhotoFocused || currentImageIndex <= 0;
     if (nextImageButton) nextImageButton.disabled = editorialPhotoFocused || currentImageIndex >= maxIndex;
   };
+  const createReportSlide = (report) => {
+    const article = document.createElement('article');
+    article.className = 'package-report-slide';
+    article.setAttribute('aria-label', report.title);
+
+    const header = document.createElement('header');
+    header.className = 'package-report-slide-header';
+    const sequence = document.createElement('span');
+    sequence.className = 'package-report-slide-sequence';
+    sequence.textContent = report.sequence;
+    const title = document.createElement('h4');
+    title.textContent = report.title;
+    const author = document.createElement('p');
+    author.className = 'package-report-slide-author';
+    author.textContent = report.author;
+    header.append(sequence, title, author);
+
+    const body = document.createElement('div');
+    body.className = 'package-report-slide-body';
+    const copy = document.createElement('div');
+    copy.className = 'package-report-slide-copy';
+    const name = document.createElement('h5');
+    name.textContent = report.name;
+    const score = document.createElement('p');
+    score.className = 'package-report-slide-score';
+    score.textContent = report.score;
+    const metrics = document.createElement('dl');
+    metrics.className = 'package-report-slide-metrics';
+    report.metrics.forEach(([label, value]) => {
+      const row = document.createElement('div');
+      const term = document.createElement('dt');
+      const detail = document.createElement('dd');
+      term.textContent = label;
+      detail.textContent = value;
+      row.append(term, detail);
+      metrics.append(row);
+    });
+    const summary = document.createElement('p');
+    summary.className = 'package-report-slide-summary';
+    summary.textContent = report.summary;
+    copy.append(name, score, metrics, summary);
+
+    const chart = document.createElement('img');
+    chart.src = report.chart;
+    chart.alt = report.chartAlt;
+    chart.loading = 'lazy';
+    chart.decoding = 'async';
+    chart.className = 'package-report-slide-chart';
+    body.append(copy, chart);
+    article.append(header, body);
+    return article;
+  };
+
   const renderGallery = () => {
     const demo = demos[currentSlide];
     const galleryImages = editorialPhotoFocused
       ? [['assets/hero-seated.webp', 'Shalini Rathod in a landscape editorial portrait']]
-      : demo.images;
+      : demo.images || [];
     if (galleryTrack) {
       packageGallery?.classList.toggle('is-editorial-focused', editorialPhotoFocused);
-      packageGallery?.classList.toggle('is-slide-preview', Boolean(demo.slide) && !editorialPhotoFocused);
-      galleryTrack.replaceChildren(...Array.from({ length: galleryImages.length }, (_, slot) => {
-        const image = document.createElement('img');
-        const [src, alt] = galleryImages[slot];
-        image.src = src;
-        image.alt = alt;
-        image.loading = 'lazy';
-        image.decoding = 'async';
-        return image;
-      }));
+      packageGallery?.classList.toggle('is-slide-preview', Boolean(demo.reportSlide) && !editorialPhotoFocused);
+      if (demo.reportSlide && !editorialPhotoFocused) {
+        galleryTrack.replaceChildren(createReportSlide(demo.reportSlide));
+      } else {
+        galleryTrack.replaceChildren(...galleryImages.map(([src, alt]) => {
+          const image = document.createElement('img');
+          image.src = src;
+          image.alt = alt;
+          image.loading = 'lazy';
+          image.decoding = 'async';
+          return image;
+        }));
+      }
     }
     updateGalleryLayout();
     if (demoKicker) demoKicker.textContent = demo.kicker;
