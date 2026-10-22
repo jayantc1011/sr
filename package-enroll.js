@@ -393,8 +393,8 @@
     currentImageIndex = Math.min(currentImageIndex, maxIndex);
     const step = imageWidth + gap;
     galleryTrack.style.transform = editorialPhotoFocused ? 'translate3d(0, 0, 0)' : `translate3d(${-currentImageIndex * step}px, 0, 0)`;
-    if (previousImageButton) previousImageButton.disabled = editorialPhotoFocused || currentImageIndex <= 0;
-    if (nextImageButton) nextImageButton.disabled = editorialPhotoFocused || currentImageIndex >= maxIndex;
+    if (previousImageButton) previousImageButton.disabled = currentSlide <= 0;
+    if (nextImageButton) nextImageButton.disabled = currentSlide >= demos.length - 1;
   };
   const createReportSlide = (report) => {
     const article = document.createElement('article');
@@ -1016,13 +1016,10 @@
     if (editorialPhotoFocused) galleryTrack?.scrollIntoView({ behavior: 'smooth', block: 'center' });
   });
   previousImageButton?.addEventListener('click', () => {
-    currentImageIndex = Math.max(0, currentImageIndex - 1);
-    updateGalleryLayout();
+    if (currentSlide > 0) showDemo(currentSlide - 1);
   });
   nextImageButton?.addEventListener('click', () => {
-    const maxIndex = Math.max(0, (galleryTrack?.children.length || 0) - visibleImageCount());
-    currentImageIndex = Math.min(maxIndex, currentImageIndex + 1);
-    updateGalleryLayout();
+    if (currentSlide < demos.length - 1) showDemo(currentSlide + 1);
   });
   if (dotsRoot) {
     dotsRoot.replaceChildren(...Array.from({ length: demos.length }, (_, index) => {
