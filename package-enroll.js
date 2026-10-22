@@ -312,13 +312,26 @@
       }
     },
     {
-      kicker: 'DEMO SLIDE 03 · CHROMATIC SPECTRUM', title: '12-Tone Palette & Color Harmony',
-      images: [
-        ['assets/about/shalini-reading.webp', 'Shalini Rathod reviewing a style booklet'],
-        ['assets/about/shalini-close.webp', 'Shalini Rathod in a personal styling portrait'],
-        ['assets/services/course-bundle.webp', 'Wardrobe pieces arranged for styling'],
-        ['assets/services/styling-consultation.webp', 'A stylist discussing wardrobe choices with a client']
-      ]
+      kicker: 'DEMO SLIDE 03 · SPEECH ANATOMY', title: 'Speech Anatomy & Stakeholder Matrix',
+      speechAnalysis: {
+        sequence:'03 / 05',
+        title:'Speech Anatomy & Stakeholder Matrix',
+        author:'Upendra Bhowmik · Senior Software Engineer',
+        charts:[
+          {title:'Speech Allocation',subtitle:'Verbal airtime in technical syncs',src:'assets/canva/communication/speech-allocation-donut.svg?v=20261022-charts',centerValue:'52%',centerLabel:'Technical',legend:[['Technical Mechanics','52%','#2563eb'],['Hedging & Apologies','18%','#e27b00'],['Fillers & Hesitation','16%','#94a3b8'],['Executive Decision','14%','#059669']]},
+          {title:'Response Under Scope Pushback',subtitle:'Behavioral pattern when deadlines are accelerated',src:'assets/canva/communication/scope-pushback-donut.svg?v=20261022-charts',centerValue:'60%',centerLabel:'Silent Yes',legend:[['Silent Compliance','60%','#e91e4c'],['Hesitant Deflection','24%','#f04b0b'],['Constructive Assertion','16%','#059669']]}
+        ],
+        matrixTitle:'Exposure Matrix: Confidence by Forum Scale',
+        matrixSubtitle:'Behavioral stability as group size and professional stakes increase',
+        rows:[
+          ['1-on-1 Pair Programming','1 person',88,85,65,"Mild hesitation when correcting a senior's code."],
+          ['Daily Standup','5–8 peers',74,70,48,'Chronological Jira recounting over summary.'],
+          ['Sprint Demo','15–25 people',52,48,32,'Monotone delivery; rushes past key business wins.'],
+          ['Principal Architecture Review','6–10 seniors',40,38,24,'Uptalking conclusions under technical scrutiny.'],
+          ['VP / Executive Townhall','50+ leaders',28,26,18,'Avoids voicing systemic risks in public.'],
+          ['Compensation Negotiation','1–2 leaders',18,22,14,'Immediate capitulation at the first counter.']
+        ]
+      }
     },
     {
       kicker: 'DEMO SLIDE 04 · READY-TO-WEAR', title: 'Curated Occasion Lookbook',
@@ -545,6 +558,129 @@
     return article;
   };
 
+  const createSpeechAnalysisSlide = (analysis) => {
+    const article = document.createElement('article');
+    article.className = 'package-speech-analysis-slide';
+    article.setAttribute('aria-label', analysis.title);
+    const header = document.createElement('header');
+    header.className = 'package-report-slide-header';
+    const sequence = document.createElement('span');
+    sequence.className = 'package-report-slide-sequence';
+    sequence.textContent = analysis.sequence;
+    const title = document.createElement('h4');
+    title.textContent = analysis.title;
+    const author = document.createElement('p');
+    author.className = 'package-report-slide-author';
+    author.textContent = analysis.author;
+    header.append(sequence, title, author);
+
+    const charts = document.createElement('div');
+    charts.className = 'package-speech-chart-grid';
+    analysis.charts.forEach((chartData) => {
+      const panel = document.createElement('section');
+      panel.className = 'package-speech-chart-panel';
+      const heading = document.createElement('h5');
+      heading.textContent = chartData.title;
+      const subtitle = document.createElement('p');
+      subtitle.textContent = chartData.subtitle;
+      const content = document.createElement('div');
+      content.className = 'package-speech-chart-content';
+      const figure = document.createElement('figure');
+      figure.className = 'package-speech-donut';
+      const image = document.createElement('img');
+      image.src = chartData.src;
+      image.alt = '';
+      image.loading = 'lazy';
+      image.decoding = 'async';
+      const center = document.createElement('figcaption');
+      center.className = 'package-speech-donut-center';
+      const value = document.createElement('strong');
+      value.textContent = chartData.centerValue;
+      const label = document.createElement('span');
+      label.textContent = chartData.centerLabel;
+      center.append(value, label);
+      figure.append(image, center);
+      const legend = document.createElement('ul');
+      legend.className = 'package-speech-chart-legend';
+      chartData.legend.forEach(([labelText, percent, color]) => {
+        const item = document.createElement('li');
+        const key = document.createElement('span');
+        key.className = 'package-speech-legend-key';
+        key.style.setProperty('--legend-color', color);
+        const text = document.createElement('span');
+        text.textContent = labelText;
+        const amount = document.createElement('strong');
+        amount.textContent = percent;
+        item.append(key, text, amount);
+        legend.append(item);
+      });
+      content.append(figure, legend);
+      panel.append(heading, subtitle, content);
+      charts.append(panel);
+    });
+
+    const matrix = document.createElement('section');
+    matrix.className = 'package-exposure-matrix';
+    const matrixHeader = document.createElement('header');
+    matrixHeader.className = 'package-exposure-matrix-header';
+    const heading = document.createElement('div');
+    const matrixTitle = document.createElement('h5');
+    matrixTitle.textContent = analysis.matrixTitle;
+    const matrixSubtitle = document.createElement('p');
+    matrixSubtitle.textContent = analysis.matrixSubtitle;
+    heading.append(matrixTitle, matrixSubtitle);
+    const scale = document.createElement('span');
+    scale.textContent = 'Scale: 0–100%';
+    matrixHeader.append(heading, scale);
+    const table = document.createElement('div');
+    table.className = 'package-exposure-table';
+    table.setAttribute('role','table');
+    table.setAttribute('aria-label',analysis.matrixTitle);
+    const columns = ['Context','Audience','Confidence','Vocal Composure','Boundary Firmness','Observed Tendency'];
+    columns.forEach((col) => {
+      const cell = document.createElement('div');
+      cell.className = 'package-exposure-cell package-exposure-heading';
+      cell.setAttribute('role','columnheader');
+      cell.textContent = col;
+      table.append(cell);
+    });
+    analysis.rows.forEach(([context,audience,confidence,vocal,boundary,tendency]) => {
+      const contextCell = document.createElement('strong');
+      contextCell.className='package-exposure-cell';
+      contextCell.setAttribute('role','cell');
+      contextCell.textContent=context;
+      const audienceCell = document.createElement('span');
+      audienceCell.className='package-exposure-cell package-exposure-audience';
+      audienceCell.setAttribute('role','cell');
+      audienceCell.textContent=audience;
+      table.append(contextCell,audienceCell);
+      [[confidence,'confidence'],[vocal,'vocal'],[boundary,'boundary']].forEach(([score,type]) => {
+        const cell=document.createElement('div');
+        cell.className='package-exposure-cell package-exposure-meter-cell';
+        cell.setAttribute('role','cell');
+        const value=document.createElement('strong');
+        value.textContent=`${score}%`;
+        const track=document.createElement('span');
+        track.className=`package-exposure-meter package-exposure-meter-${type}`;
+        const fill=document.createElement('span');
+        fill.style.width=`${score}%`;
+        if(type==='confidence') fill.classList.add(score>=70?'is-high':score>=40?'is-mid':'is-low');
+        else if(score<30) fill.classList.add('is-low');
+        track.append(fill);
+        cell.append(value,track);
+        table.append(cell);
+      });
+      const tendencyCell=document.createElement('span');
+      tendencyCell.className='package-exposure-cell package-exposure-tendency';
+      tendencyCell.setAttribute('role','cell');
+      tendencyCell.textContent=tendency;
+      table.append(tendencyCell);
+    });
+    matrix.append(matrixHeader,table);
+    article.append(header,charts,matrix);
+    return article;
+  };
+
   const renderGallery = () => {
     const demo = demos[currentSlide];
     const galleryImages = editorialPhotoFocused
@@ -552,9 +688,9 @@
       : demo.images || [];
     if (galleryTrack) {
       packageGallery?.classList.toggle('is-editorial-focused', editorialPhotoFocused);
-      packageGallery?.classList.toggle('is-slide-preview', Boolean(demo.reportSlide || demo.scorecard) && !editorialPhotoFocused);
-      if (!editorialPhotoFocused && (demo.reportSlide || demo.scorecard)) {
-        galleryTrack.replaceChildren(demo.scorecard ? createScorecardSlide(demo.scorecard) : createReportSlide(demo.reportSlide));
+      packageGallery?.classList.toggle('is-slide-preview', Boolean(demo.reportSlide || demo.scorecard || demo.speechAnalysis) && !editorialPhotoFocused);
+      if (!editorialPhotoFocused && (demo.reportSlide || demo.scorecard || demo.speechAnalysis)) {
+        galleryTrack.replaceChildren(demo.speechAnalysis ? createSpeechAnalysisSlide(demo.speechAnalysis) : demo.scorecard ? createScorecardSlide(demo.scorecard) : createReportSlide(demo.reportSlide));
       } else {
         galleryTrack.replaceChildren(...galleryImages.map(([src, alt]) => {
           const image = document.createElement('img');
