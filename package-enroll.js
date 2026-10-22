@@ -357,13 +357,22 @@
       }
     },
     {
-      kicker: 'DEMO SLIDE 05 · FINISHING TOUCHES', title: 'Makeup, Accessories & Wishlist',
-      images: [
-        ['assets/about/shalini-reading.webp', 'Shalini Rathod reviewing a style booklet'],
-        ['assets/about/shalini-close.webp', 'Shalini Rathod in a personal styling portrait'],
-        ['assets/services/styling-consultation.webp', 'A personal wardrobe consultation'],
-        ['assets/hero-seated.webp', 'Shalini Rathod seated during a style consultation']
-      ]
+      kicker: 'DEMO SLIDE 05 · SIX-WEEK ROADMAP', title: 'Six-Week Intervention Roadmap',
+      roadmap: {
+        sequence:'05 / 05',
+        title:'Six-Week Intervention Roadmap',
+        author:'Upendra Bhowmik · Senior Software Engineer',
+        heading:'Six-Week Action Roadmap',
+        subtitle:'Progressive curriculum to transition from passive engineer to authoritative technical lead',
+        weeks:[
+          ['Pace & Grounding','Calibrating the Internal Metronome','3 daily 60-second updates capped at 135 WPM. Add 2-second pause before speaking.','Speaking pace under surprise questions (<140 WPM).'],
+          ['Linguistic Detox','Eliminating Hedging & Apologies','Remove "sorry", "just", "if that makes sense" from all written and verbal updates.','Zero apologies in routine technical requests.'],
+          ['The PREP Engine','Bottom-Line First Framing','Structure standups using PREP (Point, Reason, Evidence, Point). 45-sec cap.','Standup update duration (<= 45 seconds).'],
+          ['Boundary Protocol','Constructive Trade-Offs','Deploy the Trade-Off Pivot: "I can do X if we defer Y to next week."','Off-hours requests successfully renegotiated.'],
+          ['Lens Anchoring','Virtual Camera Mastery','Elevate webcam to eye level. Maintain 4-second steady lens lock during proposals.','Camera contact during proposals (>65%).'],
+          ['Negotiation Lab','High-Stakes Composure','Roleplay promotion pitch with an executive coach. Rehearse silence after stating ask.','Zero concessions within 60s of counter.']
+        ]
+      }
     }
   ];
   let currentSlide = 0;
@@ -894,6 +903,73 @@
     return article;
   };
 
+  const createRoadmapSlide = (roadmap) => {
+    const article=document.createElement('article');
+    article.className='package-roadmap-slide';
+    article.setAttribute('aria-label',roadmap.title);
+    const header=document.createElement('header');
+    header.className='package-report-slide-header';
+    const sequence=document.createElement('span');
+    sequence.className='package-report-slide-sequence';
+    sequence.textContent=roadmap.sequence;
+    const title=document.createElement('h4');
+    title.textContent=roadmap.title;
+    const author=document.createElement('p');
+    author.className='package-report-slide-author';
+    author.textContent=roadmap.author;
+    header.append(sequence,title,author);
+    const panel=document.createElement('section');
+    panel.className='package-roadmap-panel';
+    const panelHeader=document.createElement('header');
+    panelHeader.className='package-roadmap-panel-header';
+    const text=document.createElement('div');
+    const heading=document.createElement('h5');
+    heading.textContent=roadmap.heading;
+    const subtitle=document.createElement('p');
+    subtitle.textContent=roadmap.subtitle;
+    text.append(heading,subtitle);
+    const sprintCount=document.createElement('span');
+    sprintCount.textContent='6 Sprints';
+    panelHeader.append(text,sprintCount);
+    const list=document.createElement('ol');
+    list.className='package-roadmap-list';
+    roadmap.weeks.forEach(([name,focus,drill,kpi],index)=>{
+      const item=document.createElement('li');
+      item.className='package-roadmap-week';
+      const marker=document.createElement('span');
+      marker.className=`package-roadmap-marker${index===0?' is-complete':''}`;
+      marker.setAttribute('aria-label',index===0?'Completed week':'Week '+(index+1));
+      marker.textContent=index===0?'✓':String(index+1);
+      const content=document.createElement('div');
+      content.className='package-roadmap-content';
+      const titleline=document.createElement('p');
+      titleline.className='package-roadmap-titleline';
+      const weekTitle=document.createElement('strong');
+      weekTitle.textContent=`Week ${index+1}: ${name}`;
+      const dot=document.createElement('span');
+      dot.textContent='·';
+      const focusText=document.createElement('span');
+      focusText.textContent=focus;
+      titleline.append(weekTitle,dot,focusText);
+      const daily=document.createElement('p');
+      daily.className='package-roadmap-drill';
+      const dailyLabel=document.createElement('strong');
+      dailyLabel.textContent='Daily Drill: ';
+      daily.append(dailyLabel,document.createTextNode(drill));
+      content.append(titleline,daily);
+      const target=document.createElement('p');
+      target.className='package-roadmap-kpi';
+      const targetLabel=document.createElement('span');
+      targetLabel.textContent='KPI: ';
+      target.append(targetLabel,document.createTextNode(kpi));
+      item.append(marker,content,target);
+      list.append(item);
+    });
+    panel.append(panelHeader,list);
+    article.append(header,panel);
+    return article;
+  };
+
   const renderGallery = () => {
     const demo = demos[currentSlide];
     const galleryImages = editorialPhotoFocused
@@ -901,9 +977,9 @@
       : demo.images || [];
     if (galleryTrack) {
       packageGallery?.classList.toggle('is-editorial-focused', editorialPhotoFocused);
-      packageGallery?.classList.toggle('is-slide-preview', Boolean(demo.reportSlide || demo.scorecard || demo.speechAnalysis || demo.scriptLab) && !editorialPhotoFocused);
-      if (!editorialPhotoFocused && (demo.reportSlide || demo.scorecard || demo.speechAnalysis || demo.scriptLab)) {
-        galleryTrack.replaceChildren(demo.scriptLab ? createScriptLabSlide(demo.scriptLab) : demo.speechAnalysis ? createSpeechAnalysisSlide(demo.speechAnalysis) : demo.scorecard ? createScorecardSlide(demo.scorecard) : createReportSlide(demo.reportSlide));
+      packageGallery?.classList.toggle('is-slide-preview', Boolean(demo.reportSlide || demo.scorecard || demo.speechAnalysis || demo.scriptLab || demo.roadmap) && !editorialPhotoFocused);
+      if (!editorialPhotoFocused && (demo.reportSlide || demo.scorecard || demo.speechAnalysis || demo.scriptLab || demo.roadmap)) {
+        galleryTrack.replaceChildren(demo.roadmap ? createRoadmapSlide(demo.roadmap) : demo.scriptLab ? createScriptLabSlide(demo.scriptLab) : demo.speechAnalysis ? createSpeechAnalysisSlide(demo.speechAnalysis) : demo.scorecard ? createScorecardSlide(demo.scorecard) : createReportSlide(demo.reportSlide));
       } else {
         galleryTrack.replaceChildren(...galleryImages.map(([src, alt]) => {
           const image = document.createElement('img');
