@@ -6,7 +6,6 @@
       bookletTitle: 'Personalised Communication Progress Report',
       kicker: 'SHALINI RATHOD · IMAGE CONSULTING & STYLING',
       headline: 'A More Refined Way to Communicate',
-      subheading: 'SUBHEADING',
       description: 'Private coaching tailored to your needs, whether you want to strengthen your delivery, refine your tone, overcome speaking habits, or feel more at ease in professional settings.',
       duration: '7 sessions · 7 weeks',
       format: 'Private 1:1 Zoom sessions',
@@ -113,11 +112,6 @@
   setText('#package-booklet-title', offer.bookletTitle);
   setText('[data-package-kicker]', offer.kicker);
   document.querySelector('[data-package-headline]').innerHTML = offer.headline;
-  const packageSubheading = document.querySelector('[data-package-subheading]');
-  if (packageSubheading) {
-    packageSubheading.textContent = offer.subheading || '';
-    packageSubheading.hidden = !offer.subheading;
-  }
   const mobileCover = document.querySelector('[data-package-cover-mobile]');
   const desktopCover = document.querySelector('[data-package-cover]');
   if (mobileCover && desktopCover) {
