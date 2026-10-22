@@ -824,3 +824,54 @@
 .package-scorecard-slide::-webkit-scrollbar { width:9px; }
 .package-scorecard-slide::-webkit-scrollbar-track { background:#f3f6fa; border-radius:8px; }
 .package-scorecard-slide::-webkit-scrollbar-thumb { background:#b8c5d7; border:2px solid #f3f6fa; border-radius:8px; }
+
+
+/* Text-first speech analysis and stakeholder matrix demo */
+.package-speech-analysis-slide { width:100%; flex:0 0 100%; padding:0 0 4px; color:#17233b; background:#fff; text-align:left; }
+.package-speech-analysis-slide > .package-report-slide-header { margin-bottom:clamp(22px,2.6vw,36px); }
+.package-speech-chart-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(16px,2vw,26px); }
+.package-speech-chart-panel,.package-exposure-matrix { min-width:0; padding:clamp(20px,2vw,32px); border:1px solid #e4ebf4; border-radius:18px; background:#fff; box-shadow:0 1px 1px rgba(18,35,59,.04); }
+.package-speech-chart-panel h5,.package-exposure-matrix-header h5 { margin:0; color:#17233b; font:700 clamp(17px,1.35vw,23px)/1.3 "DM Sans","Avenir Next",Arial,sans-serif; }
+.package-speech-chart-panel > p,.package-exposure-matrix-header p { margin:4px 0 0; color:#91a8c8; font:400 clamp(12px,1.05vw,17px)/1.45 "DM Sans","Avenir Next",Arial,sans-serif; }
+.package-speech-chart-content { display:grid; grid-template-columns:minmax(150px,.85fr) minmax(0,1.15fr); gap:clamp(18px,2.1vw,30px); align-items:center; margin-top:clamp(16px,1.8vw,25px); }
+.package-speech-donut { position:relative; width:min(100%,300px); aspect-ratio:1; margin:0 auto; }
+.package-speech-donut img { display:block; width:100%; height:100%; object-fit:contain; }
+.package-speech-donut-center { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; pointer-events:none; text-align:center; }
+.package-speech-donut-center strong { color:#17233b; font:700 clamp(21px,2vw,34px)/1 "Menlo","Consolas",monospace; }
+.package-speech-donut-center span { color:#91a8c8; font:400 clamp(11px,1vw,15px)/1.35 "Menlo","Consolas",monospace; }
+.package-speech-chart-legend { display:grid; gap:clamp(10px,1vw,15px); margin:0; padding:0; list-style:none; }
+.package-speech-chart-legend li { display:grid; grid-template-columns:12px minmax(0,1fr) auto; gap:10px; align-items:center; color:#566985; font:500 clamp(12px,1.05vw,17px)/1.35 "DM Sans","Avenir Next",Arial,sans-serif; }
+.package-speech-chart-legend li strong { color:#17233b; font:700 clamp(12px,1vw,16px)/1.2 "Menlo","Consolas",monospace; }
+.package-speech-legend-key { width:11px; height:11px; border-radius:3px; background:var(--legend-color); }
+.package-exposure-matrix { margin-top:clamp(18px,2vw,28px); }
+.package-exposure-matrix-header { display:flex; justify-content:space-between; align-items:center; gap:16px; padding-bottom:clamp(14px,1.5vw,22px); border-bottom:1px solid #e5edf6; }
+.package-exposure-matrix-header > span { flex:none; color:#91a8c8; font:400 clamp(11px,1vw,16px)/1.4 "Menlo","Consolas",monospace; }
+.package-exposure-table { display:grid; grid-template-columns:minmax(175px,1.3fr) minmax(100px,.65fr) minmax(100px,.8fr) minmax(125px,.85fr) minmax(125px,.9fr) minmax(185px,1.5fr); min-width:920px; }
+.package-exposure-cell { display:block; min-width:0; padding:clamp(10px,1vw,15px) 10px; border-bottom:1px solid #e5edf6; color:#7185a4; font:400 clamp(11px,.95vw,15px)/1.45 "DM Sans","Avenir Next",Arial,sans-serif; }
+.package-exposure-heading { color:#91a8c8; font:400 clamp(10px,.9vw,14px)/1.35 "Menlo","Consolas",monospace; }
+.package-exposure-cell[role="cell"]:nth-child(6n + 1) { color:#17233b; font-weight:600; }
+.package-exposure-audience { color:#7185a4; font-family:"Menlo","Consolas",monospace; }
+.package-exposure-meter-cell { display:grid; align-content:center; gap:6px; }
+.package-exposure-meter-cell strong { color:#34445f; font:700 clamp(11px,.95vw,15px)/1.2 "Menlo","Consolas",monospace; }
+.package-exposure-meter { display:block; width:100%; height:7px; overflow:hidden; border-radius:999px; background:#f0f3f7; }
+.package-exposure-meter > span { display:block; height:100%; border-radius:inherit; background:#34445f; }
+.package-exposure-meter-confidence .is-high { background:#059669; }
+.package-exposure-meter-confidence .is-mid { background:#f59e0b; }
+.package-exposure-meter-confidence .is-low,.package-exposure-meter-boundary .is-low { background:#f52255; }
+.package-exposure-tendency { color:#7185a4; }
+
+@media(max-width:900px) {
+  .package-speech-chart-content { grid-template-columns:minmax(130px,.8fr) minmax(0,1.2fr); gap:14px; }
+  .package-speech-chart-panel,.package-exposure-matrix { padding:18px; }
+  .package-exposure-matrix { overflow:hidden; }
+  .package-exposure-table { overflow-x:auto; }
+}
+@media(max-width:650px) {
+  .package-speech-analysis-slide > .package-report-slide-header { margin-bottom:18px; }
+  .package-speech-chart-grid { grid-template-columns:1fr; }
+  .package-speech-chart-content { grid-template-columns:minmax(110px,.75fr) minmax(0,1.25fr); gap:12px; margin-top:14px; }
+  .package-speech-donut { width:min(100%,220px); }
+  .package-speech-chart-panel,.package-exposure-matrix { padding:16px; border-radius:14px; }
+  .package-exposure-matrix-header { align-items:flex-start; flex-direction:column; }
+  .package-exposure-table { min-width:850px; }
+}
