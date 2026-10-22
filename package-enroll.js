@@ -22,12 +22,12 @@
       sessions: '7 private sessions',
       length: '7 weeks',
       sessionDetails: [
-        { title: 'Non-Verbal Communication & Physical Presence', solves: 'Refines the non-verbal cues that shape your presence and credibility.', bullets: ['3-point body language audit', 'Eye contact & facial congruence', 'Video-based presence analysis'], duration: '60 mins · 1:1 Video' },
-        { title: 'Vocal Dynamics & Tonal Control', solves: 'Helps you sound composed, expressive, and assured.', bullets: ['5 vocal delivery variables', 'Strategic pauses & emphasis', '3-tone vocal practice'], duration: '60 mins · 1:1 Video' },
-        { title: 'Verbal Precision & Articulation', solves: 'Helps you express ideas with clarity and precision.', bullets: ['3-part message structuring', 'Filler words & verbal clutter', 'Articulation, diction & sentence economy'], duration: '60 mins · 1:1 Video' },
-        { title: 'Conversational Intelligence & Social Fluency', solves: 'Makes conversations more natural, engaging, and considered.', bullets: ['3-step active listening', 'Conversational turn-taking techniques', 'Rapport building & social calibration'], duration: '60 mins · 1:1 Video' },
-        { title: 'Assertiveness & Verbal Authority', solves: 'Helps you express boundaries and opinions with conviction.', bullets: ['DESC framework for difficult conversations', 'Hedging & unnecessary apologies', 'Assertive response scenario practice'], duration: '60 mins · 1:1 Video' },
-        { title: 'Executive Communication & Speaking Impact', solves: 'Strengthens your impact in high-stakes professional conversations.', bullets: ['PREP framework for concise answers', 'Rule of Three messaging', 'Impromptu speaking & response drills'], duration: '60 mins · 1:1 Video' },
+        { title: 'Non-Verbal Communication & Physical Presence', bullets: ['3-point body language audit', 'Eye contact & facial congruence', 'Video-based presence analysis'], duration: '60 mins · 1:1 Video' },
+        { title: 'Vocal Dynamics & Tonal Control', bullets: ['5 vocal delivery variables', 'Strategic pauses & emphasis', '3-tone vocal practice'], duration: '60 mins · 1:1 Video' },
+        { title: 'Verbal Precision & Articulation', bullets: ['3-part message structuring', 'Filler words & verbal clutter', 'Articulation, diction & sentence economy'], duration: '60 mins · 1:1 Video' },
+        { title: 'Conversational Intelligence & Social Fluency', bullets: ['3-step active listening', 'Conversational turn-taking techniques', 'Rapport building & social calibration'], duration: '60 mins · 1:1 Video' },
+        { title: 'Assertiveness & Verbal Authority', bullets: ['DESC framework for difficult conversations', 'Hedging & unnecessary apologies', 'Assertive response scenario practice'], duration: '60 mins · 1:1 Video' },
+        { title: 'Executive Communication & Speaking Impact', bullets: ['PREP framework for concise answers', 'Rule of Three messaging', 'Impromptu speaking & response drills'], duration: '60 mins · 1:1 Video' },
       ],
     },
     'style-package': {
@@ -52,12 +52,12 @@
       sessions: '6 private sessions',
       length: '6 hours total',
       sessionDetails: [
-        { title: 'Face Shape Assessment', solves: 'Decodes your facial geometry to identify hairstyles, necklines, and eyewear that complement your natural features.', bullets: ['Facial shape, proportions & bone structure mapping', 'Flattering necklines, collars & eyewear frames', 'Hairstyle, hair length & parting recommendations'], duration: '45 mins · 1:1 Video' },
-        { title: 'Body Shape Analysis', solves: 'Eliminates guesswork in dressing by decoding your body proportions to identify the cuts, lengths, and silhouettes that create a balanced, well-fitted look.', bullets: ['Vertical proportions, torso-to-leg ratio & body structure analysis', 'Optimal waistlines, jacket lengths & hemlines', 'Fabric weight, silhouette balance & garment fit recommendations'], duration: '60 mins · 1:1 Video' },
-        { title: 'Lifestyle & Image Analysis', solves: 'Refines your wardrobe around your lifestyle, ensuring every piece serves a purpose and every outfit feels intentional.', bullets: ['Wardrobe-to-lifestyle allocation audit', 'Repeatable daily outfit formulas', 'Occasion-specific dressing & wardrobe versatility', 'Wardrobe gaps, essentials & strategic investment priorities'], duration: '60 mins · 1:1 Video' },
-        { title: 'Makeup & Accessories Styling', solves: 'Stops undertone mismatch in lip and blush shades, and teaches effortless jewelry and accessory pairing.', bullets: ['Undertone & skin contrast identification', 'Signature everyday & evening makeup shades', 'Jewelry metal selection & focal point balance'], duration: '60 mins · 1:1 Video' },
-        { title: 'Curated Styling for Formal Occasions', solves: 'Decodes the nuances of formal dressing to create a polished, distinctive presence suited to the setting, dress code, and impression you want to convey.', bullets: ['Dress-code interpretation & occasion-specific style direction', 'Formalwear proportioning, structure & fit refinement', 'Strategic use of statement pieces, textures & finishing details'], duration: '60 mins · 1:1 Video' },
-        { title: 'Opening Session for Styling (Anything of your choice)', solves: 'Tackles your most pressing wardrobe problem, vetting dilemma pieces, trip packing, or live closet troubleshooting.', bullets: ['100% custom agenda tailored to your immediate need', 'Live outfit remixing with clothes you already own', 'Quick verdicts on fit, alterations & pairing'], duration: '60 mins · 1:1 Video' },
+        { title: 'Face Shape Assessment', bullets: ['Facial shape, proportions & bone structure mapping', 'Flattering necklines, collars & eyewear frames', 'Hairstyle, hair length & parting recommendations'], duration: '60 mins · 1:1 Video' },
+        { title: 'Body Shape Analysis', bullets: ['Vertical proportions, torso-to-leg ratio & body structure analysis', 'Optimal waistlines, jacket lengths & hemlines', 'Fabric weight, silhouette balance & garment fit recommendations'], duration: '60 mins · 1:1 Video' },
+        { title: 'Lifestyle & Image Analysis', bullets: ['Wardrobe-to-lifestyle allocation audit', 'Repeatable daily outfit formulas', 'Occasion-specific dressing & wardrobe versatility', 'Wardrobe gaps, essentials & strategic investment priorities'], duration: '60 mins · 1:1 Video' },
+        { title: 'Makeup & Accessories Styling', bullets: ['Undertone & skin contrast identification', 'Signature everyday & evening makeup shades', 'Jewelry metal selection & focal point balance'], duration: '60 mins · 1:1 Video' },
+        { title: 'Curated Styling for Formal Occasions', bullets: ['Dress-code interpretation & occasion-specific style direction', 'Formalwear proportioning, structure & fit refinement', 'Strategic use of statement pieces, textures & finishing details'], duration: '60 mins · 1:1 Video' },
+        { title: 'Opening Session for Styling (Anything of your choice)', bullets: ['100% custom agenda tailored to your immediate need', 'Live outfit remixing with clothes you already own', 'Quick verdicts on fit, alterations & pairing'], duration: '60 mins · 1:1 Video' },
       ],
     }
   };
@@ -138,15 +138,9 @@
     if (!session) return;
     const heading = card.querySelector('h3');
     const time = card.querySelector('.package-session-time');
-    const solves = card.querySelector('p');
     const list = card.querySelector('ul');
     if (heading) heading.textContent = session.title;
     if (time) time.textContent = '◷  ' + session.duration;
-    if (solves) {
-      const label = document.createElement('strong');
-      label.textContent = 'Solves:';
-      solves.replaceChildren(label, document.createTextNode(' ' + session.solves));
-    }
     if (list) list.replaceChildren(...session.bullets.map((bullet) => {
       const item = document.createElement('li');
       item.textContent = bullet;
