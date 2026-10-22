@@ -272,7 +272,7 @@
       kicker: 'DEMO SLIDE 01 · RADAR DIAGNOSTIC', title: 'Radar Diagnostic & Capability Asymmetry',
       slide: true,
       images: [
-        ['assets/canva/communication/communication-slide-01.svg', 'Radar diagnostic and capability asymmetry report for Upendra Bhowmik']
+        ['assets/canva/communication/communication-slide-01.svg?v=20261022-inline-chart', 'Radar diagnostic and capability asymmetry report for Upendra Bhowmik']
       ]
     },    {
       kicker: 'DEMO SLIDE 02 · SILHOUETTE MATRIX', title: 'Body & Face Proportion Architecture',
