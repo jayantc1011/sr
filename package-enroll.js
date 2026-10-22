@@ -269,15 +269,12 @@
   const nextImageButton = document.querySelector('[data-gallery-next]');
   const demos = [
     {
-      kicker: 'DEMO SLIDE 01 · IDENTITY MATRIX', title: 'Style Archetype & Lifestyle Blueprint',
+      kicker: 'DEMO SLIDE 01 · RADAR DIAGNOSTIC', title: 'Radar Diagnostic & Capability Asymmetry',
+      slide: true,
       images: [
-        ['assets/about/shalini-close.webp', 'Shalini Rathod in a personal styling portrait'],
-        ['assets/about/shalini-seated.webp', 'Shalini Rathod seated in a black outfit'],
-        ['assets/about/shalini-reading.webp', 'Shalini Rathod reviewing a style booklet'],
-        ['assets/services/power-dressing-cover.webp', 'A stylist refining a tailored look with a client']
+        ['assets/canva/communication/communication-slide-01.svg', 'Radar diagnostic and capability asymmetry report for Upendra Bhowmik']
       ]
-    },
-    {
+    },    {
       kicker: 'DEMO SLIDE 02 · SILHOUETTE MATRIX', title: 'Body & Face Proportion Architecture',
       images: [
         ['assets/services/power-dressing-cover.webp', 'A stylist helping a client choose an outfit'],
@@ -342,6 +339,7 @@
       : demo.images;
     if (galleryTrack) {
       packageGallery?.classList.toggle('is-editorial-focused', editorialPhotoFocused);
+      packageGallery?.classList.toggle('is-slide-preview', Boolean(demo.slide) && !editorialPhotoFocused);
       galleryTrack.replaceChildren(...Array.from({ length: galleryImages.length }, (_, slot) => {
         const image = document.createElement('img');
         const [src, alt] = galleryImages[slot];
