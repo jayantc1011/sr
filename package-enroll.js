@@ -67,7 +67,7 @@
   const offer = offers[offerKey];
   const contactHref = 'contact.html?type=consultation&offer=' + encodeURIComponent(offerKey) + '#academy-contact-form';
   const setText = (selector, value) => document.querySelectorAll(selector).forEach((element) => { element.textContent = value; });
-  setText('[data-package-discovery-prompt]', offerKey === 'comm-package' ? 'Unsure where to begin refining the way you express yourself?' : 'Not sure which area of your personal style needs attention first?');
+  setText('[data-package-discovery-prompt]', offerKey === 'style-package' ? 'Unsure where to begin refining the way you express yourself?' : 'Not sure which area of your personal style needs attention first?');
   const formatPrice = (currency) => {
     if (currency === 'USD') {
       return '$' + offer.priceUSD.toLocaleString('en-US');
