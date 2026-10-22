@@ -979,3 +979,22 @@
   .package-roadmap-drill { font-size:12px; }
   .package-roadmap-kpi { font-size:10px; }
 }
+
+/* Demo navigation: previous / slide dots / next */
+.package-gallery-footer { display:grid; grid-template-columns:minmax(120px,1fr) auto minmax(120px,1fr); align-items:center; gap:16px; }
+.package-gallery-previous { justify-self:start; }
+.package-gallery-next { justify-self:end; }
+.package-gallery-controls .package-gallery-arrow { display:inline-flex; align-items:center; justify-content:center; width:auto; min-width:136px; height:52px; padding:0 22px; border:1px solid #dfe7f1; border-radius:12px; background:#fff !important; color:#34445f !important; box-shadow:none; font:500 16px/1 "DM Sans","Avenir Next",Arial,sans-serif; }
+.package-gallery-next .package-gallery-arrow { border-color:#111b31; background:#111b31 !important; color:#fff !important; }
+.package-gallery-controls .package-gallery-arrow:hover:not(:disabled) { transform:translateY(-1px); border-color:#34445f; background:#f7f9fc !important; color:#17233b !important; }
+.package-gallery-next .package-gallery-arrow:hover:not(:disabled) { border-color:#26334d; background:#26334d !important; color:#fff !important; }
+.package-gallery-controls .package-gallery-arrow:disabled { opacity:.38; cursor:default; transform:none; }
+.package-gallery-dots { justify-content:center; align-items:center; gap:12px; }
+.package-gallery-dot { display:block; flex:0 0 10px; width:10px; height:10px; min-height:10px; padding:0; border:0; border-radius:50%; background:#e1e7f0; color:transparent !important; font-size:0; line-height:0; box-shadow:none; }
+.package-gallery-dot[aria-selected="true"],.package-enrollment-page .package-gallery-dot[aria-selected="true"] { background:#111b31 !important; color:transparent !important; transform:none; }
+@media(max-width:650px) {
+  .package-gallery-footer { grid-template-columns:minmax(84px,1fr) auto minmax(84px,1fr); gap:7px; }
+  .package-gallery-controls .package-gallery-arrow { min-width:84px; height:42px; padding:0 12px; border-radius:10px; font-size:14px; }
+  .package-gallery-dots { gap:7px; }
+  .package-gallery-dot { flex-basis:8px; width:8px; height:8px; min-height:8px; }
+}
