@@ -286,13 +286,30 @@
         chartAlt: 'Radar chart comparing Upendra’s communication skills with the staff benchmark.'
       }
     },    {
-      kicker: 'DEMO SLIDE 02 · SILHOUETTE MATRIX', title: 'Body & Face Proportion Architecture',
-      images: [
-        ['assets/services/power-dressing-cover.webp', 'A stylist helping a client choose an outfit'],
-        ['assets/services/styling-consultation.webp', 'A personal wardrobe consultation'],
-        ['assets/about/shalini-seated.webp', 'Shalini Rathod seated in a black outfit'],
-        ['assets/services/course-bundle.webp', 'Wardrobe essentials for a personalized style plan']
-      ]
+      kicker: 'DEMO SLIDE 02 · SIX-DIMENSIONAL SCORECARD', title: 'Six-Dimensional Scorecard Breakdown',
+      scorecard: {
+        sequence: '02 / 05',
+        title: 'Six-Dimensional Scorecard Breakdown',
+        author: 'Upendra Bhowmik · Senior Software Engineer',
+        heading: 'Six-Dimensional Scorecard',
+        subtitle: 'Diagnostic ratings across 18 behavioral sub-criteria (Scale: 1.0 – 5.0)',
+        dimensions: [
+          {name:'Vocal Presence', facets:'Pace, Tone, Modulation', summary:'Warm in casual chats; accelerates rapidly to 175+ WPM under questioning with flat pitch delivery.', score:'2.5', target:'4.2', gap:'−1.7'},
+          {name:'Verbal Clarity', facets:'Articulation, Structure, Conciseness', summary:'High internal grasp, low verbal economy. Details low-level mechanics before stating the decision.', score:'2.2', target:'4.5', gap:'−2.3', open:true, prescription:'Apply PREP structure: Point first, one rationale, one metric, restate point.', criteria:[
+            ['Articulation','2.6','Focuses on implementation traces over business impact.','The "Expert’s Curse": Assuming listeners need full mechanics.'],
+            ['Top-Down Framing','2.0','Narrates chronological debugging steps rather than outcomes.','Defensive justification before the bottom line.'],
+            ['Conciseness','2.0','Frequent hedging: "basically", "kind of", "does that make sense".','Qualifying statements to soften perceived accountability.']
+          ]},
+          {name:'Non-Verbal Presence', facets:'Posture, Gestures, Eye Contact', summary:'Defensive retraction during debate; camera gaze drifts to side monitors during virtual calls.', score:'2.7', target:'4.1', gap:'−1.4'},
+          {name:'Conversational Skills', facets:'Listening, Response Quality, Rapport', summary:'Core interpersonal asset. Highly respected for empathy, active listening, and collegial humility.', score:'3.8', target:'4.3', gap:'−0.5'},
+          {name:'Assertiveness', facets:'Boundaries, Confidence, Directness', summary:'Primary bottleneck. Equates boundaries with hostility; absorbs scope creep and under-negotiates.', score:'1.8', target:'4.4', gap:'−2.6', open:true, prescription:'Shift from "No" to the Trade-Off Pivot: "I can prioritize X if we defer Y."', criteria:[
+            ['Boundary Setting','1.5','Accepts late scope and off-hours requests without pushback.','Believing refusal destroys working relationships.'],
+            ['Self-Advocacy','2.0','Concedes immediately at the first pushback during appraisals.','Expecting technical work to advocate for itself.'],
+            ['Direct Feedback','1.8','Softens warnings to the point that other teams ignore them.','Diluting feedback to avoid temporary awkwardness.']
+          ]},
+          {name:'Speaking Impact', facets:'Structure, Composure, Audience Awareness', summary:'Struggles to synthesize technical depth into executive stakes; loses stakeholder attention.', score:'2.3', target:'4.5', gap:'−2.2'}
+        ]
+      }
     },
     {
       kicker: 'DEMO SLIDE 03 · CHROMATIC SPECTRUM', title: '12-Tone Palette & Color Harmony',
@@ -396,6 +413,138 @@
     return article;
   };
 
+  const createScorecardSlide = (scorecard) => {
+    const article = document.createElement('article');
+    article.className = 'package-scorecard-slide';
+    article.setAttribute('aria-label', scorecard.title);
+    const header = document.createElement('header');
+    header.className = 'package-report-slide-header';
+    const sequence = document.createElement('span');
+    sequence.className = 'package-report-slide-sequence';
+    sequence.textContent = scorecard.sequence;
+    const title = document.createElement('h4');
+    title.textContent = scorecard.title;
+    const author = document.createElement('p');
+    author.className = 'package-report-slide-author';
+    author.textContent = scorecard.author;
+    header.append(sequence, title, author);
+    const intro = document.createElement('div');
+    intro.className = 'package-scorecard-intro';
+    const heading = document.createElement('h5');
+    heading.textContent = scorecard.heading;
+    const subtitle = document.createElement('p');
+    subtitle.textContent = scorecard.subtitle;
+    intro.append(heading, subtitle);
+    const controls = document.createElement('div');
+    controls.className = 'package-scorecard-controls';
+    const expand = document.createElement('button');
+    expand.type = 'button';
+    expand.textContent = 'Expand All';
+    const slash = document.createElement('span');
+    slash.textContent = '/';
+    const collapse = document.createElement('button');
+    collapse.type = 'button';
+    collapse.textContent = 'Collapse All';
+    controls.append(expand, slash, collapse);
+    intro.append(controls);
+    const list = document.createElement('div');
+    list.className = 'package-scorecard-list';
+    const items = [];
+    scorecard.dimensions.forEach((dimension, index) => {
+      const section = document.createElement('section');
+      section.className = 'package-scorecard-dimension';
+      const trigger = document.createElement('button');
+      trigger.type = 'button';
+      trigger.className = 'package-scorecard-trigger';
+      trigger.setAttribute('aria-expanded', String(Boolean(dimension.open)));
+      const number = document.createElement('span');
+      number.className = 'package-scorecard-number';
+      number.textContent = String(index + 1).padStart(2, '0');
+      const text = document.createElement('span');
+      text.className = 'package-scorecard-label';
+      const name = document.createElement('strong');
+      name.textContent = dimension.name;
+      const facets = document.createElement('span');
+      facets.textContent = ` (${dimension.facets})`;
+      const summary = document.createElement('span');
+      summary.className = 'package-scorecard-summary';
+      summary.textContent = dimension.summary;
+      text.append(name, facets, summary);
+      const rating = document.createElement('span');
+      rating.className = 'package-scorecard-rating';
+      const stars = document.createElement('span');
+      stars.className = 'package-scorecard-stars';
+      const val = Number(dimension.score);
+      stars.textContent = '★★★★★';
+      stars.style.setProperty('--score-fill', `${Math.max(0, Math.min(100, (val / 5) * 100))}%`);
+      const score = document.createElement('strong');
+      score.textContent = `${dimension.score}/5`;
+      const target = document.createElement('span');
+      target.className = 'package-scorecard-target';
+      target.textContent = `Target: ${dimension.target} (${dimension.gap})`;
+      rating.append(stars, score, target);
+      const symbol = document.createElement('span');
+      symbol.className = 'package-scorecard-symbol';
+      symbol.textContent = dimension.open ? '−' : '+';
+      trigger.append(number, text, rating, symbol);
+      const detail = document.createElement('div');
+      detail.className = 'package-scorecard-detail';
+      detail.hidden = !dimension.open;
+      if (dimension.criteria) {
+        const table = document.createElement('div');
+        table.className = 'package-scorecard-table';
+        ['Sub-Criterion', 'Score', 'Diagnostic Observation', 'Core Habit Trap'].forEach((label) => {
+          const cell = document.createElement('span');
+          cell.className = 'package-scorecard-th';
+          cell.textContent = label;
+          table.append(cell);
+        });
+        dimension.criteria.forEach(([criterion, ratingValue, observation, trap]) => {
+          const nameCell = document.createElement('strong');
+          nameCell.textContent = criterion;
+          const scoreCell = document.createElement('span');
+          scoreCell.className = 'package-scorecard-subscore';
+          const starsCell = document.createElement('span');
+          starsCell.className = 'package-scorecard-stars';
+          starsCell.textContent = '★★★★★';
+          starsCell.style.setProperty('--score-fill', `${(Number(ratingValue) / 5) * 100}%`);
+          const value = document.createElement('strong');
+          value.textContent = `${ratingValue}/5`;
+          scoreCell.append(starsCell, value);
+          const observationCell = document.createElement('span');
+          observationCell.textContent = observation;
+          const trapCell = document.createElement('span');
+          trapCell.textContent = trap;
+          table.append(nameCell, scoreCell, observationCell, trapCell);
+        });
+        detail.append(table);
+        const prescription = document.createElement('p');
+        prescription.className = 'package-scorecard-prescription';
+        const label = document.createElement('strong');
+        label.textContent = 'Prescription: ';
+        prescription.append(label, document.createTextNode(dimension.prescription));
+        detail.append(prescription);
+      }
+      trigger.addEventListener('click', () => {
+        const open = trigger.getAttribute('aria-expanded') !== 'true';
+        trigger.setAttribute('aria-expanded', String(open));
+        detail.hidden = !open;
+        symbol.textContent = open ? '−' : '+';
+      });
+      section.append(trigger, detail);
+      list.append(section);
+      items.push({trigger, detail, symbol});
+    });
+    expand.addEventListener('click', () => items.forEach((item) => {
+      item.trigger.setAttribute('aria-expanded', 'true'); item.detail.hidden = false; item.symbol.textContent = '−';
+    }));
+    collapse.addEventListener('click', () => items.forEach((item) => {
+      item.trigger.setAttribute('aria-expanded', 'false'); item.detail.hidden = true; item.symbol.textContent = '+';
+    }));
+    article.append(header, intro, list);
+    return article;
+  };
+
   const renderGallery = () => {
     const demo = demos[currentSlide];
     const galleryImages = editorialPhotoFocused
@@ -403,9 +552,9 @@
       : demo.images || [];
     if (galleryTrack) {
       packageGallery?.classList.toggle('is-editorial-focused', editorialPhotoFocused);
-      packageGallery?.classList.toggle('is-slide-preview', Boolean(demo.reportSlide) && !editorialPhotoFocused);
-      if (demo.reportSlide && !editorialPhotoFocused) {
-        galleryTrack.replaceChildren(createReportSlide(demo.reportSlide));
+      packageGallery?.classList.toggle('is-slide-preview', Boolean(demo.reportSlide || demo.scorecard) && !editorialPhotoFocused);
+      if (!editorialPhotoFocused && (demo.reportSlide || demo.scorecard)) {
+        galleryTrack.replaceChildren(demo.scorecard ? createScorecardSlide(demo.scorecard) : createReportSlide(demo.reportSlide));
       } else {
         galleryTrack.replaceChildren(...galleryImages.map(([src, alt]) => {
           const image = document.createElement('img');
