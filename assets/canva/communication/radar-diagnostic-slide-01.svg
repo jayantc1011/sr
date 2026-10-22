@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1932" height="1562" viewBox="0 0 966 781" role="img" aria-labelledby="title desc">
+  <title id="title">Radar Diagnostic &amp; Capability Asymmetry</title>
+  <desc id="desc">Upendra Bhowmik's capability scores compared with the staff benchmark: Vocal Presence 2.5, Verbal Clarity 2.2, Non-Verbal Presence 2.7, Conversational Skills 3.8, Assertiveness 1.8, and Speaking Impact 2.3, each on a five-point scale.</desc>
+  <rect width="966" height="781" fill="#fff"/>
+
+  <!-- Pale plot field -->
+  <circle cx="473" cy="357" r="244" fill="#fafbfd"/>
+
+  <!-- Six-point radar grid, scaled from 1 to 5 -->
+  <g fill="none" stroke="#d8e1ed" stroke-width="1.4">
+    <path d="M473 308.4 515.1 332.7 515.1 381.3 473 405.6 430.9 381.3 430.9 332.7Z"/>
+    <path d="M473 259.8 557.1 308.4 557.1 405.6 473 454.2 388.9 405.6 388.9 308.4Z"/>
+    <path d="M473 211.2 599.2 284.1 599.2 429.9 473 502.8 346.8 429.9 346.8 284.1Z"/>
+    <path d="M473 162.6 641.3 259.8 641.3 454.2 473 551.4 304.7 454.2 304.7 259.8Z"/>
+    <path d="M473 114 683.9 235.5 683.9 478.5 473 600 262.1 478.5 262.1 235.5Z" stroke="#cbd7e6" stroke-width="1.6"/>
+  </g>
+  <g stroke="#d8e1ed" stroke-width="1.2">
+    <path d="M473 357V114M473 357 683.9 235.5M473 357 683.9 478.5M473 357V600M473 357 262.1 478.5M473 357 262.1 235.5"/>
+  </g>
+
+  <!-- Staff benchmark: 4.2 / 5 -->
+  <path d="M473 153 649.5 255.1 649.5 458.9 473 561 296.5 458.9 296.5 255.1Z" fill="none" stroke="#91a8c8" stroke-width="1.6" stroke-dasharray="4 4"/>
+
+  <!-- Scale labels -->
+  <g fill="#91a8c8" font-family="Arial, Helvetica, sans-serif" font-size="14">
+    <text x="480" y="313">1</text>
+    <text x="480" y="264">2</text>
+    <text x="480" y="216">3</text>
+    <text x="480" y="167">4</text>
+    <text x="480" y="119">5</text>
+  </g>
+
+  <!-- Client capability profile: 2.5, 2.2, 2.7, 3.8, 1.8, 2.3 -->
+  <path d="M473 235.5 565.7 303.5 586.8 422.7 473 542.2 397.2 400.7 376.1 301.1Z" fill="#101a30" fill-opacity=".12" stroke="#101a30" stroke-width="3" stroke-linejoin="round"/>
+  <g fill="#101a30" stroke="#fff" stroke-width="2.8">
+    <circle cx="473" cy="235.5" r="6"/>
+    <circle cx="565.7" cy="303.5" r="6"/>
+    <circle cx="586.8" cy="422.7" r="6"/>
+    <circle cx="473" cy="542.2" r="6"/>
+    <circle cx="397.2" cy="400.7" r="6"/>
+    <circle cx="376.1" cy="301.1" r="6"/>
+  </g>
+
+  <!-- Axis names and scores -->
+  <g font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#34445f">
+    <text x="473" y="67" text-anchor="middle">Vocal Presence</text>
+    <text x="473" y="87" text-anchor="middle" fill="#91a8c8" font-family="Menlo, Consolas, monospace" font-size="15">2.5 / 5.0</text>
+
+    <text x="723" y="210">Verbal Clarity</text>
+    <text x="723" y="230" fill="#91a8c8" font-family="Menlo, Consolas, monospace" font-size="15">2.2 / 5.0</text>
+
+    <text x="723" y="499">Non-Verbal Presence</text>
+    <text x="723" y="519" fill="#91a8c8" font-family="Menlo, Consolas, monospace" font-size="15">2.7 / 5.0</text>
+
+    <text x="473" y="644" text-anchor="middle">Conversational Skills</text>
+    <text x="473" y="664" text-anchor="middle" fill="#91a8c8" font-family="Menlo, Consolas, monospace" font-size="15">3.8 / 5.0</text>
+
+    <text x="225" y="499" text-anchor="end">Assertiveness</text>
+    <text x="225" y="519" text-anchor="end" fill="#91a8c8" font-family="Menlo, Consolas, monospace" font-size="15">1.8 / 5.0</text>
+
+    <text x="225" y="210" text-anchor="end">Speaking Impact</text>
+    <text x="225" y="230" text-anchor="end" fill="#91a8c8" font-family="Menlo, Consolas, monospace" font-size="15">2.3 / 5.0</text>
+  </g>
+
+  <!-- Legend -->
+  <g font-family="Menlo, Consolas, monospace" font-size="22" fill="#667b9b">
+    <path d="M130 736h18" stroke="#101a30" stroke-width="7" stroke-linecap="round"/>
+    <text x="166" y="744">Upendra (Current)</text>
+    <path d="M460 736h22" stroke="#91a8c8" stroke-width="2" stroke-dasharray="5 4"/>
+    <text x="501" y="744">Staff Benchmark (4.2+)</text>
+  </g>
+</svg>
