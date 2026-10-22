@@ -764,7 +764,7 @@
 
 /* Text-first six-dimensional communication scorecard demo */
 .package-scorecard-slide { width:100%; height:min(72vh,720px); min-height:440px; flex:0 0 100%; overflow-y:auto; overscroll-behavior:contain; scrollbar-gutter:stable; padding:0 8px 8px 0; color:#17233b; background:#fff; text-align:left; }
-.package-scorecard-slide > .package-report-slide-header { margin-bottom:clamp(24px,3vw,40px); }
+.package-scorecard-slide > .package-report-slide-header { position:sticky; top:0; z-index:3; margin-bottom:clamp(24px,3vw,40px); padding:10px 0 15px; background:#fff; box-shadow:0 1px 0 #e5edf6; }
 .package-scorecard-intro { display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:8px 24px; padding:clamp(18px,2.2vw,30px); border:1px solid #e4ebf4; border-radius:18px 18px 0 0; }
 .package-scorecard-intro h5 { margin:0; color:#17233b; font:700 clamp(20px,1.7vw,28px)/1.25 "DM Sans","Avenir Next",Arial,sans-serif; }
 .package-scorecard-intro > p { grid-column:1; margin:0; color:#91a8c8; font:400 clamp(13px,1.1vw,18px)/1.45 "DM Sans","Avenir Next",Arial,sans-serif; }
