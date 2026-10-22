@@ -1031,7 +1031,7 @@
       button.setAttribute('aria-controls', 'booklet-demo-panel');
       button.setAttribute('aria-selected', String(index === 0));
       button.tabIndex = index === 0 ? 0 : -1;
-      button.textContent = 'Demo 0' + (index + 1);
+      button.textContent = '';
       button.addEventListener('click', () => showDemo(index));
       return button;
     }));
