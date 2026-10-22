@@ -334,13 +334,27 @@
       }
     },
     {
-      kicker: 'DEMO SLIDE 04 · READY-TO-WEAR', title: 'Curated Occasion Lookbook',
-      images: [
-        ['assets/services/dining-etiquette-cover.webp', 'A guided occasion consultation'],
-        ['assets/services/power-dressing-cover.webp', 'A stylist helping a client choose an outfit'],
-        ['assets/about/shalini-seated.webp', 'Shalini Rathod seated in a black outfit'],
-        ['assets/about/shalini-reading.webp', 'Shalini Rathod reviewing a style booklet']
-      ]
+      kicker: 'DEMO SLIDE 04 · SCRIPT LABORATORY', title: 'Everyday Traps & Script Laboratory',
+      scriptLab: {
+        sequence:'04 / 05',
+        title:'Everyday Traps & Script Laboratory',
+        author:'Upendra Bhowmik · Senior Software Engineer',
+        cases:[
+          {tab:'Case 01: Boundaries',context:'Friday 6:30 PM Scope Creep',reflex:'"Uh, sure, I was closing my laptop, but I’ll see what I can do tonight. Sorry for the delay."',thought:'"If I say no, I won’t be seen as a team player."',outcome:'Works until 1:30 AM; requester learns Upendra absorbs late emergencies.',reframe:'"Builds are locked for the weekend. I can tackle this Monday morning, or if this is a P0 blocker, which Monday deliverable should we drop to make room?"',principle:'Returns scope trade-offs to requester calmly.',why:'Protects recovery time while remaining constructive.',delivery:'Downward inflection · 130 WPM'},
+          {tab:'Case 02: Negotiation',context:'Appraisal · Compensation Discussion',reflex:'"I know budgets are tight, whatever the committee decides is fine..."',thought:'Hoping quiet hard work will be recognised without an explicit ask.',outcome:'The compensation conversation ends without a clear request.',reframe:'"My refactor saved $140K in cloud compute. I am seeking market parity at L6."',principle:'Pair a specific impact with a direct request.',why:'Makes the value and the requested next step clear.',delivery:'Calm, direct delivery'},
+          {tab:'Case 03: Articulation',context:'Technical Update · Explaining an Incident',reflex:'"The worker pool mutex lock on table 4 triggered a cascade..."',thought:'Proving competence through exhaustive detail rather than synthesis.',outcome:'Listeners have to infer the result from implementation details.',reframe:'"Queue stalled for 12 mins. Resolved with zero data loss; circuit breaker added."',principle:'Lead with the outcome, then add the detail that supports it.',why:'Gives listeners the impact before the technical explanation.',delivery:'Concise, downward inflection'},
+          {tab:'Case 04: Personal',context:'Personal · Deep-Work Boundary',reflex:'"Sure, I can run that errand during my deep-work block, it’s fine..."',thought:'Guilt over dedicated focus time; difficulty saying no to peers or family.',outcome:'Focused work time is interrupted and the boundary stays unclear.',reframe:'"I’d love to help! I am in deep focus until 6 PM; let’s connect right after."',principle:'Set a clear limit and offer a specific time to reconnect.',why:'Keeps the response warm while protecting focus time.',delivery:'Warm, clear delivery'}
+        ],
+        traps:[
+          {title:'Preemptive Apology',percent:'88%',category:'workplace',habit:'"Sorry to bother you, just had a small doubt regarding the schema..."',root:'Attempting to minimize perceived burden before legitimate work asks.',antidote:'"Hi Priya, I need your input on the schema to unblock the sprint."'},
+          {title:'The Nodding Mirage',percent:'91%',category:'workplace',habit:'[Nodding affirmatively while leadership states an unfeasible deadline]',root:'Conflating politeness with agreement; avoiding group friction.',antidote:'"From an architecture standpoint, that date requires a 40% scope reduction."'},
+          {title:'Silent Yes to Burnout',percent:'84%',category:'workplace',habit:'"Sure, I guess I can look into that bug over the weekend..."',root:'Belief that saying no signals lack of dedication.',antidote:'"I can take that on Monday, or swap out the index task today. Which takes priority?"'},
+          {title:'The TMI Avalanche',percent:'79%',category:'workplace',habit:'"The worker pool mutex lock on table 4 triggered a cascade..."',root:'Proving competence through exhaustive detail rather than synthesis.',antidote:'"Queue stalled for 12 mins. Resolved with zero data loss; circuit breaker added."'},
+          {title:'Hesitant Uptalk',percent:'74%',category:'workplace',habit:'"We should probably decouple the service...? What do you think...?"',root:'Fear of blame if the recommendation encounters issues.',antidote:'"Decoupling the service reduces latency by 60%. I recommend this path."'},
+          {title:'Silent Appraisal Passivity',percent:'86%',category:'negotiation',habit:'"I know budgets are tight, whatever the committee decides is fine..."',root:'Hoping quiet hard work is automatically rewarded.',antidote:'"My refactor saved $140K in cloud compute. I am seeking market parity at L6."'},
+          {title:'Personal Boundary Erosion',percent:'82%',category:'personal',habit:'"Sure, I can run that errand during my deep-work block, it’s fine..."',root:'Guilt over dedicated focus time; inability to say no to peers or family.',antidote:'"I’d love to help! I am in deep focus until 6 PM; let’s connect right after."'}
+        ]
+      }
     },
     {
       kicker: 'DEMO SLIDE 05 · FINISHING TOUCHES', title: 'Makeup, Accessories & Wishlist',
@@ -681,6 +695,205 @@
     return article;
   };
 
+  const createScriptLabSlide = (lab) => {
+    const article=document.createElement('article');
+    article.className='package-script-lab-slide';
+    article.setAttribute('aria-label',lab.title);
+    const header=document.createElement('header');
+    header.className='package-report-slide-header';
+    const sequence=document.createElement('span');
+    sequence.className='package-report-slide-sequence';
+    sequence.textContent=lab.sequence;
+    const title=document.createElement('h4');
+    title.textContent=lab.title;
+    const author=document.createElement('p');
+    author.className='package-report-slide-author';
+    author.textContent=lab.author;
+    header.append(sequence,title,author);
+
+    const laboratory=document.createElement('section');
+    laboratory.className='package-script-laboratory';
+    const labHeader=document.createElement('div');
+    labHeader.className='package-script-lab-header';
+    const labHeading=document.createElement('div');
+    const labTitle=document.createElement('h5');
+    labTitle.textContent='Script Laboratory: Verbal Reframing';
+    const labSubtitle=document.createElement('p');
+    labSubtitle.textContent='Default passive reflex contrasted against assertive executive delivery';
+    labHeading.append(labTitle,labSubtitle);
+    const caseTabs=document.createElement('div');
+    caseTabs.className='package-script-case-tabs';
+    caseTabs.setAttribute('role','tablist');
+    caseTabs.setAttribute('aria-label','Script cases');
+    labHeader.append(labHeading,caseTabs);
+    const context=document.createElement('p');
+    context.className='package-script-context';
+    const compare=document.createElement('div');
+    compare.className='package-script-comparison';
+    const current=document.createElement('section');
+    current.className='package-script-card package-script-current';
+    const currentHeader=document.createElement('header');
+    const currentTitle=document.createElement('h6');
+    currentTitle.textContent='Current Reflex';
+    const currentTone=document.createElement('span');
+    currentTone.className='package-script-tone';
+    currentTone.textContent='Passive';
+    currentHeader.append(currentTitle,currentTone);
+    const reflex=document.createElement('blockquote');
+    reflex.className='package-script-quote';
+    const thought=document.createElement('p');
+    const outcome=document.createElement('p');
+    current.append(currentHeader,reflex,thought,outcome);
+    const reframe=document.createElement('section');
+    reframe.className='package-script-card package-script-reframe';
+    const reframeHeader=document.createElement('header');
+    const reframeTitle=document.createElement('h6');
+    reframeTitle.textContent='Executive Reframe';
+    const principle=document.createElement('span');
+    principle.className='package-script-tone';
+    reframeHeader.append(reframeTitle,principle);
+    const reframeQuote=document.createElement('blockquote');
+    reframeQuote.className='package-script-quote';
+    const rationale=document.createElement('div');
+    rationale.className='package-script-rationale';
+    const delivery=document.createElement('footer');
+    delivery.className='package-script-delivery';
+    const deliveryText=document.createElement('span');
+    const copy=document.createElement('button');
+    copy.type='button';
+    copy.textContent='Copy Script';
+    delivery.append(deliveryText,copy);
+    reframe.append(reframeHeader,reframeQuote,rationale,delivery);
+    compare.append(current,reframe);
+    laboratory.append(labHeader,context,compare);
+
+    const trapsSection=document.createElement('section');
+    trapsSection.className='package-everyday-traps';
+    const trapsHeader=document.createElement('header');
+    trapsHeader.className='package-traps-header';
+    const trapsHeading=document.createElement('div');
+    const trapsTitle=document.createElement('h5');
+    trapsTitle.textContent='Everyday Behavioral Traps';
+    const trapsSubtitle=document.createElement('p');
+    trapsSubtitle.textContent='Common friction habits shared by 90% of engineers and their direct executive antidotes';
+    trapsHeading.append(trapsTitle,trapsSubtitle);
+    const filters=document.createElement('div');
+    filters.className='package-trap-filters';
+    filters.setAttribute('role','group');
+    filters.setAttribute('aria-label','Filter behavioral traps');
+    const trapGrid=document.createElement('div');
+    trapGrid.className='package-trap-grid';
+    trapsHeader.append(trapsHeading,filters);
+    const filterOptions=[['all','All'],['workplace','Workplace'],['negotiation','Negotiation'],['personal','Personal']];
+    const trapCards=[];
+    lab.traps.forEach((trap) => {
+      const card=document.createElement('article');
+      card.className='package-trap-card';
+      card.dataset.category=trap.category;
+      const cardHeader=document.createElement('header');
+      const cardTitle=document.createElement('h6');
+      cardTitle.textContent=trap.title;
+      const percent=document.createElement('span');
+      percent.textContent=`${trap.percent} of peers`;
+      cardHeader.append(cardTitle,percent);
+      const habit=document.createElement('blockquote');
+      const label=document.createElement('span');
+      label.textContent='Current habit:';
+      const quote=document.createElement('em');
+      quote.textContent=trap.habit;
+      habit.append(label,quote);
+      const root=document.createElement('p');
+      const rootLabel=document.createElement('strong');
+      rootLabel.textContent='Root: ';
+      root.append(rootLabel,document.createTextNode(trap.root));
+      const antidote=document.createElement('p');
+      antidote.className='package-trap-antidote';
+      const antidoteLabel=document.createElement('strong');
+      antidoteLabel.textContent='Antidote:';
+      const antidoteQuote=document.createElement('span');
+      antidoteQuote.textContent=trap.antidote;
+      antidote.append(antidoteLabel,antidoteQuote);
+      card.append(cardHeader,habit,root,antidote);
+      trapGrid.append(card);
+      trapCards.push(card);
+    });
+    filterOptions.forEach(([category,label])=>{
+      const button=document.createElement('button');
+      button.type='button';
+      button.textContent=label;
+      button.setAttribute('aria-pressed',String(category==='all'));
+      button.addEventListener('click',()=>{
+        filters.querySelectorAll('button').forEach((other)=>other.setAttribute('aria-pressed',String(other===button)));
+        trapCards.forEach((card)=>{card.hidden=category!=='all'&&card.dataset.category!==category;});
+      });
+      filters.append(button);
+    });
+    trapsSection.append(trapsHeader,trapGrid);
+
+    const cases=[];
+    const renderCase=(data)=>{
+      context.replaceChildren();
+      const contextLabel=document.createElement('span');
+      contextLabel.textContent='Context: ';
+      const contextValue=document.createElement('strong');
+      contextValue.textContent=data.context;
+      context.append(contextLabel,contextValue);
+      reflex.textContent=data.reflex;
+      thought.replaceChildren();
+      const thoughtLabel=document.createElement('strong');
+      thoughtLabel.textContent='Internal thought: ';
+      thought.append(thoughtLabel,document.createTextNode(data.thought));
+      outcome.replaceChildren();
+      const outcomeLabel=document.createElement('strong');
+      outcomeLabel.textContent='Outcome: ';
+      outcome.append(outcomeLabel,document.createTextNode(data.outcome));
+      reframeQuote.textContent=data.reframe;
+      principle.replaceChildren();
+      const principleLabel=document.createElement('strong');
+      principleLabel.textContent='Principle: ';
+      principle.append(principleLabel,document.createTextNode(data.principle));
+      rationale.replaceChildren();
+      const whyLabel=document.createElement('strong');
+      whyLabel.textContent='Why it works: ';
+      rationale.append(
+        Object.assign(document.createElement('p'),{textContent:''})
+      );
+      const whyLine=document.createElement('p');
+      whyLine.append(whyLabel,document.createTextNode(data.why));
+      rationale.replaceChildren(whyLine);
+      deliveryText.textContent=`Delivery: ${data.delivery}`;
+      copy.onclick=async()=>{
+        try { await navigator.clipboard.writeText(data.reframe); copy.textContent='Copied'; }
+        catch { copy.textContent='Select and copy the script'; }
+        window.setTimeout(()=>{copy.textContent='Copy Script';},1800);
+      };
+    };
+    lab.cases.forEach((data,index)=>{
+      const button=document.createElement('button');
+      button.type='button';
+      button.id=`package-script-case-${index+1}`;
+      button.setAttribute('role','tab');
+      button.setAttribute('aria-selected',String(index===0));
+      button.tabIndex=index===0?0:-1;
+      button.textContent=data.tab;
+      button.addEventListener('click',()=>{
+        caseTabs.querySelectorAll('[role="tab"]').forEach((other)=>{other.setAttribute('aria-selected',String(other===button));other.tabIndex=other===button?0:-1;});
+        renderCase(data);
+      });
+      button.addEventListener('keydown',(event)=>{
+        if(!['ArrowLeft','ArrowRight'].includes(event.key)) return;
+        event.preventDefault();
+        const next=(index+(event.key==='ArrowRight'?1:-1)+lab.cases.length)%lab.cases.length;
+        caseTabs.querySelectorAll('[role="tab"]')[next].focus();
+        caseTabs.querySelectorAll('[role="tab"]')[next].click();
+      });
+      caseTabs.append(button);
+    });
+    renderCase(lab.cases[0]);
+    article.append(header,laboratory,trapsSection);
+    return article;
+  };
+
   const renderGallery = () => {
     const demo = demos[currentSlide];
     const galleryImages = editorialPhotoFocused
@@ -688,9 +901,9 @@
       : demo.images || [];
     if (galleryTrack) {
       packageGallery?.classList.toggle('is-editorial-focused', editorialPhotoFocused);
-      packageGallery?.classList.toggle('is-slide-preview', Boolean(demo.reportSlide || demo.scorecard || demo.speechAnalysis) && !editorialPhotoFocused);
-      if (!editorialPhotoFocused && (demo.reportSlide || demo.scorecard || demo.speechAnalysis)) {
-        galleryTrack.replaceChildren(demo.speechAnalysis ? createSpeechAnalysisSlide(demo.speechAnalysis) : demo.scorecard ? createScorecardSlide(demo.scorecard) : createReportSlide(demo.reportSlide));
+      packageGallery?.classList.toggle('is-slide-preview', Boolean(demo.reportSlide || demo.scorecard || demo.speechAnalysis || demo.scriptLab) && !editorialPhotoFocused);
+      if (!editorialPhotoFocused && (demo.reportSlide || demo.scorecard || demo.speechAnalysis || demo.scriptLab)) {
+        galleryTrack.replaceChildren(demo.scriptLab ? createScriptLabSlide(demo.scriptLab) : demo.speechAnalysis ? createSpeechAnalysisSlide(demo.speechAnalysis) : demo.scorecard ? createScorecardSlide(demo.scorecard) : createReportSlide(demo.reportSlide));
       } else {
         galleryTrack.replaceChildren(...galleryImages.map(([src, alt]) => {
           const image = document.createElement('img');
