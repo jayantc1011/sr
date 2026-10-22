@@ -245,7 +245,8 @@
 .package-report-slide-header h4 { margin:0; color:#17233b; font:700 clamp(15px,1.6vw,25px)/1.25 "DM Sans","Avenir Next",Arial,sans-serif; }
 .package-report-slide-author { margin:0; color:#91a8c8; font:400 clamp(10px,.95vw,14px)/1.4 "Menlo","Consolas",monospace; text-align:right; }
 .package-report-slide-body { display:grid; grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr); gap:clamp(18px,2.2vw,34px); align-items:center; min-height:0; padding-top:14px; }
-.package-report-slide-copy { min-width:0; }
+.package-report-slide-copy { display:grid; align-content:center; gap:clamp(10px,1.1vw,16px); min-width:0; }
+.package-report-slide-copy h5,.package-report-slide-copy .package-report-slide-score,.package-report-slide-copy .package-report-slide-metrics,.package-report-slide-copy .package-report-slide-summary { margin:0; }
 .package-report-slide-copy h5 { margin:0 0 5px; color:#17233b; font:700 clamp(18px,1.7vw,27px)/1.25 "DM Sans","Avenir Next",Arial,sans-serif; }
 .package-report-slide-score { margin:0; color:#7185a4; font:500 clamp(12px,1.1vw,17px)/1.45 "Menlo","Consolas",monospace; }
 .package-report-slide-metrics { display:grid; gap:clamp(8px,1vw,14px); margin:clamp(14px,1.6vw,22px) 0 0; padding:clamp(12px,1.4vw,20px); border:1px solid #dfe7f1; border-radius:14px; background:#fbfcfe; }
@@ -268,6 +269,7 @@
   .package-report-slide-header h4 { font-size:15px; }
   .package-report-slide-author { font-size:10px; }
   .package-report-slide-body { grid-template-columns:minmax(0,1fr); gap:14px; padding-top:0; }
+  .package-report-slide-copy { gap:10px; }
   .package-report-slide-copy h5 { font-size:20px; }
   .package-report-slide-score { font-size:12px; }
   .package-report-slide-metrics { gap:8px; margin-top:12px; padding:12px; }
