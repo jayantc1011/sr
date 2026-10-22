@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2168" height="952" viewBox="0 0 2168 952" role="img" aria-labelledby="title desc">
+  <title id="title">Slide 1 of 5: Radar Diagnostic &amp; Capability Asymmetry</title>
+  <desc id="desc">Communication capability assessment for Upendra Bhowmik, Senior Software Engineer. Score 2.55 out of 5, developing. Conversational Trust is the top capability at 3.8. Assertiveness and Boundaries is the primary vulnerability at 1.8. Verbal Clarity: Bottom-up rambling, 2.2. A radar chart compares six capability scores to the staff benchmark.</desc>
+  <rect width="2168" height="952" fill="#fff"/>
+  <rect x="48" y="49" width="126" height="44" rx="10" fill="#f1f5fa"/>
+  <text x="111" y="78" text-anchor="middle" fill="#34445f" font-family="Menlo,Consolas,monospace" font-size="24" font-weight="700">01 / 05</text>
+  <text x="198" y="81" fill="#17233b" font-family="Arial,Helvetica,sans-serif" font-size="34" font-weight="700">Radar Diagnostic &amp; Capability Asymmetry</text>
+  <text x="2120" y="77" text-anchor="end" fill="#91a8c8" font-family="Menlo,Consolas,monospace" font-size="23">Upendra Bhowmik · Senior Software Engineer</text>
+  <path d="M48 122H2120" stroke="#e5edf6" stroke-width="2"/>
+
+  <text x="48" y="333" fill="#17233b" font-family="Arial,Helvetica,sans-serif" font-size="38" font-weight="700">Upendra Bhowmik</text>
+  <text x="48" y="378" fill="#7185a4" font-family="Menlo,Consolas,monospace" font-size="25">Score: 2.55 / 5.0 (B− · Developing)</text>
+
+  <rect x="48" y="423" width="910" height="179" rx="18" fill="#fbfcfe" stroke="#dfe7f1" stroke-width="2"/>
+  <g font-family="Arial,Helvetica,sans-serif" font-size="24" fill="#64748b">
+    <text x="76" y="475">Top Capability:</text>
+    <text x="930" y="475" text-anchor="end" fill="#17233b" font-weight="700">Conversational Trust (3.8)</text>
+    <text x="76" y="527">Primary Vulnerability:</text>
+    <text x="930" y="527" text-anchor="end" fill="#17233b" font-weight="700">Assertiveness &amp; Boundaries (1.8)</text>
+    <text x="76" y="579">Verbal Clarity:</text>
+    <text x="930" y="579" text-anchor="end" fill="#17233b" font-weight="700">Bottom-up rambling (2.2)</text>
+  </g>
+  <text x="48" y="688" fill="#566985" font-family="Arial,Helvetica,sans-serif" font-size="25">
+    <tspan x="48" dy="0">Upendra’s executive influence is throttled not by lack of engineering</tspan>
+    <tspan x="48" dy="39">depth, but by boundary anxiety and bottom-up over-explanation under</tspan>
+    <tspan x="48" dy="39">questioning.</tspan>
+  </text>
+
+  <image href="radar-diagnostic-slide-01.svg" x="1100" y="126" width="1010" height="817" preserveAspectRatio="xMidYMid meet"/>
+</svg>
