@@ -827,8 +827,11 @@
 
 
 /* Text-first speech analysis and stakeholder matrix demo */
-.package-speech-analysis-slide { width:100%; flex:0 0 100%; padding:0 0 4px; color:#17233b; background:#fff; text-align:left; }
-.package-speech-analysis-slide > .package-report-slide-header { margin-bottom:clamp(22px,2.6vw,36px); }
+.package-speech-analysis-slide { width:100%; height:min(72vh,720px); min-height:440px; flex:0 0 100%; overflow-y:auto; overscroll-behavior:contain; scrollbar-gutter:stable; padding:0 8px 8px 0; color:#17233b; background:#fff; text-align:left; scrollbar-width:thin; scrollbar-color:#b8c5d7 #f3f6fa; }
+.package-speech-analysis-slide::-webkit-scrollbar { width:9px; }
+.package-speech-analysis-slide::-webkit-scrollbar-track { background:#f3f6fa; border-radius:8px; }
+.package-speech-analysis-slide::-webkit-scrollbar-thumb { background:#b8c5d7; border:2px solid #f3f6fa; border-radius:8px; }
+.package-speech-analysis-slide > .package-report-slide-header { position:sticky; top:0; z-index:3; margin-bottom:clamp(22px,2.6vw,36px); padding:10px 0 15px; background:#fff; box-shadow:0 1px 0 #e5edf6; }
 .package-speech-chart-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(16px,2vw,26px); }
 .package-speech-chart-panel,.package-exposure-matrix { min-width:0; padding:clamp(20px,2vw,32px); border:1px solid #e4ebf4; border-radius:18px; background:#fff; box-shadow:0 1px 1px rgba(18,35,59,.04); }
 .package-speech-chart-panel h5,.package-exposure-matrix-header h5 { margin:0; color:#17233b; font:700 clamp(17px,1.35vw,23px)/1.3 "DM Sans","Avenir Next",Arial,sans-serif; }
@@ -867,6 +870,7 @@
   .package-exposure-table { overflow-x:auto; }
 }
 @media(max-width:650px) {
+  .package-speech-analysis-slide { height:min(70vh,620px); min-height:400px; padding-right:6px; }
   .package-speech-analysis-slide > .package-report-slide-header { margin-bottom:18px; }
   .package-speech-chart-grid { grid-template-columns:1fr; }
   .package-speech-chart-content { grid-template-columns:minmax(110px,.75fr) minmax(0,1.25fr); gap:12px; margin-top:14px; }
