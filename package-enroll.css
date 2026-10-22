@@ -763,7 +763,7 @@
 
 
 /* Text-first six-dimensional communication scorecard demo */
-.package-scorecard-slide { width:100%; flex:0 0 100%; padding:0 0 4px; color:#17233b; background:#fff; text-align:left; }
+.package-scorecard-slide { width:100%; height:min(72vh,720px); min-height:440px; flex:0 0 100%; overflow-y:auto; overscroll-behavior:contain; scrollbar-gutter:stable; padding:0 8px 8px 0; color:#17233b; background:#fff; text-align:left; }
 .package-scorecard-slide > .package-report-slide-header { margin-bottom:clamp(24px,3vw,40px); }
 .package-scorecard-intro { display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:8px 24px; padding:clamp(18px,2.2vw,30px); border:1px solid #e4ebf4; border-radius:18px 18px 0 0; }
 .package-scorecard-intro h5 { margin:0; color:#17233b; font:700 clamp(20px,1.7vw,28px)/1.25 "DM Sans","Avenir Next",Arial,sans-serif; }
@@ -803,6 +803,7 @@
   .package-scorecard-table > span:nth-child(4n + 4) { grid-column:1 / -1; padding-top:4px; }
 }
 @media(max-width:560px) {
+  .package-scorecard-slide { height:min(70vh,620px); min-height:400px; padding-right:6px; }
   .package-scorecard-slide > .package-report-slide-header { margin-bottom:16px; }
   .package-scorecard-intro { grid-template-columns:1fr; gap:7px; padding:17px; }
   .package-scorecard-intro > p,.package-scorecard-controls { grid-column:1; grid-row:auto; }
@@ -818,3 +819,8 @@
   .package-scorecard-table > * { padding:9px 6px; font-size:12px; }
   .package-scorecard-subscore { flex-direction:column; align-items:flex-start; gap:3px; }
 }
+
+.package-scorecard-slide { scrollbar-width:thin; scrollbar-color:#b8c5d7 #f3f6fa; }
+.package-scorecard-slide::-webkit-scrollbar { width:9px; }
+.package-scorecard-slide::-webkit-scrollbar-track { background:#f3f6fa; border-radius:8px; }
+.package-scorecard-slide::-webkit-scrollbar-thumb { background:#b8c5d7; border:2px solid #f3f6fa; border-radius:8px; }
