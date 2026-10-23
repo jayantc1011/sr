@@ -1134,3 +1134,26 @@
   background:#b8c7b6;
   border-color:#edf2e9;
 }
+
+
+/* Keep slides 02–05 inside the same landscape frame as slide 01. */
+.package-enrollment-page .package-scorecard-slide,
+.package-enrollment-page .package-speech-analysis-slide,
+.package-enrollment-page .package-script-lab-slide,
+.package-enrollment-page .package-roadmap-slide {
+  height:auto;
+  min-height:0;
+  aspect-ratio:2168 / 952;
+  box-sizing:border-box;
+  overflow-y:auto;
+}
+@media(max-width:650px) {
+  .package-enrollment-page .package-scorecard-slide,
+  .package-enrollment-page .package-speech-analysis-slide,
+  .package-enrollment-page .package-script-lab-slide,
+  .package-enrollment-page .package-roadmap-slide {
+    height:auto;
+    min-height:0;
+    aspect-ratio:2168 / 952;
+  }
+}
