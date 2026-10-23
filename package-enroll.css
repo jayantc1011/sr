@@ -239,7 +239,7 @@
 .package-gallery.is-slide-preview .package-gallery-main { margin-top: 0; }
 .package-gallery-track { display: flex; align-items: stretch; gap: clamp(12px, 1.5vw, 22px); transition: transform .42s cubic-bezier(.2,.7,.2,1); will-change: transform; }
 .package-gallery-track > img { display: block; flex: 0 0 auto; width: 100%; aspect-ratio: 4 / 5; border-radius: 12px; background: #f6efe5; object-fit: cover; object-position: center 12%; }
-.package-report-slide { display:grid; grid-template-rows:auto minmax(0,1fr); width:100%; flex:0 0 100%; aspect-ratio:2168 / 952; overflow:hidden; color:#17233b; background:#fff; text-align:left; }
+.package-report-slide { display:grid; grid-template-rows:auto minmax(0,1fr); width:100%; flex:0 0 100%; aspect-ratio:16 / 9; overflow:hidden; color:#17233b; background:#fff; text-align:left; }
 .package-report-slide-header { display:grid; grid-template-columns:auto minmax(0,1fr) auto; align-items:center; gap:16px; padding:0 0 15px; border-bottom:1px solid #e5edf6; }
 .package-report-slide-sequence { display:inline-flex; align-items:center; min-height:36px; padding:0 13px; border-radius:9px; background:#f1f5fa; color:#34445f; font:700 15px/1 "Menlo", "Consolas", monospace; white-space:nowrap; }
 .package-report-slide-header h4 { margin:0; color:#17233b; font:700 clamp(15px,1.6vw,25px)/1.25 "DM Sans","Avenir Next",Arial,sans-serif; }
@@ -1136,14 +1136,14 @@
 }
 
 
-/* Keep slides 02–05 inside the same landscape frame as slide 01. */
+/* Keep all five report slides in the same 16:9 frame as the concept image. */
 .package-enrollment-page .package-scorecard-slide,
 .package-enrollment-page .package-speech-analysis-slide,
 .package-enrollment-page .package-script-lab-slide,
 .package-enrollment-page .package-roadmap-slide {
   height:auto;
   min-height:0;
-  aspect-ratio:2168 / 952;
+  aspect-ratio:16 / 9;
   box-sizing:border-box;
   overflow-y:auto;
 }
@@ -1154,7 +1154,7 @@
   .package-enrollment-page .package-roadmap-slide {
     height:auto;
     min-height:0;
-    aspect-ratio:2168 / 952;
+    aspect-ratio:16 / 9;
   }
 }
 
