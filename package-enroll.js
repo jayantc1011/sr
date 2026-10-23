@@ -378,10 +378,32 @@
   ];
   const isStyleImageGallery = offerKey === 'style-package';
   if (isStyleImageGallery) {
-    const stylePhotos = [
-      ['assets/about/shalini-close.webp', 'Shalini Rathod in a personal styling portrait'],
-      ['assets/about/shalini-reading.webp', 'Shalini Rathod reviewing a style booklet'],
-      ['assets/about/shalini-seated.webp', 'Shalini Rathod seated in a black outfit']
+    const stylePhotoSets = [
+      [
+        ['assets/about/shalini-close.webp', 'Shalini Rathod in a navy blazer portrait', 'center 10%'],
+        ['assets/about/shalini-reading.webp', 'Shalini Rathod holding her style booklet', 'center 10%'],
+        ['assets/about/shalini-seated.webp', 'Shalini Rathod seated in a black outfit', 'center 10%']
+      ],
+      [
+        ['assets/canva/style/slide-01.jpg', 'Shalini Rathod in a beige full-length styling look', '100% 50%'],
+        ['assets/canva/style/slide-02.jpg', 'Shalini Rathod in a white top with coffee', '92% 50%'],
+        ['assets/canva/style/slide-03.jpg', 'Shalini Rathod in a white blazer', '12% 50%']
+      ],
+      [
+        ['assets/canva/style/slide-08.jpg', 'Shalini Rathod in a white suit seated portrait', '18% 50%'],
+        ['assets/canva/style/slide-09.jpg', 'Shalini Rathod in a burgundy outfit seated portrait', '84% 50%'],
+        ['assets/canva/communication/slide-01.jpg', 'Shalini Rathod in a burgundy blazer at a desk', '93% 50%']
+      ],
+      [
+        ['assets/canva/communication/slide-04.jpg', 'Shalini Rathod seated in a blue suit', '66% 50%'],
+        ['assets/canva/communication/slide-05.jpg', 'Shalini Rathod standing in a navy suit', '69% 50%'],
+        ['assets/canva/communication/slide-07.jpg', 'Shalini Rathod in a burgundy suit presenting', '32% 50%']
+      ],
+      [
+        ['assets/canva/communication/slide-09.jpg', 'Shalini Rathod in a white suit at a desk', '85% 50%'],
+        ['assets/services/styling-consultation.webp', 'Image consultant presenting a personal styling workshop', '88% 50%'],
+        ['assets/services/power-dressing-cover.webp', 'Stylist helping a client choose a tailored outfit', '70% 50%']
+      ]
     ];
     const styleDemos = [
       ['DEMO SLIDE 01 · IDENTITY MATRIX', 'Style Archetype & Lifestyle Blueprint'],
@@ -389,7 +411,7 @@
       ['DEMO SLIDE 03 · CHROMATIC SPECTRUM', '12-Tone Palette & Color Harmony'],
       ['DEMO SLIDE 04 · READY-TO-WEAR', 'Curated Occasion Lookbook'],
       ['DEMO SLIDE 05 · FINISHING TOUCHES', 'Makeup, Accessories & Wishlist']
-    ].map(([kicker, title]) => ({ kicker, title, images: stylePhotos }));
+    ].map(([kicker, title], index) => ({ kicker, title, images: stylePhotoSets[index] }));
     demos.splice(0, demos.length, ...styleDemos);
     setText('.package-booklet-description', 'Explore five style transformation demos featuring Shalini’s portraits.');
   }
@@ -1000,10 +1022,11 @@
       if (!editorialPhotoFocused && (demo.reportSlide || demo.scorecard || demo.speechAnalysis || demo.scriptLab || demo.roadmap)) {
         galleryTrack.replaceChildren(demo.roadmap ? createRoadmapSlide(demo.roadmap) : demo.scriptLab ? createScriptLabSlide(demo.scriptLab) : demo.speechAnalysis ? createSpeechAnalysisSlide(demo.speechAnalysis) : demo.scorecard ? createScorecardSlide(demo.scorecard) : createReportSlide(demo.reportSlide));
       } else {
-        galleryTrack.replaceChildren(...galleryImages.map(([src, alt]) => {
+        galleryTrack.replaceChildren(...galleryImages.map(([src, alt, objectPosition]) => {
           const image = document.createElement('img');
           image.src = src;
           image.alt = alt;
+          if (isStyleImageGallery && objectPosition) image.style.objectPosition = objectPosition;
           image.loading = 'lazy';
           image.decoding = 'async';
           return image;
