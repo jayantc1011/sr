@@ -408,7 +408,7 @@
       image.style.flexBasis = editorialPhotoFocused ? 'min(100%, 980px)' : imageWidth + 'px';
       image.style.width = editorialPhotoFocused ? 'min(100%, 980px)' : imageWidth + 'px';
     });
-    const maxIndex = Math.max(0, images.length - visibleCount);
+    const maxIndex = isStyleImageGallery ? Math.min(4, Math.max(0, images.length - visibleCount)) : Math.max(0, images.length - visibleCount);
     currentImageIndex = Math.min(currentImageIndex, maxIndex);
     const step = imageWidth + gap;
     galleryTrack.style.transform = editorialPhotoFocused ? 'translate3d(0, 0, 0)' : `translate3d(${-currentImageIndex * step}px, 0, 0)`;
@@ -1015,7 +1015,7 @@
     if (demoKicker) demoKicker.textContent = isStyleImageGallery ? demo.imageKickers[currentImageIndex] : demo.kicker;
     if (demoTitle) demoTitle.textContent = isStyleImageGallery ? demo.imageTitles[currentImageIndex] : demo.title;
     dotsRoot?.querySelectorAll('button').forEach((button, index) => {
-      const active = index === currentSlide;
+      const active = isStyleImageGallery ? index === currentImageIndex : index === currentSlide;
       button.setAttribute('aria-selected', String(active));
       button.tabIndex = active ? 0 : -1;
     });
@@ -1048,17 +1048,21 @@
     } else if (currentSlide < demos.length - 1) showDemo(currentSlide + 1);
   });
   if (dotsRoot) {
-    dotsRoot.replaceChildren(...Array.from({ length: demos.length }, (_, index) => {
+    const dotCount = isStyleImageGallery ? 5 : demos.length;
+    dotsRoot.replaceChildren(...Array.from({ length: dotCount }, (_, index) => {
       const button = document.createElement('button');
       button.className = 'package-gallery-dot';
       button.type = 'button';
       button.setAttribute('role', 'tab');
-      button.setAttribute('aria-label', 'Show demo ' + (index + 1));
+      button.setAttribute('aria-label', isStyleImageGallery ? 'Show style carousel step ' + (index + 1) : 'Show demo ' + (index + 1));
       button.setAttribute('aria-controls', 'booklet-demo-panel');
       button.setAttribute('aria-selected', String(index === 0));
       button.tabIndex = index === 0 ? 0 : -1;
       button.textContent = '';
-      button.addEventListener('click', () => showDemo(index));
+      button.addEventListener('click', () => {
+        if (isStyleImageGallery) { currentImageIndex = index; renderGallery(); }
+        else showDemo(index);
+      });
       return button;
     }));
   }
