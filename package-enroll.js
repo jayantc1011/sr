@@ -39,7 +39,7 @@
       description: 'Discover what brings out your best through personalised sessions with Shalini, thoughtfully tailored to refine your image and cultivate a style that’s distinctly yours.',
       duration: '6 sessions · 6+ hours',
       format: 'Private 1:1 video consultations',
-      price: '₹70,000',
+      price: '₹69,999',
       priceUSD: 2200,
       originalPrice: '',
       installments: '',
