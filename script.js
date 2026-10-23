@@ -311,6 +311,9 @@ if (durationButtons.length && callCards.length) {
     });
 
     callCards.forEach((card) => {
+      const availableDuration = card.dataset.availableDuration;
+      if (availableDuration) card.hidden = availableDuration !== duration;
+
       card.querySelectorAll('[data-duration-label]').forEach((label) => {
         label.textContent = `${duration}min`;
       });
