@@ -381,11 +381,13 @@
       kicker: 'STYLE CONCEPT 01 / 05',
       title: 'Style Transformation Concepts',
       images: [
-        ['assets/about/shalini-close.webp', 'Shalini Rathod in a personal styling portrait, photo 1 of 5'],
-        ['assets/about/shalini-reading.webp', 'Shalini Rathod reviewing a style booklet, photo 2 of 5'],
-        ['assets/about/shalini-seated.webp', 'Shalini Rathod seated in a black outfit, photo 3 of 5'],
-        ['assets/about/shalini-close.webp', 'Shalini Rathod in a personal styling portrait, photo 4 of 5'],
-        ['assets/about/shalini-reading.webp', 'Shalini Rathod reviewing a style booklet, photo 5 of 5']
+        ['assets/about/shalini-close.webp', 'Shalini Rathod in a personal styling portrait'],
+        ['assets/about/shalini-reading.webp', 'Shalini Rathod reviewing a style booklet'],
+        ['assets/about/shalini-seated.webp', 'Shalini Rathod seated in a black outfit'],
+        ['assets/about/shalini-close.webp', 'Shalini Rathod in a personal styling portrait'],
+        ['assets/about/shalini-reading.webp', 'Shalini Rathod reviewing a style booklet'],
+        ['assets/about/shalini-seated.webp', 'Shalini Rathod seated in a black outfit'],
+        ['assets/about/shalini-close.webp', 'Shalini Rathod in a personal styling portrait']
       ],
       imageKickers: ['STYLE CONCEPT 01 / 05','STYLE CONCEPT 02 / 05','STYLE CONCEPT 03 / 05','STYLE CONCEPT 04 / 05','STYLE CONCEPT 05 / 05'],
       imageTitles: ['Style Concept 01','Style Concept 02','Style Concept 03','Style Concept 04','Style Concept 05']
