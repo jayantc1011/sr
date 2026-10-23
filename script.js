@@ -199,6 +199,37 @@ if (servicesCarousel && servicesControls && servicesPrev && servicesNext && serv
 }
 
 
+// Services page 1:1 call cards carousel. Kept scoped to this page.
+const callsCarousel = document.querySelector('body.services-page #calls-card-carousel');
+const callsCarouselPrev = document.querySelector('body.services-page .calls-carousel-prev');
+const callsCarouselNext = document.querySelector('body.services-page .calls-carousel-next');
+
+if (callsCarousel && callsCarouselPrev && callsCarouselNext) {
+  const callCardStep = () => {
+    const card = callsCarousel.querySelector('.call-card');
+    if (!card) return callsCarousel.clientWidth;
+    const gap = parseFloat(getComputedStyle(callsCarousel).gap) || 0;
+    return card.getBoundingClientRect().width + gap;
+  };
+  const updateCallCarouselButtons = () => {
+    const maximum = Math.max(0, callsCarousel.scrollWidth - callsCarousel.clientWidth);
+    callsCarouselPrev.disabled = callsCarousel.scrollLeft <= 4;
+    callsCarouselNext.disabled = callsCarousel.scrollLeft >= maximum - 4;
+  };
+
+  callsCarouselPrev.addEventListener('click', () => {
+    callsCarousel.scrollBy({ left: -callCardStep(), behavior: 'smooth' });
+  });
+  callsCarouselNext.addEventListener('click', () => {
+    callsCarousel.scrollBy({ left: callCardStep(), behavior: 'smooth' });
+  });
+  callsCarousel.addEventListener('scroll', () => {
+    window.requestAnimationFrame(updateCallCarouselButtons);
+  }, { passive: true });
+  window.addEventListener('resize', updateCallCarouselButtons);
+  updateCallCarouselButtons();
+}
+
 // Recognition marquee: pause at the exact current position while any card is hovered.
 // Resume from the same point when the pointer leaves. Keyboard focus pauses it too.
 const recognitionTrack = document.querySelector('.recognition-track');
