@@ -1157,3 +1157,12 @@
     aspect-ratio:2168 / 952;
   }
 }
+
+/* Use the source concept art proportions in the style-only image carousel. */
+.package-enrollment-page .package-gallery.is-style-image-gallery .package-gallery-track > img {
+  aspect-ratio:1382 / 778;
+  object-fit:contain;
+  object-position:center;
+  background:#fff;
+}
+.package-enrollment-page .package-gallery.is-style-image-gallery .package-gallery-dots { display:none; }
