@@ -1206,7 +1206,7 @@
 }
 
 /* Keep the style demo tabs and arrow controls separated on narrow screens. */
-@media(max-width:650px) {
+@media(max-width:900px) {
   .package-gallery.is-style-image-gallery .package-gallery-footer {
     display:grid;
     grid-template-columns:minmax(0,1fr) auto;
