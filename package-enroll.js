@@ -262,6 +262,7 @@
   const galleryViewport = document.querySelector('[data-gallery-viewport]');
   const demoKicker = document.querySelector('[data-demo-kicker]');
   const demoTitle = document.querySelector('[data-demo-title]');
+  const demoSequence = document.querySelector('[data-demo-sequence]');
   const dotsRoot = document.querySelector('[data-gallery-dots]');
   const editorialPhotoLink = document.querySelector('[data-view-editorial-photo]');
   const packageGallery = document.querySelector('[data-package-gallery]');
@@ -377,22 +378,20 @@
   ];
   const isStyleImageGallery = offerKey === 'style-package';
   if (isStyleImageGallery) {
-    demos.splice(0, demos.length, {
-      kicker: 'STYLE CONCEPT 01 / 05',
-      title: 'Style Transformation Concepts',
-      images: [
-        ['assets/about/shalini-close.webp', 'Shalini Rathod in a personal styling portrait'],
-        ['assets/about/shalini-reading.webp', 'Shalini Rathod reviewing a style booklet'],
-        ['assets/about/shalini-seated.webp', 'Shalini Rathod seated in a black outfit'],
-        ['assets/about/shalini-close.webp', 'Shalini Rathod in a personal styling portrait'],
-        ['assets/about/shalini-reading.webp', 'Shalini Rathod reviewing a style booklet'],
-        ['assets/about/shalini-seated.webp', 'Shalini Rathod seated in a black outfit'],
-        ['assets/about/shalini-close.webp', 'Shalini Rathod in a personal styling portrait']
-      ],
-      imageKickers: ['STYLE CONCEPT 01 / 05','STYLE CONCEPT 02 / 05','STYLE CONCEPT 03 / 05','STYLE CONCEPT 04 / 05','STYLE CONCEPT 05 / 05'],
-      imageTitles: ['Style Concept 01','Style Concept 02','Style Concept 03','Style Concept 04','Style Concept 05']
-    });
-    setText('.package-booklet-description', 'Explore five style concept images with the arrows below.');
+    const stylePhotos = [
+      ['assets/about/shalini-close.webp', 'Shalini Rathod in a personal styling portrait'],
+      ['assets/about/shalini-reading.webp', 'Shalini Rathod reviewing a style booklet'],
+      ['assets/about/shalini-seated.webp', 'Shalini Rathod seated in a black outfit']
+    ];
+    const styleDemos = [
+      ['DEMO SLIDE 01 · IDENTITY MATRIX', 'Style Archetype & Lifestyle Blueprint'],
+      ['DEMO SLIDE 02 · SILHOUETTE MATRIX', 'Body & Face Proportion Architecture'],
+      ['DEMO SLIDE 03 · CHROMATIC SPECTRUM', '12-Tone Palette & Color Harmony'],
+      ['DEMO SLIDE 04 · READY-TO-WEAR', 'Curated Occasion Lookbook'],
+      ['DEMO SLIDE 05 · FINISHING TOUCHES', 'Makeup, Accessories & Wishlist']
+    ].map(([kicker, title]) => ({ kicker, title, images: stylePhotos }));
+    demos.splice(0, demos.length, ...styleDemos);
+    setText('.package-booklet-description', 'Explore five style transformation demos featuring Shalini’s portraits.');
   }
   let currentSlide = 0;
   let currentImageIndex = 0;
@@ -408,12 +407,12 @@
       image.style.flexBasis = editorialPhotoFocused ? 'min(100%, 980px)' : imageWidth + 'px';
       image.style.width = editorialPhotoFocused ? 'min(100%, 980px)' : imageWidth + 'px';
     });
-    const maxIndex = isStyleImageGallery ? Math.min(4, Math.max(0, images.length - visibleCount)) : Math.max(0, images.length - visibleCount);
+    const maxIndex = isStyleImageGallery ? 0 : Math.max(0, images.length - visibleCount);
     currentImageIndex = Math.min(currentImageIndex, maxIndex);
     const step = imageWidth + gap;
     galleryTrack.style.transform = editorialPhotoFocused ? 'translate3d(0, 0, 0)' : `translate3d(${-currentImageIndex * step}px, 0, 0)`;
-    if (previousImageButton) previousImageButton.disabled = isStyleImageGallery ? currentImageIndex <= 0 : currentSlide <= 0;
-    if (nextImageButton) nextImageButton.disabled = isStyleImageGallery ? currentImageIndex >= maxIndex : currentSlide >= demos.length - 1;
+    if (previousImageButton) previousImageButton.disabled = currentSlide <= 0;
+    if (nextImageButton) nextImageButton.disabled = currentSlide >= demos.length - 1;
   };
   const createReportSlide = (report) => {
     const article = document.createElement('article');
@@ -1012,10 +1011,14 @@
       }
     }
     updateGalleryLayout();
-    if (demoKicker) demoKicker.textContent = isStyleImageGallery ? demo.imageKickers[currentImageIndex] : demo.kicker;
-    if (demoTitle) demoTitle.textContent = isStyleImageGallery ? demo.imageTitles[currentImageIndex] : demo.title;
+    if (demoKicker) demoKicker.textContent = demo.kicker;
+    if (demoTitle) demoTitle.textContent = demo.title;
+    if (demoSequence) {
+      demoSequence.textContent = 'Slide ' + String(currentSlide + 1).padStart(2, '0') + ' / ' + String(demos.length).padStart(2, '0');
+      demoSequence.hidden = !isStyleImageGallery;
+    }
     dotsRoot?.querySelectorAll('button').forEach((button, index) => {
-      const active = isStyleImageGallery ? index === currentImageIndex : index === currentSlide;
+      const active = index === currentSlide;
       button.setAttribute('aria-selected', String(active));
       button.tabIndex = active ? 0 : -1;
     });
@@ -1036,33 +1039,25 @@
     if (editorialPhotoFocused) galleryTrack?.scrollIntoView({ behavior: 'smooth', block: 'center' });
   });
   previousImageButton?.addEventListener('click', () => {
-    if (isStyleImageGallery) {
-      currentImageIndex = Math.max(0, currentImageIndex - 1);
-      renderGallery();
-    } else if (currentSlide > 0) showDemo(currentSlide - 1);
+    if (currentSlide > 0) showDemo(currentSlide - 1);
   });
   nextImageButton?.addEventListener('click', () => {
-    if (isStyleImageGallery) {
-      currentImageIndex = Math.min(demos[0].images.length - 1, currentImageIndex + 1);
-      renderGallery();
-    } else if (currentSlide < demos.length - 1) showDemo(currentSlide + 1);
+    if (currentSlide < demos.length - 1) showDemo(currentSlide + 1);
   });
   if (dotsRoot) {
-    const dotCount = isStyleImageGallery ? 5 : demos.length;
+    const dotCount = demos.length;
     dotsRoot.replaceChildren(...Array.from({ length: dotCount }, (_, index) => {
       const button = document.createElement('button');
       button.className = 'package-gallery-dot';
       button.type = 'button';
       button.setAttribute('role', 'tab');
-      button.setAttribute('aria-label', isStyleImageGallery ? 'Show style carousel step ' + (index + 1) : 'Show demo ' + (index + 1));
+      button.setAttribute('aria-label', 'Show demo ' + String(index + 1).padStart(2, '0'));
+      if (isStyleImageGallery) button.textContent = 'Demo ' + String(index + 1).padStart(2, '0');
       button.setAttribute('aria-controls', 'booklet-demo-panel');
       button.setAttribute('aria-selected', String(index === 0));
       button.tabIndex = index === 0 ? 0 : -1;
-      button.textContent = '';
-      button.addEventListener('click', () => {
-        if (isStyleImageGallery) { currentImageIndex = index; renderGallery(); }
-        else showDemo(index);
-      });
+      if (!isStyleImageGallery) button.textContent = '';
+      button.addEventListener('click', () => showDemo(index));
       return button;
     }));
   }
