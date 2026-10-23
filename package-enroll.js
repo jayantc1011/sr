@@ -119,6 +119,43 @@
     mobileCover.src = desktopCover.currentSrc || desktopCover.src;
     mobileCover.alt = '';
   }
+  const styleHeroImages = [
+    ['assets/canva/style/slide-01.jpg', 'Shalini’s Style Transformation concept 1 of 4'],
+    ['assets/canva/style/slide-02.jpg', 'Shalini’s Style Transformation concept 2 of 4'],
+    ['assets/canva/style/slide-03.jpg', 'Shalini’s Style Transformation concept 3 of 4'],
+    ['assets/canva/style/slide-04.jpg', 'Shalini’s Style Transformation concept 4 of 4']
+  ];
+  const styleHero = document.querySelector('[data-style-hero]');
+  const styleHeroControls = document.querySelector('[data-style-hero-controls]');
+  const styleHeroDots = document.querySelector('[data-style-hero-dots]');
+  if (offerKey === 'style-package' && desktopCover && styleHeroControls && styleHeroDots) {
+    let styleHeroIndex = 0;
+    styleHeroControls.hidden = false;
+    const dots = styleHeroImages.map((_, index) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.setAttribute('aria-label', 'Show style image ' + (index + 1));
+      dot.addEventListener('click', () => showStyleHeroImage(index));
+      styleHeroDots.append(dot);
+      return dot;
+    });
+    function showStyleHeroImage(index) {
+      styleHeroIndex = (index + styleHeroImages.length) % styleHeroImages.length;
+      desktopCover.src = styleHeroImages[styleHeroIndex][0];
+      desktopCover.alt = styleHeroImages[styleHeroIndex][1];
+      if (mobileCover) { mobileCover.src = desktopCover.src; mobileCover.alt = desktopCover.alt; }
+      dots.forEach((dot, dotIndex) => {
+        dot.setAttribute('aria-current', String(dotIndex === styleHeroIndex));
+      });
+    }
+    styleHeroControls.querySelector('[data-style-hero-prev]')?.addEventListener('click', () => showStyleHeroImage(styleHeroIndex - 1));
+    styleHeroControls.querySelector('[data-style-hero-next]')?.addEventListener('click', () => showStyleHeroImage(styleHeroIndex + 1));
+    styleHero?.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowLeft') showStyleHeroImage(styleHeroIndex - 1);
+      if (event.key === 'ArrowRight') showStyleHeroImage(styleHeroIndex + 1);
+    });
+    showStyleHeroImage(0);
+  }
   setText('[data-package-description]', offer.description);
   setText('[data-package-duration]', offer.duration);
   setText('[data-package-format]', offer.format);
