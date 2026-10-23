@@ -381,10 +381,10 @@
       kicker: 'STYLE CONCEPT 01 / 04',
       title: 'Style Transformation Concepts',
       images: [
-        ['assets/canva/style/slide-01.jpg', 'Style transformation concept 1 of 4'],
-        ['assets/canva/style/slide-02.jpg', 'Style transformation concept 2 of 4'],
-        ['assets/canva/style/slide-03.jpg', 'Style transformation concept 3 of 4'],
-        ['assets/canva/style/slide-04.jpg', 'Style transformation concept 4 of 4']
+        ['assets/about/shalini-close.webp', 'Shalini Rathod in a personal styling portrait'],
+        ['assets/about/shalini-reading.webp', 'Shalini Rathod reviewing a style booklet'],
+        ['assets/about/shalini-seated.webp', 'Shalini Rathod seated in a black outfit'],
+        ['assets/about/shalini-close.webp', 'Shalini Rathod in a personal styling portrait']
       ],
       imageKickers: ['STYLE CONCEPT 01 / 04','STYLE CONCEPT 02 / 04','STYLE CONCEPT 03 / 04','STYLE CONCEPT 04 / 04'],
       imageTitles: ['Style Concept 01','Style Concept 02','Style Concept 03','Style Concept 04']
@@ -394,7 +394,7 @@
   let currentSlide = 0;
   let currentImageIndex = 0;
   let editorialPhotoFocused = false;
-  const visibleImageCount = () => editorialPhotoFocused || isStyleImageGallery ? 1 : window.matchMedia('(max-width: 650px)').matches ? 1 : window.matchMedia('(max-width: 900px)').matches ? 2 : 3;
+  const visibleImageCount = () => editorialPhotoFocused ? 1 : window.matchMedia('(max-width: 650px)').matches ? 1 : window.matchMedia('(max-width: 900px)').matches ? 2 : 3;
   const updateGalleryLayout = () => {
     if (!galleryTrack || !galleryViewport) return;
     const images = [...galleryTrack.children];
