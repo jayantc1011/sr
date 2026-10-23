@@ -9,7 +9,7 @@
       description: 'Private coaching tailored to your needs, whether you want to strengthen your delivery, refine your tone, overcome speaking habits, or feel more at ease in professional settings.',
       duration: '7 sessions · 7 weeks',
       format: 'Private 1:1 Zoom sessions',
-      price: '₹70,000',
+      price: '₹39,999',
       priceUSD: 2200,
       originalPrice: '',
       installments: '',
