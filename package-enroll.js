@@ -375,18 +375,26 @@
       }
     }
   ];
-  if (offerKey === 'style-package') {
-    demos.splice(0, demos.length,
-      { kicker: 'STYLE CONCEPT 01 · PERSONAL COLOUR', title: 'Personal Colour Palette', images: [['assets/canva/style/slide-01.jpg', 'Style concept 1 of 4: Personal colour palette']] },
-      { kicker: 'STYLE CONCEPT 02 · STYLE ARCHETYPE', title: 'Style Archetype & Lifestyle Blueprint', images: [['assets/canva/style/slide-02.jpg', 'Style concept 2 of 4: Style archetype and lifestyle blueprint']] },
-      { kicker: 'STYLE CONCEPT 03 · WARDROBE EDIT', title: 'Wardrobe & Outfit Direction', images: [['assets/canva/style/slide-03.jpg', 'Style concept 3 of 4: Wardrobe and outfit direction']] },
-      { kicker: 'STYLE CONCEPT 04 · PERSONAL LOOKBOOK', title: 'Curated Personal Lookbook', images: [['assets/canva/style/slide-04.jpg', 'Style concept 4 of 4: Curated personal lookbook']] }
-    );
+  const isStyleImageGallery = offerKey === 'style-package';
+  if (isStyleImageGallery) {
+    demos.splice(0, demos.length, {
+      kicker: 'STYLE CONCEPT 01 / 04',
+      title: 'Style Transformation Concepts',
+      images: [
+        ['assets/canva/style/slide-01.jpg', 'Style transformation concept 1 of 4'],
+        ['assets/canva/style/slide-02.jpg', 'Style transformation concept 2 of 4'],
+        ['assets/canva/style/slide-03.jpg', 'Style transformation concept 3 of 4'],
+        ['assets/canva/style/slide-04.jpg', 'Style transformation concept 4 of 4']
+      ],
+      imageKickers: ['STYLE CONCEPT 01 / 04','STYLE CONCEPT 02 / 04','STYLE CONCEPT 03 / 04','STYLE CONCEPT 04 / 04'],
+      imageTitles: ['Style Concept 01','Style Concept 02','Style Concept 03','Style Concept 04']
+    });
+    setText('.package-booklet-description', 'Explore four style concept images with the arrows below.');
   }
   let currentSlide = 0;
   let currentImageIndex = 0;
   let editorialPhotoFocused = false;
-  const visibleImageCount = () => editorialPhotoFocused ? 1 : window.matchMedia('(max-width: 650px)').matches ? 1 : window.matchMedia('(max-width: 900px)').matches ? 2 : 3;
+  const visibleImageCount = () => editorialPhotoFocused || isStyleImageGallery ? 1 : window.matchMedia('(max-width: 650px)').matches ? 1 : window.matchMedia('(max-width: 900px)').matches ? 2 : 3;
   const updateGalleryLayout = () => {
     if (!galleryTrack || !galleryViewport) return;
     const images = [...galleryTrack.children];
@@ -401,8 +409,8 @@
     currentImageIndex = Math.min(currentImageIndex, maxIndex);
     const step = imageWidth + gap;
     galleryTrack.style.transform = editorialPhotoFocused ? 'translate3d(0, 0, 0)' : `translate3d(${-currentImageIndex * step}px, 0, 0)`;
-    if (previousImageButton) previousImageButton.disabled = currentSlide <= 0;
-    if (nextImageButton) nextImageButton.disabled = currentSlide >= demos.length - 1;
+    if (previousImageButton) previousImageButton.disabled = isStyleImageGallery ? currentImageIndex <= 0 : currentSlide <= 0;
+    if (nextImageButton) nextImageButton.disabled = isStyleImageGallery ? currentImageIndex >= maxIndex : currentSlide >= demos.length - 1;
   };
   const createReportSlide = (report) => {
     const article = document.createElement('article');
@@ -985,6 +993,7 @@
       : demo.images || [];
     if (galleryTrack) {
       packageGallery?.classList.toggle('is-editorial-focused', editorialPhotoFocused);
+      packageGallery?.classList.toggle('is-style-image-gallery', isStyleImageGallery);
       packageGallery?.classList.toggle('is-slide-preview', Boolean(demo.reportSlide || demo.scorecard || demo.speechAnalysis || demo.scriptLab || demo.roadmap) && !editorialPhotoFocused);
       if (!editorialPhotoFocused && (demo.reportSlide || demo.scorecard || demo.speechAnalysis || demo.scriptLab || demo.roadmap)) {
         galleryTrack.replaceChildren(demo.roadmap ? createRoadmapSlide(demo.roadmap) : demo.scriptLab ? createScriptLabSlide(demo.scriptLab) : demo.speechAnalysis ? createSpeechAnalysisSlide(demo.speechAnalysis) : demo.scorecard ? createScorecardSlide(demo.scorecard) : createReportSlide(demo.reportSlide));
@@ -1000,8 +1009,8 @@
       }
     }
     updateGalleryLayout();
-    if (demoKicker) demoKicker.textContent = demo.kicker;
-    if (demoTitle) demoTitle.textContent = demo.title;
+    if (demoKicker) demoKicker.textContent = isStyleImageGallery ? demo.imageKickers[currentImageIndex] : demo.kicker;
+    if (demoTitle) demoTitle.textContent = isStyleImageGallery ? demo.imageTitles[currentImageIndex] : demo.title;
     dotsRoot?.querySelectorAll('button').forEach((button, index) => {
       const active = index === currentSlide;
       button.setAttribute('aria-selected', String(active));
@@ -1024,10 +1033,16 @@
     if (editorialPhotoFocused) galleryTrack?.scrollIntoView({ behavior: 'smooth', block: 'center' });
   });
   previousImageButton?.addEventListener('click', () => {
-    if (currentSlide > 0) showDemo(currentSlide - 1);
+    if (isStyleImageGallery) {
+      currentImageIndex = Math.max(0, currentImageIndex - 1);
+      renderGallery();
+    } else if (currentSlide > 0) showDemo(currentSlide - 1);
   });
   nextImageButton?.addEventListener('click', () => {
-    if (currentSlide < demos.length - 1) showDemo(currentSlide + 1);
+    if (isStyleImageGallery) {
+      currentImageIndex = Math.min(demos[0].images.length - 1, currentImageIndex + 1);
+      renderGallery();
+    } else if (currentSlide < demos.length - 1) showDemo(currentSlide + 1);
   });
   if (dotsRoot) {
     dotsRoot.replaceChildren(...Array.from({ length: demos.length }, (_, index) => {
