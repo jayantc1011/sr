@@ -1158,12 +1158,12 @@
   }
 }
 
-/* Use the source concept art proportions in the style-only image carousel. */
+/* Show individual Shalini portraits in the style-only image carousel. */
 .package-enrollment-page .package-gallery.is-style-image-gallery .package-gallery-track > img {
-  aspect-ratio:1382 / 778;
-  object-fit:contain;
-  object-position:center;
-  background:#fff;
+  aspect-ratio:4 / 5;
+  object-fit:cover;
+  object-position:center 10%;
+  background:#edf5e9;
 }
 .package-enrollment-page .package-gallery.is-style-image-gallery .package-gallery-dots { display:none; }
 
