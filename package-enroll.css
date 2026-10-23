@@ -1204,3 +1204,24 @@
   .package-gallery.is-style-image-gallery .package-gallery-controls .package-gallery-arrow { width:40px; min-width:40px; height:40px; }
   .package-demo-sequence { font-size:11px; }
 }
+
+/* Keep the style demo tabs and arrow controls separated on narrow screens. */
+@media(max-width:650px) {
+  .package-gallery.is-style-image-gallery .package-gallery-footer {
+    display:grid;
+    grid-template-columns:minmax(0,1fr) auto;
+    align-items:center;
+    gap:10px;
+  }
+  .package-gallery.is-style-image-gallery .package-gallery-dots {
+    grid-column:1 / -1;
+    width:100%;
+    min-width:0;
+    max-width:100%;
+    flex-wrap:nowrap;
+    overflow-x:auto;
+  }
+  .package-gallery.is-style-image-gallery .package-gallery-controls { grid-row:2; }
+  .package-gallery.is-style-image-gallery .package-gallery-previous { grid-column:1; justify-self:end; margin-left:0; }
+  .package-gallery.is-style-image-gallery .package-gallery-next { grid-column:2; justify-self:end; }
+}
