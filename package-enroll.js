@@ -376,6 +376,14 @@
     }
   ];
   const isStyleImageGallery = offerKey === 'style-package';
+  const isCommunicationImageGallery = offerKey === 'comm-package';
+  const shaliniPortraits = [
+    ['assets/about/shalini-close.webp', 'Shalini Rathod, portrait'],
+    ['assets/about/shalini-reading.webp', 'Shalini Rathod reading'],
+    ['assets/about/shalini-seated.webp', 'Shalini Rathod seated'],
+    ['assets/about/shalini-close.webp', 'Shalini Rathod, portrait']
+  ];
+  let currentPortraitIndex = 0;
   if (isStyleImageGallery) {
     demos.splice(0, demos.length, {
       kicker: 'STYLE CONCEPT 01 / 04',
@@ -986,6 +994,87 @@
     return article;
   };
 
+  const updateDemoPhotoCarousel = () => {
+    const slide = galleryTrack?.querySelector('.package-demo-photo-slide');
+    if (!slide) return;
+    const viewport = slide.querySelector('.package-demo-photo-viewport');
+    const track = slide.querySelector('.package-demo-photo-track');
+    const images = [...(track?.children || [])];
+    if (!viewport || !track || !images.length) return;
+    const visibleCount = window.matchMedia('(max-width: 650px)').matches ? 1
+      : window.matchMedia('(max-width: 900px)').matches ? 2 : 3;
+    const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+    const width = Math.max(0, (viewport.clientWidth - gap * (visibleCount - 1)) / visibleCount);
+    images.forEach((image) => {
+      image.style.flexBasis = width + 'px';
+      image.style.width = width + 'px';
+    });
+    const maxIndex = Math.max(0, images.length - visibleCount);
+    currentPortraitIndex = Math.max(0, Math.min(currentPortraitIndex, maxIndex));
+    track.style.transform = `translate3d(${-(currentPortraitIndex * (width + gap))}px, 0, 0)`;
+    const previous = slide.querySelector('[data-portrait-prev]');
+    const next = slide.querySelector('[data-portrait-next]');
+    if (previous) previous.disabled = currentPortraitIndex <= 0;
+    if (next) next.disabled = currentPortraitIndex >= maxIndex;
+  };
+
+  const createDemoPhotoSlide = (demo, index) => {
+    const article = document.createElement('article');
+    article.className = 'package-report-slide package-demo-photo-slide';
+    article.setAttribute('aria-label', demo.title + ' — Shalini Rathod photo gallery');
+
+    const header = document.createElement('header');
+    header.className = 'package-report-slide-header';
+    const sequence = document.createElement('span');
+    sequence.className = 'package-report-slide-sequence';
+    sequence.textContent = String(index + 1).padStart(2, '0') + ' / 05';
+    const title = document.createElement('h4');
+    title.textContent = demo.title;
+    const author = document.createElement('p');
+    author.className = 'package-report-slide-author';
+    author.textContent = 'Shalini Rathod · Style Portraits';
+    header.append(sequence, title, author);
+
+    const viewport = document.createElement('div');
+    viewport.className = 'package-demo-photo-viewport';
+    viewport.setAttribute('aria-label', 'Shalini Rathod photos');
+    const track = document.createElement('div');
+    track.className = 'package-demo-photo-track';
+    shaliniPortraits.forEach(([src, alt], imageIndex) => {
+      const image = document.createElement('img');
+      image.src = src;
+      image.alt = alt + ' ' + (imageIndex + 1) + ' of 4';
+      image.loading = 'lazy';
+      image.decoding = 'async';
+      track.append(image);
+    });
+    viewport.append(track);
+
+    const previous = document.createElement('button');
+    previous.className = 'package-demo-photo-arrow is-previous';
+    previous.type = 'button';
+    previous.setAttribute('aria-label', 'Previous Shalini photo');
+    previous.setAttribute('data-portrait-prev', '');
+    previous.textContent = '‹';
+    previous.addEventListener('click', () => {
+      currentPortraitIndex = Math.max(0, currentPortraitIndex - 1);
+      updateDemoPhotoCarousel();
+    });
+    const next = document.createElement('button');
+    next.className = 'package-demo-photo-arrow is-next';
+    next.type = 'button';
+    next.setAttribute('aria-label', 'Show the fourth Shalini photo');
+    next.setAttribute('data-portrait-next', '');
+    next.textContent = '›';
+    next.addEventListener('click', () => {
+      currentPortraitIndex = currentPortraitIndex + 1;
+      updateDemoPhotoCarousel();
+    });
+    viewport.append(previous, next);
+    article.append(header, viewport);
+    return article;
+  };
+
   const renderGallery = () => {
     const demo = demos[currentSlide];
     const galleryImages = editorialPhotoFocused
@@ -994,8 +1083,11 @@
     if (galleryTrack) {
       packageGallery?.classList.toggle('is-editorial-focused', editorialPhotoFocused);
       packageGallery?.classList.toggle('is-style-image-gallery', isStyleImageGallery);
-      packageGallery?.classList.toggle('is-slide-preview', Boolean(demo.reportSlide || demo.scorecard || demo.speechAnalysis || demo.scriptLab || demo.roadmap) && !editorialPhotoFocused);
-      if (!editorialPhotoFocused && (demo.reportSlide || demo.scorecard || demo.speechAnalysis || demo.scriptLab || demo.roadmap)) {
+      packageGallery?.classList.toggle('is-slide-preview', (isCommunicationImageGallery || Boolean(demo.reportSlide || demo.scorecard || demo.speechAnalysis || demo.scriptLab || demo.roadmap)) && !editorialPhotoFocused);
+      packageGallery?.classList.toggle('is-photo-demo-gallery', isCommunicationImageGallery && !editorialPhotoFocused);
+      if (!editorialPhotoFocused && isCommunicationImageGallery) {
+        galleryTrack.replaceChildren(createDemoPhotoSlide(demo, currentSlide));
+      } else if (!editorialPhotoFocused && (demo.reportSlide || demo.scorecard || demo.speechAnalysis || demo.scriptLab || demo.roadmap)) {
         galleryTrack.replaceChildren(demo.roadmap ? createRoadmapSlide(demo.roadmap) : demo.scriptLab ? createScriptLabSlide(demo.scriptLab) : demo.speechAnalysis ? createSpeechAnalysisSlide(demo.speechAnalysis) : demo.scorecard ? createScorecardSlide(demo.scorecard) : createReportSlide(demo.reportSlide));
       } else {
         galleryTrack.replaceChildren(...galleryImages.map(([src, alt]) => {
@@ -1009,6 +1101,7 @@
       }
     }
     updateGalleryLayout();
+    updateDemoPhotoCarousel();
     if (demoKicker) demoKicker.textContent = isStyleImageGallery ? demo.imageKickers[currentImageIndex] : demo.kicker;
     if (demoTitle) demoTitle.textContent = isStyleImageGallery ? demo.imageTitles[currentImageIndex] : demo.title;
     dotsRoot?.querySelectorAll('button').forEach((button, index) => {
@@ -1021,6 +1114,7 @@
     editorialPhotoFocused = false;
     currentImageIndex = 0;
     currentSlide = (index + demos.length) % demos.length;
+    currentPortraitIndex = 0;
     renderGallery();
   };
   editorialPhotoLink?.addEventListener('click', (event) => {
@@ -1059,7 +1153,7 @@
       return button;
     }));
   }
-  window.addEventListener('resize', updateGalleryLayout, { passive: true });
+  window.addEventListener('resize', () => { updateGalleryLayout(); updateDemoPhotoCarousel(); }, { passive: true });
   renderGallery();
 
 })();
