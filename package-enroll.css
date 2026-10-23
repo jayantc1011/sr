@@ -239,7 +239,7 @@
 .package-gallery.is-slide-preview .package-gallery-main { margin-top: 0; }
 .package-gallery-track { display: flex; align-items: stretch; gap: clamp(12px, 1.5vw, 22px); transition: transform .42s cubic-bezier(.2,.7,.2,1); will-change: transform; }
 .package-gallery-track > img { display: block; flex: 0 0 auto; width: 100%; aspect-ratio: 4 / 5; border-radius: 12px; background: #f6efe5; object-fit: cover; object-position: center 12%; }
-.package-report-slide { display:grid; grid-template-rows:auto minmax(0,1fr); width:100%; flex:0 0 100%; aspect-ratio:16 / 9; overflow:hidden; color:#17233b; background:#fff; text-align:left; }
+.package-report-slide { display:grid; grid-template-rows:auto minmax(0,1fr); width:100%; flex:0 0 100%; aspect-ratio:2168 / 952; overflow:hidden; color:#17233b; background:#fff; text-align:left; }
 .package-report-slide-header { display:grid; grid-template-columns:auto minmax(0,1fr) auto; align-items:center; gap:16px; padding:0 0 15px; border-bottom:1px solid #e5edf6; }
 .package-report-slide-sequence { display:inline-flex; align-items:center; min-height:36px; padding:0 13px; border-radius:9px; background:#f1f5fa; color:#34445f; font:700 15px/1 "Menlo", "Consolas", monospace; white-space:nowrap; }
 .package-report-slide-header h4 { margin:0; color:#17233b; font:700 clamp(15px,1.6vw,25px)/1.25 "DM Sans","Avenir Next",Arial,sans-serif; }
@@ -1136,14 +1136,14 @@
 }
 
 
-/* Keep all five report slides in the same 16:9 frame as the concept image. */
+/* Keep slides 02–05 inside the same landscape frame as slide 01. */
 .package-enrollment-page .package-scorecard-slide,
 .package-enrollment-page .package-speech-analysis-slide,
 .package-enrollment-page .package-script-lab-slide,
 .package-enrollment-page .package-roadmap-slide {
   height:auto;
   min-height:0;
-  aspect-ratio:16 / 9;
+  aspect-ratio:2168 / 952;
   box-sizing:border-box;
   overflow-y:auto;
 }
@@ -1154,7 +1154,7 @@
   .package-enrollment-page .package-roadmap-slide {
     height:auto;
     min-height:0;
-    aspect-ratio:16 / 9;
+    aspect-ratio:2168 / 952;
   }
 }
 
@@ -1167,63 +1167,3 @@
 }
 .package-enrollment-page .package-gallery.is-style-image-gallery .package-gallery-dots { display:none; }
 
-
-
-/* Photo carousel shown in each communication demo card on this page only. */
-.package-enrollment-page .package-gallery.is-photo-demo-gallery .package-gallery-main { margin-top:0; }
-.package-enrollment-page .package-demo-photo-slide {
-  grid-template-rows:auto minmax(0,1fr);
-  aspect-ratio:16 / 9;
-}
-.package-enrollment-page .package-demo-photo-viewport {
-  position:relative;
-  min-width:0;
-  min-height:0;
-  margin-top:clamp(14px,1.6vw,22px);
-  overflow:hidden;
-  border-radius:12px;
-  background:#edf2e9;
-}
-.package-enrollment-page .package-demo-photo-track {
-  display:flex;
-  height:100%;
-  gap:clamp(12px,1.5vw,22px);
-  transition:transform .36s cubic-bezier(.2,.7,.2,1);
-  will-change:transform;
-}
-.package-enrollment-page .package-demo-photo-track img {
-  display:block;
-  height:100%;
-  flex:0 0 auto;
-  border-radius:12px;
-  background:#edf5e9;
-  object-fit:cover;
-  object-position:center;
-}
-.package-enrollment-page .package-demo-photo-arrow {
-  position:absolute;
-  z-index:2;
-  top:50%;
-  display:grid;
-  width:42px;
-  height:42px;
-  place-items:center;
-  border:1px solid rgba(255,255,255,.85);
-  border-radius:50%;
-  background:rgba(25,76,59,.86);
-  box-shadow:0 3px 12px rgba(20,40,30,.18);
-  color:#fff;
-  cursor:pointer;
-  font:400 30px/1 Arial,sans-serif;
-  transform:translateY(-50%);
-}
-.package-enrollment-page .package-demo-photo-arrow.is-previous { left:12px; }
-.package-enrollment-page .package-demo-photo-arrow.is-next { right:12px; }
-.package-enrollment-page .package-demo-photo-arrow:disabled { opacity:0; pointer-events:none; }
-.package-enrollment-page .package-demo-photo-arrow:focus-visible { outline:3px solid #a8c9a4; outline-offset:3px; }
-@media(max-width:650px) {
-  .package-enrollment-page .package-demo-photo-slide { aspect-ratio:16 / 9; }
-  .package-enrollment-page .package-demo-photo-viewport { margin-top:10px; border-radius:8px; }
-  .package-enrollment-page .package-demo-photo-track img { border-radius:8px; }
-  .package-enrollment-page .package-demo-photo-arrow { width:36px; height:36px; font-size:25px; }
-}
