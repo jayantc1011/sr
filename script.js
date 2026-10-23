@@ -273,6 +273,9 @@ if(inquiryForm) inquiryForm.addEventListener('submit',event=>{
 const durationButtons = Array.from(document.querySelectorAll('.calls-duration-toggle [data-duration]'));
 const callCards = Array.from(document.querySelectorAll('.calls-grid .call-card'));
 const homeCallDurationButtons = Array.from(document.querySelectorAll('.home-page .service-toggle [data-duration]'));
+let activeCallDuration = '30';
+let activeServiceFilter = 'all';
+let applyServiceFiltering = () => {};
 
 homeCallDurationButtons.forEach((button) => {
   button.addEventListener('click', () => {
@@ -304,6 +307,7 @@ homeCallDurationButtons.forEach((button) => {
 
 if (durationButtons.length && callCards.length) {
   const setDuration = (duration) => {
+    activeCallDuration = duration;
     durationButtons.forEach((button) => {
       const active = button.dataset.duration === duration;
       button.classList.toggle('active', active);
@@ -311,15 +315,12 @@ if (durationButtons.length && callCards.length) {
     });
 
     callCards.forEach((card) => {
-      const availableDuration = card.dataset.availableDuration;
-      if (availableDuration) card.hidden = availableDuration !== duration;
+      card.querySelectorAll('[data-duration-copy]').forEach((copy) => {
+        copy.hidden = copy.dataset.durationCopy !== duration;
+      });
 
       card.querySelectorAll('[data-duration-label]').forEach((label) => {
         label.textContent = `${duration}min`;
-      });
-
-      card.querySelectorAll('[data-duration-copy]').forEach((copy) => {
-        copy.hidden = copy.dataset.durationCopy !== duration;
       });
 
       card.querySelectorAll('[data-duration-list]').forEach((list) => {
@@ -332,9 +333,11 @@ if (durationButtons.length && callCards.length) {
 
       const price = card.querySelector('.call-price');
       if (price) {
-        price.textContent = price.getAttribute(`data-price-${duration}`) || '';
+        price.textContent = duration === '60' ? price.dataset.price60 : price.dataset.price30;
       }
     });
+
+    applyServiceFiltering();
   };
 
   durationButtons.forEach((button) => {
@@ -354,9 +357,7 @@ const packageCards = Array.from(document.querySelectorAll('.packages-grid .packa
 const courseCards = Array.from(document.querySelectorAll('.learning-grid .learning-card'));
 
 if (servicesFilterTabs.length && (callsSection || packagesSection || coursesSection)) {
-  let activeServiceFilter = 'all';
-
-  const applyServiceFiltering = () => {
+  applyServiceFiltering = () => {
     const query = (servicesSearchInput?.value || '').trim().toLowerCase();
     let visibleTotal = 0;
 
@@ -365,7 +366,8 @@ if (servicesFilterTabs.length && (callsSection || packagesSection || coursesSect
       const categoryMatch = activeServiceFilter === 'all' || activeServiceFilter === 'calls';
       const haystack = `${card.dataset.search || ''} ${card.textContent || ''}`.toLowerCase();
       const queryMatch = !query || haystack.includes(query);
-      const show = categoryMatch && queryMatch;
+      const durationMatch = !card.dataset.availableDuration || card.dataset.availableDuration === activeCallDuration;
+      const show = categoryMatch && queryMatch && durationMatch;
       card.hidden = !show;
       if (show) {
         visibleCalls += 1;
@@ -518,11 +520,11 @@ if (bookingModal) {
       needsSchedule: true
     },
     'style-package': {
-      label: 'Image & Styling Makeover',
-      fullLabel: 'Image & Styling Makeover (7 Sessions)',
+      label: '1:1 Signature Style Transformation',
+      fullLabel: '1:1 Signature Style Transformation (6 Sessions)',
       type: 'package',
-      price: 38999,
-      duration: '7 Sessions',
+      price: 24999,
+      duration: '6 Sessions + tailored booklet',
       needsSchedule: true
     },
     speakathon: {
@@ -945,7 +947,15 @@ if (bookingModal) {
   if(contact){
     const type=params.get('type'),sel=contact.querySelector('#academy-contact-type');
     if(sel && type)sel.value=type==='corporate'?'Corporate Workshop':type==='courses'?'Courses':type==='consultation'?'Personal Mentorship':'General';
-    if(params.get('course')){
+    const packageOffer=params.get('offer');
+    const packageMessages={
+      'comm-package':'I would like to enquire about the Speak with Confidence package (7 private sessions). Please share availability and the next steps.',
+      'style-package':'I would like to enquire about the 1:1 Signature Style Transformation package (6 private video sessions and a tailored 28-page booklet). Please share availability and the next steps.'
+    };
+    if(packageMessages[packageOffer]){
+      const message=contact.querySelector('textarea[name="message"]');
+      if(message&&!message.value)message.value=packageMessages[packageOffer];
+    } else if(params.get('course')){
       const message=contact.querySelector('textarea[name="message"]');
       if(message&&!message.value)message.value='I would like to know more about '+(catalog[params.get('course')]?.title||params.get('course'))+'.';
     }
@@ -1018,12 +1028,12 @@ if (bookingModal) {
   const packageTitle=document.getElementById('academy-package-title');
   if(packageTitle){
     const isStyle=params.get('offer')==='style-package';
-    packageTitle.textContent=isStyle?'Image & Styling Makeover':'Communication Skills & Confidence Makeover';
+    packageTitle.textContent=isStyle?'1:1 Signature Style Transformation':'Communication Skills & Confidence Makeover';
     document.getElementById('academy-package-description').textContent=isStyle?
-      'A personalized 7-session styling journey with color guidance, body proportion assessment, wardrobe refinement and practical style planning.':
+      'A bespoke styling partnership with six private video sessions across face shape, body shape, makeup, formal styling, lifestyle analysis, and an open session—alongside your personal Style Booklet.':
       'A bespoke seven-session communication transformation to sharpen your voice, presence and speaking confidence.';
-    document.getElementById('academy-package-price').textContent=money(isStyle?38999:34999);
-    const items=isStyle?['7 private one-on-one styling sessions','Virtual wardrobe audit','Personal color palette guidance','Custom Style Bible and outfit formulas','Personal recommendations and follow-up']:
+    document.getElementById('academy-package-price').textContent=money(isStyle?24999:34999);
+    const items=isStyle?['6 private video consultations across six styling pillars','Tailored 28-page Style Booklet','Face shape, body shape, makeup and formal styling','Lifestyle analysis and open styling session']:
       ['7 private 60-minute Zoom sessions','Between-session WhatsApp voice feedback','Video speech analysis and drills','Personalized speaker playbook','Voice and articulation assessment','Live corrections and practice exercises'];
     document.getElementById('academy-package-inclusions').replaceChildren(...items.map(item=>{const li=document.createElement('li');li.textContent=item;return li;}));
     document.getElementById('academy-package-book').href='services.html?book='+(isStyle?'style-package':'comm-package')+'#packages';
