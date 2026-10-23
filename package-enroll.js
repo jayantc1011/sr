@@ -22,7 +22,7 @@
       sessions: '7 private sessions',
       length: '7 weeks',
       sessionDetails: [
-        { title: 'Non-Verbal Communication & Physical Presence', bullets: ['3-point body language audit', 'Eye contact & facial congruence', 'Video-based presence analysis'], duration: '60 mins · 1:1 Video' },
+        { title: 'Non-Verbal Communication & Body Language', bullets: ['3-point body language audit', 'Eye contact & facial congruence', 'Video-based presence analysis'], duration: '60 mins · 1:1 Video' },
         { title: 'Vocal Dynamics & Tonal Control', bullets: ['5 vocal delivery variables', 'Strategic pauses & emphasis', '3-tone vocal practice'], duration: '60 mins · 1:1 Video' },
         { title: 'Verbal Precision & Articulation', bullets: ['3-part message structuring', 'Filler words & verbal clutter', 'Articulation, diction & sentence economy'], duration: '60 mins · 1:1 Video' },
         { title: 'Conversational Intelligence & Social Fluency', bullets: ['3-step active listening', 'Conversational turn-taking techniques', 'Rapport building & social calibration'], duration: '60 mins · 1:1 Video' },
