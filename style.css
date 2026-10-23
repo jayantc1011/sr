@@ -9282,3 +9282,61 @@ body.services-page .curated-canva-carousel__dot[aria-current="true"] {
   position: sticky;
   top: var(--sr-announcement-height, 64px);
 }
+
+
+/* Services page 1:1 call cards carousel */
+body.services-page .calls-heading-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 0 0 auto;
+}
+body.services-page .calls-carousel-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+body.services-page .calls-carousel-controls .carousel-arrow svg {
+  width: 19px;
+  height: 19px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+body.services-page .calls-carousel {
+  display: flex;
+  grid-template-columns: none;
+  gap: 32px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  overscroll-behavior-inline: contain;
+}
+body.services-page .calls-carousel::-webkit-scrollbar {
+  display: none;
+}
+body.services-page .calls-carousel > .call-card {
+  flex: 0 0 calc((100% - 32px) / 2);
+  scroll-snap-align: start;
+}
+@media (max-width: 820px) {
+  body.services-page .calls-heading-controls {
+    width: 100%;
+    justify-content: space-between;
+  }
+  body.services-page .calls-carousel {
+    gap: 22px;
+  }
+  body.services-page .calls-carousel > .call-card {
+    flex-basis: 100%;
+  }
+}
+@media (max-width: 560px) {
+  body.services-page .calls-carousel {
+    margin-top: 26px;
+  }
+}
