@@ -375,6 +375,14 @@
       }
     }
   ];
+  if (offerKey === 'style-package') {
+    demos.splice(0, demos.length,
+      { kicker: 'STYLE CONCEPT 01 · PERSONAL COLOUR', title: 'Personal Colour Palette', images: [['assets/canva/style/slide-01.jpg', 'Style concept 1 of 4: Personal colour palette']] },
+      { kicker: 'STYLE CONCEPT 02 · STYLE ARCHETYPE', title: 'Style Archetype & Lifestyle Blueprint', images: [['assets/canva/style/slide-02.jpg', 'Style concept 2 of 4: Style archetype and lifestyle blueprint']] },
+      { kicker: 'STYLE CONCEPT 03 · WARDROBE EDIT', title: 'Wardrobe & Outfit Direction', images: [['assets/canva/style/slide-03.jpg', 'Style concept 3 of 4: Wardrobe and outfit direction']] },
+      { kicker: 'STYLE CONCEPT 04 · PERSONAL LOOKBOOK', title: 'Curated Personal Lookbook', images: [['assets/canva/style/slide-04.jpg', 'Style concept 4 of 4: Curated personal lookbook']] }
+    );
+  }
   let currentSlide = 0;
   let currentImageIndex = 0;
   let editorialPhotoFocused = false;
