@@ -1220,3 +1220,16 @@ html[data-package-offer="style-package"] .package-enrollment-page .package-hero-
 @media(max-width:680px) {
   .package-enrollment-page[data-package-offer="style-package"] .package-hero-visual .package-visual-frame:has([data-style-hero]) { aspect-ratio:1382 / 778; }
 }
+
+html[data-package-offer="style-package"] [data-style-hero] {
+  position:relative !important;
+  overflow:hidden;
+}
+html[data-package-offer="style-package"] [data-style-hero] > .package-style-hero-controls {
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  width:100%;
+  box-sizing:border-box;
+}
