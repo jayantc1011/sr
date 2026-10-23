@@ -998,3 +998,139 @@
   .package-gallery-dots { gap:7px; }
   .package-gallery-dot { flex-basis:8px; width:8px; height:8px; min-height:8px; }
 }
+
+
+/* Keep booklet report slides within the site's ivory and forest palette. */
+.package-enrollment-page .package-report-slide,
+.package-enrollment-page .package-scorecard-slide,
+.package-enrollment-page .package-speech-analysis-slide,
+.package-enrollment-page .package-script-lab-slide,
+.package-enrollment-page .package-roadmap-slide {
+  color:var(--pkg-ink);
+  background:var(--pkg-paper);
+}
+.package-enrollment-page .package-report-slide-header,
+.package-enrollment-page .package-scorecard-slide > .package-report-slide-header,
+.package-enrollment-page .package-speech-analysis-slide > .package-report-slide-header,
+.package-enrollment-page .package-script-lab-slide > .package-report-slide-header,
+.package-enrollment-page .package-roadmap-slide > .package-report-slide-header {
+  border-color:var(--pkg-line);
+  background:var(--pkg-paper);
+  box-shadow:0 1px 0 var(--pkg-line);
+}
+.package-enrollment-page .package-report-slide-sequence,
+.package-enrollment-page .package-scorecard-intro,
+.package-enrollment-page .package-scorecard-list,
+.package-enrollment-page .package-script-case-tabs,
+.package-enrollment-page .package-trap-filters {
+  border-color:var(--pkg-line);
+  background:var(--pkg-sage);
+}
+.package-enrollment-page .package-report-slide-header h4,
+.package-enrollment-page .package-report-slide-copy h5,
+.package-enrollment-page .package-scorecard-intro h5,
+.package-enrollment-page .package-scorecard-label strong,
+.package-enrollment-page .package-scorecard-table > strong,
+.package-enrollment-page .package-script-context strong,
+.package-enrollment-page .package-script-card h6,
+.package-enrollment-page .package-trap-card h6,
+.package-enrollment-page .package-roadmap-panel-header h5,
+.package-enrollment-page .package-roadmap-titleline strong {
+  color:var(--pkg-ink);
+}
+.package-enrollment-page .package-report-slide-author,
+.package-enrollment-page .package-report-slide-score,
+.package-enrollment-page .package-report-slide-summary,
+.package-enrollment-page .package-scorecard-intro > p,
+.package-enrollment-page .package-scorecard-controls,
+.package-enrollment-page .package-scorecard-number,
+.package-enrollment-page .package-scorecard-label,
+.package-enrollment-page .package-scorecard-summary,
+.package-enrollment-page .package-scorecard-target,
+.package-enrollment-page .package-scorecard-table .package-scorecard-th,
+.package-enrollment-page .package-script-tone,
+.package-enrollment-page .package-script-context,
+.package-enrollment-page .package-trap-card > header span,
+.package-enrollment-page .package-trap-card blockquote span,
+.package-enrollment-page .package-roadmap-panel-header > span,
+.package-enrollment-page .package-roadmap-panel-header p {
+  color:var(--pkg-muted);
+}
+.package-enrollment-page .package-report-slide-metrics,
+.package-enrollment-page .package-script-laboratory,
+.package-enrollment-page .package-everyday-traps,
+.package-enrollment-page .package-script-card,
+.package-enrollment-page .package-trap-card,
+.package-enrollment-page .package-roadmap-panel,
+.package-enrollment-page .package-roadmap-week,
+.package-enrollment-page .package-speech-chart-panel,
+.package-enrollment-page .package-exposure-matrix {
+  border-color:var(--pkg-line);
+  background:#fff;
+  box-shadow:none;
+}
+.package-enrollment-page .package-report-slide-metrics dt,
+.package-enrollment-page .package-report-slide-metrics dd,
+.package-enrollment-page .package-scorecard-table > *,
+.package-enrollment-page .package-script-card > p,
+.package-enrollment-page .package-script-rationale p,
+.package-enrollment-page .package-trap-card > p,
+.package-enrollment-page .package-roadmap-drill,
+.package-enrollment-page .package-roadmap-titleline,
+.package-enrollment-page .package-roadmap-kpi {
+  color:#526257;
+}
+.package-enrollment-page .package-report-slide-metrics dd,
+.package-enrollment-page .package-scorecard-prescription strong,
+.package-enrollment-page .package-script-card > p strong,
+.package-enrollment-page .package-script-rationale strong,
+.package-enrollment-page .package-trap-card > p strong,
+.package-enrollment-page .package-trap-card .package-trap-antidote,
+.package-enrollment-page .package-trap-card .package-trap-antidote strong,
+.package-enrollment-page .package-roadmap-drill strong {
+  color:var(--pkg-ink);
+}
+.package-enrollment-page .package-scorecard-trigger,
+.package-enrollment-page .package-script-card blockquote,
+.package-enrollment-page .package-script-quote,
+.package-enrollment-page .package-trap-card blockquote {
+  border-color:var(--pkg-line);
+  background:#fff;
+  color:var(--pkg-ink);
+}
+.package-enrollment-page .package-script-reframe {
+  border-color:var(--pkg-forest);
+  background:#fff;
+}
+.package-enrollment-page .package-scorecard-dimension,
+.package-enrollment-page .package-scorecard-table > *,
+.package-enrollment-page .package-scorecard-prescription,
+.package-enrollment-page .package-script-card > header,
+.package-enrollment-page .package-script-delivery,
+.package-enrollment-page .package-trap-card .package-trap-antidote,
+.package-enrollment-page .package-roadmap-panel-header,
+.package-enrollment-page .package-roadmap-kpi {
+  border-color:var(--pkg-line);
+}
+.package-enrollment-page .package-scorecard-stars::before { color:var(--pkg-forest); }
+.package-enrollment-page .package-roadmap-marker.is-complete {
+  border-color:var(--pkg-forest);
+  background:var(--pkg-forest);
+}
+.package-enrollment-page .package-scorecard-slide,
+.package-enrollment-page .package-speech-analysis-slide,
+.package-enrollment-page .package-script-lab-slide,
+.package-enrollment-page .package-roadmap-slide {
+  scrollbar-color:#b8c7b6 #edf2e9;
+}
+.package-enrollment-page .package-scorecard-slide::-webkit-scrollbar-track,
+.package-enrollment-page .package-speech-analysis-slide::-webkit-scrollbar-track,
+.package-enrollment-page .package-script-lab-slide::-webkit-scrollbar-track,
+.package-enrollment-page .package-roadmap-slide::-webkit-scrollbar-track { background:#edf2e9; }
+.package-enrollment-page .package-scorecard-slide::-webkit-scrollbar-thumb,
+.package-enrollment-page .package-speech-analysis-slide::-webkit-scrollbar-thumb,
+.package-enrollment-page .package-script-lab-slide::-webkit-scrollbar-thumb,
+.package-enrollment-page .package-roadmap-slide::-webkit-scrollbar-thumb {
+  background:#b8c7b6;
+  border-color:#edf2e9;
+}
