@@ -287,6 +287,12 @@
 .package-gallery-controls .package-gallery-arrow:disabled { opacity: .38; cursor: default; transform: none; }
 .package-gallery-dot { width: auto; height: auto; min-height: 34px; padding: 0 16px; border: 0; border-radius: 8px; background: #f3eee8; color: #786f66; cursor: pointer; font: 500 13px/1 "DM Sans", "Avenir Next", Arial, sans-serif; transition: background-color .16s ease, color .16s ease; }
 .package-gallery-dot[aria-selected="true"] { background: #292521; color: #fff; transform:none; }
+.package-gallery.is-style-image-gallery .package-gallery-dots { align-items: center; justify-content: center; flex-wrap: nowrap; gap: 12px; }
+.package-gallery.is-style-image-gallery .package-gallery-dot { flex: 0 0 10px; width: 10px; min-width: 10px; height: 10px; min-height: 10px; padding: 0; border: 0; border-radius: 50%; background: #e1e7f0; color: transparent; font-size: 0; line-height: 0; }
+.package-gallery.is-style-image-gallery .package-gallery-dot[aria-selected="true"] { background: #111a2e; color: transparent; transform: none; }
+.package-gallery.is-style-image-gallery .package-gallery-dot:hover { background: #9ba8bd; transform: scale(1.08); }
+.package-gallery.is-style-image-gallery .package-gallery-dot[aria-selected="true"]:hover { background: #111a2e; }
+.package-gallery.is-style-image-gallery .package-gallery-dot:focus-visible { outline: 2px solid #111a2e; outline-offset: 4px; }
 @media(max-width:900px) {
   .package-gallery-track { gap: clamp(10px, 1.8vw, 16px); }
 }
