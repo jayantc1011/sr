@@ -107,7 +107,17 @@
   });
 
   document.title = offer.name + ' | Shalini Rathod';
+  const packageUrl = new URL('package-enroll.html?offer=' + encodeURIComponent(offerKey), window.location.href).href;
+  const setMeta = (selector, value) => document.querySelector(selector)?.setAttribute('content', value);
+  document.querySelector('link[rel="canonical"]')?.setAttribute('href', packageUrl);
   document.querySelector('meta[name="description"]')?.setAttribute('content', offer.description);
+  setMeta('meta[property="og:title"]', document.title);
+  setMeta('meta[property="og:description"]', offer.description);
+  setMeta('meta[property="og:url"]', packageUrl);
+  setMeta('meta[name="twitter:title"]', document.title);
+  setMeta('meta[name="twitter:description"]', offer.description);
+  const packageSchema = document.querySelector('#package-structured-data');
+  if (packageSchema) packageSchema.textContent = JSON.stringify({'@context':'https://schema.org','@type':'Service',name:offer.name,description:offer.description,url:packageUrl,provider:{'@type':'Organization',name:'Shalini Rathod Confidence & Image Academy',url:'https://jayantc1011.github.io/sr/'}});
   document.documentElement.dataset.packageOffer = offerKey;
   setText('[data-package-name]', offer.shortName);
   setText('#package-booklet-title', offer.bookletTitle);
