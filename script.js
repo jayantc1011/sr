@@ -12,60 +12,6 @@ function setCtaArrowLabel(target, label) {
   target.replaceChildren(document.createTextNode(label), svg);
 }
 
-const menuToggle = document.querySelector('.menu-toggle');
-const mobileMenu = document.querySelector('#mobile-menu');
-const mobileLinks = mobileMenu ? Array.from(mobileMenu.querySelectorAll('.mobile-menu-links a, .mobile-actions a')) : [];
-const mobileNavLinks = mobileMenu ? Array.from(mobileMenu.querySelectorAll('.mobile-menu-links a')) : [];
-const mobileMenuBackdrop = mobileMenu ? mobileMenu.querySelector('.mobile-menu-backdrop') : null;
-
-function setMenu(open) {
-  if (!menuToggle || !mobileMenu) return;
-  menuToggle.setAttribute('aria-expanded', String(open));
-  menuToggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
-  mobileMenu.hidden = !open;
-  document.body.classList.toggle('mobile-nav-open', open);
-}
-
-if (menuToggle && mobileMenu) {
-  menuToggle.addEventListener('click', () => {
-    setMenu(menuToggle.getAttribute('aria-expanded') !== 'true');
-  });
-
-  if (mobileMenuBackdrop) {
-    mobileMenuBackdrop.addEventListener('click', () => setMenu(false));
-  }
-
-  mobileLinks.forEach((link) => {
-    link.addEventListener('click', () => {
-      if (link.closest('.mobile-menu-links')) {
-        mobileNavLinks.forEach((item) => item.classList.toggle('active', item === link));
-      }
-      setMenu(false);
-    });
-  });
-
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && menuToggle.getAttribute('aria-expanded') === 'true') {
-      setMenu(false);
-      menuToggle.focus();
-    }
-  });
-
-  window.addEventListener('resize', () => {
-    if (window.innerWidth > 1080) setMenu(false);
-  });
-}
-
-// Keep the active underline behavior feeling like the reference navigation.
-const desktopLinks = document.querySelectorAll('.desktop-nav .nav-link');
-desktopLinks.forEach((link) => {
-  link.addEventListener('click', () => {
-    desktopLinks.forEach((item) => item.classList.remove('active'));
-    link.classList.add('active');
-  });
-});
-
-
 // Never leave broken-image icons visible. Any image with data-fallback will
 // automatically swap to the local fallback asset if its source cannot load.
 document.querySelectorAll('img[data-fallback]').forEach((image) => {
