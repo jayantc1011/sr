@@ -11,62 +11,6 @@
   color: var(--pkg-ink);
 }
 
-.package-announcement {
-  min-height: 78px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 18px;
-  padding: 12px 24px;
-  background: #e1f2d9;
-  color: #183d2e;
-  font-family: "Bricolage Grotesque", "Avenir Next", Arial, sans-serif;
-}
-.package-announcement-badge {
-  display: inline-flex;
-  min-height: 42px;
-  align-items: center;
-  justify-content: center;
-  padding: 0 20px;
-  border-radius: 999px;
-  background: #1c5a43;
-  color: #fff;
-  font-size: 14px;
-  font-weight: 800;
-  letter-spacing: .03em;
-}
-.package-announcement-copy {
-  font-size: 17px;
-  font-weight: 800;
-  letter-spacing: .01em;
-  white-space: nowrap;
-}
-.package-enrollment-page .package-announcement-link {
-  display: inline-flex;
-  min-height: 52px;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-  padding: 0 27px;
-  border-radius: 999px;
-  background: #16543e;
-  box-shadow: 0 5px 14px rgba(21, 64, 47, .18);
-  color: #fff !important;
-  font-size: 14px;
-  font-weight: 800;
-  letter-spacing: .035em;
-  text-decoration: none;
-  white-space: nowrap;
-}
-.package-enrollment-page .package-announcement-link:hover { background: #103f30; }
-.package-enrollment-page .package-announcement-link span { font-size: 20px; line-height: 1; }
-@media(max-width:700px) {
-  .package-announcement { min-height: 0; flex-wrap: wrap; gap: 9px 12px; padding: 10px 14px; }
-  .package-announcement-badge { min-height: 32px; padding: 0 14px; font-size: 11px; }
-  .package-announcement-copy { font-size: 12px; }
-  .package-enrollment-page .package-announcement-link { width: 100%; min-height: 41px; gap: 9px; padding: 0 14px; font-size: 11px; }
-}
-
 /* Currency selector shown in the package navigation. */
 .package-enrollment-page .package-currency-toggle {
   display: inline-flex;
@@ -79,15 +23,15 @@
   white-space: nowrap;
 }
 .package-enrollment-page .package-currency-toggle button {
-  min-width: 86px;
-  min-height: 46px;
-  padding: 0 15px;
+  min-width: 72px;
+  min-height: 38px;
+  padding: 0 12px;
   border: 0;
   border-radius: 999px;
   background: transparent;
   color: #81796f;
   font-family: inherit;
-  font-size: 17px;
+  font-size: 14px;
   font-weight: 500;
   line-height: 1;
   cursor: pointer;
@@ -111,7 +55,7 @@
   .package-enrollment-page .package-mobile-currency { display: none; }
 }
 @media (max-width: 500px) {
-  .package-enrollment-page .package-currency-toggle button { min-width: 78px; min-height: 41px; font-size: 15px; }
+  .package-enrollment-page .package-currency-toggle button { min-width: 68px; min-height: 36px; font-size: 13px; }
 }
 
 .package-enrollment-page .sr-header { position: sticky; }
