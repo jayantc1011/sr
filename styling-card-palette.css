@@ -1,0 +1,9 @@
+/* Pista green card surfaces for styling-specific offers and courses. */
+.styling-card {
+  background-color: #edf5e9;
+}
+
+/* Styling package session cards are shared markup; scope the color to that offer. */
+html[data-package-offer="style-package"] .package-session-card {
+  background-color: #edf5e9;
+}
