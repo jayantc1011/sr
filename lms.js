@@ -108,6 +108,22 @@
     const certificateSection=$('#lms-certificate');
     if(certificateSection)certificateSection.hidden=slug!=='speakathon';
     document.title=course.title+' | Shalini Rathod Academy';
+    const canonicalUrl=new URL('lms-course.html?course='+encodeURIComponent(slug),window.location.href).href;
+    const courseImagePath=slug==='power-dressing'?'assets/services/styling-consultation.webp':(slug==='power-bundle'||slug==='dining-etiquette')?'assets/services/course-bundle.webp':'assets/services/communication-workshop.webp';
+    const courseImageUrl=new URL(courseImagePath,window.location.href).href;
+    const setMeta=(selector,value)=>document.querySelector(selector)?.setAttribute('content',value);
+    document.querySelector('link[rel="canonical"]')?.setAttribute('href',canonicalUrl);
+    setMeta('meta[name="description"]',course.description);
+    setMeta('meta[property="og:title"]',document.title);
+    setMeta('meta[property="og:description"]',course.description);
+    setMeta('meta[property="og:url"]',canonicalUrl);
+    setMeta('meta[property="og:image"]',courseImageUrl);
+    setMeta('meta[property="og:image:alt"]',course.title+' course preview');
+    setMeta('meta[name="twitter:title"]',document.title);
+    setMeta('meta[name="twitter:description"]',course.description);
+    setMeta('meta[name="twitter:image"]',courseImageUrl);
+    const courseSchema=$('#course-structured-data');
+    if(courseSchema)courseSchema.textContent=JSON.stringify({'@context':'https://schema.org','@type':'Course',name:course.title,description:course.description,provider:{'@type':'Organization',name:'Shalini Rathod Confidence & Image Academy',url:'https://jayantc1011.github.io/sr/'},courseMode:'Online'});
     $('#lms-detail-title').textContent=course.title;
     $('#lms-breadcrumb-name').textContent=slug==='speakathon'?'Communication Course':course.title;
     $('#lms-detail-summary').textContent=course.description;
@@ -130,7 +146,7 @@
     }
     $('#lms-detail-category').textContent=slug==='speakathon'?'21-DAY COMMUNICATION CHALLENGE':slug==='power-dressing'?'PERSONAL IMAGE & STYLE':slug==='dining-etiquette'?'DINING ETIQUETTE':'COMMUNICATION + STYLE BUNDLE';
     const image=$('#lms-detail-photo');
-    image.src=slug==='power-dressing'?'assets/services/styling-consultation.webp':(slug==='power-bundle'||slug==='dining-etiquette')?'assets/services/course-bundle.webp':'assets/services/communication-workshop.webp';
+    image.src=courseImagePath;
     image.alt=course.title+' course preview image';
     $('#lms-enroll-cta').href=updateUrl('lms-auth.html',slug);
     $('#lms-syllabus-player')?.setAttribute('href',updateUrl('lms-learn.html',slug));
