@@ -1,5 +1,7 @@
 /* Pista green card surfaces for styling-specific offers and courses. */
-.styling-card {
+.home-page .service-card.styling-card,
+.services-page .styling-card,
+.lms-shell .styling-card {
   background-color: #edf5e9;
 }
 
