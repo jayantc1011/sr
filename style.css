@@ -9385,3 +9385,12 @@ html { scroll-padding-top: calc(var(--sr-announcement-height) + clamp(69px, 6.1v
   .sr-header .sr-logo { font-size: clamp(19px, 6vw, 26px) !important; letter-spacing: .025em !important; }
   .sr-header .sr-mobile-link { font-size: 15px !important; }
 }
+
+
+/* Center and evenly size the two calls to action beneath the appearances carousel. */
+.home-page .appearances-cta-row > .appearances-primary,
+.home-page .appearances-cta-row > .appearances-secondary { min-width: 274px; justify-content: center; }
+@media (max-width: 560px) {
+  .home-page .appearances-cta-row > .appearances-primary,
+  .home-page .appearances-cta-row > .appearances-secondary { width: 100%; min-width: 0; }
+}
