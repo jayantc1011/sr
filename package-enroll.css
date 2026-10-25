@@ -1169,3 +1169,68 @@
   .package-gallery.is-style-image-gallery .package-gallery-previous { grid-column:1; justify-self:end; margin-left:0; }
   .package-gallery.is-style-image-gallery .package-gallery-next { grid-column:2; justify-self:end; }
 }
+
+
+/* Communication-only tier comparison, placed below the six session cards. */
+.package-comparison-section { display: none; }
+html[data-package-offer="comm-package"] .package-comparison-section:not(.package-style-comparison-section) {
+  display: block;
+  width: min(calc(100% - 56px), 1280px);
+  margin: 0 auto;
+  padding: 0 0 clamp(58px, 7vw, 96px);
+}
+.package-comparison-inner { overflow: hidden; border: 1px solid #dce9d9; border-radius: 22px; background: #fff; }
+.package-comparison-section h2 { margin: 0; padding: 24px 26px 18px; color: #20382c; font: 700 clamp(24px, 3vw, 34px)/1.18 "Bricolage Grotesque", "Avenir Next", Arial, sans-serif; letter-spacing: -.035em; }
+.package-comparison-scroll { overflow-x: auto; border-radius: 0 0 21px 21px; scrollbar-color: #cbdcc8 #f5f7f1; }
+.package-comparison-table { width: 100%; min-width: 1080px; border-collapse: separate; border-spacing: 0; color: #6f6962; font-size: 14px; line-height: 1.4; }
+.package-comparison-table th,
+.package-comparison-table td { padding: 15px 18px; border-bottom: 1px solid #e8e4de; text-align: left; vertical-align: middle; }
+.package-comparison-table thead th { color: #252420; background: #faf9f6; font-size: 15px; font-weight: 750; }
+.package-comparison-table thead th:first-child { width: 48%; color: #827c74; font-size: 12px; letter-spacing: .04em; text-transform: uppercase; }
+.package-comparison-table thead th:not(:first-child) { width: 17.333%; }
+.package-comparison-table tbody th { color: #37342f; font-weight: 700; vertical-align: top; }
+.package-comparison-table tbody td { vertical-align: middle; }
+.package-comparison-topic-title { display: block; color: #37342f; font-weight: 750; }
+.package-comparison-details { display: grid; gap: 5px; margin: 8px 0 0; padding: 0; color: #6f6962; font-size: 13px; font-weight: 450; line-height: 1.4; list-style: none; }
+.package-comparison-details li { position: relative; padding-left: 15px; }
+.package-comparison-details li::before { position: absolute; left: 0; color: #b88d55; content: "•"; font-size: 16px; line-height: 1.15; }
+.package-comparison-table td { text-align: center; font-size: 18px; }
+.package-comparison-table .package-comparison-commanding { border-left: 1px solid #cbdcc8; background: #edf5e9; color: #204b39; font-weight: 700; }
+.package-comparison-table thead .package-comparison-commanding { color: #204b39; }
+.package-comparison-table .package-comparison-check { color: #27845c; font-size: 20px; font-weight: 700; }
+.package-comparison-table tbody tr:last-child th,
+.package-comparison-table tbody tr:last-child td { border-bottom: 0; }
+.package-comparison-caption { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; }
+@media(max-width:600px) {
+  html[data-package-offer="comm-package"] .package-comparison-section:not(.package-style-comparison-section) { width: calc(100% - 38px); padding-bottom: 52px; }
+  .package-comparison-inner { border-radius: 16px; }
+  .package-comparison-section h2 { padding: 20px 18px 15px; }
+  .package-comparison-table th, .package-comparison-table td { padding: 14px 15px; font-size: 13px; }
+  .package-comparison-table thead th { font-size: 13px; }
+}
+
+/* Styling-only tier comparison, shown beneath the style package sessions. */
+html[data-package-offer="style-package"] .package-style-comparison-section {
+  display: block;
+  width: min(calc(100% - 56px), 1280px);
+  margin: 0 auto;
+  padding: 0 0 clamp(58px, 7vw, 96px);
+}
+.package-style-comparison-table { min-width: 1120px; }
+.package-style-comparison-table thead th:first-child { width: 40%; }
+.package-style-comparison-table thead th:not(:first-child) { width: 20%; }
+@media(max-width:600px) {
+  html[data-package-offer="style-package"] .package-style-comparison-section { width: calc(100% - 38px); padding-bottom: 52px; }
+}
+html[data-package-offer="comm-package"] .package-style-comparison-section { display: none; }
+
+.package-comparison-price-row th,
+.package-comparison-price-row td { border-top: 1px solid #cbdcc8; background: #f6f8f3; color: #20382c; font-weight: 750; }
+.package-comparison-price-row td strong { font-size: 16px; }
+.package-comparison-price-row .package-comparison-commanding { background: #e5f0e1; }
+
+.package-comparison-price-button { display:inline-flex; min-width:126px; align-items:center; justify-content:center; padding:10px 16px; border:0; border-radius:9px; background:#204b39; color:#fff; font:700 15px/1.2 "Avenir Next",Arial,sans-serif; cursor:pointer; box-shadow:0 2px 5px rgba(32,75,57,.16); }
+.package-comparison-price-button:hover { background:#173d2e; }
+.package-comparison-price-button:focus-visible { outline:3px solid #b88d55; outline-offset:3px; }
+.package-comparison-price-row td { padding-top:18px; padding-bottom:18px; }
+@media(max-width:600px) { .package-comparison-price-button { min-width:112px; padding:10px 12px; font-size:14px; } }

@@ -79,9 +79,11 @@
   const checkoutPayment = checkoutDialog?.querySelector('[data-package-checkout-screen="payment"]');
   const checkoutSuccess = checkoutDialog?.querySelector('[data-package-checkout-screen="success"]');
   const checkoutPay = checkoutDialog?.querySelector('[data-package-checkout-pay]');
+  let checkoutPlan = null;
   const updateCheckoutOrder = () => {
-    const displayPrice = formatPrice(selectedCurrency);
-    document.querySelectorAll('[data-package-checkout-name], [data-package-checkout-success-name]').forEach((element) => { element.textContent = offer.shortName; });
+    const displayPrice = checkoutPlan?.price || formatPrice(selectedCurrency);
+    const displayName = checkoutPlan?.name || offer.shortName;
+    document.querySelectorAll('[data-package-checkout-name], [data-package-checkout-success-name]').forEach((element) => { element.textContent = displayName; });
     document.querySelectorAll('[data-package-checkout-amount], [data-package-checkout-success-amount]').forEach((element) => { element.textContent = displayPrice; });
     if (checkoutPay) checkoutPay.textContent = 'Pay ' + displayPrice + ' · Demo';
   };
@@ -238,6 +240,7 @@
     event.preventDefault();
     if (!bookingForm.reportValidity()) return;
     if (bookingMode === 'package' && checkoutDialog && checkoutPayment && checkoutSuccess) {
+      checkoutPlan = null;
       updateCheckoutOrder();
       checkoutPayment.hidden = false;
       checkoutSuccess.hidden = true;
@@ -248,9 +251,20 @@
     const bookingType = bookingMode === 'package' ? 'package' : 'free discovery call';
     if (bookingStatus) bookingStatus.textContent = 'Your ' + bookingType + ' request is ready. The team will follow up to confirm availability.';
   });
+  document.querySelectorAll('[data-comparison-plan][data-comparison-price]').forEach((button) => button.addEventListener('click', () => {
+    if (!checkoutDialog || !checkoutPayment || !checkoutSuccess) return;
+    checkoutPlan = { name: button.dataset.comparisonPlan, price: button.dataset.comparisonPrice };
+    checkoutPayment.hidden = false;
+    checkoutSuccess.hidden = true;
+    checkoutDialog.setAttribute('aria-labelledby', 'package-checkout-title');
+    updateCheckoutOrder();
+    checkoutDialog.showModal();
+  }));
   checkoutDialog?.querySelectorAll('[data-package-checkout-close]').forEach((button) => button.addEventListener('click', () => checkoutDialog.close()));
   checkoutDialog?.addEventListener('click', (event) => { if (event.target === checkoutDialog) checkoutDialog.close(); });
   checkoutDialog?.addEventListener('close', () => {
+    checkoutPlan = null;
+    updateCheckoutOrder();
     if (checkoutPayment) checkoutPayment.hidden = false;
     if (checkoutSuccess) checkoutSuccess.hidden = true;
     checkoutDialog.setAttribute('aria-labelledby', 'package-checkout-title');
