@@ -121,6 +121,35 @@
   const packageSchema = document.querySelector('#package-structured-data');
   if (packageSchema) packageSchema.textContent = JSON.stringify({'@context':'https://schema.org','@type':'Service',name:offer.name,description:offer.description,url:packageUrl,provider:{'@type':'Organization',name:'Shalini Rathod Confidence & Image Academy',url:'https://jayantc1011.github.io/sr/'}});
   document.documentElement.dataset.packageOffer = offerKey;
+  const communicationTierCurriculum = document.querySelector('[data-communication-tier-curriculum]');
+  if (communicationTierCurriculum) communicationTierCurriculum.hidden = offerKey !== 'comm-package';
+  document.querySelectorAll('[data-communication-advanced-card]').forEach((card) => { card.hidden = offerKey !== 'comm-package'; });
+  document.querySelectorAll('[data-styling-advanced-card]').forEach((card) => { card.hidden = offerKey !== 'style-package'; });
+  setText('[data-package-sessions-intro]', offerKey === 'comm-package'
+    ? 'Individual 60-minute video coaching across communication, presence and high-stakes presentations.'
+    : 'Individual 60-minute styling consultations tailored to your features, wardrobe, lifestyle and personal image.');
+  const sessionTrack = document.querySelector('[data-session-slider]');
+  const sessionPrev = document.querySelector('[data-session-slider-prev]');
+  const sessionNext = document.querySelector('[data-session-slider-next]');
+  const sessionStatus = document.querySelector('[data-session-slider-status]');
+  if (sessionTrack && sessionPrev && sessionNext && sessionStatus) {
+    const visibleSessionCount = () => Array.from(sessionTrack.querySelectorAll('.package-session-card')).filter((card) => !card.hidden).length;
+    const cardsPerSlide = () => window.matchMedia('(max-width: 600px)').matches ? 1 : (window.matchMedia('(max-width: 900px)').matches ? 2 : 3);
+    const updateSessionSlider = () => {
+      const pageSize = cardsPerSlide();
+      const totalSlides = Math.max(1, Math.ceil(visibleSessionCount() / pageSize));
+      const maxScroll = Math.max(0, sessionTrack.scrollWidth - sessionTrack.clientWidth);
+      const currentSlide = Math.min(totalSlides - 1, Math.round(sessionTrack.scrollLeft / Math.max(1, sessionTrack.clientWidth)));
+      sessionStatus.textContent = String(currentSlide + 1).padStart(2, '0') + ' / ' + String(totalSlides).padStart(2, '0');
+      sessionPrev.disabled = sessionTrack.scrollLeft <= 2;
+      sessionNext.disabled = maxScroll - sessionTrack.scrollLeft <= 2;
+    };
+    sessionPrev.addEventListener('click', () => sessionTrack.scrollBy({ left: -sessionTrack.clientWidth, behavior: 'smooth' }));
+    sessionNext.addEventListener('click', () => sessionTrack.scrollBy({ left: sessionTrack.clientWidth, behavior: 'smooth' }));
+    sessionTrack.addEventListener('scroll', updateSessionSlider, { passive: true });
+    window.addEventListener('resize', updateSessionSlider);
+    updateSessionSlider();
+  }
   setText('[data-package-name]', offer.shortName);
   setText('#package-booklet-title', offer.bookletTitle);
   setText('[data-package-kicker]', offer.kicker);

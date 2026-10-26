@@ -1237,3 +1237,153 @@ html[data-package-offer="comm-package"] .package-style-comparison-section { disp
 
 /* Hide the communication package amount in its hero summary only. */
 html[data-package-offer="comm-package"] .package-investment-price .package-price-line { display: none; }
+
+.package-tier-curriculum[hidden] { display: none !important; }
+
+.package-enrollment-page .package-session-card[data-communication-advanced-card][hidden],
+.package-enrollment-page .package-session-card[data-styling-advanced-card][hidden] { display: none !important; }
+
+/* Refined, consistent presentation for the twelve-session package grids. */
+.package-enrollment-page .package-session-grid {
+  gap: clamp(16px, 1.5vw, 22px);
+  align-items: stretch;
+  grid-auto-rows: minmax(260px, auto);
+}
+.package-enrollment-page .package-session-card {
+  min-height: 0;
+  padding: clamp(22px, 2vw, 28px);
+  border: 1px solid #dce8db;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 5px 18px rgba(32, 61, 46, .055);
+  transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+.package-enrollment-page .package-session-card:hover {
+  transform: translateY(-3px);
+  border-color: #c7d9c5;
+  box-shadow: 0 10px 24px rgba(32, 61, 46, .09);
+}
+.package-enrollment-page .package-session-meta {
+  margin-bottom: 22px;
+  color: #637568;
+  font-size: 11px;
+  letter-spacing: .045em;
+}
+.package-enrollment-page .package-session-meta > span:first-child { font-weight: 750; }
+.package-enrollment-page .package-session-time {
+  padding: 6px 10px;
+  border-color: #e5eae2;
+  color: #657467;
+  background: #f8faf6;
+  font-size: 10px;
+  letter-spacing: 0;
+}
+.package-enrollment-page .package-session-card h3 {
+  margin-bottom: 16px;
+  color: #203d2e;
+  font-size: clamp(19px, 1.45vw, 22px);
+  font-weight: 700;
+  line-height: 1.27;
+  letter-spacing: -.035em;
+}
+.package-enrollment-page .package-session-card ul { gap: 10px; }
+.package-enrollment-page .package-session-card li {
+  padding-left: 19px;
+  color: #647267;
+  font-size: clamp(12px, .92vw, 14px);
+  line-height: 1.5;
+}
+.package-enrollment-page .package-session-card li::before {
+  color: #3d8a64;
+  font-size: 13px;
+}
+.package-enrollment-page .package-session-footer {
+  padding-top: 16px;
+  border-color: #edf1ec;
+  color: #8a948b;
+  font-size: 12px;
+}
+.package-enrollment-page .package-session-footer a { color: #204b39; }
+@media (max-width: 900px) {
+  .package-enrollment-page .package-session-grid { grid-auto-rows: minmax(250px, auto); }
+}
+@media (max-width: 600px) {
+  .package-enrollment-page .package-session-grid { grid-auto-rows: auto; }
+  .package-enrollment-page .package-session-card { min-height: 0; padding: 22px; }
+  .package-enrollment-page .package-session-meta { margin-bottom: 18px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .package-enrollment-page .package-session-card { transition: none; }
+  .package-enrollment-page .package-session-card:hover { transform: none; }
+}
+
+
+/* Horizontal, responsive session slider. */
+.package-enrollment-page .package-session-grid[data-session-slider] {
+  display: grid;
+  grid-template-columns: none;
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% - 40px) / 3);
+  grid-auto-rows: minmax(260px, auto);
+  gap: 20px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  cursor: grab;
+}
+.package-enrollment-page .package-session-grid[data-session-slider]::-webkit-scrollbar { display: none; }
+.package-enrollment-page .package-session-grid[data-session-slider]:active { cursor: grabbing; }
+.package-enrollment-page .package-session-grid[data-session-slider] > .package-session-card { width: 100%; min-width: 0; scroll-snap-align: start; }
+.package-enrollment-page .package-session-slider-controls {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  margin-top: 18px;
+}
+.package-enrollment-page .package-session-slider-status {
+  margin-right: 4px;
+  color: #748176;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: .06em;
+}
+.package-enrollment-page .package-session-slider-controls button {
+  display: inline-grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border: 1px solid #dce8db;
+  border-radius: 50%;
+  color: #204b39;
+  background: #fff;
+  font: inherit;
+  font-size: 19px;
+  cursor: pointer;
+  transition: background-color .18s ease, border-color .18s ease, color .18s ease;
+}
+.package-enrollment-page .package-session-slider-controls button:hover:not(:disabled) {
+  border-color: #204b39;
+  color: #fff;
+  background: #204b39;
+}
+.package-enrollment-page .package-session-slider-controls button:disabled { opacity: .42; cursor: not-allowed; }
+.package-enrollment-page .package-session-grid[data-session-slider]:focus-visible,
+.package-enrollment-page .package-session-slider-controls button:focus-visible {
+  outline: 3px solid rgba(61, 138, 100, .35);
+  outline-offset: 3px;
+}
+@media (max-width: 900px) {
+  .package-enrollment-page .package-session-grid[data-session-slider] { grid-auto-columns: calc((100% - 20px) / 2); grid-auto-rows: minmax(250px, auto); }
+}
+@media (max-width: 600px) {
+  .package-enrollment-page .package-session-grid[data-session-slider] { grid-auto-columns: 100%; grid-auto-rows: auto; gap: 14px; }
+  .package-enrollment-page .package-session-slider-controls { margin-top: 14px; }
+  .package-enrollment-page .package-session-slider-controls button { width: 40px; height: 40px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .package-enrollment-page .package-session-grid[data-session-slider] { scroll-behavior: auto; }
+  .package-enrollment-page .package-session-slider-controls button { transition: none; }
+}
