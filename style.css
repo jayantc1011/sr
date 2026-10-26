@@ -6697,6 +6697,11 @@ a {
   color: var(--lms-green-deep);
 }
 
+.home-page .service-badge-match {
+  background: linear-gradient(110deg, #4f8d32, #192e23);
+  color: #fff;
+}
+
 .home-page .service-badge-warm,
 .home-page .service-badge-green {
   background: #e6f1e1;
@@ -8669,6 +8674,8 @@ body.services-page .curated-canva-carousel__dot[aria-current="true"] {
 
 .lms-shell .lms-topic-preview{justify-content:center;background:radial-gradient(circle at 72% 24%,rgba(184,213,142,.55),transparent 32%),linear-gradient(145deg,#234b39,#102c22);color:#f4f7ee;font-family:var(--lms-serif,Georgia,serif);font-size:76px;font-weight:600;letter-spacing:-.04em}
 
+.home-page .signature-blueprint-card { background: #fff; }
+
 /* Match the Speakathon card typography to its LMS catalog card. */
 .home-page .speakathon-course-card {
   color: #1e3429;
@@ -9393,4 +9400,23 @@ html { scroll-padding-top: calc(var(--sr-announcement-height) + clamp(69px, 6.1v
 @media (max-width: 560px) {
   .home-page .appearances-cta-row > .appearances-primary,
   .home-page .appearances-cta-row > .appearances-secondary { width: 100%; min-width: 0; }
+}
+
+
+/* Homepage versions of the colour and occasion consultations. */
+.home-page .home-consultation-card .service-card-media { position: relative; }
+.home-page .home-service-duration { position:absolute; top:13px; right:13px; z-index:1; display:inline-flex; align-items:center; padding:6px 9px; border:1px solid rgba(255,255,255,.28); border-radius:6px; color:#fff; background:#194c3b; font-size:10px; font-weight:700; line-height:1; box-shadow:0 2px 8px rgba(0,0,0,.14); }
+.home-page .home-consultation-card .service-intro { min-height:43px; }
+
+/* Keep the recorded styling course card white against the green home card palette. */
+body.home-page article.service-card.signature-blueprint-card {
+  background-color: #fff !important;
+}
+
+/* Alternate the homepage service cards: white, pista, white, pista. */
+.home-page .services-grid > article.service-card:nth-child(odd) {
+  background-color: #fff !important;
+}
+.home-page .services-grid > article.service-card:nth-child(even) {
+  background-color: #eff6e9 !important;
 }
