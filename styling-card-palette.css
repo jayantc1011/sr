@@ -20,14 +20,16 @@ html[data-package-offer="style-package"] .package-session-card {
   --pkg-muted: #657467;
   --pkg-line: #dce9d9;
   color: var(--pkg-ink);
-  background: var(--pkg-paper);
+  background: #f7faf4;
 }
 .package-enrollment-page .package-page-main {
-  background-color: var(--pkg-paper);
-  background-image: linear-gradient(rgba(79, 122, 91, .032) 1px, transparent 1px), linear-gradient(90deg, rgba(79, 122, 91, .032) 1px, transparent 1px);
+  background-color: #f7faf4;
+  background-image: linear-gradient(rgba(51, 111, 65, .045) 1px, transparent 1px), linear-gradient(90deg, rgba(51, 111, 65, .045) 1px, transparent 1px);
+  background-size: 42px 42px;
 }
 .package-enrollment-page :is(.package-hero h1, .package-section-heading h2, .package-booklet-heading h2, .package-demo-heading h3, .package-testimonials-heading h2, .package-booking-heading h2, .package-faq-heading h2) { color: var(--pkg-ink); }
-.package-enrollment-page :is(.package-hero h1, .package-section-heading h2, .package-booklet-heading h2, .package-demo-heading h3, .package-testimonials-heading h2, .package-booking-heading h2, .package-faq-heading h2) em { color: var(--pkg-leaf); }
+.package-enrollment-page :is(.package-hero h1, .package-section-heading h2, .package-booklet-heading h2, .package-demo-heading h3, .package-testimonials-heading h2, .package-booking-heading h2, .package-faq-heading h2) em { color: #5d8e53; font-style: normal; }
+.package-enrollment-page .package-hero h1 { max-width: 680px; font-size: clamp(48px, 4.7vw, 75px); line-height: 1.02; letter-spacing: -.052em; }
 .package-enrollment-page :is(.package-page-kicker, .package-session-meta, .package-session-time, .package-testimonials-heading .package-page-kicker, .package-booking-heading .package-page-kicker) { color: var(--pkg-leaf); }
 .package-enrollment-page :is(.package-hero-description, .package-section-heading > p:last-child, .package-session-card > p, .package-session-card li, .package-testimonial-card blockquote, .package-testimonial-meta > div span, .package-booking-choice-group legend, .package-faq-item > p) { color: var(--pkg-muted); }
 .package-enrollment-page .package-investment-card { border-color: var(--pkg-line); background: var(--pkg-sage); }
