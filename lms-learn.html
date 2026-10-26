@@ -54,7 +54,7 @@
   <div class="learn-container">
     <div class="learn-top">
       <a href="lms.html" class="learn-back" aria-label="Back to courses"><span aria-hidden="true">←</span> All courses</a>
-      <div class="learn-course-brand"><span class="learn-course-mark" aria-hidden="true">S</span><span>Communication Course</span></div>
+      <div class="learn-course-brand"><span class="learn-course-mark" id="learn-course-mark" aria-hidden="true">S</span><span id="learn-course-name">Communication Course</span></div>
       <div class="learn-overall">
         <span id="overall-count">0 of 21 complete</span>
         <div class="learn-overall-track" role="progressbar" id="overall-meter" aria-label="Course completion" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="overall-fill"></span></div>
@@ -108,9 +108,9 @@
         </div>
       </section>
 
-      <aside class="learn-outline" aria-label="21-day course outline">
+      <aside class="learn-outline" id="learn-outline" aria-label="21-day course outline">
         <div class="learn-outline-header">
-          <div><span class="learn-eyebrow">COMMUNICATION COURSE</span><h2>Course lessons</h2></div>
+          <div><span class="learn-eyebrow" id="learn-course-label">COMMUNICATION COURSE</span><h2>Course lessons</h2></div>
         </div>
         <div class="learn-roadmap-progress"><span>YOUR PROGRESS</span><strong id="roadmap-done">0 / 21</strong><div class="learn-roadmap-track"><span id="roadmap-fill"></span></div></div>
         <nav class="learn-outline-list" id="outline-list" aria-label="Course lessons"></nav>
@@ -126,7 +126,7 @@
   <div id="worksheet-error" class="learn-pdf-error" hidden>This PDF isn't available on the website yet.</div>
 </dialog>
 <script src="courses-data.js?v=20261026-1845"></script>
-<script src="academy-learn.js?v=697fa6f1e61b"></script>
+<script src="academy-learn.js?v=20261026-course-name"></script>
 <script src="script.js?v=e2495282a96b"></script>
 </body>
 </html>
