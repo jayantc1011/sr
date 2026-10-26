@@ -36,6 +36,7 @@ html[data-package-offer="style-package"] .package-session-card {
 .package-enrollment-page :is(.package-investment-card strong, .package-hero-deliverables) { color: var(--pkg-ink); }
 .package-enrollment-page :is(.package-investment-label, .package-installments, .package-hero-proof) { color: #758478; }
 .package-enrollment-page :is(.package-hero-actions .package-page-button, .package-booking-submit, .package-booking-tabs button.is-selected, .package-booking-option.is-selected) { border-color: var(--pkg-forest); background: var(--pkg-forest); }
+.package-enrollment-page :is(.package-booking-tabs button.is-selected, .package-booking-option.is-selected) { color: #fff !important; }
 .package-enrollment-page :is(.package-hero-actions .package-page-button:hover, .package-booking-submit:hover, .package-booking-tabs button.is-selected:hover, .package-booking-option.is-selected:hover) { border-color: #245b42; background: #245b42; }
 .package-enrollment-page .package-discovery-button { border-color: var(--pkg-line); color: var(--pkg-forest) !important; background: #fff !important; }
 .package-enrollment-page .package-discovery-button:hover { border-color: var(--pkg-leaf); color: var(--pkg-forest) !important; }
