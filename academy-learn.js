@@ -5,6 +5,12 @@
   const slug=data[params.get('course')]?params.get('course'):'speakathon';
   const course=data[slug];if(!course)return;
   const $=id=>document.getElementById(id);
+  const courseName=slug==='speakathon'?'Communication Course':course.title;
+  if($('learn-course-name'))$('learn-course-name').textContent=courseName;
+  if($('learn-course-mark'))$('learn-course-mark').textContent=courseName.trim().charAt(0).toUpperCase();
+  if($('learn-course-label'))$('learn-course-label').textContent=courseName.toUpperCase();
+  $('learn-outline')?.setAttribute('aria-label',courseName+' course outline');
+  $('lesson-media')?.setAttribute('aria-label','Current '+courseName+' lesson video. Focus this player and press Space to play or pause.');
   const mediaUrl=path=>{
     const hostname=location.hostname;
     const usesHostedMedia=hostname==='jayantc1011.github.io'||hostname==='localhost'||hostname==='127.0.0.1';
