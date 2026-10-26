@@ -276,43 +276,27 @@ window.SHALINI_COURSES = {
     ]
   },
   "power-dressing": {
-    "title": "Power Dressing & Styling",
-    "description": "Explore flattering colors, proportions, silhouettes and practical wardrobe planning to create a style that reflects you.",
+    "title": "Power Dressing / Styling",
+    "description": "Learn body proportion balancing, flattering color palettes, and how to build a 30-piece versatile capsule wardrobe.",
     "price": 3499,
-    "tags": [
-      "Personal image",
-      "Wardrobe planning",
-      "Self-paced"
-    ],
+    "tags": ["Personal image", "Wardrobe planning", "Self-paced"],
     "includes": [
-      "Color and styling foundations",
-      "Wardrobe planning frameworks",
-      "Proportion and neckline principles",
-      "Access to published lessons"
+      "6 masterclass modules on color, cut, and fit",
+      "30-Piece Capsule Wardrobe Planner",
+      "Body Proportion & Neckline Matrix",
+      "Fabric & smart shopping guide"
     ],
-    "modules": [
-      {
-        "title": "Foundations of personal style",
-        "lessons": [
-          {
-            "id": "personal-colors",
-            "title": "Your power colors · Lesson awaiting upload"
-          },
-          {
-            "id": "body-proportion",
-            "title": "Shape, proportion and silhouettes · Lesson awaiting upload"
-          },
-          {
-            "id": "capsule-wardrobe",
-            "title": "A versatile capsule wardrobe · Lesson awaiting upload"
-          },
-          {
-            "id": "accessories",
-            "title": "Everyday accessories and details · Lesson awaiting upload"
-          }
-        ]
-      }
-    ]
+    "modules": [{
+      "title": "Power Dressing / Styling · 6 masterclass modules",
+      "lessons": [
+        {"id": "color-palettes", "title": "Flattering color palettes · Lesson awaiting upload"},
+        {"id": "body-proportion", "title": "Body proportion and balance · Lesson awaiting upload"},
+        {"id": "cut-and-fit", "title": "Cut, fit and flattering silhouettes · Lesson awaiting upload"},
+        {"id": "capsule-wardrobe", "title": "Build a 30-piece capsule wardrobe · Lesson awaiting upload"},
+        {"id": "fabric-guide", "title": "Fabric and garment choices · Lesson awaiting upload"},
+        {"id": "smart-shopping", "title": "Smart shopping for a versatile wardrobe · Lesson awaiting upload"}
+      ]
+    }]
   },
   "dining-etiquette": {
     "title": "Dining Etiquette",

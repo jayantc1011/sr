@@ -18,16 +18,29 @@
   // A few course-specific, honest demo learning outcomes and bonus notes.
   const outcomeCopy = {
     speakathon:['Articulate your thoughts more clearly','Use vocal variety with intention','Communicate with clarity & calm','Handle conversations with greater ease','Leave an authentic, lasting impression'],
-    'power-dressing':['Identify flattering color families','Understand outfit proportion and fit','Create intentional looks for different occasions','Plan an adaptable wardrobe','Show up with greater confidence'],
+    'power-dressing':['Discover your most flattering colour palette and silhouettes.','Cultivate a wardrobe that reflects your individuality.','Master the art of styling what you already own.','Invest in timeless pieces with greater discernment.','Create a cohesive personal image, down to the finest detail.'],
     'dining-etiquette':['Feel at ease at professional and social meals','Understand place settings and cutlery','Make introductions and join conversations comfortably','Host or attend meals with thoughtful manners'],
     'power-bundle':['Work on confident speaking habits','Develop an authentic personal style','Bring clarity to how you present yourself','Practice verbal and visual communication','Build a repeatable growth routine']
   };
   const outcomeEmphasis = {
-    speakathon:['Articulate','vocal variety','clarity & calm','Handle conversations','lasting impression']
+    speakathon:['Articulate','vocal variety','clarity & calm','Handle conversations','lasting impression'],
+    'power-dressing':[
+      ['colour palette and silhouettes.'],
+      ['Cultivate a wardrobe'],
+      ['art of styling'],
+      ['timeless pieces'],
+      ['Create a cohesive personal image']
+    ]
   };
   const bonusCopy = {
     speakathon:[['Personal 1:1 Coaching Session','Complete all 21 challenge assignments and unlock an exclusive one-on-one session to receive personalised guidance on your communication goals.'],['25 Power Moves to Influence Anyone','A practical swipe file of simple communication techniques you can use immediately in conversations, meetings, interviews, and presentations.'],['Blueprint for Unshakable Confidence','A step-by-step framework to help you overcome self-doubt, speak with conviction, and build lasting confidence.'],['Introvert2Influencer Digital Handbook',"Shalini's personal guide packed with actionable insights, exercises, and communication principles to support your journey beyond the 21-day challenge."]],
-    'power-dressing':[['Personal style worksheet','A planning template for learning about colors, proportions and outfit choices.'],['Wardrobe audit framework','Questions to help evaluate fit, function and personal style.'],['Daily outfit formula','An approachable method for intentional styling.']],
+    'power-dressing':[
+      ['Complimentary 1:1 Styling Session','Receive personalised guidance to apply what you learn to your own style.'],
+      ['7 Comprehensive Module Workbooks','Reinforce every lesson with structured exercises and practical applications.'],
+      ['3 Curated Study Resources','Deepen your understanding with carefully selected supplementary learning materials.'],
+      ['Real-Life Styling Demonstrations','Watch Shalini demonstrate techniques discussed throughout the course modules.'],
+      ['Early Bird Access to Dining Etiquette','Explore refined dining etiquette before its official release.']
+    ],
     'dining-etiquette':[['Dining occasion checklist','A simple prompt to prepare for a professional or social meal.'],['Conversation cues','Suggestions for comfortable introductions and table conversation.'],['Hosting notes','A practical checklist for welcoming guests and planning a meal.']],
     'power-bundle':[['Two learning themes','Explore communication and image-building principles together.'],['Combined practice prompts','Bring spoken confidence and visual presentation into everyday routines.'],['Reflection framework','Review what you have tried and choose the next practical step.']]
   };
@@ -106,10 +119,10 @@
   if ($('#lms-detail-title')) {
     if(!course)return;
     const certificateSection=$('#lms-certificate');
-    if(certificateSection)certificateSection.hidden=slug!=='speakathon';
+    if(certificateSection)certificateSection.hidden=!['speakathon','power-dressing'].includes(slug);
     document.title=course.title+' | Shalini Rathod Academy';
     const canonicalUrl=new URL('lms-course.html?course='+encodeURIComponent(slug),window.location.href).href;
-    const courseImagePath=slug==='power-dressing'?'assets/services/styling-consultation.webp':(slug==='power-bundle'||slug==='dining-etiquette')?'assets/services/course-bundle.webp':'assets/services/communication-workshop.webp';
+    const courseImagePath=slug==='power-dressing'?'assets/services/power-dressing-cover.webp':(slug==='power-bundle'||slug==='dining-etiquette')?'assets/services/course-bundle.webp':'assets/services/communication-workshop.webp';
     const courseImageUrl=new URL(courseImagePath,window.location.href).href;
     const setMeta=(selector,value)=>document.querySelector(selector)?.setAttribute('content',value);
     document.querySelector('link[rel="canonical"]')?.setAttribute('href',canonicalUrl);
@@ -215,7 +228,114 @@
       if(curriculumNumber)curriculumNumber.textContent=String(total);
       if(curriculumLabel)curriculumLabel.textContent='COURSE TOPICS';
     }
+    if (slug === 'power-dressing') {
+      const detailTitle=$('#lms-detail-title');
+      if(detailTitle)detailTitle.innerHTML='Build a Wardrobe That Truly Works Through <em>Image Styling</em>';
+      detailTitle?.nextElementSibling?.classList.contains('lms-course-lead')&&detailTitle.nextElementSibling.remove();
+      $('#lms-detail-summary').textContent='Discover what complements you and make thoughtful choices that bring lasting ease and elegance to your personal style.';
+      const detailBadges=$('.lms-detail-badges');
+      if(detailBadges){
+        detailBadges.replaceChildren(...[
+          '4.9-Star Learner Rating',
+          '7 Curated Modules',
+          '25 Expert-Led Lessons',
+          'Bite-Sized 4–5 Minute Videos',
+          'Exclusive Study Resources',
+          'Complimentary 1:1 Styling Session'
+        ].map(text=>el('span','',text)));
+      }
+      const certificateCopy=certificateSection?.querySelector('.lms-certificate-copy');
+      if(certificateCopy){
+        const certificateTitle=certificateCopy.querySelector('h2');
+        const certificateDescription=certificateCopy.querySelector('p');
+        const certificatePoints=certificateCopy.querySelector('.lms-certificate-points');
+        if(certificateTitle)certificateTitle.innerHTML='Acknowledging Your Eye for <em>Personal Style</em>';
+        if(certificateDescription)certificateDescription.textContent='Complete your learning journey with a certificate recognising your expertise in image styling.';
+        if(certificatePoints)certificatePoints.replaceChildren(...['Personalised with your name','Course and completion date included','Print or save as a PDF'].map(text=>el('li','',text)));
+      }
+      const certificateImage=certificateSection?.querySelector('.lms-certificate-preview');
+      if(certificateImage){
+        certificateImage.hidden=false;
+        const certificateImg=certificateImage.querySelector('img');
+        if(certificateImg){
+          certificateImg.src='assets/lms/power-dressing-certificate.png';
+          certificateImg.alt='Power Dressing / Styling certificate of completion from Shalini Rathod Academy';
+          certificateImg.width=1483;
+          certificateImg.height=1061;
+        }
+        const certificateGrid=certificateSection.querySelector('.lms-certificate-grid');
+        if(certificateGrid)certificateGrid.style.gridTemplateColumns='';
+      }
+      const certificateCta=$('#lms-certificate-cta');
+      if(certificateCta)certificateCta.innerHTML='Start Power Dressing / Styling <span aria-hidden="true">→</span>';
+      const previewSection=$('#lms-previews');
+      const previewHeading=previewSection?.querySelector('.lms-section-heading h2');
+      const previewDescription=previewSection?.querySelector('.lms-section-heading p');
+      const previewGrid=previewSection?.querySelector('.lms-preview-grid');
+      if(previewHeading)previewHeading.innerHTML='A Glimpse Into Your <em>Learning Experience</em>';
+      if(previewDescription)previewDescription.textContent='Explore select lesson previews to experience the practical value of the course.';
+      const previews=[
+        {title:'Color, Cut & Fit',description:'Explore flattering color palettes, outfit proportions and fit to make more confident style choices.'},
+        {title:'Build a Versatile Capsule Wardrobe',description:'Preview how a 30-piece wardrobe can bring together practical outfits for different occasions.'}
+      ];
+      if(previewGrid){
+        previewGrid.replaceChildren(...previews.map((preview,i)=>{
+          const card=el('article','lms-preview-card');
+          const visual=el('div','lms-preview-portrait');
+          const thumbnail=el('img');
+          thumbnail.src='assets/lms/previews/'+(i===0?'speak-confidently-thumbnail.jpg':'confident-smile-thumbnail.jpg');
+          thumbnail.alt=i===0?'Speakathon communication course preview thumbnail':'Communication course confidence preview thumbnail';
+          thumbnail.loading='lazy';
+          visual.append(thumbnail);
+          const copy=el('div','lms-preview-copy');
+          copy.append(el('span','lms-eyebrow','POWER DRESSING / STYLING'),el('h3','',preview.title),el('p','',preview.description),el('div','lms-preview-tags'));
+          copy.querySelector('.lms-preview-tags').append(el('span','','Course preview'),el('span','','Self-paced'));
+          card.append(visual,copy);
+          return card;
+        }));
+      }
+      const previewButton=$('.lms-buttons .lms-secondary');
+      if(previewButton)previewButton.textContent='See course preview ↓';
+      const purchaseEyebrow=$('.lms-purchase-content > .lms-eyebrow');
+      const purchaseDescription=$('.lms-purchase-content > p');
+      if(purchaseEyebrow)purchaseEyebrow.textContent='COURSE PRICE';
+      if(purchaseDescription)purchaseDescription.textContent='Build a more versatile wardrobe with practical, self-paced style lessons.';
+      $('#lms-enroll-cta').textContent='Enroll in Course';
+      detailRating.hidden=true;
+      detailNote.textContent='Self-paced course · Lesson recordings appear as they are published.';
+      const takeaways=$('.lms-benefits-grid h2');
+      const bonusTitle=$('.lms-bonus-panel h3');
+      if(takeaways)takeaways.innerHTML='Build a more intentional <em>personal style</em>';
+      if(bonusTitle)bonusTitle.textContent='Practical Style Resources';
+      const curriculumSection=$('#lms-curriculum-section');
+      const curriculumTitle=curriculumSection?.querySelector('.lms-curriculum-grid h2');
+      const curriculumDescription=curriculumSection?.querySelector('.lms-curriculum-grid > div > p');
+      const curriculumNumber=curriculumSection?.querySelector('.lms-curriculum-number');
+      const curriculumLabel=curriculumSection?.querySelector('.lms-curriculum-aside > span');
+      const curriculumAsideTitle=curriculumSection?.querySelector('.lms-curriculum-aside h3');
+      const curriculumAsideCopy=curriculumSection?.querySelector('.lms-curriculum-aside p');
+      if(curriculumTitle)curriculumTitle.innerHTML='Power Dressing / Styling <em>Modules</em>';
+      if(curriculumDescription)curriculumDescription.textContent='Explore color, cut, fit, body proportion and capsule wardrobe planning. Lesson recordings appear as they are published.';
+      if(curriculumNumber)curriculumNumber.textContent=String(total);
+      if(curriculumLabel)curriculumLabel.textContent='STYLE TOPICS';
+      if(curriculumAsideTitle)curriculumAsideTitle.textContent='Build a wardrobe with more intention.';
+      if(curriculumAsideCopy)curriculumAsideCopy.textContent='Start with practical lessons on color, fit and versatile wardrobe planning.';
+      const reviewSection=document.querySelector('.lms-review-grid')?.closest('section');
+      const reviewTitle=reviewSection?.querySelector('.lms-section-heading h2');
+      if(reviewTitle)reviewTitle.innerHTML='Learner <em>Testimonials</em>';
+      const styleTestimonials=[
+        'Finallyyy… I understand what works for me instead of randomly buying clothes and hoping they look good. Getting dressed for work has become so much easier!',
+        'I started paying attention to little things like fit, colours, and accessories, and honestly, they make such a difference. I feel much more put-together now!',
+        'Used to think I needed a whole new wardrobe to improve my style, but this course changed that. I’ve learnt to style what I already own in ways that feel much more like me.'
+      ];
+      reviewSection?.querySelectorAll('.lms-review p').forEach((quote,i)=>{
+        if(styleTestimonials[i])quote.textContent=styleTestimonials[i];
+      });
+    }
+
     if (slug === 'speakathon') {
+      const detailTitle=$('#lms-detail-title');
+      if(detailTitle)detailTitle.innerHTML='21-Day Speakathon <em>Challenge</em>';
       const entries = [course.modules[0].lessons[0],course.modules[0].lessons[3]];
       [...document.querySelectorAll('.lms-preview-card')].slice(0,2).forEach((card,i)=>{
         const item=entries[i];
@@ -248,9 +368,13 @@
 
     const ul=$('#lms-inclusions');course.includes.forEach(x=>ul.append(el('li','',x)));
     const benefits=$('#lms-outcomes');(outcomeCopy[slug]||[]).forEach((x,i)=>{
-      const item=el('div');const phrase=(outcomeEmphasis[slug]||[])[i];const start=phrase?x.indexOf(phrase):-1;
-      if(start<0)item.textContent=x;
-      else item.append(document.createTextNode(x.slice(0,start)),el('em','',phrase),document.createTextNode(x.slice(start+phrase.length)));
+      const item=el('div');const rawPhrases=(outcomeEmphasis[slug]||[])[i];const phrases=Array.isArray(rawPhrases)?rawPhrases:rawPhrases?[rawPhrases]:[];
+      let cursor=0;
+      phrases.map(phrase=>({phrase,start:x.indexOf(phrase,cursor)})).filter(match=>match.start>=cursor).forEach(({phrase,start})=>{
+        item.append(document.createTextNode(x.slice(cursor,start)),el('em','',phrase));
+        cursor=start+phrase.length;
+      });
+      item.append(document.createTextNode(x.slice(cursor)));
       benefits.append(item);
     });
     const bonuses=$('#lms-bonuses');(bonusCopy[slug]||[]).forEach(([title,desc],i)=>{
@@ -268,7 +392,7 @@
       summary.append(text);block.append(summary);
       m.lessons.forEach(lesson=>{
         const line=el('div','lms-lesson-item');
-        line.append(el('strong','',lesson.title),el('span','',lesson.summary?'PRACTICE':'OUTLINE'));
+        line.append(el('strong','',lesson.title.replace(/\s*· Lesson awaiting upload$/,'')),el('span','',lesson.summary?'PRACTICE':'OUTLINE'));
         block.append(line);
       });curr.append(block);
     });
