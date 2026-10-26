@@ -1234,3 +1234,6 @@ html[data-package-offer="comm-package"] .package-style-comparison-section { disp
 .package-comparison-price-button:focus-visible { outline:3px solid #b88d55; outline-offset:3px; }
 .package-comparison-price-row td { padding-top:18px; padding-bottom:18px; }
 @media(max-width:600px) { .package-comparison-price-button { min-width:112px; padding:10px 12px; font-size:14px; } }
+
+/* Hide the communication package amount in its hero summary only. */
+html[data-package-offer="comm-package"] .package-investment-price .package-price-line { display: none; }
