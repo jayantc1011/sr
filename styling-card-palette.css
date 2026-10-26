@@ -9,3 +9,64 @@
 html[data-package-offer="style-package"] .package-session-card {
   background-color: #edf5e9;
 }
+
+/* Keep both package enrollment variants on the same forest and pista palette. */
+.package-enrollment-page {
+  --pkg-ink: #1c3328;
+  --pkg-forest: #194c3b;
+  --pkg-leaf: #5d8e53;
+  --pkg-sage: #edf5e9;
+  --pkg-paper: #f9faf5;
+  --pkg-muted: #657467;
+  --pkg-line: #dce9d9;
+  color: var(--pkg-ink);
+  background: var(--pkg-paper);
+}
+.package-enrollment-page .package-page-main {
+  background-color: var(--pkg-paper);
+  background-image: linear-gradient(rgba(79, 122, 91, .032) 1px, transparent 1px), linear-gradient(90deg, rgba(79, 122, 91, .032) 1px, transparent 1px);
+}
+.package-enrollment-page :is(.package-hero h1, .package-section-heading h2, .package-booklet-heading h2, .package-demo-heading h3, .package-testimonials-heading h2, .package-booking-heading h2, .package-faq-heading h2) { color: var(--pkg-ink); }
+.package-enrollment-page :is(.package-hero h1, .package-section-heading h2, .package-booklet-heading h2, .package-demo-heading h3, .package-testimonials-heading h2, .package-booking-heading h2, .package-faq-heading h2) em { color: var(--pkg-leaf); }
+.package-enrollment-page :is(.package-page-kicker, .package-session-meta, .package-session-time, .package-testimonials-heading .package-page-kicker, .package-booking-heading .package-page-kicker) { color: var(--pkg-leaf); }
+.package-enrollment-page :is(.package-hero-description, .package-section-heading > p:last-child, .package-session-card > p, .package-session-card li, .package-testimonial-card blockquote, .package-testimonial-meta > div span, .package-booking-choice-group legend, .package-faq-item > p) { color: var(--pkg-muted); }
+.package-enrollment-page .package-investment-card { border-color: var(--pkg-line); background: var(--pkg-sage); }
+.package-enrollment-page :is(.package-investment-card strong, .package-hero-deliverables) { color: var(--pkg-ink); }
+.package-enrollment-page :is(.package-investment-label, .package-installments, .package-hero-proof) { color: #758478; }
+.package-enrollment-page :is(.package-hero-actions .package-page-button, .package-booking-submit, .package-booking-tabs button.is-selected, .package-booking-option.is-selected) { border-color: var(--pkg-forest); background: var(--pkg-forest); }
+.package-enrollment-page :is(.package-hero-actions .package-page-button:hover, .package-booking-submit:hover, .package-booking-tabs button.is-selected:hover, .package-booking-option.is-selected:hover) { border-color: #245b42; background: #245b42; }
+.package-enrollment-page .package-discovery-button { border-color: var(--pkg-line); color: var(--pkg-forest) !important; background: #fff !important; }
+.package-enrollment-page .package-discovery-button:hover { border-color: var(--pkg-leaf); color: var(--pkg-forest) !important; }
+.package-enrollment-page .package-session-card { border-color: var(--pkg-line); background: #fff; }
+.package-enrollment-page .package-session-grid > .package-session-card:nth-child(even) { background: var(--pkg-sage); }
+.package-enrollment-page :is(.package-session-card h3, .package-session-footer a, .package-testimonial-meta strong, .package-booking-fields label, .package-booking-choice-group legend, .package-faq-item summary) { color: var(--pkg-ink); }
+.package-enrollment-page .package-session-card li::before { color: var(--pkg-leaf); }
+.package-enrollment-page .package-session-footer { border-top-color: var(--pkg-line); }
+.package-enrollment-page :is(.package-session-footer a:hover, .package-session-discovery a:hover) { color: var(--pkg-leaf); }
+.package-enrollment-page :is(.package-session-slider-controls button, .package-gallery-controls .package-gallery-arrow) { border-color: var(--pkg-line); color: var(--pkg-forest) !important; background: #fff !important; }
+.package-enrollment-page :is(.package-session-slider-controls button:hover:not(:disabled), .package-gallery-controls .package-gallery-arrow:hover:not(:disabled)) { border-color: var(--pkg-forest); color: #fff !important; background: var(--pkg-forest) !important; }
+.package-enrollment-page :is(.package-gallery-next .package-gallery-arrow, .package-gallery-dot[aria-selected="true"]) { border-color: var(--pkg-forest); color: #fff !important; background: var(--pkg-forest) !important; }
+.package-enrollment-page .package-gallery-dot { background: #dce9d9; }
+.package-enrollment-page .package-scorecard-stars::before { color: var(--pkg-leaf); }
+.package-enrollment-page .package-scorecard-number,
+.package-enrollment-page .package-scorecard-label,
+.package-enrollment-page .package-scorecard-target,
+.package-enrollment-page .package-scorecard-symbol { color: #7a927d; }
+.package-enrollment-page :is(.package-scorecard-label strong, .package-scorecard-rating > strong, .package-scorecard-subscore > strong, .package-scorecard-table > strong, .package-scorecard-prescription strong) { color: var(--pkg-ink); }
+.package-enrollment-page :is(.package-scorecard-table > *, .package-scorecard-prescription) { border-color: var(--pkg-line); color: var(--pkg-muted); }
+.package-enrollment-page :is(.package-booking-tabs, .package-booking-form, .package-booking-option, .package-faq-item, .package-gallery) { border-color: var(--pkg-line); }
+.package-enrollment-page .package-booking-tabs { background: var(--pkg-sage); }
+.package-enrollment-page .package-booking-option,
+.package-enrollment-page .package-booking-fields input { border-color: var(--pkg-line); background-color: #fff; color: var(--pkg-ink); }
+.package-enrollment-page .package-booking-fields input:focus { border-color: var(--pkg-leaf); box-shadow: 0 0 0 3px rgba(93, 142, 83, .14); }
+.package-enrollment-page .package-booking-status,
+.package-enrollment-page .package-testimonials-rating > span:first-child { color: var(--pkg-leaf); }
+.package-enrollment-page .package-testimonial-card { border-color: var(--pkg-line); background: #fff; }
+.package-enrollment-page .package-testimonial-tag { border-color: var(--pkg-line); color: var(--pkg-forest); background: var(--pkg-sage); }
+.package-enrollment-page :is(.package-overview-section, .package-booklet-section, .package-testimonials-section, .package-booking-section, .package-page-footer) { border-color: var(--pkg-line); }
+.package-enrollment-page .package-page-footer { border-top-color: var(--pkg-line); }
+.package-enrollment-page .package-booklet-download { background: var(--pkg-forest); }
+.package-enrollment-page .package-booklet-download:hover { background: #245b42; }
+.package-enrollment-page .package-booklet-download span { color: #dcebd7; }
+.package-enrollment-page :is(.package-scorecard-table .package-scorecard-th, .package-scorecard-summary, .package-scorecard-prescription) { color: #748878; }
+.package-enrollment-page :is(.package-session-slider-controls button:focus-visible, .package-gallery-controls .package-gallery-arrow:focus-visible, .package-booking-fields input:focus-visible) { outline-color: var(--pkg-leaf); }
