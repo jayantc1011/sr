@@ -8873,7 +8873,7 @@ body.services-page .curated-canva-carousel__dot[aria-current="true"] {
 :root {--ink:#1e3429;--ink-deep:#123c2d;--warm-brown:#194c3b;--warm-brown-2:#245b42;--muted:#657467;--surface:#f9faf5;--surface-2:#f4f8f1;--border:#dce9d9;--line:#e5ece2;--shadow:0 18px 52px rgba(28,67,46,.07);--academy-font-family:"Bricolage Grotesque","Avenir Next",Arial,sans-serif;--serif:var(--academy-font-family);--sans:var(--academy-font-family)}
 :where(body.home-page,body.services-page,body.about-page,body.academy-page:not(.lms-shell)){color:#1e3429;font-family:var(--academy-font-family)!important}
 :where(body.home-page,body.services-page,body.about-page,body.academy-page:not(.lms-shell)) :is(h1,h2,h3,h4,h5,h6,p,a,button,input,select,textarea,label,li,small,strong,em,span,blockquote,summary,dt,dd,th,td,legend,option){font-family:var(--academy-font-family)!important}
-:where(body.home-page,body.services-page,body.about-page,body.academy-page:not(.lms-shell)) :is(h1,h2,h3,h4,h5,h6){color:#1c3328!important;font-weight:650!important;letter-spacing:-.052em!important;line-height:1.09!important;overflow-wrap:break-word}
+:where(body.home-page,body.services-page,body.about-page,body.academy-page:not(.lms-shell)) :is(h1,h2,h3,h4,h5,h6){color:#1c3328;font-weight:650!important;letter-spacing:-.052em!important;line-height:1.09!important;overflow-wrap:break-word}
 :where(body.home-page,body.services-page,body.about-page,body.academy-page:not(.lms-shell)) h1{font-size:clamp(42px,5.1vw,64px)!important}
 :where(body.home-page,body.services-page,body.about-page,body.academy-page:not(.lms-shell)) :is(h1,h2,h3,h4,h5,h6) em{color:#5d8e53;font-style:normal}
 .home-page .page-main{background:#f9faf5}
@@ -12242,11 +12242,32 @@ html[data-package-offer="style-package"] .package-session-card {
 .package-enrollment-page :is(.package-session-slider-controls button:focus-visible, .package-gallery-controls .package-gallery-arrow:focus-visible, .package-booking-fields input:focus-visible) { outline-color: var(--pkg-leaf); }
 
 
-/* Darker pista for home-page styling offers and recorded courses. */
-.home-page .service-card.styling-card { background-color: #9fbe8f; }
-.home-page .service-card.styling-card .service-intro,
-.home-page .service-card.styling-card .service-description,
-.home-page .service-card.styling-card .service-features li { color: #263d2e; }
+/* Dark forest surface for styling consultations; keep the recorded course card white. */
+.home-page .service-card.styling-card:not(.signature-blueprint-card) {
+  background-color: #183e2f;
+  border-color: #32614b;
+}
+.home-page .service-card.styling-card:not(.signature-blueprint-card) h3,
+.home-page .service-card.styling-card:not(.signature-blueprint-card) .service-price {
+  color: #f5f6ef;
+}
+.home-page .service-card.styling-card:not(.signature-blueprint-card) .service-intro,
+.home-page .service-card.styling-card:not(.signature-blueprint-card) .service-description,
+.home-page .service-card.styling-card:not(.signature-blueprint-card) .service-features li {
+  color: #d6e7ce;
+}
+.home-page .service-card.styling-card:not(.signature-blueprint-card) .service-check {
+  color: #a8cf84;
+}
+.home-page .service-card.styling-card:not(.signature-blueprint-card) .service-cta-dark {
+  background: #245b42;
+  border-color: #245b42;
+  color: #fff;
+}
+.home-page .service-card.styling-card:not(.signature-blueprint-card) .service-cta-dark:hover {
+  background: #2d684b;
+  border-color: #2d684b;
+}
 
 /* Free stock portrait styling for package testimonials. */
 .package-enrollment-page .package-testimonial-person { display:flex; align-items:center; gap:12px; min-width:0; }
