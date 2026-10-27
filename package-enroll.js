@@ -13,7 +13,7 @@
       priceUSD: 2200,
       originalPrice: '',
       installments: '',
-      investmentLabel: '7-SESSION COMMUNICATION PACKAGE',
+      investmentLabel: '',
       deliverableOne: 'Private 60-minute 1:1 Zoom sessions',
       deliverableTwo: 'Personalized Executive Speaker Playbook',
       visualLabel: 'THE SPEAK WITH CONFIDENCE PROGRAM',
