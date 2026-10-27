@@ -176,6 +176,75 @@ if (callsCarousel && callsCarouselPrev && callsCarouselNext) {
   updateCallCarouselButtons();
 }
 
+// Local presentation carousels for the supplied package slides.
+document.querySelectorAll('[data-confidence-carousel]').forEach((carousel) => {
+  const image = carousel.querySelector('[data-confidence-slide]');
+  const previous = carousel.querySelector('[data-confidence-prev]');
+  const next = carousel.querySelector('[data-confidence-next]');
+  const fullscreen = carousel.querySelector('[data-confidence-fullscreen]');
+  const directory = carousel.dataset.slideDirectory || 'assets/speak-with-confidence';
+  const title = carousel.dataset.slideTitle || 'Speak with Confidence';
+  const slideCount = 10;
+  const slides = Array.from({ length: slideCount }, (_, index) => ({
+    src: `${directory}/slide-${String(index + 1).padStart(2, '0')}.png`,
+    alt: `${title}: slide ${index + 1} of ${slideCount}.`
+  }));
+  let currentIndex = 0;
+  let touchStart = null;
+
+  const showSlide = (index) => {
+    currentIndex = Math.max(0, Math.min(index, slides.length - 1));
+    image.src = slides[currentIndex].src;
+    image.alt = slides[currentIndex].alt;
+    previous.disabled = currentIndex === 0;
+    next.disabled = currentIndex === slides.length - 1;
+    [currentIndex - 1, currentIndex + 1].forEach((neighbor) => {
+      if (neighbor >= 0 && neighbor < slides.length) {
+        const preload = new Image();
+        preload.src = slides[neighbor].src;
+      }
+    });
+  };
+
+  previous.addEventListener('click', () => showSlide(currentIndex - 1));
+  next.addEventListener('click', () => showSlide(currentIndex + 1));
+  const updateFullscreenLabel = () => {
+    const isFullscreen = document.fullscreenElement === carousel;
+    const label = isFullscreen ? 'Exit fullscreen' : 'View slide fullscreen';
+    fullscreen.setAttribute('aria-label', label);
+    fullscreen.title = label;
+  };
+  fullscreen.addEventListener('click', async () => {
+    try {
+      if (document.fullscreenElement === carousel) await document.exitFullscreen();
+      else await carousel.requestFullscreen();
+    } catch (_) {
+      // Fullscreen is optional when the browser does not allow it.
+    }
+  });
+  document.addEventListener('fullscreenchange', updateFullscreenLabel);
+  carousel.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowLeft') {
+      event.preventDefault();
+      showSlide(currentIndex - 1);
+    } else if (event.key === 'ArrowRight') {
+      event.preventDefault();
+      showSlide(currentIndex + 1);
+    }
+  });
+  carousel.addEventListener('touchstart', (event) => {
+    touchStart = event.changedTouches[0]?.clientX ?? null;
+  }, { passive: true });
+  carousel.addEventListener('touchend', (event) => {
+    if (touchStart === null) return;
+    const delta = (event.changedTouches[0]?.clientX ?? touchStart) - touchStart;
+    touchStart = null;
+    if (Math.abs(delta) >= 45) showSlide(currentIndex + (delta < 0 ? 1 : -1));
+  }, { passive: true });
+  showSlide(0);
+  updateFullscreenLabel();
+});
+
 // Recognition marquee: pause at the exact current position while any card is hovered.
 // Resume from the same point when the pointer leaves. Keyboard focus pauses it too.
 const recognitionTrack = document.querySelector('.recognition-track');

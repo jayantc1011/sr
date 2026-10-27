@@ -7730,6 +7730,131 @@ body.services-page .canva-slide-viewport > iframe {
   height: 100%;
   border: 0;
 }
+body.services-page .confidence-slide-carousel {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  width: 100%;
+  height: 100%;
+  place-items: center;
+  overflow: hidden;
+  background: #fbf7f0;
+}
+body.services-page .confidence-slide-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+body.services-page .confidence-slide-controls {
+  position: absolute;
+  inset: auto 0 0;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  min-height: 48px;
+  padding: 0 14px;
+  background: linear-gradient(transparent, rgba(0, 0, 0, .64));
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .18s ease, visibility .18s ease;
+}
+body.services-page .confidence-slide-carousel:hover .confidence-slide-controls,
+body.services-page .confidence-slide-carousel:focus-within .confidence-slide-controls {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+body.services-page .confidence-slide-arrow {
+  display: grid;
+  width: 22px;
+  height: 26px;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: opacity .18s ease;
+}
+body.services-page .confidence-slide-arrow svg {
+  display: block;
+  width: 19px;
+  height: 19px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+body.services-page .confidence-slide-arrow:hover:not(:disabled),
+body.services-page .confidence-slide-arrow:focus-visible {
+  opacity: .72;
+}
+body.services-page .confidence-slide-arrow:focus-visible {
+  outline: 3px solid #d39237;
+  outline-offset: 3px;
+}
+body.services-page .confidence-slide-arrow:disabled {
+  opacity: .38;
+  cursor: not-allowed;
+}
+body.services-page .confidence-slide-fullscreen {
+  display: grid;
+  width: 24px;
+  height: 26px;
+  place-items: center;
+  margin-left: auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: opacity .18s ease;
+}
+body.services-page .confidence-slide-fullscreen svg {
+  display: block;
+  width: 19px;
+  height: 19px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+body.services-page .confidence-slide-fullscreen:hover,
+body.services-page .confidence-slide-fullscreen:focus-visible { opacity: .72; }
+body.services-page .confidence-slide-fullscreen:focus-visible {
+  outline: 3px solid #d39237;
+  outline-offset: 3px;
+}
+body.services-page .confidence-slide-carousel:fullscreen {
+  width: 100vw;
+  height: 100vh;
+  background: #111;
+}
+body.services-page .confidence-slide-carousel:fullscreen .confidence-slide-image {
+  object-fit: contain;
+  background: #111;
+}
+@media (hover: none), (pointer: coarse) {
+  body.services-page .confidence-slide-controls {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  body.services-page .confidence-slide-controls,
+  body.services-page .confidence-slide-arrow,
+  body.services-page .confidence-slide-fullscreen { transition: none; }
+}
 body.services-page .package-card-media-canva .package-session-badge {
   z-index: 3;
   pointer-events: none;
