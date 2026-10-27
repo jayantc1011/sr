@@ -287,7 +287,8 @@
           visual.append(thumbnail);
           const copy=el('div','lms-preview-copy');
           copy.append(el('span','lms-eyebrow','POWER DRESSING / STYLING'),el('h3','',preview.title),el('p','',preview.description),el('div','lms-preview-tags'));
-          copy.querySelector('.lms-preview-tags').append(el('span','','Clear guidance'),el('span','','Practical Tips'));
+          const tags=i===0?['Color Analysis','Right Fit']:['Clear guidance','Practical Tips'];
+          copy.querySelector('.lms-preview-tags').append(...tags.map(text=>el('span','',text)));
           card.append(visual,copy);
           return card;
         }));
