@@ -475,7 +475,7 @@ if (bookingModal) {
       label: 'Personalised Occasion Styling',
       fullLabel: 'Personalised Occasion Styling',
       type: 'call',
-      prices: { '30': 7999, '60': 7999 },
+      prices: { '30': 3750, '60': 7999 },
       durationLabels: { '30': 'Occasion styling session', '60': 'Occasion styling session' },
       needsSchedule: true
     },
