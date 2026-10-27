@@ -8675,8 +8675,6 @@ body.services-page .curated-canva-carousel__dot[aria-current="true"] {
 .lms-shell .lms-topic-preview{justify-content:center;background:radial-gradient(circle at 72% 24%,rgba(184,213,142,.55),transparent 32%),linear-gradient(145deg,#234b39,#102c22);color:#f4f7ee;font-family:var(--lms-serif,Georgia,serif);font-size:76px;font-weight:600;letter-spacing:-.04em}
 .lms-shell .lms-preview-portrait>img{display:block;width:100%;height:100%;object-fit:cover}
 
-.home-page .signature-blueprint-card { background: #fff; }
-
 /* Match the Speakathon card typography to its LMS catalog card. */
 .home-page .speakathon-course-card {
   color: #1e3429;
@@ -9451,17 +9449,12 @@ html { scroll-padding-top: calc(var(--sr-announcement-height) + clamp(69px, 6.1v
 .home-page .home-service-duration { position:absolute; top:13px; right:13px; z-index:1; display:inline-flex; align-items:center; padding:6px 9px; border:1px solid rgba(255,255,255,.28); border-radius:6px; color:#fff; background:#194c3b; font-size:10px; font-weight:700; line-height:1; box-shadow:0 2px 8px rgba(0,0,0,.14); }
 .home-page .home-consultation-card .service-intro { min-height:43px; }
 
-/* Keep the recorded styling course card white against the green home card palette. */
-body.home-page article.service-card.signature-blueprint-card {
-  background-color: #fff !important;
+/* Alternate non-styling service cards; styling cards use their own palette. */
+.home-page .services-grid > article.service-card:nth-child(odd):not(.styling-card) {
+  background-color: #fff;
 }
-
-/* Alternate the homepage service cards: white, pista, white, pista. */
-.home-page .services-grid > article.service-card:nth-child(odd) {
-  background-color: #fff !important;
-}
-.home-page .services-grid > article.service-card:nth-child(even) {
-  background-color: #eff6e9 !important;
+.home-page .services-grid > article.service-card:nth-child(even):not(.styling-card) {
+  background-color: #eff6e9;
 }
 .lms-shell .lms-course-lead{font-size:clamp(20px,2vw,28px);line-height:1.2;margin:0 0 12px;color:var(--lms-ink,#20372c);font-weight:750;letter-spacing:-.035em}
 
@@ -12166,7 +12159,6 @@ html[data-package-offer="comm-package"] .package-investment-price .package-price
 /* Bundled from styling-card-palette.css; retained in original cascade order after style.css. */
 
 /* Pista green card surfaces for styling-specific offers and courses. */
-.home-page .service-card.styling-card,
 .services-page .styling-card,
 .lms-shell .styling-card {
   background-color: #edf5e9;
@@ -12267,6 +12259,9 @@ html[data-package-offer="style-package"] .package-session-card {
 .home-page .service-card.styling-card:not(.signature-blueprint-card) .service-cta-dark:hover {
   background: #2d684b;
   border-color: #2d684b;
+}
+.home-page .services-grid > article.service-card.signature-blueprint-card {
+  background-color: #fff;
 }
 
 /* Free stock portrait styling for package testimonials. */
