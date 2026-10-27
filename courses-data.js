@@ -278,7 +278,7 @@ window.SHALINI_COURSES = {
   "power-dressing": {
     "title": "Power Dressing / Styling",
     "description": "Learn body proportion balancing, flattering color palettes, and how to build a 30-piece versatile capsule wardrobe.",
-    "price": 3499,
+    "price": 9999,
     "tags": ["Personal image", "Wardrobe planning", "Self-paced"],
     "includes": [
       "6 masterclass modules on color, cut, and fit",
