@@ -12243,10 +12243,10 @@ html[data-package-offer="style-package"] .package-session-card {
 
 
 /* Darker pista for home-page styling offers and recorded courses. */
-.home-page .service-card.styling-card { background-color: #c4d9b8; }
+.home-page .service-card.styling-card { background-color: #9fbe8f; }
 .home-page .service-card.styling-card .service-intro,
 .home-page .service-card.styling-card .service-description,
-.home-page .service-card.styling-card .service-features li { color: #405444; }
+.home-page .service-card.styling-card .service-features li { color: #263d2e; }
 
 /* Free stock portrait styling for package testimonials. */
 .package-enrollment-page .package-testimonial-person { display:flex; align-items:center; gap:12px; min-width:0; }
