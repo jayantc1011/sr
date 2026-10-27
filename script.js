@@ -238,9 +238,13 @@ homeCallDurationButtons.forEach((button) => {
     if (price) price.innerHTML = duration === '30'
       ? (card.dataset.offer30 || price.dataset.price30 || price.innerHTML)
       : (card.dataset.offer60 || price.dataset.price60 || price.innerHTML);
-    if (subtitle) subtitle.textContent = duration === '30'
-      ? (card.dataset.subtitle30 || 'Laser Diagnostic Call')
-      : (card.dataset.subtitle60 || (button.closest('.service-toggle')?.children[1]?.textContent.includes('Makeover') ? 'Signature Image Makeover' : 'Comprehensive Deep Dive'));
+    if (subtitle) {
+      const subtitleText = duration === '30'
+        ? (card.dataset.subtitle30 ?? '')
+        : (card.dataset.subtitle60 || (button.closest('.service-toggle')?.children[1]?.textContent.includes('Makeover') ? 'Signature Image Makeover' : 'Comprehensive Deep Dive'));
+      subtitle.textContent = subtitleText;
+      subtitle.hidden = subtitleText.trim() === '';
+    }
     card?.querySelectorAll('[data-duration-copy]').forEach((copy) => {
       copy.hidden = copy.dataset.durationCopy !== duration;
     });
@@ -248,8 +252,11 @@ homeCallDurationButtons.forEach((button) => {
       list.hidden = list.dataset.durationList !== duration;
     });
     if (ctaLabel) ctaLabel.textContent = `Book ${duration} Mins Call`;
+    const durationBadge = card?.querySelector('.home-service-duration');
+    if (durationBadge && card?.classList.contains('home-consultation-card')) durationBadge.textContent = `◷  ${duration} min`;
   });
 });
+
 
 if (durationButtons.length && callCards.length) {
   const setDuration = (duration) => {
@@ -278,9 +285,8 @@ if (durationButtons.length && callCards.length) {
       });
 
       const price = card.querySelector('.call-price');
-      if (price) {
-        price.textContent = duration === '60' ? price.dataset.price60 : price.dataset.price30;
-      }
+      const durationPrice = price?.dataset[`price${duration}`];
+      if (price && durationPrice) price.textContent = durationPrice;
     });
 
     applyServiceFiltering();
@@ -457,6 +463,22 @@ if (bookingModal) {
       prices: { '30': 3750, '60': 7999 },
       needsSchedule: true
     },
+    'color-call': {
+      label: 'Personalised Colour Analysis Consultation',
+      fullLabel: 'Personalised Colour Analysis Consultation',
+      type: 'call',
+      prices: { '60': 13999 },
+      durationLabels: { '60': 'Personalised colour analysis' },
+      needsSchedule: true
+    },
+    'occasion-call': {
+      label: 'Personalised Occasion Styling',
+      fullLabel: 'Personalised Occasion Styling',
+      type: 'call',
+      prices: { '30': 7999, '60': 7999 },
+      durationLabels: { '30': 'Occasion styling session', '60': 'Occasion styling session' },
+      needsSchedule: true
+    },
     'comm-package': {
       label: 'Communication Skills & Confidence Makeover',
       fullLabel: 'Communication Skills & Confidence Makeover (7 Sessions)',
@@ -520,7 +542,7 @@ if (bookingModal) {
 
   const getPrice = () => {
     const offering = getOffering();
-    if (offering.type === 'call') return offering.prices[selectedDuration];
+    if (offering.type === 'call') return offering.prices[selectedDuration] ?? offering.prices['60'];
     return offering.price;
   };
 
@@ -582,6 +604,24 @@ if (bookingModal) {
     const price = getPrice();
 
     if (durationWrap) durationWrap.hidden = offering.type !== 'call';
+    if (offering.type === 'call') {
+      if (offering.prices[selectedDuration] === undefined) selectedDuration = '60';
+      durationOptions.forEach((button) => {
+        const duration = button.dataset.bookingDuration;
+        const available = offering.prices[duration] !== undefined;
+        button.hidden = !available;
+        button.disabled = !available;
+        const active = duration === selectedDuration;
+        button.classList.toggle('active', active);
+        button.setAttribute('aria-pressed', String(active));
+        const priceLabel = button.querySelector('.booking-duration-top span:last-child');
+        if (available && priceLabel) priceLabel.textContent = formatMoney(offering.prices[duration]);
+        const detailLabel = button.querySelector('small');
+        if (available && detailLabel && offering.durationLabels?.[duration]) detailLabel.textContent = offering.durationLabels[duration];
+      });
+    } else {
+      durationOptions.forEach((button) => { button.hidden = false; button.disabled = false; });
+    }
     if (scheduleBox) scheduleBox.hidden = !offering.needsSchedule;
     if (bookingDate) bookingDate.required = Boolean(offering.needsSchedule);
     if (bookingTime) bookingTime.required = Boolean(offering.needsSchedule);
@@ -631,7 +671,11 @@ if (bookingModal) {
     const safeOffer = offerings[offerKey] ? offerKey : 'comm-call';
     if (offeringSelect) offeringSelect.value = safeOffer;
 
-    if (safeOffer === 'comm-call' || safeOffer === 'style-call') {
+    if (safeOffer === 'color-call') {
+      selectedDuration = '60';
+    } else if (safeOffer === 'occasion-call') {
+      selectedDuration = lastBookingTrigger?.closest('.service-card')?.querySelector('.service-toggle [data-duration].active')?.dataset.duration || '60';
+    } else if (safeOffer === 'comm-call' || safeOffer === 'style-call') {
       if (lastBookingTrigger?.classList.contains('call-book-btn') || lastBookingTrigger?.closest('.service-card')) {
         const homeDuration = lastBookingTrigger.closest('.service-card')?.querySelector('.service-toggle [data-duration].active');
         const activeCallDuration = homeDuration || lastBookingTrigger.closest('.call-card')?.querySelector('.calls-duration-toggle [data-duration].active') || document.querySelector('.calls-duration-toggle [data-duration].active');
