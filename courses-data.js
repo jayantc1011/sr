@@ -347,7 +347,7 @@ window.SHALINI_COURSES = {
   "power-bundle": {
     "title": "Confidence & Style Power Bundle",
     "description": "Combine the Speakathon communication challenge and power dressing course in one self-learning track.",
-    "price": 4999,
+    "price": 12999,
     "tags": [
       "Communication + styling",
       "Two course tracks",
