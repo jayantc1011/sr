@@ -8816,6 +8816,42 @@ body.services-page .curated-canva-carousel__dot[aria-current="true"] {
   outline-offset: 4px;
 }
 
+.home-page .home-package-prompt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  padding: 68px 0 8px;
+  text-align: center;
+}
+.home-page .home-package-prompt h2 {
+  margin: 0;
+  color: var(--lms-green-deep, #194c3b);
+  font-size: clamp(34px, 4.2vw, 60px);
+  line-height: 1.2;
+  font-weight: 700;
+}
+.home-page .home-package-prompt .service-cta {
+  width: min(520px, 100%);
+  min-height: 104px;
+  border-radius: 16px;
+  font-size: 28px;
+}
+
+@media (max-width: 680px) {
+  .home-page .home-package-prompt {
+    gap: 22px;
+    padding: 48px 0 4px;
+  }
+  .home-page .home-package-prompt h2 {
+    font-size: clamp(30px, 8vw, 42px);
+  }
+  .home-page .home-package-prompt .service-cta {
+    min-height: 72px;
+    font-size: 21px;
+  }
+}
+
 @media (min-width: 1101px) {
   .home-page .services-grid > .service-card { flex-basis: calc((100% - 48px) / 3); }
 }
