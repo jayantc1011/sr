@@ -11430,6 +11430,118 @@ html[data-package-offer="comm-package"] .package-style-comparison-section { disp
 .package-comparison-price-row td { padding-top:18px; padding-bottom:18px; }
 @media(max-width:600px) { .package-comparison-price-button { min-width:112px; padding:10px 12px; font-size:14px; } }
 
+/* Keep the full comparison readable at tablet widths and turn each phone row
+   into a compact, labelled comparison card. */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .package-comparison-table,
+  .package-style-comparison-table {
+    width: 100%;
+    min-width: 700px;
+    table-layout: fixed;
+  }
+
+  .package-comparison-table thead th:first-child { width: 38%; }
+  .package-comparison-table thead th:not(:first-child) { width: 20.666%; }
+  .package-style-comparison-table thead th:first-child { width: 38%; }
+  .package-style-comparison-table thead th:not(:first-child) { width: 20.666%; }
+
+  .package-comparison-table th,
+  .package-comparison-table td {
+    padding: 13px 12px;
+    overflow-wrap: anywhere;
+  }
+
+  .package-comparison-table thead th { font-size: 13px; }
+  .package-comparison-table tbody th { font-size: 13px; }
+}
+
+@media (max-width: 600px) {
+  .package-comparison-section h2 {
+    padding: 20px 18px 15px;
+    font-size: clamp(22px, 6vw, 28px);
+  }
+
+  .package-comparison-scroll {
+    overflow: visible;
+    padding: 0 12px 12px;
+  }
+
+  .package-comparison-table,
+  .package-style-comparison-table {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    border-spacing: 0;
+  }
+
+  .package-comparison-table thead { display: none; }
+  .package-comparison-table tbody { display: grid; gap: 10px; }
+  .package-comparison-table tbody tr {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    overflow: hidden;
+    border: 1px solid #e3e9df;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 3px 10px rgba(34, 62, 42, .045);
+  }
+
+  .package-comparison-table tbody th {
+    grid-column: 1 / -1;
+    padding: 12px 13px 10px;
+    border: 0;
+    background: #f8faf6;
+    color: #263d30;
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  .package-comparison-table tbody td {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 10px 5px;
+    border: 0;
+    border-top: 1px solid #edf0ea;
+    background: #fff;
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .package-comparison-table tbody td + td { border-left: 1px solid #edf0ea; }
+  .package-comparison-table tbody td::before {
+    color: #67766b;
+    content: "";
+    font-size: 9px;
+    font-weight: 750;
+    line-height: 1.25;
+    text-align: center;
+  }
+
+  .package-comparison-table:not(.package-style-comparison-table) tbody td:nth-of-type(1)::before { content: "Core Communication"; }
+  .package-comparison-table:not(.package-style-comparison-table) tbody td:nth-of-type(2)::before { content: "Powerful Presence"; }
+  .package-comparison-table:not(.package-style-comparison-table) tbody td:nth-of-type(3)::before { content: "Commanding Presence"; }
+  .package-style-comparison-table tbody td:nth-of-type(1)::before { content: "Signature Experience"; }
+  .package-style-comparison-table tbody td:nth-of-type(2)::before { content: "Exclusive Transformation"; }
+  .package-style-comparison-table tbody td:nth-of-type(3)::before { content: "VIP Makeover"; }
+
+  .package-comparison-table tbody td.package-comparison-commanding { border-left: 1px solid #dce8d7; background: #f1f7ed; }
+  .package-comparison-table .package-comparison-check { font-size: 18px; }
+  .package-comparison-price-row th { background: #edf4e9 !important; }
+  .package-comparison-price-row td { padding: 9px 4px !important; }
+  .package-comparison-price-button {
+    width: 100%;
+    min-width: 0;
+    padding: 9px 3px;
+    border-radius: 7px;
+    font-size: 11px;
+    white-space: nowrap;
+  }
+}
+
 /* Hide the communication package amount in its hero summary only. */
 html[data-package-offer="comm-package"] .package-investment-price .package-price-line { display: none; }
 
