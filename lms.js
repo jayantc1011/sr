@@ -237,9 +237,6 @@
       if(detailBadges){
         detailBadges.replaceChildren(...[
           '4.9-Star Learner Rating',
-          '7 Curated Modules',
-          '25 Expert-Led Lessons',
-          'Bite-Sized 4–5 Minute Videos',
           'Exclusive Study Resources',
           'Complimentary 1:1 Styling Session'
         ].map(text=>el('span','',text)));
