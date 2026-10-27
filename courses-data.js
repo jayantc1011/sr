@@ -281,10 +281,12 @@ window.SHALINI_COURSES = {
     "price": 9999,
     "tags": ["Personal image", "Wardrobe planning", "Self-paced"],
     "includes": [
-      "6 masterclass modules on color, cut, and fit",
-      "30-Piece Capsule Wardrobe Planner",
-      "Body Proportion & Neckline Matrix",
-      "Fabric & smart shopping guide"
+      "4.9-Star Learner Rating",
+      "7 Curated Modules",
+      "25 Expert-Led Lessons",
+      "Bite-Sized 4–5 Minute Videos",
+      "Exclusive Study Resources",
+      "Complimentary 1:1 Styling Session"
     ],
     "modules": [{
       "title": "Power Dressing / Styling · 6 masterclass modules",
