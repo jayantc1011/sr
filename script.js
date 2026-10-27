@@ -219,7 +219,7 @@ if(inquiryForm) inquiryForm.addEventListener('submit',event=>{
 const durationButtons = Array.from(document.querySelectorAll('.calls-duration-toggle [data-duration]'));
 const callCards = Array.from(document.querySelectorAll('.calls-grid .call-card'));
 const homeCallDurationButtons = Array.from(document.querySelectorAll('.home-page .service-toggle [data-duration]'));
-let activeCallDuration = '30';
+let activeCallDuration = '60';
 let activeServiceFilter = 'all';
 let applyServiceFiltering = () => {};
 
@@ -290,7 +290,7 @@ if (durationButtons.length && callCards.length) {
     button.addEventListener('click', () => setDuration(button.dataset.duration));
   });
 
-  setDuration('30');
+  setDuration('60');
 }
 
 const servicesFilterTabs = Array.from(document.querySelectorAll('.services-filter-tab'));
