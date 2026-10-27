@@ -1,5 +1,5 @@
-Warning: truncated output (original token count: 67683)
-Total output lines: 9427
+Warning: truncated output (original token count: 67558)
+Total output lines: 9424
 
 :root {
   --ink: #3f3a35;
@@ -3453,7 +3453,12 @@ a {
 @media (max-width: 1320px) {
   .services-nav-shell,
   .services-hero {
-    width: min(1180px, calc(100% - …37683 tokens truncated…3em}
+    width: min(1180px, calc(100% - …37558 tokens truncated…l .lms-speakathon-tile .lms-card-chips{margin-top:0;padding-top:2px}
+.lms-shell .lms-speakathon-tile .lms-card-body h3{font-size:22px;min-height:0}
+.lms-shell .lms-speakathon-price{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;margin-top:16px}
+.lms-shell .lms-speakathon-price>span:first-child{display:grid;gap:2px}
+.lms-shell .lms-speakathon-price small{color:#8d998e;font-size:11px}
+.lms-shell .lms-speakathon-price strong{color:#224b36;font-size:23px;letter-spacing:-.03em}
 .lms-shell .lms-speakathon-note{color:#8d998e;font-size:10px;line-height:1.35;text-align:right}
 .lms-shell .lms-speakathon-action{display:flex;align-items:center;justify-content:center;gap:12px;min-height:44px;margin-top:13px;padding:10px 16px;border-radius:8px;background:#1e523d;color:white;font-size:13px;font-weight:700;text-align:center;text-decoration:none;transition:background-color .18s ease}
 .lms-shell .lms-speakathon-action:hover,.lms-shell .lms-speakathon-action:focus-visible{background:#387650;color:white}
@@ -4445,9 +4450,6 @@ html { scroll-padding-top: calc(var(--sr-announcement-height) + clamp(69px, 6.1v
 /* Center and evenly size the two calls to action beneath the appearances carousel. */
 .home-page .appearances-cta-row > .appearances-primary,
 .home-page .appearances-cta-row > .appearances-secondary { min-width: 274px; justify-content: center; }
-.home-page .appearances-cta-row > .appearances-secondary { border: 1px solid #194c3b !important; border-radius: 999px; color: #fff !important; background: #194c3b !important; font-weight: 750; letter-spacing: .035em; box-shadow: 0 8px 16px #1c503419; }
-.home-page .appearances-cta-row > .appearances-secondary svg { color: #fff !important; }
-.home-page .appearances-cta-row > .appearances-secondary:hover { border-color: #245b42 !important; color: #fff !important; background: #245b42 !important; }
 @media (max-width: 560px) {
   .home-page .appearances-cta-row > .appearances-primary,
   .home-page .appearances-cta-row > .appearances-secondary { width: 100%; min-width: 0; }
