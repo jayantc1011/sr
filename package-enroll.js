@@ -431,47 +431,33 @@
   ];
   const isStyleImageGallery = offerKey === 'style-package';
   if (isStyleImageGallery) {
-    const stylePhotoSets = [
-      [
-        ['assets/about/shalini-close.webp', 'Shalini Rathod in a navy blazer portrait', 'center 10%'],
-        ['assets/about/shalini-reading.webp', 'Shalini Rathod holding her style booklet', 'center 10%'],
-        ['assets/about/shalini-seated.webp', 'Shalini Rathod seated in a black outfit', 'center 10%']
-      ],
-      [
-        ['assets/canva/style/slide-01.jpg', 'Shalini Rathod in a beige full-length styling look', '100% 50%'],
-        ['assets/canva/style/slide-02.jpg', 'Shalini Rathod in a white top with coffee', '92% 50%'],
-        ['assets/canva/style/slide-03.jpg', 'Shalini Rathod in a white blazer', '12% 50%']
-      ],
-      [
-        ['assets/canva/style/slide-08.jpg', 'Shalini Rathod in a white suit seated portrait', '18% 50%'],
-        ['assets/canva/style/slide-09.jpg', 'Shalini Rathod in a burgundy outfit seated portrait', '84% 50%'],
-        ['assets/canva/communication/slide-01.jpg', 'Shalini Rathod in a burgundy blazer at a desk', '93% 50%']
-      ],
-      [
-        ['assets/canva/communication/slide-04.jpg', 'Shalini Rathod seated in a blue suit', '66% 50%'],
-        ['assets/canva/communication/slide-05.jpg', 'Shalini Rathod standing in a navy suit', '69% 50%'],
-        ['assets/canva/communication/slide-07.jpg', 'Shalini Rathod in a burgundy suit presenting', '32% 50%']
-      ],
-      [
-        ['assets/canva/communication/slide-09.jpg', 'Shalini Rathod in a white suit at a desk', '85% 50%'],
-        ['assets/services/styling-consultation.webp', 'Image consultant presenting a personal styling workshop', '88% 50%'],
-        ['assets/services/power-dressing-cover.webp', 'Stylist helping a client choose a tailored outfit', '70% 50%']
-      ]
-    ];
+    galleryViewport?.setAttribute('aria-label', 'Shalini portrait gallery');
+    previousImageButton?.setAttribute('aria-label', 'Previous Shalini photo');
+    nextImageButton?.setAttribute('aria-label', 'Next Shalini photo');
+    previousImageButton?.closest('[role="group"]')?.setAttribute('aria-label', 'Shalini photo navigation');
+    nextImageButton?.closest('[role="group"]')?.setAttribute('aria-label', 'Shalini photo navigation');
+  }
+  const stylePortraits = [
+    ['assets/about/shalini-close.webp', 'Shalini Rathod in a navy blazer portrait', 'center 10%'],
+    ['assets/about/shalini-reading.webp', 'Shalini Rathod holding her style booklet', 'center 10%'],
+    ['assets/about/shalini-seated.webp', 'Shalini Rathod seated in a black outfit', 'center 10%'],
+    ['assets/hero-seated.webp', 'Shalini Rathod in a seated editorial portrait', 'center 10%']
+  ];
+  if (isStyleImageGallery) {
     const styleDemos = [
       ['DEMO SLIDE 01 · IDENTITY MATRIX', 'Style Archetype & Lifestyle Blueprint'],
       ['DEMO SLIDE 02 · SILHOUETTE MATRIX', 'Body & Face Proportion Architecture'],
       ['DEMO SLIDE 03 · CHROMATIC SPECTRUM', '12-Tone Palette & Color Harmony'],
       ['DEMO SLIDE 04 · READY-TO-WEAR', 'Curated Occasion Lookbook'],
       ['DEMO SLIDE 05 · FINISHING TOUCHES', 'Makeup, Accessories & Wishlist']
-    ].map(([kicker, title], index) => ({ kicker, title, images: stylePhotoSets[index] }));
+    ].map(([kicker, title]) => ({ kicker, title }));
     demos.splice(0, demos.length, ...styleDemos);
     setText('.package-booklet-description', 'Explore five style transformation demos featuring Shalini’s portraits.');
   }
   let currentSlide = 0;
   let currentImageIndex = 0;
   let editorialPhotoFocused = false;
-  const visibleImageCount = () => editorialPhotoFocused ? 1 : window.matchMedia('(max-width: 650px)').matches ? 1 : window.matchMedia('(max-width: 900px)').matches ? 2 : 3;
+  const visibleImageCount = () => editorialPhotoFocused ? 1 : window.matchMedia('(max-width: 650px)').matches ? 1 : window.matchMedia('(max-width: 1024px)').matches ? 2 : 3;
   const updateGalleryLayout = () => {
     if (!galleryTrack || !galleryViewport) return;
     const images = [...galleryTrack.children];
@@ -482,12 +468,12 @@
       image.style.flexBasis = editorialPhotoFocused ? 'min(100%, 980px)' : imageWidth + 'px';
       image.style.width = editorialPhotoFocused ? 'min(100%, 980px)' : imageWidth + 'px';
     });
-    const maxIndex = isStyleImageGallery ? 0 : Math.max(0, images.length - visibleCount);
+    const maxIndex = Math.max(0, images.length - visibleCount);
     currentImageIndex = Math.min(currentImageIndex, maxIndex);
     const step = imageWidth + gap;
     galleryTrack.style.transform = editorialPhotoFocused ? 'translate3d(0, 0, 0)' : `translate3d(${-currentImageIndex * step}px, 0, 0)`;
-    if (previousImageButton) previousImageButton.disabled = currentSlide <= 0;
-    if (nextImageButton) nextImageButton.disabled = currentSlide >= demos.length - 1;
+    if (previousImageButton) previousImageButton.disabled = isStyleImageGallery ? currentImageIndex <= 0 : currentSlide <= 0;
+    if (nextImageButton) nextImageButton.disabled = isStyleImageGallery ? currentImageIndex >= maxIndex : currentSlide >= demos.length - 1;
   };
   const createReportSlide = (report) => {
     const article = document.createElement('article');
@@ -1067,7 +1053,7 @@
     const demo = demos[currentSlide];
     const galleryImages = editorialPhotoFocused
       ? [['assets/hero-seated.webp', 'Shalini Rathod in a landscape editorial portrait']]
-      : demo.images || [];
+      : isStyleImageGallery ? stylePortraits : demo.images || [];
     if (galleryTrack) {
       packageGallery?.classList.toggle('is-editorial-focused', editorialPhotoFocused);
       packageGallery?.classList.toggle('is-style-image-gallery', isStyleImageGallery);
@@ -1115,10 +1101,18 @@
     if (editorialPhotoFocused) galleryTrack?.scrollIntoView({ behavior: 'smooth', block: 'center' });
   });
   previousImageButton?.addEventListener('click', () => {
-    if (currentSlide > 0) showDemo(currentSlide - 1);
+    if (isStyleImageGallery) {
+      currentImageIndex = Math.max(0, currentImageIndex - 1);
+      updateGalleryLayout();
+    } else if (currentSlide > 0) showDemo(currentSlide - 1);
   });
   nextImageButton?.addEventListener('click', () => {
-    if (currentSlide < demos.length - 1) showDemo(currentSlide + 1);
+    if (isStyleImageGallery) {
+      const images = galleryTrack ? [...galleryTrack.children] : [];
+      const maxIndex = Math.max(0, images.length - visibleImageCount());
+      currentImageIndex = Math.min(maxIndex, currentImageIndex + 1);
+      updateGalleryLayout();
+    } else if (currentSlide < demos.length - 1) showDemo(currentSlide + 1);
   });
   if (dotsRoot) {
     const dotCount = demos.length;
