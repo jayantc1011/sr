@@ -289,14 +289,15 @@ window.SHALINI_COURSES = {
       "Complimentary 1:1 Styling Session"
     ],
     "modules": [{
-      "title": "Power Dressing / Styling · 6 masterclass modules",
+      "title": "Power Dressing / Styling · 7 modules",
       "lessons": [
         {"id": "color-palettes", "title": "Flattering color palettes · Lesson awaiting upload"},
         {"id": "body-proportion", "title": "Body proportion and balance · Lesson awaiting upload"},
         {"id": "cut-and-fit", "title": "Cut, fit and flattering silhouettes · Lesson awaiting upload"},
         {"id": "capsule-wardrobe", "title": "Build a 30-piece capsule wardrobe · Lesson awaiting upload"},
         {"id": "fabric-guide", "title": "Fabric and garment choices · Lesson awaiting upload"},
-        {"id": "smart-shopping", "title": "Smart shopping for a versatile wardrobe · Lesson awaiting upload"}
+        {"id": "smart-shopping", "title": "Smart shopping for a versatile wardrobe · Lesson awaiting upload"},
+        {"id": "accessories-finishing", "title": "Accessories and finishing touches · Lesson awaiting upload"}
       ]
     }]
   },
