@@ -12437,3 +12437,12 @@ html[data-package-offer="style-package"] body.package-enrollment-page .package-s
 html[data-package-offer="style-package"] body.package-enrollment-page .package-session-footer > a:hover {
   color: #d6e7ce;
 }
+
+/* Match the recorded-course button to the deeper green used on other homepage cards. */
+.home-page .service-card.signature-blueprint-card .service-cta-brown {
+  background: #194c3b;
+  color: #fff;
+}
+.home-page .service-card.signature-blueprint-card .service-cta-brown:hover {
+  background: #245b42;
+}
