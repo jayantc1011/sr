@@ -9497,6 +9497,16 @@ body.services-page .calls-carousel > .call-card {
   scroll-snap-align: start;
 }
 @media (max-width: 820px) {
+  body.services-page .calls-heading-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+  }
+
+  body.services-page .calls-heading-copy {
+    width: 100%;
+  }
+
   body.services-page .calls-heading-controls {
     width: 100%;
     justify-content: space-between;
