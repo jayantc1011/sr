@@ -12198,3 +12198,22 @@ html[data-package-offer="style-package"] .package-session-card {
 .package-enrollment-page .package-booklet-download span { color: #dcebd7; }
 .package-enrollment-page :is(.package-scorecard-table .package-scorecard-th, .package-scorecard-summary, .package-scorecard-prescription) { color: #748878; }
 .package-enrollment-page :is(.package-session-slider-controls button:focus-visible, .package-gallery-controls .package-gallery-arrow:focus-visible, .package-booking-fields input:focus-visible) { outline-color: var(--pkg-leaf); }
+
+
+/* Darker pista for home-page styling offers and recorded courses. */
+.home-page .service-card.styling-card { background-color: #c4d9b8; }
+.home-page .service-card.styling-card .service-intro,
+.home-page .service-card.styling-card .service-description,
+.home-page .service-card.styling-card .service-features li { color: #405444; }
+
+/* Free stock portrait styling for package testimonials. */
+.package-enrollment-page .package-testimonial-person { display:flex; align-items:center; gap:12px; min-width:0; }
+.package-enrollment-page .package-testimonial-person > img { display:block; width:48px; height:48px; flex:0 0 48px; border-radius:50%; object-fit:cover; object-position:center 35%; background:#e6eee2; }
+.package-enrollment-page .package-testimonial-person > div { display:grid; gap:3px; }
+
+/* Hide the styling package hero amount until it is finalized. */
+html[data-package-offer="style-package"] .package-investment-price .package-price-line { display:none; }
+
+/* Let the package tier names wrap without pushing the Select action. */
+.package-enrollment-page .package-session-footer > span { min-width:0; flex:1 1 auto; }
+.package-enrollment-page .package-session-footer > a { flex:0 0 auto; white-space:nowrap; }
