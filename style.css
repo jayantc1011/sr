@@ -9721,14 +9721,14 @@ html { scroll-padding-top: calc(var(--sr-announcement-height) + clamp(69px, 6.1v
 }
 
 .lms-shell #lms-catalog-grid .learning-enroll-btn {
-  background: var(--lms-green-deep, #194c3b) !important;
-  border: 1px solid var(--lms-green-deep, #194c3b) !important;
-  color: #fff !important;
+  background: var(--lms-green-deep, #194c3b);
+  border: 1px solid var(--lms-green-deep, #194c3b);
+  color: #fff;
 }
 
 .lms-shell #lms-catalog-grid .learning-enroll-btn:hover {
-  background: var(--lms-green-deep-hover, #245b42) !important;
-  border-color: var(--lms-green-deep-hover, #245b42) !important;
+  background: var(--lms-green-deep-hover, #245b42);
+  border-color: var(--lms-green-deep-hover, #245b42);
 }
 
 /* Keep the two-up course cards aligned even while one is hovered. */
@@ -12156,18 +12156,6 @@ html[data-package-offer="comm-package"] .package-investment-price .package-price
 .fresh-learn .learn-day-btn.is-missing-video .learn-day-lock { color: #8a6d39; }
 
 
-/* Bundled from styling-card-palette.css; retained in original cascade order after style.css. */
-
-/* Pista green card surfaces for styling-specific offers and courses. */
-.services-page .styling-card,
-.lms-shell .styling-card {
-  background-color: #edf5e9;
-}
-
-/* Styling package session cards are shared markup; scope the color to that offer. */
-html[data-package-offer="style-package"] .package-session-card {
-  background-color: #edf5e9;
-}
 
 /* Keep both package enrollment variants on the same forest and pista palette. */
 .package-enrollment-page {
@@ -12275,3 +12263,177 @@ html[data-package-offer="style-package"] .package-investment-price .package-pric
 /* Let the package tier names wrap without pushing the Select action. */
 .package-enrollment-page .package-session-footer > span { min-width:0; flex:1 1 auto; }
 .package-enrollment-page .package-session-footer > a { flex:0 0 auto; white-space:nowrap; }
+
+/* Keep style-specific cards consistent across the local site. */
+/* Match styling cards to the course bundle’s forest surface and lighter green CTA. */
+.home-page .service-card.styling-card:not(.signature-blueprint-card) {
+  background-color: #183e2f;
+  border-color: #32614b;
+}
+.home-page .service-card.styling-card:not(.signature-blueprint-card) h3,
+.home-page .service-card.styling-card:not(.signature-blueprint-card) .service-price {
+  color: #f5f6ef;
+}
+.home-page .service-card.styling-card:not(.signature-blueprint-card) .service-intro,
+.home-page .service-card.styling-card:not(.signature-blueprint-card) .service-description,
+.home-page .service-card.styling-card:not(.signature-blueprint-card) .service-features li {
+  color: #d6e7ce;
+}
+.home-page .service-card.styling-card:not(.signature-blueprint-card) .service-check {
+  color: #a8cf84;
+}
+.home-page .service-card.styling-card:not(.signature-blueprint-card) .service-cta-dark {
+  background: #245b42;
+  border-color: #245b42;
+  color: #fff;
+}
+.home-page .service-card.styling-card:not(.signature-blueprint-card) .service-cta-dark:hover {
+  background: #2d684b;
+  border-color: #2d684b;
+}
+.home-page .services-grid > article.service-card.signature-blueprint-card {
+  background-color: #fff;
+}
+
+/* Match styling consultations and the styling package to the homepage forest palette. */
+.services-page .call-card.styling-card,
+.services-page .package-card.styling-card {
+  background-color: #183e2f;
+  border-color: #32614b;
+}
+.services-page .call-card.styling-card .call-card-description,
+.services-page .call-card.styling-card .call-features li,
+.services-page .package-card.styling-card .package-description {
+  color: #d6e7ce;
+}
+.services-page .call-card.styling-card .call-check {
+  color: #a8cf84;
+}
+.services-page .call-card.styling-card .call-ideal,
+.services-page .call-card.styling-card .call-price-wrap > span,
+.services-page .package-card.styling-card .package-price-row > div > span {
+  color: #b7c9b6;
+}
+.services-page .call-card.styling-card .call-price,
+.services-page .package-card.styling-card .package-price {
+  color: #f5f6ef;
+}
+.services-page .call-card.styling-card .call-card-divider,
+.services-page .package-card.styling-card .package-card-divider {
+  background-color: rgba(214, 231, 206, .28);
+}
+.services-page .call-card.styling-card .call-book-btn,
+.services-page .package-card.styling-card .package-enroll-btn {
+  border: 1px solid #245b42;
+  background-color: #245b42;
+  color: #fff;
+}
+.services-page .call-card.styling-card .call-book-btn:hover,
+.services-page .package-card.styling-card .package-enroll-btn:hover {
+  border-color: #2d684b;
+  background-color: #2d684b;
+}
+.services-page .package-card.styling-card .package-check {
+  color: #348c68;
+}
+.services-page .package-card.styling-card .package-syllabus {
+  color: #d6e7ce;
+}
+.services-page .package-card.styling-card .package-syllabus:hover {
+  color: #fff;
+}
+
+
+
+/* LMS styling course: forest surface, readable copy, and a distinct green CTA. */
+.lms-shell #lms-catalog-grid .learning-card.styling-card {
+  background-color: #183e2f;
+  border-color: #32614b;
+}
+.lms-shell #lms-catalog-grid .learning-card.styling-card .learning-description,
+.lms-shell #lms-catalog-grid .learning-card.styling-card .learning-features li {
+  color: #d6e7ce;
+}
+.lms-shell #lms-catalog-grid .learning-card.styling-card .learning-check {
+  color: #a8cf84;
+}
+.lms-shell #lms-catalog-grid .learning-card.styling-card .learning-divider {
+  background-color: rgba(214, 231, 206, .28);
+}
+.lms-shell #lms-catalog-grid .learning-card.styling-card .learning-price {
+  color: #f5f6ef;
+}
+.lms-shell #lms-catalog-grid .learning-card.styling-card .learning-price-with-old del {
+  color: #b7c9b6;
+}
+.lms-shell #lms-catalog-grid .learning-card.styling-card .learning-syllabus {
+  color: #d6e7ce;
+}
+.lms-shell #lms-catalog-grid .learning-card.styling-card .learning-syllabus:hover {
+  color: #fff;
+}
+.lms-shell #lms-catalog-grid .learning-card.styling-card .learning-enroll-btn {
+  background: #245b42;
+  border-color: #245b42;
+  color: #fff;
+}
+.lms-shell #lms-catalog-grid .learning-card.styling-card .learning-enroll-btn:hover {
+  background: #2d684b;
+  border-color: #2d684b;
+}
+
+/* Style-package session cards use the same forest surface; communication cards stay light. */
+html[data-package-offer="style-package"] .package-session-grid > .package-session-card:nth-child(odd),
+html[data-package-offer="style-package"] .package-session-grid > .package-session-card:nth-child(even) {
+  background-color: #183e2f;
+  border-color: #32614b;
+}
+html[data-package-offer="style-package"] .package-session-meta {
+  color: #d6e7ce;
+}
+html[data-package-offer="style-package"] .package-session-time {
+  border-color: #32614b;
+  background-color: #245b42;
+  color: #eff6e9;
+}
+html[data-package-offer="style-package"] .package-session-card h3 {
+  color: #f5f6ef;
+}
+html[data-package-offer="style-package"] .package-session-card li {
+  color: #d6e7ce;
+}
+html[data-package-offer="style-package"] .package-session-card li::before {
+  color: #a8cf84;
+}
+html[data-package-offer="style-package"] .package-session-footer {
+  border-top-color: rgba(214, 231, 206, .28);
+  color: #b7c9b6;
+}
+html[data-package-offer="style-package"] .package-session-footer a {
+  color: #f5f6ef;
+}
+html[data-package-offer="style-package"] .package-session-footer a:hover {
+  color: #d6e7ce;
+}
+
+/* Keep all style-package session copy bright over the forest card surface. */
+html[data-package-offer="style-package"] body.package-enrollment-page .package-session-meta > span:first-child,
+html[data-package-offer="style-package"] body.package-enrollment-page .package-session-card > p,
+html[data-package-offer="style-package"] body.package-enrollment-page .package-session-card li,
+html[data-package-offer="style-package"] body.package-enrollment-page .package-session-footer > span {
+  color: #f5f6ef;
+}
+html[data-package-offer="style-package"] body.package-enrollment-page .package-session-time {
+  border-color: #d6e7ce;
+  background-color: #eaf3e6;
+  color: #183e2f;
+}
+html[data-package-offer="style-package"] body.package-enrollment-page .package-session-card li::before {
+  color: #a8cf84;
+}
+html[data-package-offer="style-package"] body.package-enrollment-page .package-session-footer > a {
+  color: #fff;
+}
+html[data-package-offer="style-package"] body.package-enrollment-page .package-session-footer > a:hover {
+  color: #d6e7ce;
+}
