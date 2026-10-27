@@ -263,8 +263,7 @@
 <button aria-controls="flagship-services" aria-label="Previous service cards" class="carousel-arrow services-carousel-prev" type="button"><svg aria-hidden="true" class="icon icon-chevron" viewbox="0 0 20 20"><path d="M11.75 5.5 7.25 10l4.5 4.5"></path></svg></button>
 <button aria-controls="flagship-services" aria-label="Next service cards" class="carousel-arrow services-carousel-next" type="button"><svg aria-hidden="true" class="icon icon-chevron" viewbox="0 0 20 20"><path d="M8.25 5.5 12.75 10l-4.5 4.5"></path></svg></button>
 </div>
-<div aria-label="Flagship services" class="services-grid" id="flagship-services" tabindex="0">
-<article class="service-card">
+<div aria-label="Flagship services" class="services-grid" id="flagship-services" tabindex="0"><article class="service-card">
 <div class="service-card-media">
 <img src="https://images.unsplash.com/photo-1637073849563-5b0ac780ec34?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Colleagues sharing ideas in a workplace communication session" loading="lazy"/>
 <span class="service-card-image-label">1:1 Communication</span>
@@ -301,7 +300,8 @@
 <span data-home-booking-label>Book 60 Mins Call</span>
               <svg aria-hidden="true" class="icon icon-arrow-right" viewbox="0 0 20 20"><path d="M3.5 10h13M11 4.5 16.5 10 11 15.5"></path></svg>
 </a>
-</article><article class="service-card styling-consultation-card styling-card">
+</article>
+<article class="service-card styling-consultation-card styling-card">
 <div class="service-card-media">
 <img src="https://images.unsplash.com/photo-1753161027547-975af3d6e707?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="A stylist helping a client choose clothing beside a wardrobe rack" loading="lazy"/>
 <span class="service-card-image-label">Personal Styling</span>
@@ -338,7 +338,37 @@
 <span data-home-booking-label>Book 60 Mins Call</span>
               <svg aria-hidden="true" class="icon icon-arrow-right" viewbox="0 0 20 20"><path d="M3.5 10h13M11 4.5 16.5 10 11 15.5"></path></svg>
 </a>
-</article><article class="service-card speakathon-course-card">
+</article>
+<article class="service-card styling-card home-consultation-card">
+<div class="service-card-media">
+<img src="assets/services/communication-workshop.webp" alt="Personal colour analysis consultation" loading="lazy" width="1300" height="515" />
+<span class="service-card-image-label">Personal Styling</span><span class="home-service-duration">◷ &nbsp;60 min</span>
+</div>
+<div class="service-topline"><span aria-hidden="true" class="service-icon-box"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"></circle><circle cx="9" cy="9" r="1.2"></circle><circle cx="15" cy="9" r="1.2"></circle><circle cx="9" cy="15" r="1.2"></circle><circle cx="15" cy="15" r="1.2"></circle></svg></span><span class="service-badge service-badge-match">COLOUR CONSULTATION</span></div>
+<h3>Personalised Colour Analysis Consultation</h3>
+<p class="service-intro">Find the colours that bring out your natural radiance.</p>
+<div aria-label="Available session duration" class="service-toggle" style="grid-template-columns:minmax(0,1fr)"><span class="active" aria-current="true">60 Min</span></div>
+<div class="service-price">₹13,999</div><div aria-hidden="true" class="service-divider"></div>
+<ul class="service-features"><li><span aria-hidden="true" class="service-check">✓</span><span>Skin Tone, Undertone &amp; Contrast Assessment</span></li><li><span aria-hidden="true" class="service-check">✓</span><span>Personalised Colour Palette &amp; Power Colours</span></li><li><span aria-hidden="true" class="service-check">✓</span><span>Jewellery, Makeup &amp; Hair Colour Recommendations</span></li><li><span aria-hidden="true" class="service-check">✓</span><span>Personalised Colour Guide with Styling &amp; Shopping Tips</span></li></ul>
+<a class="service-cta service-cta-dark booking-trigger" href="services.html#consultations" data-booking-offer="color-call"><span>Book Call</span><svg aria-hidden="true" class="icon icon-arrow-right" viewBox="0 0 20 20"><path d="M3.5 10h13M11 4.5 16.5 10 11 15.5"></path></svg></a>
+</article>
+<article class="service-card styling-card home-consultation-card">
+<div class="service-card-media">
+<img src="assets/services/styling-consultation.webp" alt="Personal occasion styling consultation" loading="lazy" width="1300" height="688" />
+<span class="service-card-image-label">Personal Styling</span><span class="home-service-duration">◷ &nbsp;60 min</span>
+</div>
+<div class="service-topline"><span aria-hidden="true" class="service-icon-box"><svg viewBox="0 0 24 24"><path d="m12 3 1.1 3.4L16.5 8l-3.4 1.4L12 13l-1.1-3.6L7.5 8l3.4-1.6L12 3Z"></path><path d="m18.5 12 .8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8.8-2.2Z"></path><path d="m6 13 1 2.8 2.8 1L7 18l-1 2.8L5 18l-2.8-1L5 15.8 6 13Z"></path></svg></span><span class="service-badge service-badge-match">OCCASION STYLING</span></div>
+<h3>Personalised Occasion Styling</h3>
+<p class="service-intro">Feel your most confident and beautiful with a look thoughtfully styled just for your special occasion.</p>
+<div aria-label="Session options" class="service-toggle">
+<button type="button" data-duration="30" aria-pressed="false">30 Min</button>
+<button class="active" type="button" data-duration="60" aria-pressed="true">60 Min</button>
+</div>
+<div class="service-price" data-price30="₹3,750" data-price60="₹7,999">₹7,999</div><div aria-hidden="true" class="service-divider"></div>
+<ul class="service-features"><li><span aria-hidden="true" class="service-check">✓</span><span>Personalised Outfit &amp; Silhouette Recommendations</span></li><li><span aria-hidden="true" class="service-check">✓</span><span>Colour, Jewellery &amp; Accessory Pairing</span></li><li><span aria-hidden="true" class="service-check">✓</span><span>Hair &amp; Makeup Direction</span></li><li><span aria-hidden="true" class="service-check">✓</span><span>A Complete Look Curated for Your Occasion</span></li></ul>
+<a class="service-cta service-cta-dark booking-trigger" href="services.html#consultations" data-booking-offer="occasion-call"><span data-home-booking-label>Book 60 Mins Call</span><svg aria-hidden="true" class="icon icon-arrow-right" viewBox="0 0 20 20"><path d="M3.5 10h13M11 4.5 16.5 10 11 15.5"></path></svg></a>
+</article>
+<article class="service-card speakathon-course-card">
 <div class="service-card-media speakathon-card-media">
 <img src="assets/services/speakathon-cover.webp" alt="21-Day Speakathon Challenge communication course" loading="lazy" width="1400" height="788" />
 <span class="service-card-image-label">Communication Course</span>
@@ -361,19 +391,8 @@
 <svg aria-hidden="true" class="service-cta-cap" viewbox="0 0 24 24"><path d="m3 9 9-4 9 4-9 4-9-4Z"></path><path d="M6.5 12v3.2c0 1.3 2.5 2.8 5.5 2.8s5.5-1.5 5.5-2.8V12"></path></svg>
               Explore the Course
             </a>
-</article><article class="service-card styling-card home-consultation-card">
-<div class="service-card-media">
-<img src="assets/services/communication-workshop.webp" alt="Personal colour analysis consultation" loading="lazy" width="1300" height="515" />
-<span class="service-card-image-label">Personal Styling</span><span class="home-service-duration">◷ &nbsp;60 min</span>
-</div>
-<div class="service-topline"><span aria-hidden="true" class="service-icon-box"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"></circle><circle cx="9" cy="9" r="1.2"></circle><circle cx="15" cy="9" r="1.2"></circle><circle cx="9" cy="15" r="1.2"></circle><circle cx="15" cy="15" r="1.2"></circle></svg></span><span class="service-badge service-badge-match">COLOUR CONSULTATION</span></div>
-<h3>Personalised Colour Analysis Consultation</h3>
-<p class="service-intro">Find the colours that bring out your natural radiance.</p>
-<div aria-label="Available session duration" class="service-toggle" style="grid-template-columns:minmax(0,1fr)"><span class="active" aria-current="true">60 Min</span></div>
-<div class="service-price">₹13,999</div><div aria-hidden="true" class="service-divider"></div>
-<ul class="service-features"><li><span aria-hidden="true" class="service-check">✓</span><span>Skin Tone, Undertone &amp; Contrast Assessment</span></li><li><span aria-hidden="true" class="service-check">✓</span><span>Personalised Colour Palette &amp; Power Colours</span></li><li><span aria-hidden="true" class="service-check">✓</span><span>Jewellery, Makeup &amp; Hair Colour Recommendations</span></li><li><span aria-hidden="true" class="service-check">✓</span><span>Personalised Colour Guide with Styling &amp; Shopping Tips</span></li></ul>
-<a class="service-cta service-cta-dark booking-trigger" href="services.html#consultations" data-booking-offer="color-call"><span>Book Call</span><svg aria-hidden="true" class="icon icon-arrow-right" viewBox="0 0 20 20"><path d="M3.5 10h13M11 4.5 16.5 10 11 15.5"></path></svg></a>
-</article><article class="service-card styling-card signature-blueprint-card">
+</article>
+<article class="service-card styling-card signature-blueprint-card">
 <div class="service-card-media">
 <img src="https://images.unsplash.com/photo-1770970831074-6e88b6cc260b?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Fashion mood board with fabric swatches and design sketches" loading="lazy"/>
 <span class="service-card-image-label">Recorded Course</span>
@@ -405,24 +424,14 @@
 <svg aria-hidden="true" class="service-cta-cap" viewbox="0 0 24 24"><path d="m3 9 9-4 9 4-9 4-9-4Z"></path><path d="M6.5 12v3.2c0 1.3 2.5 2.8 5.5 2.8s5.5-1.5 5.5-2.8V12"></path></svg>
               Explore the Course
             </a>
-</article><article class="service-card styling-card home-consultation-card">
-<div class="service-card-media">
-<img src="assets/services/styling-consultation.webp" alt="Personal occasion styling consultation" loading="lazy" width="1300" height="688" />
-<span class="service-card-image-label">Personal Styling</span><span class="home-service-duration">◷ &nbsp;60 min</span>
-</div>
-<div class="service-topline"><span aria-hidden="true" class="service-icon-box"><svg viewBox="0 0 24 24"><path d="m12 3 1.1 3.4L16.5 8l-3.4 1.4L12 13l-1.1-3.6L7.5 8l3.4-1.6L12 3Z"></path><path d="m18.5 12 .8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8.8-2.2Z"></path><path d="m6 13 1 2.8 2.8 1L7 18l-1 2.8L5 18l-2.8-1L5 15.8 6 13Z"></path></svg></span><span class="service-badge service-badge-match">OCCASION STYLING</span></div>
-<h3>Personalised Occasion Styling</h3>
-<p class="service-intro">Feel your most confident and beautiful with a look thoughtfully styled just for your special occasion.</p>
-<div aria-label="Session options" class="service-toggle">
-<button type="button" data-duration="30" aria-pressed="false">30 Min</button>
-<button class="active" type="button" data-duration="60" aria-pressed="true">60 Min</button>
-</div>
-<div class="service-price" data-price30="₹3,750" data-price60="₹7,999">₹7,999</div><div aria-hidden="true" class="service-divider"></div>
-<ul class="service-features"><li><span aria-hidden="true" class="service-check">✓</span><span>Personalised Outfit &amp; Silhouette Recommendations</span></li><li><span aria-hidden="true" class="service-check">✓</span><span>Colour, Jewellery &amp; Accessory Pairing</span></li><li><span aria-hidden="true" class="service-check">✓</span><span>Hair &amp; Makeup Direction</span></li><li><span aria-hidden="true" class="service-check">✓</span><span>A Complete Look Curated for Your Occasion</span></li></ul>
-<a class="service-cta service-cta-dark booking-trigger" href="services.html#consultations" data-booking-offer="occasion-call"><span data-home-booking-label>Book 60 Mins Call</span><svg aria-hidden="true" class="icon icon-arrow-right" viewBox="0 0 20 20"><path d="M3.5 10h13M11 4.5 16.5 10 11 15.5"></path></svg></a>
 </article>
+
 </div>
 <div aria-label="Choose service card group" class="services-carousel-dots" role="group"></div>
+<div class="home-package-prompt">
+<h2>Select Your Preferred Package</h2>
+<a class="service-cta service-cta-dark" href="services.html#packages">Explore here<svg aria-hidden="true" class="icon icon-arrow-right" viewBox="0 0 20 20"><path d="M3.5 10h13M11 4.5 16.5 10 11 15.5"></path></svg></a>
+</div>
 </div>
 </section>
 <section aria-labelledby="contact-title" class="contact-section" id="contact">
