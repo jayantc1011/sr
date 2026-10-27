@@ -44,7 +44,7 @@
       originalPrice: '',
       installments: '',
       investmentLabel: 'COMPLETE 1:1 PACKAGE (6 SESSIONS + BOOKLET)',
-      deliverableOne: '6 Video Consultations',
+      deliverableOne: 'Video Consultations',
       deliverableTwo: '28-Page Tailored Booklet',
       visualLabel: 'SHALINI’S STYLE TRANSFORMATION',
       visualSubtitle: 'Make your style feel unmistakably you.',
