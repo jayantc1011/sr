@@ -444,13 +444,25 @@
     ['assets/hero-seated.webp', 'Shalini Rathod in a seated editorial portrait', 'center 10%']
   ];
   if (isStyleImageGallery) {
-    const styleDemos = [
+    const styleDemoTitles = [
       ['DEMO SLIDE 01 · IDENTITY MATRIX', 'Style Archetype & Lifestyle Blueprint'],
       ['DEMO SLIDE 02 · SILHOUETTE MATRIX', 'Body & Face Proportion Architecture'],
       ['DEMO SLIDE 03 · CHROMATIC SPECTRUM', '12-Tone Palette & Color Harmony'],
       ['DEMO SLIDE 04 · READY-TO-WEAR', 'Curated Occasion Lookbook'],
       ['DEMO SLIDE 05 · FINISHING TOUCHES', 'Makeup, Accessories & Wishlist']
-    ].map(([kicker, title]) => ({ kicker, title }));
+    ];
+    const stylePhotoOrders = [
+      [0, 1, 2, 3],
+      [1, 2, 3, 0],
+      [2, 3, 0, 1],
+      [3, 0, 1, 2],
+      [0, 2, 1, 3]
+    ];
+    const styleDemos = styleDemoTitles.map(([kicker, title], index) => ({
+      kicker,
+      title,
+      images: stylePhotoOrders[index].map(photoIndex => stylePortraits[photoIndex])
+    }));
     demos.splice(0, demos.length, ...styleDemos);
     setText('.package-booklet-description', 'Explore five style transformation demos featuring Shalini’s portraits.');
   }
@@ -1053,7 +1065,7 @@
     const demo = demos[currentSlide];
     const galleryImages = editorialPhotoFocused
       ? [['assets/hero-seated.webp', 'Shalini Rathod in a landscape editorial portrait']]
-      : isStyleImageGallery ? stylePortraits : demo.images || [];
+      : demo.images || [];
     if (galleryTrack) {
       packageGallery?.classList.toggle('is-editorial-focused', editorialPhotoFocused);
       packageGallery?.classList.toggle('is-style-image-gallery', isStyleImageGallery);
