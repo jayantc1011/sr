@@ -525,7 +525,7 @@ if (bookingModal) {
       label: 'The Power Bundle',
       fullLabel: 'The Power Bundle',
       type: 'course',
-      price: 4999,
+      price: 12999,
       duration: 'Lifetime Access',
       needsSchedule: false
     }
