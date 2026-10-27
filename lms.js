@@ -237,6 +237,7 @@
       if(detailBadges){
         detailBadges.replaceChildren(...[
           '4.9-Star Learner Rating',
+          '100+ Learners',
           'Exclusive Study Resources',
           'Complimentary 1:1 Styling Session'
         ].map(text=>el('span','',text)));
