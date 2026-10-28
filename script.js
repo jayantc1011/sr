@@ -536,8 +536,8 @@ if (bookingModal) {
       label: 'Personalised Colour Analysis Consultation',
       fullLabel: 'Personalised Colour Analysis Consultation',
       type: 'call',
-      prices: { '60': 13999 },
-      durationLabels: { '60': 'Personalised colour analysis' },
+      prices: { '60': 7999, '90': 13999 },
+      durationLabels: { '90': 'Personalised colour analysis' },
       needsSchedule: true
     },
     'occasion-call': {
@@ -741,7 +741,7 @@ if (bookingModal) {
     if (offeringSelect) offeringSelect.value = safeOffer;
 
     if (safeOffer === 'color-call') {
-      selectedDuration = '60';
+      selectedDuration = lastBookingTrigger?.closest('.service-card')?.querySelector('.service-toggle [data-duration].active')?.dataset.duration || '60';
     } else if (safeOffer === 'occasion-call') {
       selectedDuration = lastBookingTrigger?.closest('.service-card')?.querySelector('.service-toggle [data-duration].active')?.dataset.duration || '60';
     } else if (safeOffer === 'comm-call' || safeOffer === 'style-call') {
