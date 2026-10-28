@@ -374,7 +374,7 @@
           ['Verbal Clarity:', 'Bottom-up rambling (2.2)']
         ],
         summary: 'Upendra’s executive influence is throttled not by lack of engineering depth, but by boundary anxiety and bottom-up over-explanation under questioning.',
-        chart: 'assets/canva/communication/radar-diagnostic-slide-01.png?v=20261027-colored-chart',
+        chart: 'assets/canva/communication/radar-diagnostic-slide-01.png?v=20261028-colorful-chart',
         chartAlt: 'Radar chart comparing Upendra’s communication skills with the staff benchmark.'
       }
     },    {
