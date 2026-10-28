@@ -4,7 +4,7 @@
       name: 'Speak with Confidence',
       shortName: 'Speak with Confidence',
       bookletTitle: 'Personalised Communication Progress Report',
-      kicker: 'SHALINI RATHOD · IMAGE CONSULTING & STYLING',
+      kicker: 'SHALINI RATHOD · COMMUNICATION & CONFIDENCE',
       headline: 'A More Refined Way to <em>Communicate</em>',
       description: 'Private coaching tailored to your needs, whether you want to strengthen your delivery, refine your tone, overcome speaking habits, or feel more at ease in professional settings.',
       duration: '7 sessions · 7 weeks',
@@ -125,6 +125,9 @@
   if (communicationTierCurriculum) communicationTierCurriculum.hidden = offerKey !== 'comm-package';
   document.querySelectorAll('[data-communication-advanced-card]').forEach((card) => { card.hidden = offerKey !== 'comm-package'; });
   document.querySelectorAll('[data-styling-advanced-card]').forEach((card) => { card.hidden = offerKey !== 'style-package'; });
+  document.querySelectorAll('[data-package-testimonial-offer]').forEach((card) => {
+    card.hidden = card.dataset.packageTestimonialOffer !== offerKey;
+  });
   setText('[data-package-sessions-intro]', offerKey === 'comm-package'
     ? 'Individual 60-minute video coaching across communication, presence and high-stakes presentations.'
     : 'Individual 60-minute styling consultations tailored to your features, wardrobe, lifestyle and personal image.');
@@ -201,7 +204,39 @@
   const bookingTimeInput = document.querySelector('[data-booking-time]');
   const bookingTimeLabel = document.querySelector('[data-booking-time-label]');
   const bookingStatus = document.querySelector('[data-booking-status]');
+  const bookingPackageOptions = document.querySelector('[data-booking-packages]');
+  const bookingPackageGroup = document.querySelector('[data-booking-package-group]');
+  let selectedBookingPlan = null;
   let bookingMode = 'package';
+  const comparisonPackageNames = offerKey === 'comm-package'
+    ? ['Core Communication', 'Powerful Presence', 'Commanding Presence']
+    : ['Signature Experience', 'Exclusive Transformation', 'VIP Makeover Experience'];
+  const comparisonPackageButtons = Array.from(document.querySelectorAll('[data-comparison-plan][data-comparison-price]'))
+    .filter((button) => comparisonPackageNames.includes(button.dataset.comparisonPlan));
+  if (bookingPackageOptions && comparisonPackageButtons.length) {
+    const packageButtons = comparisonPackageButtons.map((comparisonButton, index) => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'package-booking-package-option';
+      button.dataset.packageName = comparisonButton.dataset.comparisonPlan;
+      button.dataset.packagePrice = comparisonButton.dataset.comparisonPrice;
+      button.setAttribute('aria-pressed', 'false');
+      button.innerHTML = '<span>' + comparisonButton.dataset.comparisonPlan + '</span><strong>' + comparisonButton.dataset.comparisonPrice + '</strong>';
+      button.addEventListener('click', () => {
+        selectedBookingPlan = { name: button.dataset.packageName, price: button.dataset.packagePrice };
+        packageButtons.forEach((item) => {
+          const active = item === button;
+          item.classList.toggle('is-selected', active);
+          item.setAttribute('aria-pressed', String(active));
+        });
+        updateBookingMode(bookingMode);
+      });
+      return button;
+    });
+    bookingPackageOptions.replaceChildren(...packageButtons);
+  } else if (bookingPackageGroup) {
+    bookingPackageGroup.hidden = true;
+  }
   const updateBookingMode = (mode) => {
     bookingMode = mode;
     bookingModeButtons.forEach((button) => {
@@ -209,7 +244,9 @@
       button.classList.toggle('is-selected', active);
       button.setAttribute('aria-selected', String(active));
     });
-    const bookingPrice = formatPrice(selectedCurrency);
+    const bookingPrice = selectedBookingPlan?.price || formatPrice(selectedCurrency);
+    if (bookingPackageGroup) bookingPackageGroup.hidden = mode !== 'package';
+    setText('[data-booking-price]', mode === 'package' ? bookingPrice : formatPrice(selectedCurrency));
     setText('[data-booking-confirm-price]', mode === 'package' ? bookingPrice : 'FREE');
     const submitText = mode === 'package' ? 'CONFIRM PACKAGE (' + bookingPrice + ')' : 'CONFIRM FREE DISCOVERY';
     const submitButton = document.querySelector('.package-booking-submit');
@@ -217,6 +254,7 @@
     if (bookingStatus) bookingStatus.textContent = '';
   };
   bookingModeButtons.forEach((button) => button.addEventListener('click', () => updateBookingMode(button.dataset.bookingMode)));
+  document.querySelectorAll('[data-currency]').forEach((button) => button.addEventListener('click', () => updateBookingMode(bookingMode)));
   document.querySelectorAll('[data-discovery-booking]').forEach((link) => link.addEventListener('click', () => updateBookingMode('discovery')));
 
   const dateFormat = new Intl.DateTimeFormat('en-IN', { weekday: 'long', month: 'short', day: 'numeric' });
@@ -269,7 +307,7 @@
     event.preventDefault();
     if (!bookingForm.reportValidity()) return;
     if (bookingMode === 'package' && checkoutDialog && checkoutPayment && checkoutSuccess) {
-      checkoutPlan = null;
+      checkoutPlan = selectedBookingPlan;
       updateCheckoutOrder();
       checkoutPayment.hidden = false;
       checkoutSuccess.hidden = true;
@@ -431,45 +469,47 @@
   ];
   const isStyleImageGallery = offerKey === 'style-package';
   if (isStyleImageGallery) {
-    galleryViewport?.setAttribute('aria-label', 'Shalini portrait gallery');
-    previousImageButton?.setAttribute('aria-label', 'Previous Shalini photo');
-    nextImageButton?.setAttribute('aria-label', 'Next Shalini photo');
-    previousImageButton?.closest('[role="group"]')?.setAttribute('aria-label', 'Shalini photo navigation');
-    nextImageButton?.closest('[role="group"]')?.setAttribute('aria-label', 'Shalini photo navigation');
-  }
-  const stylePortraits = [
-    ['assets/about/shalini-close.webp', 'Shalini Rathod in a navy blazer portrait', 'center 10%'],
-    ['assets/about/shalini-reading.webp', 'Shalini Rathod holding her style booklet', 'center 10%'],
-    ['assets/about/shalini-seated.webp', 'Shalini Rathod seated in a black outfit', 'center 10%'],
-    ['assets/hero-seated.webp', 'Shalini Rathod in a seated editorial portrait', 'center 10%']
-  ];
-  if (isStyleImageGallery) {
-    const styleDemoTitles = [
+    const stylePhotoSets = [
+      [
+        ['assets/about/shalini-close.webp', 'Shalini Rathod in a navy blazer portrait', 'center 10%'],
+        ['assets/about/shalini-reading.webp', 'Shalini Rathod holding her style booklet', 'center 10%'],
+        ['assets/about/shalini-seated.webp', 'Shalini Rathod seated in a black outfit', 'center 10%']
+      ],
+      [
+        ['assets/canva/style/slide-01.jpg', 'Shalini Rathod in a beige full-length styling look', '100% 50%'],
+        ['assets/canva/style/slide-02.jpg', 'Shalini Rathod in a white top with coffee', '92% 50%'],
+        ['assets/canva/style/slide-03.jpg', 'Shalini Rathod in a white blazer', '12% 50%']
+      ],
+      [
+        ['assets/canva/style/slide-08.jpg', 'Shalini Rathod in a white suit seated portrait', '18% 50%'],
+        ['assets/canva/style/slide-09.jpg', 'Shalini Rathod in a burgundy outfit seated portrait', '84% 50%'],
+        ['assets/canva/communication/slide-01.jpg', 'Shalini Rathod in a burgundy blazer at a desk', '93% 50%']
+      ],
+      [
+        ['assets/canva/communication/slide-04.jpg', 'Shalini Rathod seated in a blue suit', '66% 50%'],
+        ['assets/canva/communication/slide-05.jpg', 'Shalini Rathod standing in a navy suit', '69% 50%'],
+        ['assets/canva/communication/slide-07.jpg', 'Shalini Rathod in a burgundy suit presenting', '32% 50%']
+      ],
+      [
+        ['assets/canva/communication/slide-09.jpg', 'Shalini Rathod in a white suit at a desk', '85% 50%'],
+        ['assets/services/styling-consultation.webp', 'Image consultant presenting a personal styling workshop', '88% 50%'],
+        ['assets/services/power-dressing-cover.webp', 'Stylist helping a client choose a tailored outfit', '70% 50%']
+      ]
+    ];
+    const styleDemos = [
       ['DEMO SLIDE 01 · IDENTITY MATRIX', 'Style Archetype & Lifestyle Blueprint'],
       ['DEMO SLIDE 02 · SILHOUETTE MATRIX', 'Body & Face Proportion Architecture'],
       ['DEMO SLIDE 03 · CHROMATIC SPECTRUM', '12-Tone Palette & Color Harmony'],
       ['DEMO SLIDE 04 · READY-TO-WEAR', 'Curated Occasion Lookbook'],
       ['DEMO SLIDE 05 · FINISHING TOUCHES', 'Makeup, Accessories & Wishlist']
-    ];
-    const stylePhotoOrders = [
-      [0, 1, 2, 3],
-      [1, 2, 3, 0],
-      [2, 3, 0, 1],
-      [3, 0, 1, 2],
-      [0, 2, 1, 3]
-    ];
-    const styleDemos = styleDemoTitles.map(([kicker, title], index) => ({
-      kicker,
-      title,
-      images: stylePhotoOrders[index].map(photoIndex => stylePortraits[photoIndex])
-    }));
+    ].map(([kicker, title], index) => ({ kicker, title, images: stylePhotoSets[index] }));
     demos.splice(0, demos.length, ...styleDemos);
     setText('.package-booklet-description', 'Explore five style transformation demos featuring Shalini’s portraits.');
   }
   let currentSlide = 0;
   let currentImageIndex = 0;
   let editorialPhotoFocused = false;
-  const visibleImageCount = () => editorialPhotoFocused ? 1 : window.matchMedia('(max-width: 650px)').matches ? 1 : window.matchMedia('(max-width: 1024px)').matches ? 2 : 3;
+  const visibleImageCount = () => editorialPhotoFocused ? 1 : window.matchMedia('(max-width: 650px)').matches ? 1 : window.matchMedia('(max-width: 900px)').matches ? 2 : 3;
   const updateGalleryLayout = () => {
     if (!galleryTrack || !galleryViewport) return;
     const images = [...galleryTrack.children];
@@ -480,12 +520,12 @@
       image.style.flexBasis = editorialPhotoFocused ? 'min(100%, 980px)' : imageWidth + 'px';
       image.style.width = editorialPhotoFocused ? 'min(100%, 980px)' : imageWidth + 'px';
     });
-    const maxIndex = Math.max(0, images.length - visibleCount);
+    const maxIndex = isStyleImageGallery ? 0 : Math.max(0, images.length - visibleCount);
     currentImageIndex = Math.min(currentImageIndex, maxIndex);
     const step = imageWidth + gap;
     galleryTrack.style.transform = editorialPhotoFocused ? 'translate3d(0, 0, 0)' : `translate3d(${-currentImageIndex * step}px, 0, 0)`;
-    if (previousImageButton) previousImageButton.disabled = isStyleImageGallery ? currentImageIndex <= 0 : currentSlide <= 0;
-    if (nextImageButton) nextImageButton.disabled = isStyleImageGallery ? currentImageIndex >= maxIndex : currentSlide >= demos.length - 1;
+    if (previousImageButton) previousImageButton.disabled = currentSlide <= 0;
+    if (nextImageButton) nextImageButton.disabled = currentSlide >= demos.length - 1;
   };
   const createReportSlide = (report) => {
     const article = document.createElement('article');
@@ -1113,18 +1153,10 @@
     if (editorialPhotoFocused) galleryTrack?.scrollIntoView({ behavior: 'smooth', block: 'center' });
   });
   previousImageButton?.addEventListener('click', () => {
-    if (isStyleImageGallery) {
-      currentImageIndex = Math.max(0, currentImageIndex - 1);
-      updateGalleryLayout();
-    } else if (currentSlide > 0) showDemo(currentSlide - 1);
+    if (currentSlide > 0) showDemo(currentSlide - 1);
   });
   nextImageButton?.addEventListener('click', () => {
-    if (isStyleImageGallery) {
-      const images = galleryTrack ? [...galleryTrack.children] : [];
-      const maxIndex = Math.max(0, images.length - visibleImageCount());
-      currentImageIndex = Math.min(maxIndex, currentImageIndex + 1);
-      updateGalleryLayout();
-    } else if (currentSlide < demos.length - 1) showDemo(currentSlide + 1);
+    if (currentSlide < demos.length - 1) showDemo(currentSlide + 1);
   });
   if (dotsRoot) {
     const dotCount = demos.length;
