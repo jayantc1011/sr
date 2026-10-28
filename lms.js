@@ -322,6 +322,19 @@
       const reviewSection=document.querySelector('.lms-review-grid')?.closest('section');
       const reviewTitle=reviewSection?.querySelector('.lms-section-heading h2');
       if(reviewTitle)reviewTitle.innerHTML='Learner <em>Testimonials</em>';
+      const styleReviewPeople=[
+        {name:'Ananya S.',image:'https://images.pexels.com/photos/36153394/pexels-photo-36153394.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1'},
+        {name:'Sana P.',image:'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&crop=faces&w=400&h=400&q=85'},
+        {name:'Ishita D.',image:'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&crop=faces&w=400&h=400&q=85'}
+      ];
+      reviewSection?.querySelectorAll('.lms-review').forEach((review,i)=>{
+        const person=styleReviewPeople[i];
+        if(!person)return;
+        const image=review.querySelector('.lms-review-person img');
+        const name=review.querySelector('.lms-review-person strong');
+        if(image){image.src=person.image;image.alt='Portrait of '+person.name;}
+        if(name)name.textContent=person.name;
+      });
       const styleTestimonials=[
         'Finallyyy… I understand what works for me instead of randomly buying clothes and hoping they look good. Getting dressed for work has become so much easier!',
         'I started paying attention to little things like fit, colours, and accessories, and honestly, they make such a difference. I feel much more put-together now!',
